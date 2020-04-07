@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算器</title>
+</head>
+<body>
+    <input type="text" id="ipt1">
+    <select name="sel1" id="sel1">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+    <input type="text" id="ipt2">
+    <span>=</span>
+    <input type="text" id="ipt3">
+    <button type="button" id="but1">计算</button>
+
+    <script>
+
+        let obut = document.getElementById("but1");
+        obut.onclick = () =>{
+            let oipt1 = +document.getElementById("ipt1").value;
+            let oipt2 = +document.getElementById("ipt2").value;
+            let osel1 = document.getElementById("sel1").value;
+            let oipt3 = document.getElementById("ipt3");
+            console.log(oipt1);
+            switch(osel1){
+                case "+":
+                    oipt3.value = oipt1 + oipt2;
+                    break;
+                case "-":
+                    oipt3.value = oipt1 - oipt2;
+                    break;
+                case "*":
+                    oipt3.value = oipt1 * oipt2;
+                    break;
+                case "/":
+                    oipt3.value = oipt1 / oipt2;
+                    break;
+            }
+        }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #main{
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            position: relative;
+        }
+        #nav{
+            background-color: chocolate;
+            height: 50px;
+            display: flex;
+        }
+        #nav input{
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+        #content{
+            background-color: darkgray;
+            height: 250px;
+            text-align: center;
+            line-height: 250px;
+        }
+        .ss{
+            background-color: rgba(1, 1, 1, 0.3);
+            display: inline-block;
+            font-size: 50px;
+            position: absolute;
+            top: 50px;
+            line-height: 250px;
+            /* width: 20px; */
+            /* height: 20px; */
+        }
+        .s2{
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="main">
+            <div id="nav">
+
+            </div>
+            <div id="content">
+
+            </div>
+            <span class="ss s1">&lt;</span>
+            <span class="ss s2">&gt;</span>
+        </div>
+    </div>
+    <script>
+        let data = [{
+        title: "唱",
+        content: "张三正在唱歌",
+        backgroundColor: "red"
+      }, {
+        title: "跳",
+        content: "张三正在跳起来",
+        backgroundColor: "blue"
+      }, {
+        title: "RAP",
+        content: "张三正在RAP",
+        backgroundColor: "green"
+      }, {
+        title: "篮球",
+        content: "张三正在打篮球",
+        backgroundColor: "yellow"
+      }, {
+        title: "足球",
+        content: "张三正在踢足球",
+        backgroundColor: "pink"
+      }]
+      data.auto = true;
+      let onav = document.getElementById("nav");
+      let ocontent = document.getElementById("content");
+      let os1 = document.getElementsByClassName("ss")[0];
+      let os2 = document.getElementsByClassName("ss")[1];
+      let index = 0;
+    //   初始化导航栏和div内容区
+    function init(arr){
+        for(let i = 0; i < arr.length; ++i){
+            onav.innerHTML += `<input type="button" value=${arr[i].title} style="width:${onav.offsetWidth/arr.length}px;" data-class=${i}>`;
+        }
+        console.log(onav.getElementsByTagName("input"));
+        for(let i = 0; i < arr.length; ++i){
+            onav.getElementsByTagName("input")[i].onclick = () =>{
+                change("nav", i);
+                render();
+                // console.log(i);
+            }
+
+        os1.onclick = () => {
+            change("s1");
+            render();
+        }
+        os2.onclick = () =>{
+            change("s2");
+            render();
+        }
+        }
+        ocontent.innerHTML =`<div style="background:${arr[index].backgroundColor};">${arr[index].content}</div>`;
+
+        // 先给第一个input一个背景色
+        render();
+
+        if(arr.auto){
+
+            // 使用定时器
+            let timer = setInterval(() => {
+                change("s2");
+                render()
+            }, 1000);
+    
+            ocontent.onmouseover = () =>{
+                clearInterval(timer);
+            }
+            ocontent.onmouseout = () =>{
+                timer = setInterval(() => {
+                change("s2");
+                render()
+            }, 1000);
+            }
+        }
+    }
+
+    function change(method, n){
+        switch(method){
+            case "nav":
+                index = n;
+                break;
+            case "s1":
+                index = index === 0 ? data.length - 1 : --index;
+                break;
+            case "s2":
+                index = index === data.length - 1 ? 0 : ++index;
+        }
+    }
+
+    function render(){
+        for(let i = 0; i < data.length; ++i){
+            onav.getElementsByTagName("input")[i].style.background = "";
+        }
+        ocontent.innerHTML =`<div style="background:${data[index].backgroundColor};">${data[index].content}</div>`;
+        onav.getElementsByTagName("input")[index].style.background = "#ffffff";
+    }
+    init(data);
+    </script>
+</body>
+</html>

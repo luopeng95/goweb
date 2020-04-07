@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      #div1 {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+        position: absolute;
+      }
+
+      #container {
+        width: 400px;
+        height: 400px;
+        border: 10px solid black;
+        position: relative;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="container">
+      <div id="div1"></div>
+    </div>
+    <script>
+      //键盘事件
+      //mousedown -> mouseup -> click
+      //keydown 键盘按下
+      //keypress 键盘按压
+      //keyup 键盘抬起
+      let oDiv = document.getElementById("div1")
+      document.addEventListener("keydown", e => {
+        switch (e.key) {
+          case "a":
+            if (oDiv.offsetLeft > 0) {
+              oDiv.style.left = oDiv.offsetLeft - 100 + "px"
+            }
+            break;
+          case "d":
+            if (oDiv.offsetLeft < 300) {
+              oDiv.style.left = oDiv.offsetLeft + 100 + "px"
+            }
+            break;
+          case "w":
+            if (oDiv.offsetTop > 0) {
+              oDiv.style.top = oDiv.offsetTop - 100 + "px"
+            }
+            break;
+          case "s":
+            if (oDiv.offsetTop < 300) {
+              oDiv.style.top = oDiv.offsetTop + 100 + "px"
+            }
+            break;
+        }
+      })
+    </script>
+  </body>
+
+</html>

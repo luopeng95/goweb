@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //在ES6中新增两个数据类型 Set&&Map
+      // Set 集合
+      // Collection
+      //集合?特性 1.确定性 2.互异性 3.无序性
+      //声明一个Set类型的set实例
+
+      //new Array
+      //Array.from
+      // let set = new Set([0, 1, 100, 0, 20, 90, 10, 10, 100, 0, 20, 0])
+      // let arr = Array.from(set);
+
+      let arr = [0, 1, 100, 0, 20, 90, 10, 10, 100, 0, 20, 0];
+      let fn1 = (arr) => Array.from(new Set(arr));
+
+      let fn2 = (arr) => [...new Set(arr)]
+
+      console.log(fn1(arr))
+      console.log(fn2(arr))
+    </script>
+  </body>
+
+</html>

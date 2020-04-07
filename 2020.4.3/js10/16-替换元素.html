@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <ul id="container">
+      <li id="list">我是旧元素</li>
+    </ul>
+    <script>
+      let oUl = document.getElementById("container");
+      let oldLi = document.getElementById("list");
+
+      window.onclick = function () {
+        //1.生产一个li标签
+        let newLi = document.createElement("li");
+        let newTxt = document.createTextNode("我是新标签");
+        newLi.appendChild(newTxt)
+        oUl.replaceChild(newLi, oldLi)
+      }
+    </script>
+  </body>
+
+</html>

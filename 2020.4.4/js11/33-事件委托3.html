@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <input type="button" value="新增节点" id="btn">
+    <ul id="container">
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <script>
+      //事件委托: 将子元素的事件触发 委托给 父元素来管理
+      //1. 极大的降低了事件函数的个数
+      //2. 新增的节点自动也会有相应的行为
+      let oBtn = document.getElementById("btn")
+      let oUl = document.getElementById("container")
+      let aLi = oUl.getElementsByTagName("li")
+
+      //触发器 已经委托给 父元素了
+      //渲染器 还是原来的li
+      oUl.addEventListener("click", e => {
+        if (e.target.nodeName === "LI") {
+          e.target.style.backgroundColor = "pink"
+        }
+      })
+      oBtn.addEventListener("click", function () {
+        //生产并拼接一个崭新的li
+        let newLi = appendEle(oUl, "li", "");
+      })
+
+
+      function appendEle(parent, eleName, value) {
+        //1 生产一个li标签
+        let newLi = document.createElement(eleName)
+        //2. 生产一个文本节点
+        let newTxt = document.createTextNode(value);
+        //3. 拼接
+        parent.appendChild(newLi)
+        newLi.appendChild(newTxt)
+        return newLi
+      }
+    </script>
+  </body>
+
+</html>

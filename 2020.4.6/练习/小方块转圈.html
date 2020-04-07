@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery-3.4.1.min.js"></script>
+    <style>
+        #div1 {
+          width: 100px;
+          height: 100px;
+          background-color: pink;
+          position: absolute;
+        }
+  
+        #container {
+          width: 500px;
+          height: 500px;
+          border: 10px solid black;
+          position: relative;
+        }
+      </style>
+</head>
+<body>
+    <input type="button" value="开始">
+    <input type="button" value="暂停">
+    <input type="button" value="反向">
+    <div id="container">
+      <div id="div1"></div>
+    </div>
+
+    <script>
+        $("document").ready(() => {
+            let odiv = $("#div1")[0];
+            // let odiv = document.getElementById("div1");
+            let time;
+            // 小方块移动事件：参数：div、方向（0正向、1反向）
+            let moveDiv = (odiv, direction) => {
+                clearInterval(time);
+                let oWidth = odiv.clientWidth;
+                let oHeight = odiv.clientHeight;
+                let maxWidth = odiv.offsetParent.clientWidth;
+                let maxHeight = odiv.offsetParent.clientHeight;
+                let left = odiv.offsetLeft;
+                let top = odiv.offsetTop;
+                let moveX = (maxWidth - oWidth) / 10;
+                let moveY = (maxHeight - oHeight) / 10;
+                if(direction === 0){
+                    if(top <= 0 && left < maxWidth - oWidth){
+                        odiv.style.left = left + moveX + "px";
+                    }else if(left >= maxWidth - oWidth && top < maxHeight - oHeight){
+                        odiv.style.top = top + moveY + "px";
+                    }else if(top >= maxHeight - oHeight && left > 0){
+                        odiv.style.left = left - moveX + "px";
+                    }else if(left <= 0 && top > 0){
+                        odiv.style.top = top - moveY + "px";
+                    }
+                }else{
+                    if(top < maxHeight - oHeight && left <= 0){
+                        odiv.style.top = top + moveY + "px";
+                    }else if(left < maxWidth - oWidth  && top >= maxHeight - oHeight){
+                        odiv.style.left = left + moveX + "px";
+                    }else if(top > 0 && left >= maxWidth - oWidth){
+                        odiv.style.top = top - moveX + "px";
+                    }else if(left > 0 && top <= 0){
+                        odiv.style.left = left - moveY + "px";
+                    }
+                }
+                time = setInterval(() => {
+                    moveDiv(odiv, direction);
+                }, 1000);
+            }
+
+            // 开始按钮点击事件
+            $("input[value='开始']").on("click", () => {
+                moveDiv(odiv, 0)
+            })
+
+            // 暂停按钮点击事件
+            $("input[value='暂停']").on("click", () => {
+                clearInterval(time)
+            })
+
+            // 反向按钮点击事件
+            $("input[value='反向']").on("click", () => {
+                // console.log(123)
+                // console.log(odiv);
+                moveDiv(odiv, 1)
+            })
+        })
+    </script>
+</body>
+</html>

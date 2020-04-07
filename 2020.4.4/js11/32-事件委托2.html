@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <input type="button" value="新增节点" id="btn">
+    <ul id="container">
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <script>
+      let oBtn = document.getElementById("btn")
+      let oUl = document.getElementById("container")
+      let aLi = oUl.getElementsByTagName("li")
+
+      for (let i = 0; i < aLi.length; i++) {
+        aLi[i].addEventListener("click", function () {
+          aLi[i].style.backgroundColor = "pink"
+        })
+      }
+
+      oBtn.addEventListener("click", function () {
+        //生产并拼接一个崭新的li
+        let newLi = appendEle(oUl, "li", "");
+        //赋予动态的行为
+        newLi.addEventListener("click", function () {
+          this.style.backgroundColor = "pink"
+        })
+      })
+
+
+      function appendEle(parent, eleName, value) {
+        //1 生产一个li标签
+        let newLi = document.createElement(eleName)
+        //2. 生产一个文本节点
+        let newTxt = document.createTextNode(value);
+        //3. 拼接
+        parent.appendChild(newLi)
+        newLi.appendChild(newTxt)
+        return newLi
+      }
+    </script>
+  </body>
+
+</html>

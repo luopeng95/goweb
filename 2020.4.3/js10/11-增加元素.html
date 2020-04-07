@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <ul id="container">
+      <!-- <li>111</li> -->
+    </ul>
+    <script>
+      let oUl = document.getElementById("container");
+
+      //1. 生产标签
+      //生产一个标签名为li的元素节点
+      let newLi = document.createElement("li");
+
+      //2. 生产文本节点
+      //生产一个内容为111的文本节点
+      let newTxt = document.createTextNode("111")
+
+      //3. 组装节点
+      //在这个标签的内部的最后位置添加一个子节点
+      newLi.appendChild(newTxt)
+      oUl.appendChild(newLi)
+    </script>
+  </body>
+
+</html>

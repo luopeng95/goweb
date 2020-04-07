@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="div1">1</div>
+    <script>
+      let oDiv = document.getElementById("div1");
+      //让背景变红色
+      oDiv.addEventListener("click", function () {
+        oDiv.style.backgroundColor = "pink"
+      })
+      //删除监听器 必须事件名称一样 回调函数一样(内存地址一样) 传播方向一样
+      //删除监听器 必须保证 和 增加的时候 三个参数一模一样 才能正确的删除掉该监听器
+      oDiv.removeEventListener("click", function () {
+        oDiv.style.backgroundColor = "pink"
+      })
+      // oDiv.removeEventListener(type, callback, useCapture)
+    </script>
+  </body>
+
+</html>

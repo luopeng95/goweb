@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //1. String 字符串类型 表示一段文本 "" '' `` 所有用双引号 或 单引号 或 反引号(模板字符串)括起来的内容都叫字符串
+    let str = "北京"
+    let str2 = '张三'
+    let str3 = `100`
+
+    //2. Number 数字类型 正数,负数,整数(整型),小数(浮点型)
+    let num1 = 100;
+    let num2 = -100;
+    let num3 = 3.14;
+
+    //其中 有两个特殊的数字类型 他们分别是
+    let num4 = NaN;   //not a number 他是一个表达不是数字的数字类型
+    let num5 = Infinity;  //无穷大/无穷小 2的53次方 - 1
+
+    //3. Boolean 布尔类型 他用来表达 逻辑上的真/假
+    let boo1 = true;    //真 <=> 1 玲玲00 依玲10 玲依01 伊伊11
+    let boo2 = false;   //假 <=> 0
+
+    //4. Undefined undefined 未定义的/未赋值的
+    let und;
+
+    //5. Null null
+    let nul = null;     //定义一个nul变量 他的变量值为null
+
+    //undefined null ""
+    //undefined是一个被动行为 undefined是被迫表示 空
+    //null是一个主动行为  开发者 主动定义这个内容是空
+    //"" 他有值 值是空字符串
+
+    //undefined
+    //我问张三: 张三,你有女朋友吗?
+    //张三回答: 没有
+
+    //null
+    //我问张三: 张三,你有女朋友吗?
+    //张三回答: 有
+    //我问张三: 是谁?
+    //张三回答: 空
+
+    //""
+    //我问张三: 张三,你有女朋友吗?
+    //张三回答: 有
+    //我问张三: 是谁?
+    //张三回答: 空字符串
+
+    //6.Symbol 唯一的(ES6新增加的数据类型) 这个值不可能和另外一个值相等
+    let sym1 = Symbol(100);   //声明一个sym1 他的变量值是一个唯一的100
+    let sym2 = Symbol(100);   //声明一个sym2 他的变量值是一个另一个唯一的100
+    console.log(sym1 === sym2)    //false
+  </script>
+</body>
+</html>

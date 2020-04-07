@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let str = "aBCd";
+      let str2 = str.toUpperCase()
+      console.log(str2) //ABCD
+      let str3 = str.toLowerCase();
+      console.log(str3)
+      //Input string
+      //JACK MA
+      //JacK MA
+      //jAck ma
+      //BRUCE LeE
+
+      //Outpur string
+      //Jack MA
+
+      //indexOf()
+      //1 和 空格
+      //截取 substring||slice
+      //toUpperCase&toLowerCase
+      //+
+      function nameFun(str) {
+        // let index1 = 1;
+        // let index2 = str.indexOf(" ") //4
+        //J
+        let firstLetter = str.substring(0, 1).toUpperCase();
+        //ack
+        let firstName = str.substring(1, str.indexOf(" ")).toLowerCase();
+        // ma
+        let lastName = str.substring(str.indexOf(" ")).toUpperCase();
+        return firstLetter + firstName + lastName
+      }
+      let fn = str => {
+        let firstLetter = str.substring(0, 1).toUpperCase();
+        //ack
+        let firstName = str.substring(1, str.indexOf(" ")).toLowerCase();
+        // ma
+        let lastName = str.substring(str.indexOf(" ")).toUpperCase();
+        return firstLetter + firstName + lastName
+      }
+
+      let fn2 = str => str.substring(0, 1).toUpperCase() + str.substring(1, str.indexOf(" ")).toLowerCase() + str
+        .substring(str.indexOf(" ")).toUpperCase()
+      console.log(nameFun("JACK MA"))
+      console.log(nameFun("JacK MA"))
+      console.log(nameFun("jAck ma"))
+      console.log(nameFun("BRUCE LeE"))
+    </script>
+  </body>
+
+</html>

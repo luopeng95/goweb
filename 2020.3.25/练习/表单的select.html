@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" name="myForm">
+        <input type="text" name="ipt">
+        <input type="button" value="点击选中文字">
+        <button name="qwe" type="button">qwe</button>
+    </form>
+
+    <script>
+        let obut = document.myForm.elements[1];
+        obut.onclick = function (){
+            document.myForm.ipt.select();
+            // document.myForm.qwe.focus();
+        }
+    </script>
+</body>
+</html>

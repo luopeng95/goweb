@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="div1">1</div>
+    <script>
+      let oDiv = document.querySelector("#div1");
+      oDiv.onclick = function () {
+        setTimeout(() => {
+          this.style.backgroundColor = "pink"
+        }, 1000);
+      }
+    </script>
+  </body>
+
+</html>

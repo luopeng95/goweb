@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <select name="like" id="like" size="3" multiple="multiple">
+        <option value="">列表项1</option>
+        <option value="" selected>列表项2</option>
+        <option value="" selected>列表项3</option>
+    </select>
+    <script>
+        $("document").ready(() => {
+            let options = $("#like>option");
+            console.log(options);
+            for(let i = 0; i < options.length; ++i){
+                if(i < 2){
+                    options.eq(i).attr("selected", "true");
+                    console.log(options.eq(i).text())
+                }else{
+                    options.eq(i).removeAttr("selected");
+                }
+            }
+
+        })
+    </script>
+</body>
+</html>

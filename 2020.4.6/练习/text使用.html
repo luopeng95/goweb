@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <div>
+        123654
+        <div>
+            <span>456789</span>
+        </div>
+    </div>
+    <div>
+
+    </div>
+    <script>
+        $("document").ready(() => {
+            // console.log($("div").text());
+            // console.log(+$("div>span").text());
+            $("div").html("<div>我</div>");
+        })
+    </script>
+</body>
+</html>

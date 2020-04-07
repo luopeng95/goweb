@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <input type="text">
+    <input type="text">
+    <select id="province">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+    </select>
+    <script>
+      let oInput = document.getElementsByTagName("input")[0];
+      let oNextInput = document.getElementsByTagName("input")[1];
+      let oSelect = document.querySelector("#province");
+      //如果你要主动调用事件的话 element.type()
+
+      //监听input是否有输入内容
+      oInput.addEventListener("input", function () {
+        console.log(this.value)
+        if (this.value.length >= 6) {
+          // oInput.blur()
+          oNextInput.focus()
+        }
+      })
+
+      oSelect.addEventListener("change", function () {
+        console.log("改变了")
+      })
+    </script>
+  </body>
+
+</html>

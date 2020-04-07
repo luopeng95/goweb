@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <title>无标题文档</title>
+  </head>
+
+  <body>
+    <ul id="container">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+
+    <script>
+      //ES5 有全局作用域和函数作用域
+      //ES6 新增了一个块级作用域
+      //1. 选择元素
+      let oUl = document.getElementById("container");
+      let aLi = oUl.getElementsByTagName("li");
+
+      for (var i = 0; i < aLi.length; i++) {
+        if (i % 3 === 0) {
+          aLi[i].style.backgroundColor = "pink"
+        } else if (i % 3 === 1) {
+          aLi[i].style.backgroundColor = "yellow"
+        } else if (i % 3 === 2) {
+          aLi[i].style.backgroundColor = "blue"
+        }
+
+        aLi[i].onmouseover = function () {
+          aLi[i].style.backgroundColor = "green"
+        }
+        aLi[i].onmouseout = function () {
+          if (i % 3 === 0) {
+            aLi[i].style.backgroundColor = "pink"
+          } else if (i % 3 === 1) {
+            aLi[i].style.backgroundColor = "yellow"
+          } else if (i % 3 === 2) {
+            aLi[i].style.backgroundColor = "blue"
+          }
+        }
+      }
+    </script>
+  </body>
+
+</html>

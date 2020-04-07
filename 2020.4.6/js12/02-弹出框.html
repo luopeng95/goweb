@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <button id="btn">弹窗</button>
+    <script>
+      let oBtn = document.getElementById("btn");
+      oBtn.addEventListener("click", () => {
+        popup(400, 300, "10px solid pink", "skyblue", true, true)
+      })
+
+      function popup(height, width, border, backgroundColor, havemask, dragable) {
+        //弹出框初始化
+        let oPopup = document.createElement("div");
+        let oMask;
+        oPopup.style.position = `fixed`
+        oPopup.style.width = `${width}px`
+        oPopup.style.height = `${width}px`
+        oPopup.style.border = border
+        oPopup.style.backgroundColor = `${backgroundColor}`
+        //判断是否有遮罩参数
+        if (havemask) {
+          //如果有就显示遮罩
+          oMask = document.createElement("div");
+          oMask.style.position = `fixed`
+          oMask.style.width = `100%`
+          oMask.style.height = `100%`
+          oMask.style.left = 0
+          oMask.style.top = 0
+          oMask.style.backgroundColor = "rgba(0, 0, 0, .3)"
+        }
+
+        //拼接元素
+        document.body.appendChild(oMask)
+        document.body.appendChild(oPopup)
+      }
+    </script>
+  </body>
+
+</html>

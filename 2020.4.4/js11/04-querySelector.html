@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <ul>
+      <li id="box" class="li1">1</li>
+      <li>2</li>
+      <li>3</li>
+    </ul>
+    <script>
+      // document.querySelector() //获取到的是第一个满足条件的标签
+      // document.querySelectorAll() //获取到所有满足条件的标签
+      let aLi = document.querySelector("li+li") //NodeList(死的,不会变的)
+      // let oLi = document.querySelector(".li1")
+      // let oLi = document.querySelector("#box")
+      // let oLi = document.querySelector("ul>#box")
+      console.log(aLi)
+      aLi.style.backgroundColor = "pink"
+      // for (let i = 0; i < aLi.length; i++) {
+      //   aLi[i].style.backgroundColor = "pink"
+      // }
+    </script>
+  </body>
+
+</html>

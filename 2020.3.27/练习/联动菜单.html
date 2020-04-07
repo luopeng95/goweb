@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" name="myForm">
+        <select name="省" id="s1" onchange="change(this)">
+            <option value="">请选择</option>
+        </select>
+        <select name="市" id="s2" onchange="change(this)">
+            <option value="">请选择</option>
+        </select>
+        <select name="县" id="s3" onchange="change(this)">
+            <option value="">请选择</option>
+        </select>
+        <select name="区" id="s4">
+            <option value="">请选择</option>
+        </select>
+    </form>
+
+    <script src="jquery-3.4.1.min.js"></script>
+    <script>
+
+        // 调用本地的json文件
+        function readJSON(file, callback) {  
+            let ajax = new XMLHttpRequest();  
+            ajax.overrideMimeType("application/json");  
+            ajax.open("GET", file, false);  
+            ajax.onreadystatechange = function() {  
+                if (ajax.readyState === 4 && ajax.status == "200") {
+                    callback(ajax.responseText);
+                }  
+            }  
+            ajax.send(null);  
+        }
+        
+        let address = ["./provinces.json","cities.json","areas.json","streets.json"];
+
+        // 封装一个函数，输入本地的json列表的名字，输出一个数组；
+        function getJson(addList){
+            let json = [];
+            for(let i = 0; i < addList.length; ++i){
+                readJSON(addList[i], function(res){  
+                   json[i] = JSON.parse(res);  
+                    // console.log(toString.call(data));
+                    // console.log(json[i]);
+                })
+            }
+            // console.log([0,1,2,3,4]);
+            // console.log(json[1])
+            return json;
+        }
+        // 将得到的地区数据按照顺序放在json这个数组里面了
+        let json = getJson(address);
+        // console.log(toString.call(json));
+
+        // 先给省这个选项进行初始化
+        // 因为想到后续其他也要做初始化，干脆把这个循环封装成函数
+        function reset(nodeListId,code){
+            let idAry = ["s1", "s2", "s3", "s4"];
+            let ose = document.querySelector(`#${nodeListId}`);
+            // 找出传入的id在数组中的索引
+            let index;
+            for(let i = 0; i < idAry.length; ++i){
+                if(idAry[i] === nodeListId){
+                    index = i;
+                }
+            }
+            // console.log(index);
+            console.log(json);
+            for(let i = -1; i < json[index].length; ++i){
+                if(i === -1){
+                    ose.innerHTML = `<option value="请选择">请选择</option>`;
+                }else{
+                    ose.innerHTML += `<option value="${json[index][i].name}" class="${json[index][i].code}">${json[index][i].name}</option>`
+                }
+           }
+        }
+        reset("s1");
+
+        // AJAX异步调用的时候不能够更改全局变量的值
+
+
+
+
+        function change(e){
+            let id = e.id;
+            let index = e.selectedIndex;
+            let name = e.value;
+            let aindex;
+            let idAry = ["s1", "s2", "s3", "s4"];
+            let idress = ["provinceCode", "cityCode", "areaCode"];
+            let os;
+            for(let i = 0; i < idAry.length; ++i){
+                if(idAry[i] === e.id){
+                    aindex = i;
+                }
+            }
+            // 拿到当前选项的code
+            let code;
+            let lcode;
+            // 当输入不是s1的时候要拿到上一个select的选中元素的CODE再进行判断，确保拿到的输入的code是正确的，分别要判断名称和上一级的对应关系code是否一致
+            if (id !== "s1"){
+                let num = document.getElementById(idAry[aindex - 1]).selectedIndex;
+                lcode = document.getElementById(idAry[aindex - 1]).options[num].className;
+                // console.log(num)
+
+                for(let i = 0; i < json[aindex].length; ++i){
+                    if(json[aindex][i].name === name && json[aindex][i][idress[aindex - 1]] === lcode){
+                        // console.log(idAry[aindex - 1].className);
+                        code = json[aindex][i].code;
+                        break;
+                    }
+                }
+            }else{
+                for(let i = 0; i < json[aindex].length; ++i){
+                    if(json[aindex][i].name === name){
+                        code = json[aindex][i].code;
+                        break;
+                    }
+                }
+            }
+            console.log(code,id,aindex);
+            if(id === "s1"){
+                os = document.getElementById("s2");
+                document.getElementById("s3").innerHTML = `<option value="请选择">请选择</option>`;
+                document.getElementById("s4").innerHTML = `<option value="请选择">请选择</option>`;
+                os.innerHTML = `<option value="请选择">请选择</option>`;
+                for(let i = 0; i < json[aindex+1].length; ++i){
+                    // console.log(json[1].length);
+                    if(json[aindex+1][i].provinceCode === code){
+                        console.log(json[aindex+1][i].provinceCode);
+                        // debugger;
+                        console.log(json[aindex+1][i].name)
+                        os.innerHTML += `<option value="${json[aindex+1][i].name}" class="${json[aindex+1][i].code}">${json[aindex+1][i].name}</option>`
+                    }
+                }
+            }else if(id === "s2"){
+                os = document.getElementById("s3");
+                document.getElementById("s4").innerHTML = `<option value="请选择">请选择</option>`;
+                os.innerHTML = `<option value="请选择">请选择</option>`;
+                for(let i = 0; i < json[aindex+1].length; ++i){
+                    // console.log(json[1].length);
+                    if(json[aindex+1][i].cityCode === code){
+                        console.log(json[aindex+1][i].cityCode);
+                        // debugger;
+                        console.log(json[aindex+1][i].name)
+                        os.innerHTML += `<option value="${json[aindex+1][i].name}">${json[aindex+1][i].name}</option>`
+                    }
+                }
+            }else if(id === "s3"){
+                os = document.getElementById("s4");
+                os.innerHTML = `<option value="请选择">请选择</option>`;
+                for(let i = 0; i < json[aindex+1].length; ++i){
+                    // console.log(json[1].length);
+                    if(json[aindex+1][i].areaCode === code){
+                        console.log(json[aindex+1][i].areaCode);
+                        // debugger;
+                        console.log(json[aindex+1][i].name)
+                        os.innerHTML += `<option value="${json[aindex+1][i].name}">${json[aindex+1][i].name}</option>`
+                    }
+                }
+            }
+            console.log(os);
+        }
+    </script>
+</body>
+</html>

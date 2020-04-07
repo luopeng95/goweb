@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //1. ["A", "B", "B", "B", "D", "C", "D", "B"]
+      //1.3 查询有多少个 char 有就返回下标数组 Array[1, 2, 3, 7] 没有就返回 []
+      let arr = ["A", "B", "B", "B", "D", "C", "D", "B", "D"]
+      // arr.indexOf("B", 0) //1
+      // arr.indexOf("B", 1 + 1) //2
+      // arr.indexOf("B", 2 + 1) //3
+      // arr.indexOf("B", 3 + 1) //7
+      // arr.indexOf("B", 7 + 1) //-1
+
+      let fn1 = function (arr, char) {
+        let result = []
+        let index = 0
+        //arr.indexOf(char, index)0->1->2->3->7->8 index1->2->3->7->-1
+        while (arr.indexOf(char, index) !== -1) {
+          result.push(arr.indexOf(char, index))
+          index = arr.indexOf(char, index) + 1
+        }
+        return result
+      }
+      console.log(fn1(arr, "B"))
+    </script>
+  </body>
+
+</html>

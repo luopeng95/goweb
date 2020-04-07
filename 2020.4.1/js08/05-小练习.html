@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let arr = ["c", "b", "a"]
+      let arr2 = ["c", "b", "a"]
+      //请使用 两种方法 实现 ["a", "b", "c", "d"]
+      arr.unshift("d"); //["d", "c", "b", "a"]
+      arr.reverse(); //["a", "b", "c", "d"]
+
+      //效率高
+      //因为添加内容 往往 分两步 开辟内存/添加内容
+      arr2.reverse(); //["a", "b", "c"]
+      arr2.push("d"); //["a", "b", "c", "d"]
+    </script>
+  </body>
+
+</html>

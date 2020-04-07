@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let arr = [1, 2, 3, 4, 5, 6];
+      //循环 有一个特殊的情况 0 <arr.length ++ (迭代/遍历)
+      for (let i = arr.length - 1; i >= 0; i--) {
+        console.log(arr[i])
+      }
+      for (let i = 1; i <= arr.length - 1; i = i + 2) {
+        console.log(arr[i])
+      }
+    </script>
+  </body>
+
+</html>

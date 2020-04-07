@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function drawMoney(){
+            let count = 0;
+            let control = false;
+            while (control === false){
+                if(count >= 3){
+                    confirm("密码错误，请取卡");
+                    return;
+                }else{
+                    let ipt = +prompt("请输入密码");
+                    console.log(ipt);
+                    if(ipt === 111111){
+                        control = true;
+                    }else{
+                        if(count < 2){
+                            confirm("密码错误，请重新输入");
+                        }
+                        ++count;
+                    }
+                }
+            }
+            count = 0;
+            control = false;
+            while(control === false){
+                if(count >= 3){
+                    confirm("三次输入错误请重新输入");
+                    return;
+                }
+                let amount = +prompt("输入取款金额");
+                if(amount >= 100 && amount <= 1000 && amount % 100 === 0){
+                    return confirm(`成功取款${amount}元,交易完成，请取卡`);
+                }else{
+                    if(count < 2){
+                        confirm("金额错误，请重新输入");
+                    }
+                        ++count;
+                }
+            }
+        }
+        drawMoney();
+    </script>
+</body>
+</html>

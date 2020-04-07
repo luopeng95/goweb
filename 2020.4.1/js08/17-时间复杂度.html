@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //1-100
+      // 时间复杂度 O(n)
+      function sum() {
+        let result = 0; /* 1 */
+        for (let i = 1; i <= 100; i++) {
+          result += i /* n */
+        }
+        return result /* 1 */
+      }
+      sum()
+      let sum2 = () => {
+        let num1 = 1 + 100; /* 1 */
+        let num2 = (100 - 1 + 1) / 2 /* 1 */
+        return num1 * num2 /* 1 */
+      }
+      // 时间复杂度是O(1)
+      sum2()
+    </script>
+  </body>
+
+</html>

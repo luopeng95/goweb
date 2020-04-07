@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <ul id="container">
+
+    </ul>
+    <script>
+      let oUl = document.getElementById("container");
+      //因为在这里的 还没有添加li 所以 他获取不到这一百个li
+      let aLi = oUl.getElementsByTagName("li");
+      //创建一个文档碎片
+      let oDF = new DocumentFragment();
+      for (let i = 0; i < 100; i++) {
+        let newLi = document.createElement("li");
+        oDF.appendChild(newLi)
+      }
+      oUl.appendChild(oDF)
+
+      for (let i = 0; i < 100; i++) {
+        aLi[i].onclick = () => {
+          aLi[i].style.backgroundColor = "pink"
+        }
+      }
+    </script>
+  </body>
+
+</html>

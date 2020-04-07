@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <ul>
+    <li class="list">1</li>
+    <li class="list">2</li>
+    <li class="list">3</li>
+  </ul>
+  <script>
+    //我如何选中这三个li标签
+    // let aLi = document.getElementsByClassName("list");
+    let aLi = document.getElementsByTagName("li");
+    console.log(aLi)  //选中的内容 长度为3的 HTMLCollection类型的集合
+    // 访问下一级属性的第二种语法 []
+
+    //在编程中 数字 永远是从0开始的 三个标签 对应的位置分别是0,1,2 表示的是下标 代表的含义是第n个
+    //特别的 第一个元素的下标 永远为0
+    //特别的 最后一个元素的下标 永远为aLi.length - 1
+
+    //.操作符 在某种情况下 等于[] 这两种方式 都是访问下一级属性的
+    aLi[0].style.backgroundColor = "pink"
+    aLi[1].style.backgroundColor = "pink"
+    aLi[2].style.backgroundColor = "pink"
+  </script>
+</body>
+</html>

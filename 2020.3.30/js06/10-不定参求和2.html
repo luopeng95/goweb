@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let sum = (...arr) => {
+        //rest扩展符 永远会将所有的剩余的参数全部都收集到这个形参中 且是真数组
+        let result = 0;
+        console.log(arr)
+        for (let i = 0; i < arr.length; i++) {
+          result += arr[i]
+        }
+        return result
+      }
+      console.log(sum(1, 2)) //3
+      console.log(sum(1, 2, 3)) //18
+      console.log(sum(1, 2, 3, 4)) //14
+      console.log(sum(1, 2, 3, 4, 5)) //24
+    </script>
+  </body>
+
+</html>

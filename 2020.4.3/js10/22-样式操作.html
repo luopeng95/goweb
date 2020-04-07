@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      .div1 {
+        height: 100px;
+        background-color: pink;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="div1" class="div1" style="width: 100px;"></div>
+    <script>
+      let oDiv = document.getElementById("div1");
+      //只能获取行内样式
+      console.log(oDiv.style.width)
+      console.log(oDiv.style.height)
+      console.log(oDiv.style.backgroundColor)
+
+      //拿到oDiv这个对象的最终样式
+      let computedStyle = getComputedStyle(oDiv)
+      console.log(computedStyle.width) //"100px"
+      console.log(computedStyle.height) //"100px"
+      console.log(computedStyle.backgroundColor) //"pink"
+    </script>
+  </body>
+
+</html>

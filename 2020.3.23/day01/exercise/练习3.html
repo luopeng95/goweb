@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+
+<style>
+    * { padding: 0; margin: 0; }
+    li { list-style: none; }
+    #parent { width: 600px; margin: 0 auto; }
+    h4 { line-height: 40px; margin-bottom: 10px; border-bottom: 1px solid #333; }
+    p { width: 100%; margin-bottom: 25px; line-height:24px;}
+    #box { width: 580px; padding: 25px 10px 0; border: 1px solid #ddd; margin-bottom: 10px; max-height: 450px; overflow-y:auto; word-break: break-all;}
+    em { position: relative; top: -13px; }
+    #text { width: 100%; height: 90px; overflow: auto; }
+    #btn { width: 100%; height: 50px; }
+
+    .yellow { background-color: yellow;}
+    .grey { background-color: #ccc;}
+    .red { background-color: red;}
+    .pink { background-color: pink!important;}
+</style>
+
+</head>
+<body>
+<div id="parent">
+    <h4>留言内容：</h4>
+    <div id="box">
+  		
+    </div>
+    <textarea id="text"></textarea><br />
+    <input id="btn" type="button" value="发表留言" />
+</div>
+
+<script>
+	var oBox = document.getElementById('box');
+	var oText = document.getElementById('text');
+	var oBtn = document.getElementById('btn');
+	
+	oBtn.onclick = function(){
+			
+		// oBox.innerHTML += '<p><span></span>'+ oText.value +'</p>';
+        // oText.value="";
+        
+        // 使用DOM的方法创建节点并添加
+        let p1 = document.createElement("p");
+        let txt = document.createTextNode(oText.value);
+        let span = document.createElement("span");
+        p1.appendChild(span);
+        p1.appendChild(txt);
+        console.log(p1);
+        oBox.appendChild(p1);
+        oText.value = "";
+		
+		change();
+	};
+	
+	function change(){
+        //span标签是用来放几楼的
+        var aSpan = oBox.getElementsByTagName('span');
+        aSpan[aSpan.length-1].innerHTML = aSpan.length + "楼";
+		// for(var i=0; i<aSpan.length; i++)
+		// {
+		// 	aSpan[i].innerHTML = i+1 +'楼';	
+		// }	
+	};
+	
+</script>
+
+
+</body>
+</html>

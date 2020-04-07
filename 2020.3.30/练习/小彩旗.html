@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小彩旗</title>
+</head>
+<body>
+    <div id="container">
+        <ul id="oul">
+
+        </ul>
+    </div>
+
+    <script>
+        // 小彩旗初始化与定义事件函数
+        function initLi(obj){
+            // 初始化小彩旗的个数和颜色
+            // debugger;
+            let oul = document.getElementById(obj.ulId);
+            for(let i = 0; i < obj.numbers; ++i){
+                // let oli =`<li style="background:${obj.colors[i % obj.colors.length]}" data-color=${obj.colors[i % obj.colors.length]} data-click = 0></li>`;
+                // oul.innerHTML += oli;
+
+                let oli = document.createElement("li");
+                oli.style.background = obj.colors[i % obj.colors.length];
+                oli.dataset.color = obj.colors[i % obj.colors.length];
+                oli.dataset.click = 0;
+                oul.appendChild(oli);
+                oli.onclick = function (){
+                    clickLi(obj.clickColor, oli);
+                };
+                oli.onmouseover = function(){
+                    overLi(obj.overColor, oli)
+                };
+                oli.onmouseout = () => outLi(oli);
+            }
+        }
+
+        // 鼠标移入事件动作
+        function overLi(overColor,oli){
+            // console.log(13)
+            if(oli.dataset.click === "0"){
+                oli.style.background = overColor;
+            }
+        }
+
+        // 鼠标移出事件动作
+        function outLi(oli){
+            if(oli.dataset.click === "0"){
+                oli.style.background = oli.getAttribute("data-color");
+            }
+        }
+
+        // 鼠标点击事件
+        function clickLi(clickColor, oli){
+            if(oli.dataset.click === "0"){
+                oli.style.background = clickColor;
+                oli.dataset.click = "1";
+            }else{
+                oli.style.background = oli.getAttribute("data-color");
+                oli.dataset.click = "0";
+            }
+        }
+
+
+        function Flag(ulId, numbers, colors, overColor, clickColor){
+            this.ulId = ulId;
+            this.numbers = numbers;
+            this.overColor = overColor;
+            this.colors = colors;
+            this.clickColor = clickColor;
+        }
+
+        let flag1 = new Flag("oul", 27, ["red", "yellow", "blue", "pink"], "green", "black");
+        initLi(flag1);
+    </script>
+</body>
+</html>

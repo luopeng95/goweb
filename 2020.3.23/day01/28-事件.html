@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      background: yellow
+    }
+  </style>
+</head>
+<body>
+  <div id="box"></div>
+  <script>
+    //当鼠标悬停在这个div上方的时候 会变成蓝色 当...的时候(事件)
+    //当鼠标离开这个div上方的时候 会变成红色
+    //1. 选择元素
+    let oBox = document.getElementById("box");
+
+    //2. 书写事件
+    //鼠标进入事件 onmouseover/onmouseenter
+    //鼠标离开事件 onmouseout/onmouseleave
+    //鼠标点击事件 onclick
+
+    // 在这个盒子上绑定两个事件函数 表示当用户满足这个条件的时候会触发里面的代码 如果没有满足触发器的条件 那么就意味着永远不会执行事件函数中的代码
+    // 触发器.事件方式 = function() {
+    //   渲染器代码
+    // }
+
+    //鼠标进入的时候发生的事情
+    oBox.onmouseenter = function() {
+      oBox.style.backgroundColor = "skyblue"
+    } 
+    
+    //鼠标离开的时候发生的事情
+    oBox.onmouseleave = function() {
+      oBox.style.backgroundColor = "pink"
+    }
+  </script>
+</body>
+</html>

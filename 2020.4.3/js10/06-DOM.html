@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head><body>
+    <div>1111</div>
+    <!-- -->
+    <script>
+      // console.log(document.documentElement) //获取该文档的html标签
+      // console.log(document.head) //获取该文档的head标签
+      // console.log(document.body) //获取该文档的body
+      // console.log(document.childNodes) //获取到这个文档的子节点们
+      console.log(document.childNodes[1]) //html
+      console.log(document.childNodes[1].childNodes[1]) //拿到body
+      console.log(document.childNodes[1].childNodes[1].childNodes[1]) //拿到div
+      console.log(document.childNodes[1].childNodes[1].childNodes[0].nextSibling) //拿到div
+      console.log(document.childNodes[1].childNodes[1].childNodes[1].childNodes[0]) //拿到1111
+      console.log(document.childNodes[1].childNodes[1].childNodes[1].firstChild) //拿到第一个子节点
+    </script>
+  </body>
+</html>

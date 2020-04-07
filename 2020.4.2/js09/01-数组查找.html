@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //A. 数组查找
+      //1. ["A", "B", "B", "B", "D", "C", "D", "B"]
+      //1.1 查询有没有 char 有就返回 true 没有就返回 false
+      let arr = ["A", "B", "B", "B", "D", "C", "D", "B"];
+      let fn1 = (arr, char) => arr.includes(char);
+      let fn2 = (arr, char) => arr.indexOf(char) !== -1 ? true : false
+      let fn3 = (arr, char) => {
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] === char) {
+            return true
+          }
+        }
+        return false
+      }
+      //判断这个数组中所有的内容是不是都不等于 你传入的char
+      let fn4 = (arr, char) => !arr.every(e => e !== char)
+      let fn5 = (arr, char) => arr.some(e => e === char)
+      let fn6 = (arr, char) => arr.find(e => e === char) === char ? true : false
+      let fn7 = (arr, char) => arr.findIndex(e => e === char) >= 0 ? true : false
+      // let fn6 = function (arr, char) {
+      //   let result = arr.find(e => e === char)
+      //   if (result === char) {
+      //     return true
+      //   }
+      //   return false
+      // }
+
+      console.log(fn1(arr, "B"))
+      console.log(fn2(arr, "B"))
+      console.log(fn3(arr, "B"))
+      console.log(fn4(arr, "B"))
+      console.log(fn5(arr, "B"))
+      console.log(fn6(arr, "B"))
+      console.log(fn7(arr, "B"))
+
+      console.log(fn1(arr, "E"))
+      console.log(fn2(arr, "E"))
+      console.log(fn3(arr, "E"))
+      console.log(fn4(arr, "E"))
+      console.log(fn5(arr, "E"))
+      console.log(fn6(arr, "E"))
+      console.log(fn7(arr, "E"))
+    </script>
+  </body>
+
+</html>

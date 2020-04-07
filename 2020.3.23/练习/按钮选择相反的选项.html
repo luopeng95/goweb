@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>反选选项</title>
+    <style>
+        #main{
+            background-color: yellowgreen;
+            width: 400px;
+            height: 400px;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <input type="checkbox" name="ipt" id="">
+        <input type="checkbox" name="ipt" id="">
+        <input type="checkbox" name="ipt" id="">
+        <input type="checkbox" name="ipt" id="">
+        <input type="checkbox" name="ipt" id="">
+        <input type="checkbox" name="ipt" id="">
+        <button type="button" onclick="inverse()">反选</button>
+    </div>
+
+    <script>
+        function inverse(){
+            let ipts = document.getElementsByTagName("input");
+            for (let n = 0; n < ipts.length; n++){
+                if(ipts[n].checked){
+                    ipts[n].checked = false;
+                }else{
+                    ipts[n].checked = true;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

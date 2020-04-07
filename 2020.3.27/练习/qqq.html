@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="btnBox">
+        <input type="button" value="button_1" />
+        <input type="button" value="button_2" />
+        <input type="button" value="button_3" />
+        <input type="button" value="button_4" />
+        <input type="button" value="button_5" />
+    </div>
+    <script type="text/javascript">
+        var btnBox=document.getElementById('btnBox');
+        let inputs = btnBox.getElementsByTagName('input');//定义变量关键字没写
+        var l=inputs.length;
+        for(let i=0;i<l;i++){
+            inputs[i].onclick=function(){
+                alert(i);
+            }
+        }
+    </script>
+</body>
+</html>

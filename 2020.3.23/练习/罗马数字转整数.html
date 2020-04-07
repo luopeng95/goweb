@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="text" placeholder="请输入要转换的罗马数字" id="ipt1">
+    <button type="button" onclick="romanToInt()">转换</button>
+    <script>
+        var num = function(x){
+        let a ;
+        switch(x){
+            case "I":
+                a = 1;
+                break;
+            case "V":
+                a = 5;
+                break;
+            case "X":
+                a = 10;
+                break;
+            case "L":
+                a = 50;
+                break;
+            case "C":
+                a = 100;
+                break;
+            case "D":
+                a = 500;
+                break;
+            case "M":
+                a = 1000;
+                break;
+            }
+        return a;
+        }
+
+        var romanToInt = function() {
+            let s = document.getElementById("ipt1").value;
+            let n = 0;
+            let array = s.split('')
+            console.log(array);
+            for (let i = 0; i < array.length; i++){
+                if( array.length > 1){
+                    if ( num(array[i+1]) > num(array[i])){
+                        n -= num(array[i]);
+                    }else{
+                        n += num(array[i]);
+                    }
+                }else{
+                    n += num(array[i]);
+                }
+            }
+            console.log(n)
+            return n;
+        };
+    </script>
+</body>
+</html>

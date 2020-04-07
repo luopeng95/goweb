@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      .news {
+        border: 1px solid black;
+        width: 200px;
+        min-height: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <input type="button" value="开始" id="start">
+    <input type="button" value="暂停" id="pause">
+    <input type="button" value="回退" id="back">
+    <p class="news" id="news"></p>
+    <script>
+      let str =
+        "Hooray! It's snowing! It's time to make a snowman.James runs out. He makes a big pile of snow. He puts a big snowball on top. He adds a scarf and a hat. He adds an orange for the nose. He adds coal for the eyes and buttons.In the evening, James opens the door. What does he see? The snowman is moving! James invites him in. The snowman has never been inside a house. He says hello to the cat. He plays with paper towels.A moment later, the snowman takes James's hand and goes out.They go up, up, up into the air! They are flying! What a wonderful night!The next morning, James jumps out of bed. He runs to the door.He wants to thank the snowman. But he's gone."
+      let newArr = str.split(" "); //[Hooray, It's, snowing]
+      let result = ""
+      // for (let i = 0; i < newArr.length; i++) {
+      //   let firstLetter = newArr[i][0] //首字母
+      //   let firstLetter2 = firstLetter.toUpperCase(); //首字母大写
+      //   let elseLetter = newArr[i].slice(1);
+      //   result += firstLetter2 + elseLetter + " "
+      // }
+      str = newArr.map(e => e.slice(0, 1).toUpperCase() + e.slice(1)).join(" ");
+      //1 选择元素
+      let oNews = document.getElementById("news");
+      let oStart = document.getElementById("start");
+      let oPause = document.getElementById("pause");
+      let oBack = document.getElementById("back");
+
+      let timer = null;
+      let iNow = 0;
+      oStart.onclick = function () {
+        clearInterval(timer)
+        timer = setInterval(() => {
+          oNews.innerHTML = result.substring(0, iNow++)
+          if (iNow > result.length) {
+            clearInterval(timer)
+          }
+        }, 60);
+      }
+
+      oPause.onclick = function () {
+        clearInterval(timer)
+      }
+      oBack.onclick = function () {
+        clearInterval(timer)
+        timer = setInterval(() => {
+          oNews.innerHTML = result.substring(0, iNow--)
+          if (iNow < 0) {
+            clearInterval(timer)
+          }
+        }, 60);
+      }
+    </script>
+  </body>
+
+</html>

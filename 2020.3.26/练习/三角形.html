@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 在控制台打印
+        function triangle(x){
+
+            // 直角三角形
+            let str = "";
+            for(let i = 0; i < x; ++i){
+                for(let j = 0; j <= i; ++j){
+                    str += "*";
+                }
+                str += `\n`;
+            }
+            console.log(str);
+
+            // 倒左直角三角形
+            str = "";
+            for(let i = 0; i < x; ++i){
+                for(let j = 0; j < x - i; ++j){
+                    str += "*";
+                }
+                str += `\n`;
+            }
+            console.log(str);
+
+            // 右直角三角形
+            str = "";
+            for(let i = 0; i < x; ++i){
+                for(let j = 0; j < x; ++j){
+                    if(j < x - i - 1){
+                        str += " ";
+                    }else{
+                        str += "*";
+                    }
+                }
+                str += `\n`;
+            }
+            console.log(str);
+
+            // 倒右直角三角形
+            str = "";
+            for(let i = 0; i < x; ++i){
+                for(let j = 0; j < x - i; ++j){
+                    if(j < x - i){
+                        str += "*";
+                    }else{
+                        str += " ";
+                    }
+                }
+                str += `\n`;
+            }
+            console.log(str);
+        }
+        triangle(5);
+
+        // 在页面打印
+        function triangle2(x){
+
+            // 直角三角形
+            let str = "";
+            for(let i = 0; i < x; ++i){
+                for(let j = 0; j <= i; ++j){
+                    str += "*";
+                }
+                str += `<pre>\n</pre>`;
+            }
+            // console.log(str);
+            document.body.innerHTML += str;
+
+            // 倒左直角三角形
+            str = "";
+            for(let i = 0; i < x; ++i){
+                for(let j = 0; j < x - i; ++j){
+                    str += "*";
+                }
+                str += `<pre>\n</pre>`;
+            }
+            document.body.innerHTML += str;
+            // console.log(str);
+
+            // 右直角三角形
+            str = "";
+            for(let i = 0; i < x; ++i){
+                for(let j = 0; j < x; ++j){
+                    if(j < x - i - 1){
+                        str += " ";
+                    }else{
+                        str += "*";
+                    }
+                }
+                str += `<pre>\n</pre>`;
+            }
+            // console.log(str);
+            document.body.innerHTML += str;
+
+            // 倒右直角三角形
+            str = "";
+            for(let i = 0; i < x; ++i){
+                for(let j = 0; j < x - i; ++j){
+                    if(j < x - i){
+                        str += "*";
+                    }else{
+                        str += " ";
+                    }
+                }
+                str += `<pre>\n</pre>`;
+            }
+            document.body.innerHTML += str;
+            // console.log(str);
+        }
+        triangle2(5);
+    </script>
+</body>
+</html>

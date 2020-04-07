@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery-3.4.1.min.js"></script>
+    <style>
+        #div1 {
+          width: 100px;
+          height: 100px;
+          background-color: pink;
+          position: absolute;
+        }
+  
+        #container {
+          width: 700px;
+          height: 700px;
+          border: 10px solid black;
+          position: relative;
+        }
+      </style>
+</head>
+<body>
+    <input type="button" value="开始">
+    <input type="button" value="暂停">
+    <input type="button" value="反向">
+    <div id="container">
+      <div id="div1"></div>
+    </div>
+
+    <script>
+        $("document").ready(() => {
+            let odiv = $("#div1")[0];
+            // let odiv = document.getElementById("div1");
+            let time;
+            let count = 0;
+            // 小方块移动事件：参数：div、方向（0正向、1反向）
+            // 缺点：div1的值需要是100，container的宽高减去div1的宽高需要是100偶数bei
+            let moveDiv = (odiv, direction) => {
+                clearInterval(time);
+                let oWidth = odiv.clientWidth;
+                let oHeight = odiv.clientHeight;
+                let maxWidth = odiv.offsetParent.clientWidth;
+                let maxHeight = odiv.offsetParent.clientHeight;
+                let left = odiv.offsetLeft;
+                let top = odiv.offsetTop;
+                let moveX = (maxWidth - oWidth) / 6;
+                let moveY = (maxHeight - oHeight) / 6;
+                // console.log(top,left)
+                let disLeft;
+                let disTop;
+                if(direction === 0){
+                    if(top === (oWidth + count * oWidth) && left === oWidth * count){
+                        ++count;
+                    }else if(top === (maxHeight- oHeight) / 2  && left === (maxWidth - oWidth) / 2){
+                        console.log(count);
+                        clearInterval(time);
+                        return null;
+                    }
+                    disLeft = (maxWidth - oWidth) - count * oWidth;
+                    disTop = (maxHeight - oHeight) - count * oWidth;
+                }else{
+                    if(top === 0  && left === 0){
+                        
+                        console.log(count);
+                        clearInterval(time);
+                        return null;
+                    }else if((top === left) && top <= (maxHeight- oHeight) / 2){
+                        --count;
+                    }
+                    disLeft = (maxWidth - oWidth) - count * oWidth;
+                    disTop = (maxHeight - oHeight) - count * oWidth;
+                    // console.log(top, left, disTop, disLeft, count);
+                }
+                let zero = count *oWidth;
+                if(direction === 0){
+                    if(top <= zero && left < disLeft){
+                        odiv.style.left = left + moveX + "px";
+                    }else if(left >= disLeft && top < disTop){
+                        odiv.style.top = top + moveY + "px";
+                    }else if(top >= disTop && left > zero){
+                        odiv.style.left = left - moveX + "px";
+                    }else if(left <= zero && top > zero){
+                        odiv.style.top = top - moveY + "px";
+                    }
+                }else{
+                    if(top < disTop && left <= zero){
+                        odiv.style.top = top + moveY + "px";
+                    }else if(left < disLeft  && top >= disTop){
+                        odiv.style.left = left + moveX + "px";
+                    }else if(top > zero && left >= disLeft){
+                        odiv.style.top = top - moveX + "px";
+                    }else if((left > zero && top <= zero) || ((top === left) && top <= (maxHeight- oHeight) / 2)){
+                        odiv.style.left = left - moveY + "px";
+                    }
+                }
+                time = setInterval(() => {
+                    moveDiv(odiv, direction);
+                }, 60);
+            }
+
+            // 开始按钮点击事件
+            // console.log(($("#container")[0].clientWidth - odiv.clientWidth) / 200)
+            $("input[value='开始']").on("click", () => {
+                if(count === ($("#container")[0].clientWidth - odiv.clientWidth) / 200){
+                    count = 0;
+                    odiv.style.top = 0;
+                    odiv.style.left = 0;
+                }
+                moveDiv(odiv, 0)
+            })
+
+            // 暂停按钮点击事件
+            $("input[value='暂停']").on("click", () => {
+                clearInterval(time)
+            })
+
+            // 反向按钮点击事件
+            $("input[value='反向']").on("click", () => {
+                // console.log(123)
+                // console.log(odiv);
+                moveDiv(odiv, 1)
+            })
+        })
+    </script>
+</body>
+</html>

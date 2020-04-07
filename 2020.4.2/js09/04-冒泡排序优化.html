@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      /**
+       * @param arr {Array} 待排序的数组
+       * @param sort {String} 排序的方法 "asc" 使用升序排列 "desc" 使用降序排列
+       */
+      function bubbleSort2(arr, sort) {
+        for (let i = 0; i < arr.length - 1; i++) {
+          //比较的次
+          for (let j = 0; j < arr.length - 1 - i; j++) {
+            // 0-4
+            let temp = arr[j] - arr[j + 1]
+            //前者大于后者 且 排序规则是升序排列的时候 就交换位置
+            //前端小于后者 且 排序规则是降序拍的的时候 就交换位置
+            if ((temp > 0 && sort === "asc") || (temp < 0 && sort === "desc")) {
+              [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]
+            }
+          }
+        }
+        return arr
+      }
+      let arr = [2, 4, 5, 1, 3]
+      console.log(bubbleSort2(arr, "asc")) //[1, 2, 3, 4, 5]
+      console.log(bubbleSort2(arr, "desc")) //[5, 4, 3, 2, 1]
+      // 稍微 说一下
+      // 传统去重 是不是可以考虑
+      // 先排序再去重 ? ?
+
+      // console.log(bubbleSort(arr))
+
+      let a = -5;
+      cosnole.log(Math.abs(a) === a) //就是非负数 |5| = 5  |-5| = 5
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <form>
+        复选框1：<input type="checkbox" checked="checked" value="复选框1"/>
+        复选框2：<input type="checkbox" checked="checked" value="复选框2"/>
+        复选框3：<input type="checkbox" value="复选框3"/><br />
+        不可用按钮：<input type="button" value="不可用按钮" disabled><br />
+        下拉菜单：
+        <select onchange="selectVal()">
+          <option value="菜单项1">菜单项1</option>
+          <option value="菜单项2">菜单项2</option>
+          <option value="菜单项3">菜单项3</option>
+        </select>
+      </form>
+
+      <script>
+        $("document").ready( () => {
+            $("input[type='checkbox']:checked").prop({"hidden":true});
+            $("input:disabled").val("我是不可用的");
+        }
+        );
+        function selectVal(){
+            alert($("select").val());
+        }
+      </script>
+</body>
+</html>

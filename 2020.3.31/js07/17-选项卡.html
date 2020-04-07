@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      .tab {
+        width: 200px;
+        position: relative;
+      }
+
+      .tab div {
+        width: 200px;
+        height: 200px;
+        border: 1px solid black;
+        display: none;
+      }
+
+      .tab .clicked {
+        background-color: pink;
+      }
+
+      .tab .active {
+        display: block;
+      }
+
+      .prev,
+      .next {
+        top: 24px;
+        font-size: 30px;
+        color: white;
+        cursor: pointer;
+        width: 30px;
+        height: 200px;
+        line-height: 200px;
+        text-align: center;
+        position: absolute;
+        background-color: rgba(0, 0, 0, .3);
+      }
+
+      .prev {
+        left: 0;
+      }
+
+      .next {
+        right: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="tab" class="tab">
+      <!-- 触发器 -->
+      <!-- 当前默认被点击的是第一个按钮 -->
+      <input class="clicked" type="button" value="0">
+      <input type="button" value="1">
+      <input type="button" value="2">
+      <!-- 渲染区 -->
+      <!-- 表示当前被点击的按钮对应的div的展示 -->
+      <div class="active">000000000000000000</div>
+      <div>111111111111111111</div>
+      <div>222222222222222222</div>
+      <span class="prev" id="prev">&lt;</span>
+      <span class="next" id="next">&gt;</span>
+    </div>
+    <script>
+      const oTab = document.getElementById("tab")
+      const aInput = oTab.getElementsByTagName("input")
+      const aDiv = oTab.getElementsByTagName("div")
+      const oPrev = document.getElementById("prev")
+      const oNext = document.getElementById("next")
+      //表示当前高亮度的页面是哪个页面
+      let iNow = 0;
+      //中立变量 存储定时器
+      let timer = null;
+
+      init()
+      // init初始化函数
+      function init() {
+        timer = setInterval(() => {
+          change(iNow, "next")
+          draw(iNow)
+        }, 1000);
+
+        oTab.onmouseleave = function () {
+          setInterval(() => {
+            change(iNow, "next")
+            draw(iNow)
+          }, 1000);
+        }
+        oTab.onmouseenter = function () {
+          clearInterval(timer)
+        }
+        for (let i = 0; i < aInput.length; i++) {
+          //逻辑层 业务层
+          aInput[i].onclick = function () {
+            //不管你原来iNow的值是多少 我点哪个i 就当那个i修正为现在的iNow
+            change(i, "goto")
+            draw(iNow)
+          }
+        }
+        oNext.onclick = function () {
+          change(iNow, "next")
+          draw(iNow)
+        }
+
+        oPrev.onclick = function () {
+          change(iNow, "prev")
+          draw(iNow)
+        }
+      }
+      //关注逻辑层中立变量的变化
+      //diff表示 iNow的变化值
+      function change(i, method) {
+        switch (method) {
+          case "goto":
+            iNow = i
+            break
+          case "next":
+            iNow = (iNow === aInput.length - 1) ? 0 : iNow + 1
+            break
+          case "prev":
+            iNow = (iNow === 0) ? aInput.length - 1 : iNow - 1
+        }
+      }
+
+      //关注 UI 层面的渲染
+      function draw(index) {
+        for (let j = 0; j < aInput.length; j++) {
+          aInput[j].className = ""
+          aDiv[j].className = ""
+        }
+        aInput[index].className = "clicked"
+        aDiv[index].className = "active"
+      }
+    </script>
+  </body>
+
+</html>

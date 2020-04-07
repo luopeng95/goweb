@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 在控制台输出
+        function rhombus(x){
+            let str = "";
+            for(let i = 0; i < (x + 1)/2; ++i){
+                for(let j = 0; j < (x + 1)/2 - i - 1;++j){
+                    str += " ";
+                }
+
+                for(let k = 0; k < 2 * i + 1; ++k){
+                    str += "*";
+                }
+                str += `\n`;
+            }
+
+            for(let i = 0; i < (x - 1)/2; ++i){
+                for(let j = 0; j < i + 1;++j){
+                    str += " ";
+                }
+
+                for(let k = 0; k < x - 2 * i - 2; ++k){
+                    str += "*";
+                }
+                str += `\n`;
+            }
+        console.log(str);
+        }
+        rhombus(13);
+
+        // 在页面输出，用另一种方法
+        function rhombus2(x){
+            let str = "";
+            for(let i = 0; i < (x + 1)/2; ++i){
+                let ans = "*"
+                for(let j = 0; j < (x - 1)/2;++j){
+                    if(i > j){
+                        ans = "*" + ans + "*";
+                    }else{
+                        ans = " " + ans + " ";
+                    }
+                }
+                str += `<pre>${ans}\n<pre>`;
+            }
+
+            for(let i = 0; i < (x - 1)/2; ++i){
+                let ans = "*";
+                for(let j = 0; j < (x - 1)/2;++j){
+                    if(j < (x - 1)/2 - i -1 ){
+                        ans = "*" + ans + "*";
+                    }else{
+                        ans = " " + ans + " ";
+                    }
+                }
+                str += `<pre>${ans}\n</pre>`;
+            }
+        // console.log(str);
+        document.body.innerHTML += str;
+        }
+        rhombus2(9);
+    </script>
+</body>
+</html>

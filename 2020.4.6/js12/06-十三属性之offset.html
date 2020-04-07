@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      /* * {
+        padding: 0;
+        margin: 0;
+      } */
+
+      #div1 {
+        width: 400px;
+        height: 400px;
+        background-color: pink;
+        position: absolute;
+      }
+
+      #div2 {
+        width: 200px;
+        height: 200px;
+        background-color: yellow;
+        /* position: absolute;
+        right: 100px;
+        bottom: 100px; */
+      }
+
+      #div3 {
+        width: 100px;
+        height: 100px;
+        background-color: skyblue;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="div1">
+      <div id="div2">
+        <div id="div3"></div>
+      </div>
+      </div1>
+      <script>
+        let oDiv1 = document.querySelector("#div1")
+        let oDiv2 = document.querySelector("#div2")
+        let oDiv3 = document.querySelector("#div3")
+        //获取该元素的父级定位元素 寻找到他所有祖先元素中靠近他最近的定位元素(position:absolute/relative/fixed)(不是static的元素) 如果他的父级标签 就是一个定位元素 则父级元素和父级定位元素是同一个,如果父标签不是一个定位元素 则向上顺延查找所有的祖先节点 直到找到一个定位元素
+        //如果整个组件节点都没有一个父级定位元素 那么一般的浏览器(html/body)都会认为他的父级定位元素是body
+        //特别的 body offsetParent 是null
+        // console.log(document.body.offsetParent)
+        console.log(oDiv3.offsetParent)
+        //元素与父级定位元素的左/上边框的距离
+        console.log(oDiv3.offsetTop)
+        console.log(oDiv3.offsetLeft)
+        //返回自身盒模型的宽高度 content + padding + border + 滚动条
+        console.log(document.documentElement.offsetWidth)
+        console.log(document.documentElement.offsetHeight)
+        //如何稳定获取div3和body之间的距离
+
+        let getPos = (ele) => {
+          let result = {
+            left: 0,
+            top: 0
+          }
+          // ele div3 -> div2 -> div1 -> body
+          //ele.offsetParent div2 -> div1 -> body ->null
+          while (ele.offsetParent) {
+            //offsetLeft
+            result.left += ele.offsetLeft
+            //offsetTop
+            result.top += ele.offsetTop
+
+
+            //将ele 这个属性 修改成他的父级定位元素
+            ele = ele.offsetParent
+          }
+          return result
+        }
+        getPos(oDiv3)
+
+        console.log(oDiv3.getBoundingClientRect())
+      </script>
+  </body>
+
+</html>

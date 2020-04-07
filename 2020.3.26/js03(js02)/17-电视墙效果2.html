@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      ul,
+      li {
+        list-style: none;
+      }
+
+      ul>li {
+        width: 50px;
+        height: 50px;
+        background-color: pink;
+        position: absolute;
+      }
+    </style>
+  </head>
+
+  <body>
+    <ul id="container">
+      <!-- <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li> -->
+    </ul>
+    <script>
+      let oUl = document.getElementById("container")
+      let aLi = oUl.getElementsByTagName("li")
+
+      //来确定x轴
+      for (let i = 0; i < 40; i++) {
+        console.log(Number.parseInt(i / 3))
+        oUl.innerHTML += `<li style="top: ${Number.parseInt(i / 10) * 60}px;left: ${(i % 10) * 60}px"></li>`
+      }
+      //0/4 0
+      //1/4 0.333
+      //2/4 0.666
+      //3/4 0
+      //4/4 1.xxx
+      //0%4 = 0
+      //1%4 = 1
+      //2%4 = 2
+      //3%4 = 3
+      //4%4 = 0
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //如何写一个方法 令arr变成升序排列[1, 2, 3, 4, 5] 或者降序排列[5, 4, 3, 2, 1]
+      //交换排序: 对前后两个元素进行比较 如果前一个元素 大于 后一个元素的话 那么就交换两者位置 否则 不交换
+      let arr = [2, 4, 3, 5, 1]
+
+      function bubbleSort(arr) {
+        //TODO
+        //比较的轮
+        for (let i = 0; i < arr.length - 1; i++) {
+          //比较的次
+          for (let j = 0; j < arr.length - 1 - i; j++) {
+            // 0-4
+            if (arr[j] > arr[j + 1]) {
+              //交换两者变量
+              let temp = arr[j];
+              arr[j] = arr[j + 1];
+              arr[j + 1] = temp
+            }
+          }
+        }
+      }
+      bubbleSort(arr)
+      console.log(arr)
+    </script>
+  </body>
+
+</html>

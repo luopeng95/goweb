@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    ul,
+    li {
+      list-style: none;
+    }
+
+    ul {
+      width: 400px;
+      height: 400px;
+      border: 1px solid black;
+      /* 就变成了 table标签 */
+      display: table;
+      border-collapse: collapse;
+    }
+
+    li {
+      width: 100%;
+      height: 100px;
+      box-sizing: border-box;
+      border: 1px solid black;
+      /* 就变成了 tr 标签*/
+      display: table-row;
+    }
+
+    div {
+      width: 100px;
+      height: 100px;
+      box-sizing: border-box;
+      border: 1px solid black;
+      /* float: left; */
+      /* 现在的div就变成了td标签 */
+      display: table-cell;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 为什么很久以前流行的table布局 现在几乎看不见了? -->
+  <!-- 为什么现在都不使用table了? -->
+  <ul>
+    <li>
+      <div>语文</div>
+      <div>语文</div>
+      <div>语文</div>
+      <div>语文</div>
+    </li>
+    <li>
+      <div>语文</div>
+      <div>语文</div>
+      <div>语文</div>
+      <div>语文</div>
+    </li>
+    <li>
+      <div>语文</div>
+      <div>语文</div>
+      <div>语文</div>
+      <div>语文</div>
+    </li>
+    <li>
+      <div>语文</div>
+      <div>语文</div>
+      <div>语文</div>
+      <div>语文</div>
+    </li>
+  </ul>
+</body>
+
+</html>

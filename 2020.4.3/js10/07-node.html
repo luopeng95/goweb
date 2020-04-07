@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>111111
+    <div>1111</div>
+    <script>
+      let doc = document //Document document节点
+      let body = document.body; //Element 元素节点
+      let txt = body.firstChild; //Text 文本节点
+      //nodeName 这个节点的名字是什么
+      //nodeType 这个节点的类型是什么(编号的形式展示)
+      //nodeValue 这个节点的值
+
+      //1.Element的nodeName 永远是他的标签
+      //2.ELement的nodeValue 永远是null
+      //3.Text的Nodename 永远是#text Document的nodeName也永远是 #document
+      //4.Text的nodeValue 就是 文本内容
+
+      //nodeType 1 是Element  3 是 Text
+      console.log(doc.nodeName) //#document
+      console.log(doc.nodeType) //9
+      console.log(doc.nodeValue) //null
+      console.log(body.nodeName) //BODY
+      console.log(body.nodeType) //1
+      console.log(body.nodeValue) //null
+      console.log(txt.nodeName) //#text
+      console.log(txt.nodeType) //3
+      console.log(txt.nodeValue) //111111
+    </script>
+  </body>
+
+</html>

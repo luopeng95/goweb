@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>弹出框</title>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            width: 1000px;
+            height: 2000px;
+            background-color: greenyellow;        }
+    </style>
+</head>
+<body>
+    <!-- <script src="./弹出框.js"></script> -->
+    <script>
+        let initPop = (height, width, borderColor, backgroundColor, havemask, dragable, type, message) => {
+            let obody = document.body;
+            let odiv = createDiv(height, width, borderColor, backgroundColor, obody);
+            window.addEventListener("resize", function (){
+                resizeDiv(odiv, width, height);
+            });
+            if(havemask === "true"){
+                mask(obody);
+            }
+            if(dragable === "true"){
+                let omove = document.querySelector("#move");
+                omove.onmousedown = function(event){
+                    let e = event || window.event;
+                    // console.log(e);
+                    moveDiv(e, odiv);
+                }
+            }
+            typeDiv(type, odiv,message)
+
+        }
+
+        // 设置弹出框的宽、高、边框颜色、背景颜色
+        let createDiv = (height, width, borderColor, backgroundColor, obody) => {
+            let div1 = document.createElement("div");
+            let maxWidth = window.innerWidth;
+            let maxHeight = window.innerHeight;
+            div1.id = "popUp"
+            div1.style.width = width + "px";
+            div1.style.height = height + "px";
+            div1.style.background = `${backgroundColor}`;
+            div1.style.position = "fixed";
+            div1.style.top = (maxHeight - height)/2 + "px";
+            div1.style.left = (maxWidth - width)/2 + "px";
+            div1.style.border = `1px solid ${borderColor}`;
+            div1.style.zIndex = 1000;
+            let div2 = document.createElement("div");
+            let otxt = document.createTextNode("移动DIV");
+            div2.appendChild(otxt);
+            div2.id = "move";
+            div2.style.height = "20px";
+            div2.style.background = "gray";
+            div1.appendChild(div2);
+            obody.appendChild(div1);
+            return div1;
+        }
+
+        // 窗口改变的时候改变弹出框的位置，保持一致居中
+        let resizeDiv = (div1, width, height) => {
+            let maxWidth = window.innerWidth;
+            let maxHeight = window.innerHeight;
+            div1.style.top = (maxHeight - height)/2 + "px";
+            div1.style.left = (maxWidth - width)/2 + "px";
+        }
+
+        // 设置遮罩
+        let mask = (obody) => {
+            let div1 = document.createElement("div");
+            div1.id = "mask"
+            div1.style.width = "100%";
+            div1.style.height = "100%";
+            div1.style.position = "fixed";
+            div1.style.background = `rgba(1,1,1,0.5)`;
+            obody.appendChild(div1);
+        }
+
+        // 设置是否可拖动
+        let moveDiv = (e, odiv) => {
+            console.log(e);
+            let diffX = e.clientX - odiv.offsetLeft;
+            let diffY = e.clientY - odiv.offsetTop;
+            document.onmousemove = function (e) {
+            // console.log(moveX, moveY);
+                let moveX = e.clientX - diffX;
+                let moveY = e.clientY - diffY;
+                if(moveX < 0){
+                    moveX = 0;
+                }else if(moveX > window.innerWidth - odiv.offsetWidth){
+                    moveX = window.innerWidth - odiv.offsetWidth;
+                }
+                if(moveY < 0){
+                    moveY = 0;
+                }else if(moveY > window.innerHeight - odiv.offsetHeight) {
+                    moveY = window.innerHeight - odiv.offsetHeight;
+                }
+                odiv.style.top = moveY + "px";
+                odiv.style.left = moveX + "px";
+            }
+            document.onmouseup = function (){
+                document.onmousemove = null;
+                document.onmouseup = null;
+            }
+        }
+
+        // 设置弹窗的类型
+        let typeDiv = (type, odiv, message) => {
+            let div3 = document.createElement("div");
+            let otxt = document.createTextNode(message);
+            div3.style.height = "calc(50% - 10px)";
+            div3.style.backgroundColor = "#ffffff";
+            div3.style.lineHeight = (odiv.offsetHeight - 20) / 2 + "px";
+            div3.appendChild(otxt);
+            odiv.appendChild(div3);
+            let div4 = document.createElement("div");
+            div4.style.backgroundColor = "green";
+            div4.style.height = (odiv.offsetHeight - 20) / 2 + "px";
+            div4.style.lineHeight = (odiv.offsetHeight - 20) / 2 + "px";
+            div4.style.textAlign = "center";
+            // div4.style.display = "flex";
+            odiv.appendChild(div4);
+            if(type === "alert"){
+                let but = document.createElement("input");
+                but.type = "button";
+                but.value = "确认";
+                but.style.height = "25px";
+                but.style.width = "50px"
+                but.addEventListener("click", function(){
+                    closePop();
+                })
+                div4.appendChild(but);
+            }else{
+                let but = document.createElement("input");
+                but.id = "popBut"
+                but.type = "button";
+                but.value = "确认";
+                but.style.height = "25px";
+                but.style.width = "50px"
+                but.style.marginRight = odiv.offsetWidth / 5 + "px";
+                let but1 = document.createElement("input");
+                but1.type = "button";
+                but1.value = "取消";
+                but1.id = "popBut1"
+                but1.style.height = "25px";
+                but1.style.width = "50px"
+                div4.appendChild(but);
+                div4.appendChild(but1);
+                if(type === "confirm"){
+
+                }else if(type === "prompt"){
+                    let ipt = document.createElement("input");
+                    ipt.id = "popIpt";
+                    div3.appendChild(ipt);
+                }
+            }
+        }
+
+        // 关闭提示框
+        let closePop = ()=>{
+            let odiv = document.querySelector("#popUp")
+            odiv.style.display = "none";
+        }
+        initPop(150, 300, "black", "pink", "false", "true", "prompt", "消息区：");
+    
+        // initPop(250, 300, "black", "white", "false", "true", "prompt",);
+    
+    
+    </script>
+</body>
+</html>

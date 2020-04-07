@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      // "text"
+      let arr = ["text", "teee", "teab"]
+      let fn = (arr) => {
+        //遍历数组元素
+        let flag = arr.shift(); //"text"
+        for (let i = 0; i < flag.length; i++) {
+          let temp = flag.slice(0, i)
+          for (let j = 0; j < arr.length; j++) {
+            //aeee teab
+            //t t  t t
+            if (!arr[j].startsWith(temp)) {
+              return temp.slice(0, temp.length - 1)
+            }
+          }
+        }
+        return flag
+      }
+      console.log(fn(["text", "aeee", "teab"])) //""
+      console.log(fn(["text", "teee", "teab"])) //"te"
+      console.log(fn(["text", "tex111", "text222"])) //"text"
+      console.log(fn(["apple", "banana", "app"])) //""
+      console.log(fn(["apple", "aanana", "app"])) //"a"
+      console.log(fn(["apple", "appana", "app"])) //app
+      // input: ["text", "teee", "teab"]
+      // output: "te"
+      // Input: ["apple", "banana", "app"]
+      // output: ""
+      // Input: ["apple", "aanana", "app"]
+      // output: "a"
+    </script>
+  </body>
+
+</html>

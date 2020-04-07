@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // 在控制台打印
+        function dengBian(x){
+            let str = "";
+            for (let i = 0; i < x; ++i){
+                for (let j = 0; j < x - 1 - i; ++j){
+                    str += " ";
+                }
+                for(let k = 0; k <= i; ++k){
+                    str += k + 1;
+                }
+                for(let l = 0; l < i; ++l){
+                    str += i - l;
+                }
+                str += `\n`;
+            }
+            console.log(str);
+        }
+        dengBian(3);
+
+        // 在页面打印
+        function dengBian2(x){
+            let str = "";
+            for (let i = 0; i < x; ++i){
+                let ans = i + 1 + "";
+                // for (let j = 0; j < x - 1 - i; ++j){
+                //     str += " ";
+                // }
+                // for(let k = 0; k <= i; ++k){
+                //     str += k + 1;
+                // }
+                // for(let l = 0; l < i; ++l){
+                //     str += i - l;
+                // }
+                for(let k = 0; k < x -1; ++k){
+                    if( k < i){
+                        ans = (i - k) + ans + (i - k);
+                    }else{
+                        ans = " " + ans + " ";
+                    }
+                }
+                str += `<pre>${ans}\n</pre>`;
+            }
+            // console.log(str);
+            document.body.innerHTML = str;
+        }
+        dengBian2(3);
+    </script>
+</body>
+</html>

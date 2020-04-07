@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <!-- 请输入文本内容 -->
+    <input type="text" id="txt">
+    <!-- 触发器 -->
+    <input type="button" value="留言" id="btn">
+    <!-- 渲染区 -->
+    <ul id="result">
+      <!-- <li>1111</li> -->
+    </ul>
+    <script>
+      //如何做一个最多只能展示5行最新内容的留言板
+      let [oTxt, oBtn, oResult] = [
+        document.getElementById("txt"),
+        document.getElementById("btn"),
+        document.getElementById("result"),
+      ]
+
+      //2.绑定事件
+      oBtn.onclick = function () {
+        //1 生产一个li标签
+        let newLi = document.createElement("li")
+        //2. 生产一个文本节点
+        let newTxt = document.createTextNode(oTxt.value);
+        //3. 拼接
+        oResult.insertBefore(newLi, oResult.firstElementChild)
+        newLi.appendChild(newTxt)
+
+        //4删除掉最老的标签
+        if (oResult.children.length === 6) {
+          oResult.removeChild(oResult.lastElementChild);
+        }
+
+        //清空文本框
+        oTxt.value = ""
+      }
+    </script>
+  </body>
+
+</html>

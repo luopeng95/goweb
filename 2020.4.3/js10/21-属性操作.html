@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="div1">1</div>
+    <script>
+      let oDiv = document.getElementById("div1");
+
+      //修改div的样式 setter
+      oDiv.style.backgroundColor = "pink"
+      oDiv.style.width = "100px"
+      oDiv.style.height = "100px"
+
+      console.log(oDiv.style.backgroundColor) //"pink"
+      console.log(oDiv.style.width) //"100px"
+      console.log(oDiv.style.height) //"100px"
+    </script>
+  </body>
+
+</html>

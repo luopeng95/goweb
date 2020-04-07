@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let arr = [4, 8, 2, 10]
+
+      function maxNumber(arr) {
+        let max = arr[0]; //确认这个数组的第一号位置是最大的数字
+        for (let i = 1; i < arr.length; i++) {
+          //如果新上擂的兄弟 比现在最大的这个数字还要大 那么他就更大的一个数字
+          if (max < arr[i]) {
+            // 数组中这个元素大于之前所有数字
+            max = arr[i]
+          }
+        }
+        return max
+      }
+
+      console.log(maxNumber(arr))
+    </script>
+  </body>
+
+</html>

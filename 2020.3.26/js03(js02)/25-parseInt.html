@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      console.log(Number.parseInt(12)) //12
+      console.log(Number.parseInt(12.34)) //12
+      console.log(Number.parseInt("123")) //123
+      console.log(Number.parseInt("12.34")) //12
+      console.log(Number.parseInt("12.34.56")) //12
+      console.log(Number.parseInt("北京")) //NaN
+      console.log(Number.parseInt("1个苹果")) //1
+      console.log(Number.parseInt("1个23")) //1
+      console.log(Number.parseInt("12abc")) //12
+    </script>
+  </body>
+
+</html>

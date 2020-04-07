@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <input type="checkbox">
+  <input type="checkbox">
+  <input type="checkbox">
+  <input type="checkbox">
+  <input type="checkbox">
+  <input type="checkbox">
+  <input type="checkbox">
+  <input type="checkbox">
+  <input type="checkbox">
+  <input type="checkbox">
+  <input type="checkbox">
+  <input type="checkbox">
+  <input type="checkbox">
+  <input type="checkbox">
+  <button id="selectAll">全选</button>
+  <script>
+    //1. 选择元素
+      //触发器
+      let oBtn = document.getElementById("selectAll");
+      //渲染器
+      let aInput = document.getElementsByTagName("input");
+    //2. 绑定事件
+    oBtn.onclick = function() {
+      //改变渲染器
+      for(let i = 0; i < aInput.length; i++) {
+        aInput[i].checked = true
+      }
+    }
+  </script>
+</body>
+</html>

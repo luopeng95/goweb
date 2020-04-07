@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1{
+            width: 500px;
+            height: 500px;
+            background-color: forestgreen;
+        }
+        #div2{
+            width: 300px;
+            height: 300px;
+            background-color: fuchsia;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">
+        <div id="div2"></div>
+    </div>
+    <script>
+        let odiv1 = document.querySelector("#div1");
+        let odiv2 = document.querySelector("#div2");
+        // odiv1.addEventListener("click", function(e){
+        //     e.stopPropagation();
+        //     odiv1.style.background = "pink";
+        // })
+        odiv2.addEventListener("click", function(e){
+            odiv2.style.background = "pink";
+        })
+        document.body.addEventListener("click", function(e){
+            document.body.style.background = "pink";
+        })
+    </script>
+</body>
+</html>

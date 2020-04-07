@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td{
+		font-size:12px;		/*设置单元格的样式*/
+		padding:3px;		/*设置内边距*/
+		background-color:#F9FCEF;	/*设置背景颜色*/
+	}
+    </style>
+</head>
+<body>
+    <table width="98%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#3F873B">
+        <tr>
+          <td width="11%" height="27" align="center">编号</td>
+          <td width="14%" align="center">祝福对象</td>
+          <td width="12%" align="center">祝福者</td>
+          <td width="33%" align="center">字条内容</td>
+          <td width="30%" align="center">发送时间</td>
+        </tr>
+        <tr>
+          <td height="27">1</td>
+          <td>mjh</td>
+          <td>云远</td>
+          <td>愿你幸福快乐每一天！</td>
+          <td>2017-07-05 13:06:06</td>
+        </tr>
+        <tr>
+          <td height="27">2</td>
+          <td>云远</td>
+          <td>mjh</td>
+          <td>每天有份好心情！</td>
+          <td>2017-07-05 13:26:17</td>
+        </tr>
+        <tr>
+          <td height="27">3</td>
+          <td>mjh</td>
+          <td>云远</td>
+          <td>谢谢你陪我到任何地方！</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td height="27">4</td>
+          <td>云远</td>
+          <td>mjh</td>
+          <td>跟着我海角和天涯！</td>
+          <td>2017-07-05 13:46:06</td>
+        </tr>
+    </table>
+    <script src="..\jquery-3.4.1.min.js"></script>
+    <script>
+        $("document").ready(() =>  {
+            $("td:parent").css({"background":"pink"});
+            $("td:empty").html("暂无内容");
+            $("td:contains('mjh')").css({"color":'red'});
+        })
+        // let otd = document.getElementsByTagName("td");
+        // for(let i = 0; i < otd.length; ++i){
+        //     if(otd[i].innerHTML){
+        //         otd[i].style.background = "pink";
+        //     }else{
+        //         otd[i].innerHTML = "暂无内容";
+        //     }
+        //     if(otd[i].innerHTML === "mjh"){
+        //         otd[i].style.color = "red";
+        //     }
+        // }
+    </script>
+</body>
+</html>

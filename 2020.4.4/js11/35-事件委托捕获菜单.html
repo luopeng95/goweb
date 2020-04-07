@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      #menu {
+        border: 1px solid black;
+        width: 200px;
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <input type="text" id="food">
+    <input type="button" value="加菜" id="add">
+    <input type="button" value="点菜" id="btn">
+    <ul id="menu">
+      <li>澳洲大龙虾</li>
+      <li>佛跳墙</li>
+      <li>满汉全席</li>
+      <li>茅台</li>
+    </ul>
+    <script>
+      //1 菜单默认隐藏
+      //2 点击按钮显示菜单
+      //3 点击菜单以外的界面 菜单收起
+      //4 点击某个菜 该菜色高亮
+      let oBtn = document.querySelector("#btn")
+      let oMenu = document.querySelector("#menu")
+      let oFood = document.querySelector("#food")
+      let oAdd = document.querySelector("#add")
+      let useCapture = true
+      oAdd.addEventListener("click", function (e) {
+        appendEle(oMenu, "li", oFood.value)
+      })
+      oBtn.addEventListener("click", function (e) {
+        oMenu.style.display = "block"
+      }, useCapture)
+
+      document.addEventListener("click", function (e) {
+        oMenu.style.display = "none"
+      }, useCapture)
+
+      oMenu.addEventListener("click", function (e) {
+        e.target.style.backgroundColor = "pink"
+        oMenu.style.display = "block"
+      }, useCapture)
+
+      function appendEle(parent, eleName, value) {
+        //1 生产一个li标签
+        let newLi = document.createElement(eleName)
+        //2. 生产一个文本节点
+        let newTxt = document.createTextNode(value);
+        //3. 拼接
+        parent.appendChild(newLi)
+        newLi.appendChild(newTxt)
+        return newLi
+      }
+    </script>
+  </body>
+
+</html>

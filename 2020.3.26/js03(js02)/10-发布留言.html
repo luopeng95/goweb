@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      li {
+        list-style: none;
+      }
+
+      #parent {
+        width: 600px;
+        margin: 0 auto;
+      }
+
+      h4 {
+        line-height: 40px;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #333;
+      }
+
+      p {
+        width: 100%;
+        margin-bottom: 25px;
+        line-height: 24px;
+      }
+
+      #box {
+        width: 580px;
+        padding: 25px 10px 0;
+        border: 1px solid #ddd;
+        margin-bottom: 10px;
+        max-height: 450px;
+        overflow-y: auto;
+        word-break: break-all;
+      }
+
+      em {
+        position: relative;
+        top: -13px;
+      }
+
+      #text {
+        width: 100%;
+        height: 90px;
+        overflow: auto;
+      }
+
+      #btn {
+        width: 100%;
+        height: 50px;
+      }
+
+      .yellow {
+        background-color: yellow;
+      }
+
+      .grey {
+        background-color: #ccc;
+      }
+
+      .red {
+        background-color: red;
+      }
+
+      .pink {
+        background-color: pink !important;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="parent">
+      <h4>留言内容：</h4>
+      <div id="box"></div>
+      <textarea id="text"></textarea><br />
+      <input id="btn" type="button" value="发表留言" />
+    </div>
+
+    <script>
+      //1. 选择元素
+      let oBox = document.getElementById("box");
+      let oTxt = document.getElementById("text");
+      let oBtn = document.getElementById("btn");
+      //2. 绑定事件
+      let i = 1
+      oBtn.onclick = function () {
+        //3. 逻辑
+        //获取标签的值 除了input和textarea是通过value这个属性来获取的以外,其他的所有标签都是通过innerHTML 或者 innerText来获取
+        oBox.innerHTML += `<p><span>${i++}楼</span> ${oTxt.value}</p>`
+        oTxt.value = ""
+
+      }
+    </script>
+  </body>
+
+</html>

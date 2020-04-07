@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+    </ul>
+    <script>
+      let aLi = document.querySelectorAll("ul>li");
+      for (let i = 0; i < aLi.length; i++) {
+        //箭头函数是有指向的, 但是的他的指向是继承指向
+        //父作用域指向谁 他也跟着指向谁
+        aLi[i].onclick = () => {
+          console.log(this) //aLi[0/1/2/3]
+          this.style.backgroundColor = "pink"
+        }
+      }
+    </script>
+  </body>
+
+</html>

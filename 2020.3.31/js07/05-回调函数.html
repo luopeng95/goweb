@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //在调用numOne之后 再次调用另外一个函数
+      //我是一个1
+
+      //回调函数
+      //当某个函数被调用的时候 他还会导致另外一个函数被调用 那这个另一个函数就是回调函数
+      //会先执行A函数 再执行B函数
+      function numOne(cb) {
+        //通用业务
+        console.log("谢谢您使用我这个计算器函数")
+        //将长得像字符串的js 真真正正的当做 js代码执行
+        return eval(cb)
+      }
+
+      function add(a, b) {
+        //特殊业务
+        return a + b
+      }
+
+      function minus(a, b) {
+        //特殊业务
+        return a - b
+      }
+      console.log(numOne("add(1, 5)")) //6
+      console.log(numOne("minus(1, 4)")) //-3
+      // show()
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      #div1 {
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="div1"></div>
+    <script>
+      // 设置一个定时器
+      // setTimeout(callback: function, timeout: number)
+      // 清除一个定时器
+      // clearTimeout(id: number)
+      // 设置一个循环定时器
+      // setInterval(callback: function, timeout: number)
+      // 清除一个循环定时器
+      // clearInterval(id: number)
+      //在函数中 参数居然可以是函数 这个参数就被称为回调函数 callback
+
+      //在2000ms后会自动执行第一个参数中的函数 也就是会延迟展示函数中的内容
+      setTimeout(function () {
+        console.log("我是延迟出现的文字")
+      }, 2000)
+
+
+      let oDiv = document.getElementById("div1");
+      //为oDiv 绑定一个鼠标进入事件 
+      oDiv.onmouseenter = function () {
+        //为window对象设置一个一次性的定时器 3000ms中会触发这个函数
+        setTimeout(function () {
+          oDiv.style.backgroundColor = "pink"
+        }, 3000)
+      }
+    </script>
+  </body>
+
+</html>

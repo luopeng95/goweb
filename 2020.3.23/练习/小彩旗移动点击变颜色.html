@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小彩旗</title>
+    <style>
+        div{
+            width: 900px;
+            height: 900px;
+        }
+        li{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <script>
+        // 给颜色可以通过除以3的余数进行判断并上色
+        // 鼠标进入上色和点击后固定颜色需要用一个值来进行判断--假如当前是点击过后的那么就一直处于黑色
+
+        // 进行上色，页面加载就直接上色，不需要点击，直接循环就好了
+        let lis = document.getElementsByTagName("li");
+
+        for(let i = 0; i < lis.length; i++){
+            if((i + 1) % 3 === 1){
+                lis[i].color = "red";
+                lis[i].style.backgroundColor = "red";
+            }else if((i + 1 ) % 3 === 2){
+                lis[i].color = "yellow";
+                lis[i].style.backgroundColor = "yellow";
+            }else{
+                lis[i].color = "blue";
+                lis[i].style.backgroundColor = "blue";
+            }//到这里颜色就上色完毕了
+
+            // 每一个li都要给相同的鼠标移入事件和鼠标移出事件，直接在这个循环里写好了
+            // 给每一个li定义一个属性来控制鼠标移入变色和点击固定黑色的实现
+            lis[i].cli = false;
+            lis[i].onmouseover = function (){
+                if(window.event.target.cli){
+
+                }else{
+                    window.event.target.style.backgroundColor = "green"
+                }
+            }
+            lis[i].onmouseout = function (){
+                if(window.event.target.cli){
+
+                }else{
+                    window.event.target.style.backgroundColor = window.event.target.color;
+                }
+            }
+            lis[i].onclick = function (){
+                if(lis[i].cli){
+                    lis[i].style.backgroundColor = lis[i].color;
+                    lis[i].cli = false;
+                }else{
+                    lis[i].style.backgroundColor = "black";
+                    lis[i].cli = true;
+                }
+            }
+        }
+
+
+    </script>
+</body>
+</html>

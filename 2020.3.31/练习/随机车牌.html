@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>摇车牌</title>
+</head>
+<body>
+    <div id="container">
+        <input type="button" value="点击开始摇号" id="but1">
+        <div id="display">
+
+        </div>
+    </div>
+
+    <script>
+        let letter = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z",0,1,2,3,4,5,6,7,8,9];
+        let max = 3;
+        let count = 0;
+        let obut = document.getElementById("but1");
+        let history = [];
+        obut.onclick = () => {
+            let odiv = document.getElementById("display");
+            if(count >= max){
+                odiv.innerHTML = ""
+                for(let i = 0; i < max; ++i){
+                    odiv.innerHTML += history[i] + `<pre>\n</pre>`
+                }
+                odiv.innerHTML += `摇号已经${max}次，请在上面${max}个中选一个`;
+            }else{
+                let m = "";
+                for(let i = 0; i < 5; ++i){
+                    let n = Math.floor(Math.random() * letter.length);
+                    m += letter[n];
+                }
+                ++count;
+                odiv.innerHTML = `粤B` + m
+                history.push(`粤B` + m);
+            }
+        }
+    </script>
+</body>
+</html>

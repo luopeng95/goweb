@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <ul id="container">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <script>
+      let oUl = document.getElementById("container")
+      let aLi = oUl.children;
+      let colorbox = ["red", "yellow", "blue"]
+      for (let i = 0; i < aLi.length; i++) {
+        //定义一个中间变量 用来记住 那个i是什么值
+        aLi[i].setAttribute("c", colorbox[i % colorbox.length])
+        aLi[i].style.backgroundColor = aLi[i].getAttribute("c")
+        //鼠标进入
+        aLi[i].onmouseenter = () => {
+          aLi[i].style.backgroundColor = "green"
+        }
+        aLi[i].onmouseleave = () => {
+          aLi[i].style.backgroundColor = aLi[i].getAttribute("c")
+        }
+        //鼠标离开
+      }
+    </script>
+  </body>
+
+</html>

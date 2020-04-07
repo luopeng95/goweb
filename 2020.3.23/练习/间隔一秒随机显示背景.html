@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onLoad="changeBg();">
+    <script>
+        function changeBg(){
+            let src = "./imgs/";
+            let n = Math.floor(Math.random()*5);
+            console.log(n);
+            switch (n){
+                case 0:
+                src = src + "0.jpg";
+                break;
+                case 1:
+                src = src + "1.jpg";
+                break;
+                case 2:
+                src = src + "2.jpg";
+                break;
+                case 3:
+                src = src + "3.jpg";
+                break;
+                case 4:
+                src = src + "4.jpg";
+                break;
+            }
+            document.body.background = src;
+            setTimeout("changeBg()", 1000);
+        }
+    </script>
+</body>
+</html>

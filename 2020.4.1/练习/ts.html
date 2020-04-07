@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let rank4 = arr => {
+            if(arr.length < 2){
+                return arr;
+            }else{
+                let mid = arr[0];
+                console.log(mid)
+                let big = [];
+                let small = [];
+                for(let i = 1; i < arr.length; ++i){
+                    if(arr[i] >= mid){
+                        big.push(arr[i]);
+                    }else{
+                        small.push(arr[i]);
+                    }
+                }
+                console.log(small);
+                console.log(big)
+                return [].concat(rank4(small), mid, rank4(big));
+            }
+        }
+        let p = [2,1,4,0];
+        console.log(rank4(p));
+    </script>
+</body>
+</html>

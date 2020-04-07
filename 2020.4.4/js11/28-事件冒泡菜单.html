@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      #menu {
+        border: 1px solid black;
+        width: 200px;
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <input type="button" value="点菜" id="btn">
+    <ul id="menu">
+      <li>澳洲大龙虾</li>
+      <li>佛跳墙</li>
+      <li>满汉全席</li>
+      <li>茅台</li>
+    </ul>
+    <script>
+      //1 菜单默认隐藏
+      //2 点击按钮显示菜单
+      //3 点击菜单以外的界面 菜单收起
+      //4 点击某个菜 该菜色高亮
+      let oBtn = document.querySelector("#btn")
+      let oMenu = document.querySelector("#menu")
+      let aLi = document.querySelectorAll("#menu li")
+
+      oBtn.addEventListener("click", function (e) {
+        oMenu.style.display = "block"
+        //菜单显示之后 不会body的点击事件 这样的话点击按钮就会显示菜单了
+        e.stopPropagation()
+      })
+
+      document.addEventListener("click", function () {
+        oMenu.style.display = "none"
+      })
+
+      for (let i = 0; i < aLi.length; i++) {
+        aLi[i].addEventListener("click", function (e) {
+          this.style.backgroundColor = "pink"
+          e.stopPropagation()
+        })
+      }
+    </script>
+  </body>
+
+</html>

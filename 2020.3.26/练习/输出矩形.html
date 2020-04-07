@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 在控制台输出
+        function rectangle(x){
+            let str = "";
+            for(let i = 0; i < x; ++i){
+                for(let j = 0; j < x; ++j){
+                    str += "*";
+                }
+                str += `\n`;
+            }
+            console.log(str);
+        }
+        // rectangle(5);
+
+        // 在页面输出
+        function rectangle2(x){
+            let str = "";
+            for(let i = 0; i < x; ++i){
+                for(let j = 0; j < x; ++j){
+                    str += "*";
+                }
+                str += `<pre>\n</pre>`;
+            }
+            // 这两种输出方式都可以
+            // document.write(str);
+            document.body.innerHTML = str;
+        }
+        rectangle2(5);
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>打开新窗口</title>
+</head>
+<body>
+    <div id="container">
+        <input type="button" value="创建新窗口" onclick="createWindow()">
+        <input type="button" value="关闭打开的新窗口" onclick="closeNew()">
+        <input type="button" value="移动当前窗口" onclick="moveWindow()">
+    </div>
+    <script>
+        let width = window.screen.width;
+        // console.log(width)
+        let height = window.screen.height;
+
+        // let b = window.open("https://www.baidu.com", "new","width = 500")
+        console.log(window.navigator)
+        let createWindow = function(){
+            a = window.open("https://www.baidu.com", "new", `width = 500, height = 500`)
+            // debugger;
+            // 将打开的窗口移到正中间的位置
+            a.moveTo((width - 500)/2, (height - 500)/2)
+        }
+
+        let closeNew = function(){
+            console.log("关闭子窗口了");
+            a.close();
+        }
+
+        let moveWindow = function(){
+            let w = window.outerWidth;
+            let h = window.outerHeight;
+            console.log(w, h);
+            // 无法移动不是由window.open创建的窗口
+            window.moveTo((width - w) / 2, (height - h) / 2);
+            console.log(window)
+        }
+    </script>
+</body>
+</html>
