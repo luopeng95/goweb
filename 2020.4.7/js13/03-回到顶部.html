@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      #div1 {
+        width: 60px;
+        height: 60px;
+        background-color: pink;
+        position: fixed;
+        right: 10px;
+        bottom: 10px;
+      }
+    </style>
+  </head>
+
+  <body style="height: 2000px;">
+    <div id="div1">回到顶部</div>
+    <script>
+      let oDiv = document.getElementById("div1");
+      oDiv.addEventListener("click", e => {
+        //既可以做getter还能setter
+        //十三属性 的属性值 都是数字类型
+        //想要知道页面滚动了多少距离 是通过document.documentElement而不是document.body 
+        document.documentElement.scrollTop = 0
+        // document.documentElement.scrollBy(0, 100)
+      })
+    </script>
+  </body>
+
+</html>

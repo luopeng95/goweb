@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      div {
+        width: 110px;
+        height: 120px;
+        background: pink;
+        position: absolute;
+        top: 130px;
+        left: 140px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="div1"></div>
+    <script>
+      let oDiv = document.getElementById("div1")
+      console.table(oDiv.getBoundingClientRect())
+      //width 属性 就是这个ele的实际宽度
+      //height 属性 就是这个dele的实际高度
+      //x y 表示是该元素 左上角这个点在浏览器中的坐标位置
+      //left/top/right/bottom 表达的是4个边框与可视区上边框或左边框的距离
+    </script>
+  </body>
+
+</html>

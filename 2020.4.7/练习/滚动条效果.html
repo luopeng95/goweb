@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery-3.4.1.min.js"></script>
+    <style>
+        #main{
+            width: 100px;
+            height: 200px;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        测试测试<br>
+        测试测试<br>
+        测试测试<br>
+        测试测试<br>
+        测试测试<br>
+        测试测试<br>
+        测试测试<br>
+        测试测试<br>
+        测试测试<br>
+        测试测试<br>
+        测试测试<br>
+        测试测试<br>
+        测试测试<br>
+        测试测试<br>
+        测试测试<br>
+        测试测试<br>
+        测试测试<br>
+    </div>
+    <label for="agree1">同意</label>
+    <input type="radio" name="agree" value="yes" id="agree1" disabled>
+    <script>
+        // console.log($("#main")[0].scrollHeight);
+        $("#main").on("scroll", () => {
+            if($("#main").scrollTop() === $("#main")[0].scrollHeight - $("#main").innerHeight()){
+                console.log(1);
+                $("#agree1").removeAttr("disabled");
+            }
+        })
+    </script>
+</body>
+</html>

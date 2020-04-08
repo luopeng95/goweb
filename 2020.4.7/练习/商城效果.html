@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商城效果</title>
+    <script src="./jquery-3.4.1.min.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #container{
+            position: relative;
+        }
+        ul{
+            /* position: absolute; */
+            /* height: ; */
+            list-style: none;
+            padding: 0px;
+            /* top: 50%; */
+
+        }
+        li {
+        padding: 6px;
+        width: 32px;
+        height: 32px;
+        text-align: center;
+        color: #fff;
+        cursor: pointer;
+        margin: 2px;
+        background-color: #666;
+        overflow: hidden;
+        font-size: 12px;
+      }
+      .change{
+          background-color: red;
+      }
+    </style>
+</head>
+<body>
+    <div id="container">
+
+    </div>
+    <script>
+        let colors = ["pink", "orange", 'green', "blue", "purple"];
+        let time;
+        let p = $("ul");
+        console.log(p)
+        // 初始化
+        let initDiv = (num) => {
+            createDiv(num);
+            createUl(num);
+            // console.log($("ul"));
+            // 给li添加绑定事件
+            $("#container>ul").on("click", "li", function (e){
+                // console.log(1)
+                clearInterval(time);
+                let move = (window.innerHeight * e.target.getAttribute("data-id") - document.documentElement.scrollTop) / 20;
+                let count = 1;
+                time = setInterval(() => {
+                    if(count === 20){
+                        document.documentElement.scrollTop = window.innerHeight * e.target.getAttribute("data-id")
+                        clearInterval(time);
+                    }else{
+                        document.documentElement.scrollTop += move;
+                        ++count;
+                    }
+                }, 60);
+
+            })
+        }
+
+        // 生成DIV并初始化颜色
+        let createDiv = (num) => {
+            let frag = "";
+            for(let i = 0; i < num; ++i){
+                frag += `<div style="background:${colors[i]}"></div>`;
+            }
+            $("#container").append(frag);
+            $("div>div").width(window.innerWidth);
+            $("div>div").height(window.innerHeight);
+        }
+
+        // 生成左边的导航图标,并设置样式
+        let createUl = (num) => {
+            $ul = $("<ul></ul>");
+            let lis = "";
+            for(let i = 0; i < num; ++i){
+                lis += `<li data-id=${i}>点击切换</li>`;
+            }
+            $ul.append(lis);
+            $("#container").prepend($ul); 
+            $("#container>ul>li").css({"width":'32px',"height":"32px","list-style":'none',"font-size":"14px","padding":"10"})
+            let w = $("li").outerWidth();
+            $("ul").css({"position":"fixed","left":"20px","top":`calc(50% - ${w}px * ${num} / 2)`});
+            $("li").eq(0).addClass("change");
+        }
+
+        // 移动时上色
+        let changColor = () => {
+            $("li").eq(parseInt(document.documentElement.scrollTop / window.innerHeight)).addClass("change");
+        }
+
+        // 添加scroll监听事件
+        $(document).on("scroll", function(){
+            // console.log($("li").attr("data-id"));
+            $("li").removeClass("change");
+            changColor();
+        })
+
+        
+        // 执行初始化函数
+        initDiv(5);
+    </script>
+</body>
+</html>

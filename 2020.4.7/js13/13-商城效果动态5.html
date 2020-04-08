@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      ul,
+      li {
+        list-style: none;
+      }
+
+      body {
+        overflow-x: hidden;
+      }
+
+      #content {
+        width: 1230px;
+        margin: auto;
+      }
+
+      ul {
+        position: fixed;
+        top: 50%;
+        left: 10px;
+        margin-top: -116px;
+      }
+
+      li {
+        padding: 6px;
+        width: 32px;
+        height: 32px;
+        text-align: center;
+        color: #fff;
+        cursor: pointer;
+        margin: 2px;
+        background-color: #666;
+        overflow: hidden;
+        font-size: 12px;
+      }
+
+      .active {
+        background-color: red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="content">
+      <div class="floor">
+        <div class="floor-banner"></div>
+        <ul class="floor-goods">
+          <li class="item"></li>
+          <li class="item"></li>
+          <li class="item"></li>
+          <li class="item"></li>
+          <li class="item"></li>
+          <li class="item"></li>
+          <li class="item"></li>
+          <li class="item"></li>
+        </ul>
+      </div>
+    </div>
+    <ul id="floors" class="floors">
+    </ul>
+    <script>
+      //后台发送的json数据
+      let json = [{
+        floorTitle: "美丽人生",
+        floorTitleE: "FASHION & BEAUTY",
+        bigBanner: {
+          imgSrc: "https://img.alicdn.com/tfs/TB1lxU6wFT7gK0jSZFpXXaTkpXa-468-1236.jpg",
+        },
+        goodsList: [{
+          id: 0,
+          imgsrc: "https://gw.alicdn.com/bao/uploaded/i2/2681737173/O1CN01Nk2RJH22rHYfDpH05_!!0-item_pic.jpg",
+          desc: "锐度男士水乳套装补水保湿护肤品化妆品控油收缩毛孔男士面部护理",
+          price: "￥99"
+        }, {
+          id: 0,
+          imgsrc: "https://gw.alicdn.com/bao/uploaded/i2/2681737173/O1CN01Nk2RJH22rHYfDpH05_!!0-item_pic.jpg",
+          desc: "锐度男士水乳套装补水保湿护肤品化妆品控油收缩毛孔男士面部护理",
+          price: "￥99"
+        }, {
+          id: 0,
+          imgsrc: "https://gw.alicdn.com/bao/uploaded/i2/2681737173/O1CN01Nk2RJH22rHYfDpH05_!!0-item_pic.jpg",
+          desc: "锐度男士水乳套装补水保湿护肤品化妆品控油收缩毛孔男士面部护理",
+          price: "￥99"
+        }, {
+          id: 0,
+          imgsrc: "https://gw.alicdn.com/bao/uploaded/i2/2681737173/O1CN01Nk2RJH22rHYfDpH05_!!0-item_pic.jpg",
+          desc: "锐度男士水乳套装补水保湿护肤品化妆品控油收缩毛孔男士面部护理",
+          price: "￥99"
+        }, {
+          id: 0,
+          imgsrc: "https://gw.alicdn.com/bao/uploaded/i2/2681737173/O1CN01Nk2RJH22rHYfDpH05_!!0-item_pic.jpg",
+          desc: "锐度男士水乳套装补水保湿护肤品化妆品控油收缩毛孔男士面部护理",
+          price: "￥99"
+        }, {
+          id: 0,
+          imgsrc: "https://gw.alicdn.com/bao/uploaded/i2/2681737173/O1CN01Nk2RJH22rHYfDpH05_!!0-item_pic.jpg",
+          desc: "锐度男士水乳套装补水保湿护肤品化妆品控油收缩毛孔男士面部护理",
+          price: "￥99"
+        }, {
+          id: 0,
+          imgsrc: "https://gw.alicdn.com/bao/uploaded/i2/2681737173/O1CN01Nk2RJH22rHYfDpH05_!!0-item_pic.jpg",
+          desc: "锐度男士水乳套装补水保湿护肤品化妆品控油收缩毛孔男士面部护理",
+          price: "￥99"
+        }, {
+          id: 0,
+          imgsrc: "https://gw.alicdn.com/bao/uploaded/i2/2681737173/O1CN01Nk2RJH22rHYfDpH05_!!0-item_pic.jpg",
+          desc: "锐度男士水乳套装补水保湿护肤品化妆品控油收缩毛孔男士面部护理",
+          price: "￥99"
+        }]
+      }]
+      //楼层容器
+      let oContent = document.getElementById("content")
+      //导航容器
+      let oUl = document.getElementById("floors")
+
+      let aDiv = oContent.getElementsByTagName("div");
+      let aLi = document.querySelectorAll("ul li");
+      let divWidth, divHeight
+      //页面打开瞬间会初始化
+      init();
+
+      function init() {
+        let colorBox = ["pink", "orange", 'green', "blue", "purple"]
+        //如何获取一个屏幕的宽高
+        divHeight = document.documentElement.clientHeight || document.body.clientHeight
+        //商品区
+        json.forEach((e, i, a) => {
+          let newDiv = document.createElement("div");
+          newDiv.style.width = "1230px"
+          newDiv.style.height = divHeight + "px"
+          newDiv.style.backgroundColor = colorBox[i]
+
+          //楼层的标题内容
+          let floorTitle = document.createElement("div");
+          floorTitle.innerText = `${e.floorTitle} ${e.floorTitleE}`
+          newDiv.appendChild(floorTitle)
+
+          //初始化楼层指引
+          let newLi = document.createElement("li");
+          newLi.innerText = e.floorTitle;
+
+          oContent.appendChild(newDiv)
+          oUl.appendChild(newLi)
+        })
+      }
+
+      // window.addEventListener("resize", e => {
+      //   init()
+      // })
+
+      // document.addEventListener("scroll", e => {
+      //   let iScrollTop = document.documentElement.scrollTop
+      //   for (let i = 0; i < aLi.length; i++) {
+      //     aLi[i].className = ""
+      //   }
+      //   aLi[Number.parseInt(document.documentElement.scrollTop / divHeight)].className = "active"
+      // })
+
+      // oUl.addEventListener("click", e => {
+      //   let timer = null;
+      //   let conut = 10
+      //   let nowScroll = document.documentElement.scrollTop; //0
+      //   let gotoScroll = e.target.getAttribute("floor") * divHeight; //626
+      //   let totalScroll = gotoScroll - nowScroll; //626
+      //   let range = totalScroll / conut //62.6 -> 62
+      //   let iNow = 0
+      //   if (e.target.nodeName === "LI") {
+      //     timer = setInterval(() => {
+      //       document.documentElement.scrollTop += range
+      //       iNow++
+      //       if (iNow === conut) {
+      //         document.documentElement.scrollTop = gotoScroll
+      //         clearInterval(timer)
+      //       }
+      //     }, 60);
+      //   }
+      // })
+    </script>
+  </body>
+
+</html>
