@@ -1,12 +1,14 @@
-function Person(name, age){
-    this.name = name;
-    this.age = age;
-    get [Symbol.toStringTag] = function() {
+class Person{
+    constructor(name, age){
+        this.name = name;
+        this.age = age;
+    }
+    get [Symbol.toStringTag]() {
         return "Person";
     }
-}
-Person.prototype.speak = () => {
-    console.log(this.name + "在说话");
+    speak = () => {
+        console.log(this.name + "在说话");
+    }
 }
 
 let p1 = new Person("罗鹏", 25);

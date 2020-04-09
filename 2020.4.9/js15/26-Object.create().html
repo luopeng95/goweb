@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      const person = {
+        isHuman: false, //布尔值
+        printIntroduction: function () { //函数
+          console.log(`My name is ${this.name}. Am I human? ${this.isHuman}`);
+        }
+      };
+
+      //开启新的堆内存
+      const me = Object.create(person); //根据person变量 来构建一个me
+
+      me.name = "Lilei"; // "name" is a property set on "me", but not on "person"
+      me.isHuman = true; // inherited properties can be overwritten
+
+      me.printIntroduction();
+      console.log(me.printIntroduction === person.printIntroduction) //true
+      console.log(me)
+      console.log(person)
+      // expected output: "My name is Matthew. Am I human? true"
+    </script>
+  </body>
+
+</html>

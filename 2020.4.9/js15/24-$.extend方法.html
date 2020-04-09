@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let settings = {
+        validate: false,
+        limit: 5,
+        name: "foo"
+      };
+      let options = {
+        validate: true,
+        name: "bar"
+      };
+
+      //合并两个对象的键值对
+      function extend(target, object) {
+        //复制target 长得的target
+        let newObj = {}
+        for (let key in target) {
+          newObj[key] = target[key]
+        }
+        for (let key in object) {
+          newObj[key] = object[key]
+        }
+        //返回这个新修改的对象
+        return newObj
+      }
+      console.log(extend(settings, options));
+    </script>
+  </body>
+
+</html>

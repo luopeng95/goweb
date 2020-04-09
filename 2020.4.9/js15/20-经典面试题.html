@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let num = 1;
+      let obj = {
+        name: "张三"
+      }
+
+      num2 = num
+      obj2 = obj
+
+      console.log(num) //1
+      console.log(num2) //1
+      console.log(obj.name) //"张三"
+      console.log(obj2.name) //"张三"
+
+      //浅复制
+      // 只有复合数据类型才有深浅复制
+      // 引用数据类型 "=" 浅复制
+      obj2.name = "李四"
+      num2 = 2;
+
+      console.log(num) //1
+      console.log(num2) //2
+      console.log(obj.name) //"李四"
+      console.log(obj2.name) //"李四"
+    </script>
+  </body>
+
+</html>

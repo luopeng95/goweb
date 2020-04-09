@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //原型继承
+      //2.一般继承动态的方法
+      function Person(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+      Person.prototype.eat = function () {
+        return this.name + "在吃"
+      }
+      Person.prototype.sleep = function () {
+        return this.name + "在睡"
+      }
+
+      function Teacher(name, age, tAge) {
+        this.name = name;
+        this.age = age;
+        this.tAge = tAge;
+      }
+      Teacher.prototype = new Person()
+      Teacher.prototype.teach = function () {
+        return this.name + "在教书"
+      }
+      let t1 = new Teacher("老胡", 30, 10);
+      console.log(t1.tAge)
+      console.log(t1.teach())
+      console.log(t1.name)
+      console.log(t1.eat())
+    </script>
+  </body>
+
+</html>

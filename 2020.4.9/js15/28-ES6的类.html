@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //ES6的类
+      //函数 分为普通函数show和构造函数Person
+      //以后 所有的构造函数 class
+      //以后 所有的普通函数 function
+
+      //1. 虽然有class关键字 但是本质上 js的继承的逻辑还是原型链 只不过是给了一个语法糖
+      //2. 每次调用new Person 总会调用该class的 construct方法
+      //3. 直接在类中书写的方法 不是成员方法 而是原型方法
+      class Person {
+        //静态属性 放置在constructor中
+        constructor(name, age) {
+          // console.log("自动调用")
+          this.name = name
+          this.age = age
+        }
+        //原型方法
+        eat() {
+          return `${this.name}在吃饭`
+        }
+        sleep() {
+          return `${this.name}在睡觉`
+        }
+
+        //静态属性不能用static
+        // static PI = 3.14
+
+        //静态方法
+        static fn() {
+          return "我是一个静态方法"
+        }
+      }
+      let p1 = new Person("张三", 20);
+      console.log(p1)
+      console.log(p1.age)
+      console.log(p1.eat())
+      console.log(Person.fn())
+    </script>
+  </body>
+
+</html>

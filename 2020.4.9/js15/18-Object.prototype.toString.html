@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let obj = {
+        name: "zhangsan"
+      };
+      console.log(obj.toString()) //"[object TYPE]"
+
+      let num = 1;
+      let str = "abc"
+      let fun = function () {
+        console.log("我是函数")
+      }
+
+      console.log(num.toString()) //"1"
+      console.log(str.toString()) //"abc"
+      console.log(fun.toString()) //"function () {console.log("我是函数")}"
+    </script>
+  </body>
+
+</html>

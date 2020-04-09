@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //静态属性 一般需要实例提供
+      //动态方法 一般不需要 且会放置在原型上
+      function Person(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+      Person.prototype.eat = function () {
+        return this.name + "在吃"
+      }
+      Person.prototype.sleep = function () {
+        return this.name + "在睡"
+      }
+      let p1 = new Person("张三", 20)
+      console.log(p1)
+      console.log(Person)
+      console.log(Person.prototype)
+      let p2 = new Person("李四", 30)
+      console.log(p1.eat === p2.eat) //true
+    </script>
+  </body>
+
+</html>
