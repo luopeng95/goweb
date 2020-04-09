@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      div {
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+      }
+
+      #div1 {
+        background-color: pink;
+      }
+
+      #div2 {
+        background-color: yellow;
+      }
+
+      #div3 {
+        background-color: blue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- 触发器 -->
+    <div id="div1"></div>
+    <div id="div2"></div>
+    <div id="div3"></div>
+    <!-- 渲染区 -->
+    <div id="div4"></div>
+    <script>
+      let oDiv1 = document.querySelector("#div1")
+      let oDiv2 = document.querySelector("#div2")
+      let oDiv3 = document.querySelector("#div3")
+      let oDiv4 = document.querySelector("#div4")
+      //点击哪个div div4就变成他的颜色
+      //点击哪个div先确定 再当点击div4的时候变色
+      oDiv1.addEventListener("click", function () {
+        oDiv4.style.backgroundColor = getComputedStyle(oDiv1).backgroundColor
+      })
+      oDiv2.addEventListener("click", function () {
+        oDiv4.style.backgroundColor = getComputedStyle(oDiv2).backgroundColor
+      })
+      oDiv3.addEventListener("click", function () {
+        oDiv4.style.backgroundColor = getComputedStyle(oDiv3).backgroundColor
+      })
+    </script>
+  </body>
+
+</html>

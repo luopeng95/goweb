@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      div {
+        width: 200px;
+        height: 200px;
+        display: none;
+        border: 1px solid black;
+      }
+
+      .clicked {
+        background-color: red;
+      }
+
+      .active {
+        display: block;
+      }
+    </style>
+  </head>
+
+  <body>
+    <input class="clicked" type="button" value="0">
+    <input type="button" value="1">
+    <input type="button" value="2">
+    <div class="active">000000000000</div>
+    <div>111111111111</div>
+    <div>222222222222222</div>
+    <script>
+      //选中所有的按钮
+      let aInput = document.querySelectorAll("input")
+      //选中所有的渲染div
+      let aDiv = document.querySelectorAll("div")
+
+      for (var i = 0; i < aInput.length; i++) {
+        //在初始化每个按钮的时候 同时记录下他是哪个i 只能记录属性
+        //把记录的责任 丢个index 而不是i继续执行这个责任 i已经承担不了这个责任了 i在初始化完毕之后已经永远变成aInput.length了
+        aInput[i].setAttribute("index", i)
+        aInput[i].addEventListener("click", function () {
+          //1.所有的按钮变白
+          //2.所有的div都隐藏
+          for (var j = 0; j < aInput.length; j++) {
+            aInput[j].className = ""
+            aDiv[j].className = ""
+          }
+          //3.点击的按钮变红
+          aInput[this.getAttribute("index")].className = "clicked"
+          //4.点击的按钮对应的div展示
+          aDiv[this.getAttribute("index")].className = "active"
+        })
+      }
+    </script>
+  </body>
+
+</html>

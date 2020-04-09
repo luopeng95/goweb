@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //做一个工厂 用来生产人 这个对象
+      //只要首字母是大写函数 -> 构造函数/构造器/类
+      //内置构造函数/自定义构造函数
+      //Number() new Array() Function() new Object()
+      //生产一个人的实例
+      //静态的属性 姓名 年龄
+      //动态的方法 吃 睡
+      //抽象 函数的传参来实现抽象
+      function Person(n, a) {
+        //1.创建一个容器
+        let obj = new Object();
+        //2.为这个容器提供静态的属性
+        obj.name = n
+        obj.age = a
+        //3. 为这个容器提供动态的方法
+        obj.eat = function () {
+          return this.name + "在吃"
+        }
+        obj.sleep = function () {
+          return this.name + "在睡"
+        }
+        //4. 将这个容器返回给外界
+        return obj
+      }
+      let zhangsan = new Person("张三", 20)
+      let lisi = new Person("李四", 30)
+      console.log(zhangsan)
+      console.log(lisi)
+    </script>
+  </body>
+
+</html>

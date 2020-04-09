@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <ul id="container"></ul>
+    <script>
+      let oParent = document.querySelector("#container");
+      let box = ["red", "yellow", "blue"]
+      let createLi = (parentEle, size, colorBox) => {
+        //一直在初始化li
+        for (let i = 0; i < size; i++) {
+          //1.创建一个li标签
+          let newLi = document.createElement("li");
+          //用一个字符串来存储原始的颜色
+          let oldColor = colorBox[i % colorBox.length]
+          //初始化li刚开始的颜色
+          newLi.setAttribute("style", `background-color: ${oldColor}`)
+          //放一个中立变量 来存储当时的颜色
+          newLi.setAttribute("aaa", oldColor)
+          //2. 父元素拼接一个li子标签
+          parentEle.appendChild(newLi)
+        }
+        //选中所有的li标签
+        let aLi = document.querySelectorAll("li")
+
+        //此时 静态页面已经初始化完毕
+        for (let i = 0; i < size; i++) {
+          aLi[i].addEventListener("mouseout", e => {
+            //访问之前存储的颜色
+            aLi[i].style.backgroundColor = aLi[i].getAttribute("aaa")
+          })
+
+          aLi[i].addEventListener("mouseover", e => {
+            aLi[i].style.backgroundColor = "green"
+          })
+        }
+      }
+      createLi(oParent, 9, box);
+    </script>
+  </body>
+
+</html>

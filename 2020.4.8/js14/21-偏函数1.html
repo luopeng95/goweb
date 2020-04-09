@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //姓名生成器
+      function createName(firstName, lastName) {
+        return firstName + lastName
+      }
+      let wangName = createName.bind(null, "王")
+      let liName = createName.bind(null, "李")
+
+      console.log(wangName("珊珊"))
+      console.log(wangName("狗蛋"))
+      console.log(wangName("二小"))
+
+      console.log(liName("珊珊"))
+      console.log(liName("狗蛋"))
+      console.log(liName("二小"))
+    </script>
+  </body>
+
+</html>

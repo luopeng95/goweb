@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="div1">1</div>
+    <div id="div2">2</div>
+    <script>
+      let oDiv1 = document.querySelector("#div1")
+      let oDiv2 = document.querySelector("#div2")
+
+      let change = function (color, width, height) {
+        this.style.backgroundColor = color
+        this.style.width = width
+        this.style.height = height
+      }
+
+      oDiv1.addEventListener("click", function () {
+        //apply 最多只有两个参数
+        //thisArg
+        //所有的形参形成一个数组
+        //call 正无穷个参数
+        //thisArg
+        //参数列表
+        //oDiv1 借用 window 的 change函数 令this指向 oDiv1
+        change.call(this, "pink", "100px", "100px") //this指向被改变的函数的调用
+        // change.apply(this, ["pink", "100px", "100px"]) //this指向被改变的函数的调用
+      })
+      oDiv2.addEventListener("click", function () {
+        change.apply(this, ["skyblue", "100px", "100px"])
+      })
+    </script>
+  </body>
+
+</html>

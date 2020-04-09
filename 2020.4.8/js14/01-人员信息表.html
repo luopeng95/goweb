@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      .table {
+        display: table;
+        border-collapse: collapse;
+      }
+
+      .table-row {
+        display: table-row;
+      }
+
+      .table>.table-row>div {
+        border: 1px solid black;
+        display: table-cell;
+        padding: 15px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- checkbox
+    姓名
+    工资
+    年龄
+    操作 -->
+    <ul id="table" class="table">
+      <li class="table-row table_title">
+        <div><input type="checkbox" id="allSelect"></div>
+        <div>姓名</div>
+        <div>工资</div>
+        <div>年龄</div>
+        <div>操作</div>
+      </li>
+      <li class="table-row">
+        <div><input type="checkbox"></div>
+        <div>付珍</div>
+        <div>30000</div>
+        <div>20</div>
+        <div>
+          <input type="button" value="修改">
+          <input type="button" value="删除">
+        </div>
+      </li>
+      <li class="table-row">
+        <div><input type="checkbox"></div>
+        <div>杨川</div>
+        <div>20000</div>
+        <div>30</div>
+        <div>
+          <input type="button" value="修改">
+          <input type="button" value="删除">
+        </div>
+      </li>
+      <li class="table-row">
+        <div><input type="checkbox"></div>
+        <div>杨宇航</div>
+        <div>50000</div>
+        <div>50</div>
+        <div>
+          <input type="button" value="修改">
+          <input type="button" value="删除">
+        </div>
+      </li>
+    </ul>
+    <script>
+      let json = [{
+        name: "付珍",
+        salary: 30000,
+        age: 20
+      }, {
+        name: "杨川",
+        salary: 20000,
+        age: 30
+      }, {
+        name: "杨宇航",
+        salary: 50000,
+        age: 50
+      }]
+    </script>
+  </body>
+
+</html>

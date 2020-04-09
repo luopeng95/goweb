@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //做一个工厂 用来生产人 这个对象
+      //只要首字母是大写函数 -> 构造函数/构造器/类
+      //内置构造函数/自定义构造函数
+      //Number() Array() Function() Object()
+      //生产一个人的实例
+      //静态的属性 姓名 年龄
+      //动态的方法 吃 睡
+      //封装 -> 函数 抽象的具体体现
+      //函数 有一定语义的有一定功能的代码段 有具体的输入和输出
+      //1.创建一个容器
+      let zhangsan = new Object();
+      //2.为这个容器提供静态的属性
+      zhangsan.name = "张三"
+      zhangsan.age = 20
+      //3. 为这个容器提供动态的方法
+      zhangsan.eat = function () {
+        return this.name + "在吃"
+      }
+      zhangsan.sleep = function () {
+        return this.name + "在睡"
+      }
+      let lisi = new Object();
+      //2.为这个容器提供静态的属性
+      lisi.name = "李四"
+      lisi.age = 20
+      //3. 为这个容器提供动态的方法
+      lisi.eat = function () {
+        return this.name + "在吃"
+      }
+      lisi.sleep = function () {
+        return this.name + "在睡"
+      }
+      console.log(zhangsan.name)
+      console.log(lisi.name)
+    </script>
+  </body>
+
+</html>

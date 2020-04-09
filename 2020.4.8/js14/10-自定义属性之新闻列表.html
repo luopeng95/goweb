@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      ul {
+        width: 700px;
+        margin: 100px auto;
+      }
+
+      li {
+        width: 700px;
+        background-color: pink;
+        margin: 10px;
+        overflow: hidden;
+      }
+
+      li>p {
+        padding: 20px;
+      }
+
+      li>span {
+        float: right;
+      }
+    </style>
+  </head>
+
+  <body>
+    <ul id="news">
+      <!-- <li>
+        <h3>
+          <a
+            href="https://www.sohu.com/a/386300003_114988?spm=smpc.home.top-news4.3.1586326653502Mg3vdZw&_f=index_news_14">受贿921万，山东驻京办原主任窦玉明一审获刑11年半
+          </a>
+        </h3>
+        <p>新京报快讯 据泰安中院消息，2020年4月8日上午，泰安市中级人民法院通过远程提讯系统，一审公开宣判山东省人民政府驻北京办事处原党委书记、主任窦玉明受贿案</p>
+        <span>2020-04-08 12:11</span>
+      </li>
+      <li>
+        <h3>
+          <a
+            href="https://www.sohu.com/a/386280264_120702?spm=smpc.home.top-news2.2.1586326653502Mg3vdZw&_f=index_news_1">湖北黄冈“四进”工作队助“四上”企业全复工
+          </a>
+        </h3>
+        <p>经济日报-中国经济网讯（记者 柳洁、通讯员
+          周勇）生产车间内，机器轰鸣，机械手上下翻飞，工人正有条不紊地忙碌着。装载区内，叉车来回穿梭，一袋袋饲料通过传送带运到一辆辆货车上，紧急运往各地养殖场。4月3日，黄冈新希望饲料科技有限公司内一片忙碌景象。</p>
+        <span>2020-04-08 10:59</span>
+      </li>
+      <li>
+        <h3>
+          <a
+            href="https://www.sohu.com/a/386198360_267106?spm=smpc.home.top-news2.1.1586326653502Mg3vdZw&_f=index_news_0">“警服蓝”闪耀战“疫”一线——湖北公安机关疫情防控中勇当“先锋队”“主力军”
+          </a>
+        </h3>
+        <p>新华社武汉4月7日电题：“警服蓝”闪耀战“疫”一线——湖北公安机关疫情防控中勇当“先锋队”“主力军”
+        </p>
+        <span>2020-04-07 23:48</span>
+      </li> -->
+    </ul>
+    <script>
+      //json 是 js对象 或者 js数组
+      let json = [{
+        "id": 0,
+        "title": "受贿921万，山东驻京办原主任窦玉明一审获刑11年半",
+        "href": "https://www.sohu.com/a/386300003_114988?spm=smpc.home.top-news4.3.1586326653502Mg3vdZw&_f=index_news_14",
+        "content": "新京报快讯 据泰安中院消息，2020年4月8日上午，泰安市中级人民法院通过远程提讯系统，一审公开宣判山东省人民政府驻北京办事处原党委书记、主任窦玉明受贿案",
+        "date": "2020-04-08 12:11"
+      }, {
+        "id": 1,
+        "title": "湖北黄冈“四进”工作队助“四上”企业全复工",
+        "href": "https://www.sohu.com/a/386280264_120702?spm=smpc.home.top-news2.2.1586326653502Mg3vdZw&_f=index_news_1",
+        "content": "经济日报-中国经济网讯（记者 柳洁、通讯员周勇）生产车间内，机器轰鸣，机械手上下翻飞，工人正有条不紊地忙碌着。装载区内，叉车来回穿梭，一袋袋饲料通过传送带运到一辆辆货车上，紧急运往各地养殖场。4月3日，黄冈新希望饲料科技有限公司内一片忙碌景象。",
+        "date": "2020-04-08 10:59"
+      }, {
+        "id": 2,
+        "title": "“警服蓝”闪耀战“疫”一线——湖北公安机关疫情防控中勇当“先锋队”“主力军”",
+        "href": "https://www.sohu.com/a/386198360_267106?spm=smpc.home.top-news2.1.1586326653502Mg3vdZw&_f=index_news_0",
+        "content": "新华社武汉4月7日电题：“警服蓝”闪耀战“疫”一线——湖北公安机关疫情防控中勇当“先锋队”“主力军”",
+        "date": "2020-04-07 23:48"
+      }]
+
+      let oNews = document.querySelector("#news")
+      json.map(e => {
+        oNews.innerHTML += `
+        <li data-id="${e.id}">
+          <h3>
+            <a href="${e.href}">${e.title}</a>
+          </h3>
+          <p>${e.content}</p>
+          <span>${e.date}</span>
+        </li>
+        `
+      })
+    </script>
+  </body>
+
+</html>
