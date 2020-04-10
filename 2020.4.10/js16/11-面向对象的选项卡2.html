@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      .tab {
+        margin: 100px auto;
+        width: 300px;
+      }
+
+      .tab .tab_title {
+        width: 300px;
+        overflow: hidden;
+      }
+
+      .tab .tab_title li {
+        background-color: gray;
+        color: white;
+        width: 100px;
+        text-align: center;
+        padding: 5px;
+        box-sizing: border-box;
+        cursor: pointer;
+        float: left;
+      }
+
+      .tab .tab_title .clicked {
+        background-color: red;
+      }
+
+      .tab .tab_content li {
+        border: 3px solid yellowgreen;
+        width: 300px;
+        height: 200px;
+        padding: 20px;
+        box-sizing: border-box;
+        background-color: pink;
+        display: none;
+      }
+
+      .tab .tab_content .active {
+        display: block;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="tab" id="tab">
+      <!-- <ul class="tab_title" id="tab_title">
+        <li class="clicked">标题一</li>
+        <li>标题二</li>
+        <li>标题三</li>
+      </ul>
+      <ul class="tab_content" id="tab_content">
+        <li class="active">“中国创新能力不断提升”</li>
+        <li>“必须竭尽所能避免和减少污名化”</li>
+        <li>海关总署：健康申明卡网上申报超380万票</li>
+      </ul> -->
+    </div>
+    <script src="./js/tool.js"></script>
+    <script>
+      let json = [{
+        "title": "标题一",
+        "content": "“中国创新能力不断提升”"
+      }, {
+        "title": "标题二",
+        "content": "“必须竭尽所能避免和减少污名化”"
+      }, {
+        "title": "标题三",
+        "content": "海关总署：健康申明卡网上申报超380万票"
+      }]
+      class Tab {
+        constructor(parent, data) {
+          this.parent = parent;
+          this.data = data
+          this.init()
+        }
+        //初始化一个选项卡
+        init() {
+          let oTitle = _append(this.parent, "ul", "", {
+            id: "tab_title",
+            class: "tab_title"
+          })
+          let oContent = _append(this.parent, "ul", "", {
+            id: "tab_content",
+            class: "tab_content"
+          })
+          this.data.map((e, i) => {
+            if (i !== 0) {
+              oTitle.innerHTML += `<li>${e.title}</li>`
+              oContent.innerHTML += `<li>${e.content}</li>`
+            } else {
+              oTitle.innerHTML += `<li class="clicked">${e.title}</li>`
+              oContent.innerHTML += `<li class="active">${e.content}</li>`
+            }
+          })
+        }
+      }
+
+      new Tab("tab", json)
+    </script>
+  </body>
+
+</html>

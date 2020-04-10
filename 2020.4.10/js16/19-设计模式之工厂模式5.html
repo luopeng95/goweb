@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <!-- 广告区域 -->
+    <div id="container">
+      <!-- 前端课程广告
+      UI课程广告
+      JAVA课程广告 -->
+    </div>
+    <script>
+      //我要求做一个广告区域
+      //因为三种广告完全不一样 所以要求必须用三种不同的类来实现这个广告区域 需求很复杂/区别很大
+      //介绍前端的广告(学前端,找老胡),背景颜色天蓝色.[会有个视频audio]
+      //介绍UI的广告(喜欢画画就来学UI吧),背景颜色粉色,文字颜色棕色.[会有轮播图]
+      //介绍JAVA的广告(一起来学JAVA吧),背景颜色绿色,文字颜色黄色[会有pre代码标签]
+
+      //所有的广告需求 都必须先经过我这个广告工厂类来分配才可以
+      //M(model) V(view) VM(view-model) 视图模型层
+      //vm 连接所有的数据和UI 所有的内容都需要经过vm来分配和调整
+      class adFactory {
+        //每次new adFactory 就总会产生一个广告
+        //这条广告需要根据type来分配
+        constructor(ele, context, type) {
+          // this.context = context
+          //根据传入的type来确定 该广告需要调用哪个类
+          switch (type) {
+            case "JavaScript":
+              //这个工厂会给你生产一个js广告
+              //可以不要new了
+              new JavaScript(ele, context)
+              break;
+            case "UI":
+              new UI(ele, context)
+              break;
+            case "JAVA":
+              new JAVA(ele, context)
+              break;
+          }
+        }
+      }
+      class JavaScript {
+        constructor(ele, context) {
+          this.init(ele, context)
+        }
+        init(ele, context) {
+          let newDiv = document.createElement("div")
+          newDiv.style.backgroundColor = "skyblue"
+          newDiv.innerText = context;
+          ele.appendChild(newDiv)
+        }
+      }
+      class UI {
+        constructor(ele, context) {
+          this.init(ele, context)
+        }
+        init(ele, context) {
+          let newDiv = document.createElement("div")
+          newDiv.style.backgroundColor = "pink"
+          newDiv.style.color = "brown"
+          newDiv.innerText = context;
+          ele.appendChild(newDiv)
+        }
+      }
+      class JAVA {
+        constructor(ele, context) {
+          this.init(ele, context)
+        }
+        init(ele, context) {
+          let newDiv = document.createElement("div")
+          newDiv.style.backgroundColor = "green"
+          newDiv.style.color = "yellow"
+          newDiv.innerText = context;
+          ele.appendChild(newDiv)
+        }
+      }
+
+      let oParent = document.getElementById("container")
+      let adJs = new adFactory(oParent, "学前端,找老胡", "JavaScript"); //生产出一个js广告dom
+      let adUI = new adFactory(oParent, "喜欢画画就来学UI吧", "UI"); //生产出一个UI广告dom
+      let adJava = new adFactory(oParent, "一起来学JAVA吧", "JAVA"); //生产出一个JAVA广告dom
+    </script>
+  </body>
+
+</html>

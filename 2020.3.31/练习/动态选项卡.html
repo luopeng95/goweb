@@ -77,18 +77,18 @@
         content: "张三正在踢足球",
         backgroundColor: "pink"
       }]
-      data.auto = true;
-      let onav = document.getElementById("nav");
-      let ocontent = document.getElementById("content");
-      let os1 = document.getElementsByClassName("ss")[0];
-      let os2 = document.getElementsByClassName("ss")[1];
-      let index = 0;
+        data.auto = true;
+        let onav = document.getElementById("nav");
+        let ocontent = document.getElementById("content");
+        let os1 = document.getElementsByClassName("ss")[0];
+        let os2 = document.getElementsByClassName("ss")[1];
+        let index = 0;
     //   初始化导航栏和div内容区
     function init(arr){
         for(let i = 0; i < arr.length; ++i){
             onav.innerHTML += `<input type="button" value=${arr[i].title} style="width:${onav.offsetWidth/arr.length}px;" data-class=${i}>`;
         }
-        console.log(onav.getElementsByTagName("input"));
+        // console.log(onav.getElementsByTagName("input"));
         for(let i = 0; i < arr.length; ++i){
             onav.getElementsByTagName("input")[i].onclick = () =>{
                 change("nav", i);

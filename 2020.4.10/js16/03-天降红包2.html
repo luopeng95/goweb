@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      div {
+        width: 50px;
+        height: 80px;
+        background-color: pink;
+        position: absolute;
+        /* transform: rotate(16deg); */
+      }
+    </style>
+  </head>
+
+  <body>
+    <script src="./js/random.js"></script>
+    <script>
+      let iScreenWidth = document.documentElement.clientWidth;
+      for (let i = 0; i < 100; i++) {
+        let x = _random(iScreenWidth - 80)
+        let color = `rgb(${_random(255)},${_random(255)},${_random(255)})`
+        let time = _random(10000)
+        let speed = _random(10, 20)
+        RedBag(50, 80, x, 0, color, time, speed)
+      }
+
+      function RedBag(width, height, x, y, backgroundColor, time, speed, rotate) {
+        let div = document.createElement("div")
+        let iScreenHeight = document.documentElement.clientHeight;
+        div.style.position = "absolute";
+        div.style.width = width + "px";
+        div.style.height = height + "px";
+        div.style.left = x + "px";
+        div.style.top = y + "px";
+        div.style.backgroundColor = backgroundColor;
+        setTimeout(() => {
+          document.body.appendChild(div)
+          setInterval(() => {
+            div.style.top = div.offsetTop + speed + "px"
+            if (div.offsetTop >= iScreenHeight - div.offsetHeight) {
+              document.body.removeChild(div)
+            }
+          }, 100)
+        }, time)
+      }
+    </script>
+  </body>
+
+</html>

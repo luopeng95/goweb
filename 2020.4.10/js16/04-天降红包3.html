@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script src="./js/random.js"></script>
+    <script>
+      /**
+       * @param {Number} width 红包的宽度
+       * @param {Number} height 红包的高度
+       * @param {Number} x 红包起始的x轴的位置
+       * @param {Number} y 红包起始的y轴的位置 应该固定0
+       * @param {String} backgroundColor 红包的背景颜色
+       * @param {Number} time 红包产生的时间
+       * @param {Number} speed 红包掉落的速度
+       * @param {Number} rotate 旋转的度数
+       */
+      function RadBag(width, height, x, y, backgroundColor, time, speed, rotate) {
+        //用来装一个div 该div有这些初始属性及行为
+        //this 指向的就是那个红包实例
+        this.div = document.createElement("div")
+        this.width = width;
+        this.height = height;
+        this.x = x;
+        this.y = y;
+        this.backgroundColor = backgroundColor;
+        this.time = time;
+        this.speed = speed;
+        this.rotate = rotate;
+        //一切业务的开始
+        this.init()
+      }
+
+      RadBag.prototype = {
+        //红包生成
+        init: function () {
+          setTimeout(() => {
+            document.body.appendChild(this.div)
+            this.div.style.position = "absolute"
+            this.div.style.width = this.width + "px"
+            this.div.style.height = this.height + "px"
+            this.div.style.left = this.x + "px"
+            this.div.style.top = this.y + "px"
+            this.div.style.backgroundColor = this.backgroundColor;
+            //马上调用掉落函数
+            this.drop()
+          }, this.time)
+        },
+        //红包掉落
+        drop: function () {
+          setInterval(() => {
+            this.div.style.top = this.div.offsetTop + this.speed + "px"
+            if (this.div.offsetTop >= document.documentElement.clientHeight - this.div.offsetHeight) {
+              this.remove()
+            }
+          }, 100)
+        },
+        //红包销毁
+        remove: function () {
+          document.body.removeChild(this.div)
+        }
+      }
+
+      //RadBag 是一个红包工厂 每当我想要一个红包实例的时候 就自动会给我生成一个红包div
+      for (let i = 0; i < 100; i++) {
+        let iScreenWidth = document.documentElement.clientWidth;
+        let x = _random(iScreenWidth - 80)
+        let color = `rgb(${_random(255)},${_random(255)},${_random(255)})`
+        let time = _random(3000)
+        let speed = _random(10, 20)
+        new RadBag(50, 80, x, 0, color, time, speed)
+      }
+    </script>
+  </body>
+
+</html>

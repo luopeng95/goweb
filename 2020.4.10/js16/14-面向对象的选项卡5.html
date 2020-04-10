@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./tab/css/tab1.css">
+    <style>
+      .tab {
+        margin: 100px auto;
+        width: 400px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="tab" id="haha">
+    </div>
+    <script src="./js/tool.js"></script>
+    <script src="./tab/js/tab1.js"></script>
+    <script>
+      let json = [{
+        "title": "标题一",
+        "content": "“中国创新能力不断提升”"
+      }, {
+        "title": "标题二",
+        "content": "“必须竭尽所能避免和减少污名化”"
+      }, {
+        "title": "标题三",
+        "content": "海关总署：健康申明卡网上申报超380万票"
+      }, {
+        "title": "标题四",
+        "content": "还是撒和撒谎时"
+      }, {
+        "title": "标题五",
+        "content": "555555555555555555"
+      }, {
+        "title": "标题五",
+        "content": "555555555555555555"
+      }, {
+        "title": "标题五",
+        "content": "555555555555555555"
+      }]
+      new Tab("haha", json)
+    </script>
+  </body>
+
+</html>
