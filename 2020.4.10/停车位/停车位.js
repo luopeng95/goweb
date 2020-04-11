@@ -44,7 +44,7 @@ class Car{
     }
 
     init(){
-        let joinC = this.overCar();
+        this.overCar();
     }
 
     overCar(){

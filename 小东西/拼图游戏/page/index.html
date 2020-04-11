@@ -10,20 +10,24 @@
 </head>
 <body>
     <div id="container">
-        <div id="main">
+        <div id="main" >
 
         </div>
         <div id="fun">
             <span>计时：</span>
             <span>步数</span>
             <span><select name="leave" id="leave">
-                <option value="l1">简单模式</option>
-                <option value="l2">一般模式</option>
-                <option value="l3">困难模式</option>
+                <option value="15">简单模式</option>
+                <option value="24">一般模式</option>
+                <option value="99">困难模式</option>
             </select></span>
             <span>查看原图</span>
         </div>
     </div>
     <script src="../js/index.js"></script>
+    <script>
+        let parent = $("#main");
+        new Puzz($("#leave").val(), "../image/image.png", parent);
+    </script>
 </body>
 </html>
