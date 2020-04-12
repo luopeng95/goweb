@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 建立三个空的下拉框 -->
+    <select name="province" id="province"></select>
+    <select name="city" id="city"></select>
+    <select name="area" id="area"></select>
+    <script>
+        /**** 代码不能跑的同学,浏览器不支持跨域,所以需要给谷歌浏览器的属性 -> 目标内 设置--allow-file-access-from-files 注意前面有个空格 ****/
+        /****此为ajax代码 不需要了解,但是其实他很重要****/
+        let data = showJson();
+        function showJson() {
+            var test;
+            if (window.XMLHttpRequest) {
+                test = new XMLHttpRequest();
+            } else if (window.ActiveXObject) {
+                test = new window.ActiveXObject();
+            } else {
+                alert("请升级至最新版本的浏览器");
+            }
+            if (test != null) {
+                test.open("GET", "data/areas.json", true);
+                test.onreadystatechange = function () {
+                    if (test.readyState == 4) {
+                        var data = JSON.parse(test.responseText);
+                        //初始化下拉菜单(代码的开始为这一行)
+                        init(data);
+                    }
+                };
+                test.send();
+            }
+        }
+        /****此为ajax代码 不需要了解,但是其实他很重要****/
+        //先初始化省份
+        //找到省份的下拉菜单
+        let oProvince = document.getElementById("province");
+        //找到城市的下拉菜单
+        let oCity = document.getElementById("city");
+        //找到地区的下拉菜单
+        let oArea = document.getElementById("area");
+        //初始化下拉菜单
+        createNullOption([oProvince, oCity, oArea]);
+        
+        //1.调用初始化代码
+        function init(data) {
+            for (let i = 0; i < data.length; i++) {
+                //遍历省份添加所有的省份
+                createOption(oProvince, data[i].code, data[i].name);
+            }
+            //为省份的下拉菜单提供改变按钮,即如果省份下拉菜单的值改变了,则会触发该触发器
+            oProvince.addEventListener("change", function(){
+                changeCity(this, data);
+            })
+        }
+        
+        //2.先初始化(还包含清空)下拉菜单按钮
+        function createNullOption(selectArr) {
+            for(let i = 0; i < selectArr.length; i++){
+                selectArr[i].innerHTML = "";
+                createOption(selectArr[i], "-1", "--请选择--")
+            }
+        }
+
+        //3.为相应的下拉菜单建立一个option
+        function createOption(parent, code, name) {
+            let oOption = document.createElement("option");
+            let oText = document.createTextNode(name);
+            oOption.appendChild(oText);
+            oOption.setAttribute("code", code)
+            parent.appendChild(oOption);
+        }
+
+        //4.改变省份方法
+        function changeCity(oProvince, data) {
+            //先清空城市和地区
+            createNullOption([oCity, oArea]);
+            //找到选中的省份的下标
+            let i = oProvince.selectedIndex - 1;
+            //判断是不是请选择选项
+            if (i !== -1) {
+                // console.log(data[i].children);
+                //再次使用for循环遍历,这次是遍历某个特定的省
+                for (let j = 0; j < data[i].children.length; j++) {
+                    createOption(oCity, data[i].children[j].code, data[i].children[j].name);
+                }
+                //为城市下拉菜单提供地区改变方法(可以有优化的空间)
+                oCity.addEventListener("change", function () {
+                    //每次改变城市都会改变地区列表(可以有优化的空间)
+                    changeArea(this, data[i]);
+                })
+            } else {
+                //选中的选项是请选择
+                //所以改变城市和区域
+                createNullOption([oCity, oArea]);
+            }
+        }
+        //5.改变城市方法 
+        function changeArea(oCity, data) {
+            //最后在代码中加入,每次改变就重洗城市的所有option,只保留"请选择"
+            //先清空地区
+            createNullOption([oArea]);
+            console.log(oCity)
+            //找到事件源,但是只能获取到select,可以通过select来获取选中的下标
+            console.log(oCity.selectedIndex);
+            //获取选中的城市的下标
+            let j = oCity.selectedIndex - 1;
+            if (j !== -1) {
+                console.log(j);
+                console.log(data.children[j].children.length);
+                for (let k = 0; k < data.children[j].children.length; k++) {
+                    //渲染所有的option
+                    createOption(oArea, data.children[j].children[k].code, data.children[j].children[k].name);
+                }
+            } else {
+                //选中的选项是请选择
+                //所以改变区域
+                createNullOption([oArea]);
+            }
+        } 
+
+        //6.判断城市或地区变化
+        function changeIndex(){
+            
+        }
+    </script>
+</body>
+
+</html>

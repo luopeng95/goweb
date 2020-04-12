@@ -53,6 +53,7 @@
             const iMouseX = e.x - oPopup.offsetLeft;
             const iMouseY = e.y - oPopup.offsetTop;
             fDivMove = e => {
+              console.log(1)
               //才叫拖曳事件
               oPopup.style.left = e.x - iMouseX + "px"
               oPopup.style.top = e.y - iMouseY + "px"

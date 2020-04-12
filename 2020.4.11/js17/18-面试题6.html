@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //var 改成 let 0 1 2 3 4
+      //还有别的办法实现0 1 2 3 4吗?
+      //除了let
+      //在ES6之间 实现这个东西 都是靠 IIFE(立即执行函数) 来实现
+      //闭包是一个抽象的概念 立即执行函数 是闭包的一个应用
+      for (var i = 0; i < 5; i++) {
+        setTimeout(() => {
+          console.log(i)
+        }, 0);
+      }
+      //5 5 5 5 5
+    </script>
+  </body>
+
+</html>

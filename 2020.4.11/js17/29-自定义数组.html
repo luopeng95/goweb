@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let arr = new Array("北京", "上海", "深圳")
+      let newArr = arr.map((e, i, a) => {
+        return e + "真大"
+      })
+      console.log(arr)
+      console.log(newArr)
+
+      function MyArray(...args) {
+        this.length = args.length;
+        for (let i = 0; i < args.length; i++) {
+          this[i] = args[i]
+        }
+      }
+      MyArray.prototype = {
+        constructor: MyArray,
+        push: function (item) {
+          this[this.length] = item
+          this.length++
+          return this.length
+        },
+        shift: function () {
+          let shiftItem = this[0]
+          for (let i = 1; i < this.length; i++) {
+            this[i - 1] = this[i]
+          }
+          this.length--
+          delete this[this.length]
+          return shiftItem
+        },
+        forEach: function (cb) {
+          for (let i = 0; i < this.length; i++) {
+            cb(this[i], i, this)
+          }
+        },
+        map: function (cb) {
+          let tempMa = new MyArray()
+          for (let i = 0; i < this.length; i++) {
+            tempMa.push(cb(this[i], i, this))
+          }
+          return tempMa
+        }
+      }
+
+      let ma = new MyArray("北京", "上海", "深圳");
+      // console.log(ma.push("广州"))
+      // console.log(ma)
+      // console.log(ma.shift())
+      // console.log(ma)
+      // ma.forEach((e, i, a) => {
+      //   console.log(e)
+      //   console.log(i)
+      //   console.log(a)
+      // })
+      let newMa = ma.map((e, i, a) => {
+        return e + "真大"
+      })
+      console.log(ma)
+      console.log(newMa)
+    </script>
+  </body>
+
+</html>

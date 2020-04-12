@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let obj = {
+        name: "张三",
+        hobby: ["唱歌", "跳舞", "游泳"],
+        eat: function () {
+          return this.name + "在吃"
+        }
+      }
+
+      //深复制最简单的方案 JSON.parse(JSON.stringify(obj))
+      //1. 不能复制函数
+      //2. 会破坏原有的原型链
+
+      //$.extend
+      let obj2 = JSON.parse(JSON.stringify(obj))
+
+      obj2.name = "李四"
+      obj2.hobby[0] = "喝酒"
+      console.log(obj)
+      console.log(obj2)
+    </script>
+  </body>
+
+</html>

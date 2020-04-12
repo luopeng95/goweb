@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      function outer() {
+        let a = 1;
+
+        function inner() {
+          console.log(a)
+          a++;
+        }
+        return inner
+      }
+      let add = outer();
+      add() //1
+      add() //2
+      add() //3
+      let add2 = outer();
+      add2() //1
+      add2() //2
+      add2() //3
+      add2() //4
+      outer()() //1
+      outer()() //1
+    </script>
+  </body>
+
+</html>

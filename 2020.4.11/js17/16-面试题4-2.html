@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      function outer() {
+        let arr = []
+        for (let i = 0; i < 5; i++) {
+          arr[i] = function () {
+            console.log(i)
+          }
+        }
+        return arr
+      }
+
+      let result = outer();
+      result[0]() //0
+      result[1]() //1
+      result[2]() //2
+      result[3]() //3
+      result[4]() //4
+    </script>
+  </body>
+
+</html>

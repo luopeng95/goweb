@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      // let show = (greetstr, username) => `${username}, ${greetstr}`
+
+      // let show1 = show.bind(null, "欢迎来到京北商城");
+
+      // console.log(show1("张三"))
+      // console.log(show1("李四"))
+      // console.log(show1("王五"))
+
+      // let outer = (greetstr) => {
+      //   let inner = (username) => {
+      //     return `${username}, ${greetstr}`
+      //   }
+      //   return inner
+      // }
+      let outer = (greetstr) => {
+        return (username) => {
+          return `${username}, ${greetstr}`
+        }
+      }
+      let fnjingbeishangcheng = outer("欢迎来到京北商城") //预定义函数(偏函数)
+      console.log(fnjingbeishangcheng("张三"))
+      console.log(fnjingbeishangcheng("李四"))
+      console.log(fnjingbeishangcheng("王五"))
+    </script>
+  </body>
+
+</html>
