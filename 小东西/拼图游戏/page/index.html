@@ -14,20 +14,37 @@
 
         </div>
         <div id="fun">
-            <span>计时：</span>
-            <span>步数</span>
+            <span>计时：<span id="timer"></span></span>
+            <span>步数: <span id="step"></span></span>
             <span><select name="leave" id="leave">
                 <option value="15">简单模式</option>
                 <option value="24">一般模式</option>
                 <option value="99">困难模式</option>
             </select></span>
-            <span>查看原图</span>
+            <span id="lookArtWork">查看原图</span>
+        </div>
+        <div id="artWork">
+            
         </div>
     </div>
     <script src="../js/index.js"></script>
     <script>
+        let imgArr = ["../image/image.png", "../image/image1.jpg", "../image/image2.jpg", "../image/image3.jpg", "../image/image4.jpg"];
         let parent = $("#main");
-        new Puzz($("#leave").val(), "../image/image.png", parent);
+        let puzz1 = new Puzz($("#leave").val(), imgArr[Math.floor(Math.random()* imgArr.length)], parent);
+        
+        $("#leave").on("change", (e) => {
+            parent.html("");
+            puzz1.clearTimer();
+            puzz1 = new Puzz($("#leave").val(), imgArr[Math.floor(Math.random()*imgArr.length)], parent);
+            $("#artWork").removeClass("dis");
+        })
+
+        $("#lookArtWork").on("click", (e) => {
+            $("#artWork").html(`<img src=${puzz1.imgUrl}>`);
+            $("#artWork").toggleClass("dis");
+        })
+        
     </script>
 </body>
 </html>
