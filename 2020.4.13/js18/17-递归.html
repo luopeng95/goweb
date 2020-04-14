@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      // function show() {
+      //   if() return 
+      //   show()
+      // }
+
+      //5! = 5*4*3*2*1
+      //4! = 4*3*2*1
+      //3! = 3*2*1
+      //2! = 2*1
+      //1! = 1
+
+      //fn(5) = 5*4*3*2*1
+      //fn(4) =   4*3*2*1
+      //fn(3) =     3*2*1
+      //fn(2) =       2*1
+      //fn(1) =         1
+
+      //fn(5) = 5*fn(4)
+      //fn(4) =   4*fn(3)
+      //fn(3) =     3*fn(2)
+      //fn(2) =       2*fn(1)
+      //fn(1) =         1 //停止条件
+
+      //fn(n) = fn(n - 1) * n
+
+
+      function fn(n) {
+        //提供一个停止条件
+        if (n === 1) return 1
+        //左边永远不确定 右边永远确定
+        return fn(n - 1) * n
+      }
+
+      let result = fn(5) //1 * 2 * 3 * 4 * 5
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var hanoi = function (n, from, ass, to) {
+                if (n > 0) {
+                    hanoi(n - 1, from, to, ass);
+                    move(n, from, to);
+                    hanoi(n - 1, ass, from, to);
+                }
+            }
+            var move = function (n, from, to) {
+                console.log("移动第" + n + "个从" + from + "到" + to);
+            }
+            hanoi(3, "A", "B", "C");
+    </script>
+</body>
+</html>

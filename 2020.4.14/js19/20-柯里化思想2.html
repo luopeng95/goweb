@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="div1">1</div>
+    <script>
+      let obj = {
+        name: "柯里化"
+      }
+
+      //在绑定的时候 该函数就被初始化了 同时 存储了this指向和 三个参数
+      //外函数 仅仅只是收集参数 和改变this指向
+      //外函数 页面初始化的瞬间 就直接绑定了
+      Function.prototype._bind = function (thisArg, ...outerArgs) {
+        //内函数 才是真正执行的那个函数
+        //当点击的时候 触发他的callback回调函数 事件的回调函数总是会有一个参数叫Event
+        return function (...innerArgs) {
+          //收集外函数的 1,2,obj
+          //内函数的 Event
+          fn.call(thisArg, ...outerArgs, ...innerArgs)
+        }
+      }
+
+      //我想把obj传到fn中 同时我还要传1,2
+      //我还要将这个函数的指向指向为obj这个对象
+      function fn(...arg) {
+        console.log(arg)
+        console.log(this)
+      }
+      //我现在想写一个函数 接收我需要参数 接收两个部分的参数
+
+      let oDiv = document.getElementById("div1")
+      // oDiv.addEventListener("click", function (e) {
+      //   fn.bind(obj, 1, 2, obj, e)()
+      // })
+
+      // oDiv.addEventListener("click", function (e) {
+      //   fn._bind(oDiv, e)(1, 2, obj)
+      // })
+
+      //我没写MouseEvent 但是为什么我能收集到Event
+      oDiv.addEventListener("click", fn._bind(oDiv, 1, 2, obj))
+      // oDiv.addEventListener("click", fn._bind(oDiv, 1, 2, obj))
+    </script>
+  </body>
+
+</html>

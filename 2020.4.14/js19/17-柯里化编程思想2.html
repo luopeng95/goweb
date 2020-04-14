@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let outer1 = "唱歌"
+      let outer2 = "跳舞"
+      let outer3 = "游泳"
+
+      let inner1 = 1
+      let inner2 = 2
+      let inner3 = 3
+
+      function outer(...arr1) {
+        return function (...arr2) {
+          return [...arr1, ...arr2] //[["唱歌", "跳舞", "游泳"],[1,2,3]]
+        }
+      }
+      console.log(outer(outer1, outer2, outer3)(inner1, inner2, inner3))
+      //["唱歌", "跳舞", "游泳", 1, 2, 3]
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <select id="selectCity" multiple size="4">
+      <option value="010">北京</option>
+      <option value="021">上海</option>
+      <option value="0755">深圳</option>
+      <option value="020">广州</option>
+    </select>
+    <script>
+      let oSelect = document.getElementById("selectCity");
+      oSelect.addEventListener("change", e => {
+        //选中的是那个option
+        // console.log(e.target.selectedOptions)
+        // console.log(e.target.selectedOptions[0].innerHTML)
+        //选中的是那个option对应的下标
+        // console.log(e.target.selectedIndex)
+        for (let i = 0; i < e.target.selectedOptions.length; i++) {
+          console.log(e.target.selectedOptions[i].innerHTML)
+        }
+      })
+    </script>
+  </body>
+
+</html>

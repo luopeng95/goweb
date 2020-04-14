@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let obj = {
+        name: "张三",
+        wife: {
+          name: "小红",
+          car: {
+            name: "玛莎拉蒂"
+          }
+        }
+      }
+
+      //一层深复制
+      // let arr2 = arr.slice();
+      // let arr2 = [...arr]
+      // let arr2 = arr.concat([])
+
+      //递归深复制
+      function deepClone(obj) {
+        //初始化一个新的对象
+        let newObj = {};
+        //遍历 所有的的key
+        for (let key of Object.keys(obj)) {
+          //判断每个是对象还是元素
+          if (Object.prototype.toString.call(obj[key]) === "[object Object]") {
+            //如果是对象
+            newObj[key] = deepClone(obj[key])
+          } else {
+            //如果是元素
+            newObj[key] = obj[key]
+          }
+        }
+        return newObj
+      }
+
+      let obj2 = deepClone(obj)
+      // console.log(obj2 === obj)
+      obj2.wife.car.name = "比亚迪"
+      console.log(obj)
+      console.log(obj2)
+    </script>
+  </body>
+
+</html>

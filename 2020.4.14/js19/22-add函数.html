@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //add(1, 2, 3)(4, 5)(6, 7)
+      //toString() 在赋值字符串 或者打印内容到页面上的 会自动触发toString()
+      //如果toString() 无法触发 valueOf()
+      //add(1, 2, 3)(4, 5) => inner(4, 5) => add(...[1, 2, 3], ...[4, 5]) => add(1, 2, 3, 4, 5)
+      //add(1, 2, 3)(4, 5)(6, 7) => add(1, 2, 3, 4, 5)(6, 7) =>inner(6, 7)
+      //outerArgs = [1, 2, 3]
+      function add(...outerArgs) {
+        inner.toString = function () {
+          // 参数的处理
+        }
+
+        function inner(...innerArgs) {
+          return add(...outerArgs, ...innerArgs)
+        }
+        return inner
+      }
+      console.log(add(1, 2, 3, 4, 5, 6, 7))
+    </script>
+  </body>
+
+</html>

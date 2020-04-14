@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      // function fn() {
+      //   fn()
+      // }
+
+      // 1. 自己调用自己
+      // 2. 因为自己调用自己会出现无限死循环 所以还需要设置一个停止条件
+      // 3. 递归永远是树形结构 -> 递归树
+      // 4. 最先调用的函数 最后执行完毕 最后调用的函数 最先执行完毕
+      // 阶乘
+      // 5! = 5 * 4 * 3 * 2 * 1  = fn(5) => fn(4) * 5
+      // 4! =     4 * 3 * 2 * 1  = fn(4) => fn(3) * 4
+      // 3! =         3 * 2 * 1  = fn(3) => fn(2) * 3
+      // 2! =             2 * 1  = fn(2) => fn(1) * 2
+      // 1! =                 1  = fn(1) => 1
+      // fn(n) = fn(n - 1) * n
+      // n! => fn(n)
+      // 5! => fn(5)  4! => fn(4)  3! => fn(3)  2! => fn(2)  1! => fn(1)
+
+      function fn(n) {
+        debugger
+        if (n === 1) {
+          return 1
+        } else {
+          return n * fn(n - 1)
+        }
+      }
+
+      //fn(5) 开启一个栈内存
+      //fn(4) 开启一个栈内存
+      //fn(3) 开启一个栈内存
+      //fn(2) 开启一个栈内存 
+      //fn(1) 开启一个栈内存 return 1
+      console.log(fn(4))
+      // console.log(fn(5))
+      // console.log(fn(6))
+    </script>
+  </body>
+
+</html>

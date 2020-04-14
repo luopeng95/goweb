@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //问题 我有个10个阶梯 我每次迈出的步子 可以是一个阶梯 也可以是两个阶梯
+      //请问 爬楼的方法 有多少种?
+      // fn(10) = fn(9) + fn(8)
+      // fn(1) = 1;
+      // fn(2) = 2;
+      // fn(3) = fn(2) + fn(1);
+      // fn(4) = fn(3) + fn(2);
+
+      //循环的代码 更加冗余 更加容易理解 而且不会产生过多的栈内存
+
+      function fn(n) {
+        if (n === 1 || n === 2) return n
+        let r1 = 1; //表示走到第一阶的走法
+        let r2 = 2; //表示走到第二阶的走法
+        let result;
+        for (let i = 3; i <= n; i++) {
+          //这次的result应该是上次的 r1 + r2
+          result = r1 + r2
+          //r1 = 1(1) r2 = 1(2) result = 2
+          //r1 = 1(2) r2 = 2 result = 3
+          //r1 = 2 r2 = 3 result = 5
+          //这次的r1应该是上次的r2
+          r1 = r2
+          //r1 = 1(2)
+          //r1 = 2
+          //r1 = 3
+          //这次的r2应该是上次的result
+          r2 = result
+          //r2 = 2
+          //r2 = 3
+          //r2 = 5
+        }
+        return result
+      }
+      console.log(fn(3))
+      console.log(fn(4))
+      console.log(fn(5))
+      console.log(fn(10))
+    </script>
+  </body>
+
+</html>

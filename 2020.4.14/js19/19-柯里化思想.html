@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="div1">1</div>
+    <script>
+      let obj = {
+        name: "柯里化"
+      }
+
+      //我想把obj传到fn中 同时我还要传1,2
+      //我还要将这个函数的指向指向为obj这个对象
+      function fn(...arg) {
+        console.log(arg)
+        console.log(this)
+      }
+      //我现在想写一个函数 接收我需要参数 接收两个部分的参数
+
+      let oDiv = document.getElementById("div1")
+      // oDiv.addEventListener("click", function (e) {
+      //   fn.call(obj, 1, 2, obj, e)
+      // })
+
+      // oDiv.addEventListener("click", function (e) {
+      //   fn.apply(obj, [1, 2, obj, e])
+      // })
+
+      // oDiv.addEventListener("click", function (e) {
+      //   fn.bind(obj, 1, 2, obj, e)()
+      // })
+
+      // oDiv.addEventListener("click", fn.bind(obj, 1, 2, obj, e)) 这样写不行,因为完全不能接收 e这个事件对象
+    </script>
+  </body>
+
+</html>

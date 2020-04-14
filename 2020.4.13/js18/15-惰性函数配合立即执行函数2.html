@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <ul id="container">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <script>
+      //判断一次 变成 判断0次(提前判断)
+      //在页面初始化的时候 就已经知道他到底是哪个浏览器 同时给他绑定合适的方法
+      //在页面打开的一瞬间 就已经确定函数体 是这个
+      var bindEvent = (function () {
+        //判断他是标准浏览器还是非标准浏览器
+        if (window.addEventListener) {
+          //如果是标准浏览器 直接绑定addEventListener给他
+          return function (ele, type, callback, useCapture) {
+            ele.addEventListener(type, callback, useCapture)
+          }
+        } else if (window.attachEvent) {
+          //如果是非标准浏览器 直接绑定attachEvent给他
+          return function (ele, type, callback) {
+            ele.attachEvent("on" + type, callback)
+          }
+        }
+      }())
+
+      var oUl = document.getElementById("container");
+      var aLi = oUl.getElementsByTagName("li");
+      for (var i = 0; i < aLi.length; i++) {
+        (function (i) {
+          bindEvent(aLi[i], "click", function () {
+            aLi[i].style.backgroundColor = "pink"
+          }, true)
+        }(i))
+      }
+    </script>
+  </body>
+
+</html>

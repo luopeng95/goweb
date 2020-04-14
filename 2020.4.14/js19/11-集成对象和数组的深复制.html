@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let obj = {
+        name: "张三",
+        wife: {
+          name: "小红",
+          car: {
+            name: "玛莎拉蒂"
+          }
+        }
+      }
+      let arr = [1, [2, [3, 3], 2], 1]
+      let obj2 = {
+        name: "张三",
+        hobby: [{
+          name: "唱歌",
+          play: function () {
+            return "我喜欢" + this.name
+          }
+        }, {
+          name: "跳舞"
+        }]
+      }
+
+      //一层深复制
+      // let arr2 = arr.slice();
+      // let arr2 = [...arr]
+      // let arr2 = arr.concat([])
+
+      //递归深复制
+      // JSON.parse(JSON.stringify())
+
+      function deepClone(obj) {
+        //初始化一个新的对象或数组或直接返回
+        let newObj;
+        if (Object.prototype.toString.call(obj) === "[object Object]") {
+          //如果是对象 我的主数据就是对象 所以需要初始化一个最大的对象
+          newObj = {}
+        } else if (Object.prototype.toString.call(obj) === "[object Array]") {
+          //如果是数组 我的主数据就是数组 所以需要初始化一个最大的数组
+          newObj = []
+        }
+
+        for (let key in obj) {
+          //对里面的属性进行遍历
+          let temp = Object.prototype.toString.call(obj[key])
+          if (temp === "[object Object]") {
+            //如果这个属性是 对象
+            //递归调用该方法
+            newObj[key] = deepClone(obj[key])
+          } else if (temp === "[object Array]") {
+            //如果这个属性是数组 递归调用该方法
+            newObj[key] = deepClone(obj[key])
+          } else if (temp === "[object Function]") {
+            // console.log(obj[key].toString())
+            newObj[key] = obj[key].bind(newObj)
+          } else {
+            //如果既不是数组 也不是对象 就直接copy
+            newObj[key] = obj[key]
+          }
+        }
+        return newObj
+      }
+      let obj22 = deepClone(obj2);
+      console.log(obj22 === obj2);
+      obj2.hobby[0].name = "游泳";
+      console.log(obj2)
+      console.log(obj22)
+      console.log(obj2.hobby[0].play === obj22.hobby[0].play)
+      console.log(obj2.hobby[0].play())
+      console.log(obj22.hobby[0].play())
+    </script>
+  </body>
+
+</html>

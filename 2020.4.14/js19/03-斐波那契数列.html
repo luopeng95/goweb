@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      function fn(n) {
+        if (n === 1 || n === 2) return 1
+        let r1 = 1; //表示的是前两个数
+        let r2 = 1; //表示的是前一个数
+        let result;
+        for (let i = 3; i <= n; i++) {
+          //这次的result应该是上次的 r1 + r2
+          result = r1 + r2
+          //这次的r1应该是上次的r2
+          r1 = r2
+          //这次的r2应该是上次的result
+          r2 = result
+        }
+        return result
+      }
+      console.log(fn(3))
+      console.log(fn(4))
+      console.log(fn(5))
+      console.log(fn(6))
+      console.log(fn(7))
+      console.log(fn(8))
+    </script>
+  </body>
+
+</html>

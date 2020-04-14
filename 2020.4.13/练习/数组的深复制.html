@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 第一种，利用数组的一些会遍历所有数组元素并自动会返回数组的方法递归回调函数进行判断
+        // 使用Array.from（）、arr.every()、arr.some()、arr.filter()、arr.foreach()应该都可以
+        let copyArray = arr =>  {
+            return Array.isArray(arr) ? arr.map(copyArray) : arr;
+        }
+
+        // 使用arr.filter递归
+        let copyArray1 = arr => {
+            let arr1 = [];
+            arr.filter((e) => {
+                if(Array.isArray(e)){
+                    arr1.push(copyArray1(e));
+                }else{
+                    arr1.push(e);
+                }
+            })
+            return arr1;
+        }
+        
+        // 使用普通for循环递归
+        let copyArray2 = arr => {
+            let arr1 = [];
+            for(let i = 0; i < arr.length; ++i){
+                if(Array.isArray(arr[i])){
+                    arr1.push(copyArray2(arr[i]));
+                }else{
+                    arr1.push(arr[i]);
+                }
+            }
+            return arr1;
+        }
+
+        let n = [1,2,[3,4,[5,6,[7,8,9]]]];
+        let arr1 = copyArray2(n)
+        n[2][2][2][2] = 10;
+        console.log(n);
+        console.log(arr1);
+        </script>
+</body>
+</html>

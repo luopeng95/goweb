@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <ul id="container">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <script>
+      //既要适配标准浏览器,又要适配IE非标准浏览器
+      //在标准浏览器中 只支持addEventListener() 意味着在浏览器中 没有一个方法attachEvnet
+      // 在非标准浏览器中 只支持attachEvent() 意味着在浏览器中 没有一个方法叫addEventListener
+
+      var oUl = document.getElementById("container");
+      var aLi = oUl.getElementsByTagName("li");
+
+      for (var i = 0; i < aLi.length; i++) {
+        (function (i) {
+          bindEvent(aLi[i], "click", function () {
+            aLi[i].style.backgroundColor = "pink"
+          }, true)
+        }(i))
+      }
+
+      /**
+       * 事件兼容代码
+       * @param ele {Element} 事件应该绑定的标签
+       * @param type {String} 事件的类型的名称
+       * @param callback {Function} 事件的回调函数
+       * @param useCapture {Boolean} 事件传递的方式 仅支持标准浏览器
+       */
+      function bindEvent(ele, type, callback, useCapture) {
+        if (ele.addEventListener) {
+          ele.addEventListener(type, callback, useCapture)
+        } else if (ele.attachEvent) {
+          ele.attachEvent("on" + type, callback)
+        }
+      }
+    </script>
+  </body>
+
+</html>

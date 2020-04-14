@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      // let arr = [1, [2, [3, 3], 2], 1]
+      let arr = [1, 2, [2, 2], 1]
+      //[1, 2, 3, 3, 2, 1]
+      // let newArr = arr.flat(Infinity); //[1, 2, [], 2, 1]
+      // console.log(newArr)
+      function flatArr(arr) {
+        let newArr = [];
+        //判断每个元素是不是数组
+        for (let i = 0; i < arr.length; i++) {
+          if (Object.prototype.toString.call(arr[i]) === "[object Array]") {
+            newArr = [...newArr, ...arr[i]]
+          } else {
+            newArr.push(arr[i])
+          }
+        }
+        //如果是数组就 拆开添加
+        //如果是元素 就直接添加
+        return newArr;
+      }
+      console.log(flatArr(arr))
+    </script>
+  </body>
+
+</html>
