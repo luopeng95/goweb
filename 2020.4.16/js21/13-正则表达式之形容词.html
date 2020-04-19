@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      // \d digtal 数字的,数学的,数据的 表示的是一个数字 相当于[0-9]
+      // \w word 单词 表示的是一个单词 [A-Za-z0-9_]
+      // \s space 空格 表示的是一个空格 等价于 [ ]
+      // \b blank 空白 表示的是一个单词的边界 \bmy\b \bcat\b
+      // \t table 制表符 表示的是一个tab 一般情况下 相当于4个空格
+      // \n nextline 下一行 表示的是一个下一行
+
+      // \D 非数字 [^0-9]
+      // \W 非单词 [^A-Za-z0-9_]
+      // \S 非空格 [^ ]
+      // \B 非单词边界
+
+      // my cat => \bm\By\b \bc\Ba\Bt\b
+      let reg = /\d/g
+      let reg2 = /[0-9]/g
+      console.log("123".match(reg)) //1
+      console.log("123".match(reg2)) //1
+
+      let reg3 = /\w/g // \ 转义符 他让后面那个字符 有特定含义 2.让特定的字符 失去特定的含义
+      let reg4 = /[A-Za-z0-9_]/g
+      let reg5 = new RegExp("\\w", "g") //第一个 \ 将后面的那个\转义 第二个 \ 真正行使转义功能 使得 w 有着特定的含义 表示是一个单词
+
+      console.log("123abcABC_".match(reg3))
+      console.log("123abcABC_".match(reg4))
+      console.log("wasda42378943DSJID_".match(reg5))
+
+      // console.log("w".match(reg3));
+      // console.log("\w".match(reg3));
+      // console.log("123abcABC_".match(reg3));
+      // console.log("\".match(reg3));
+    </script>
+  </body>
+
+</html>

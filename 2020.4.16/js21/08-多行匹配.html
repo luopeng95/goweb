@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let str = "hello world\nzhangsan"
+      let reg = /^zhang/m
+      console.log(reg.test(str)) //true
+
+      let str2 = "abc ABC abc";
+      console.log(str2.match(/abc/)) //["abc"] 因为是非贪心模式 只会找到第一个abc
+      console.log(str2.match(/abc/g)) //["abc", "abc"] 贪心模式 找到所有的abc 
+      console.log(str2.match(/abc/gi)) //["abc", "ABC", "abc"] 忽略大小的找到所有的abc
+    </script>
+  </body>
+
+</html>

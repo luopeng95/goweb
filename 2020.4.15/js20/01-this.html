@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //this
+      //2. 谁调用就指向谁(对象[对象/数组/Element])
+      //3. 箭头函数 默认是指向父作用域
+
+      console.log(this) //window
+
+      function show() {
+        console.log(this)
+      }
+      window.show() //window
+
+      let obj = {
+        "name": "张三",
+        "eat": show
+      }
+      obj.eat() //obj 等价于 show
+      window.show() //window
+
+      window.setTimeout(() => {
+        console.log(this) //window
+      })
+    </script>
+  </body>
+
+</html>

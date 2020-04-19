@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      img {
+        position: relative;
+      }
+    </style>
+  </head>
+
+  <body>
+    <img class="timeImg" src="./img/0.png" alt="">
+    <img class="timeImg" src="./img/0.png" alt="">
+    <img src="./img/second.png" alt="">
+    <img class="timeImg" src="./img/0.png" alt="">
+    <img class="timeImg" src="./img/0.png" alt="">
+    <img src="./img/second.png" alt="">
+    <img class="timeImg" src="./img/0.png" alt="">
+    <img class="timeImg" src="./img/0.png" alt="">
+
+    <script src="./js/tool.js"></script>
+    <script>
+      let aTimeImg = document.querySelectorAll(".timeImg");
+      let arr = [-9, 8, -7, 6, -5, 4, -3, 2, -1, 0]
+      let iNow = 0
+      let timer = null;
+
+      function init(arr) {
+        let dDate = new Date();
+
+        //小时
+        let hours = _formatDate(dDate.getHours()) //"15"
+
+        //分钟
+        let minutes = _formatDate(dDate.getMinutes()) //"43"
+
+        //秒
+        let seconds = _formatDate(dDate.getSeconds()) //"10"
+
+        let timestr = hours + minutes + seconds
+        for (let i = 0; i < aTimeImg.length; i++) {
+          aTimeImg[i].src = `./img/${timestr[i]}.png`
+        }
+        //164959
+        //165000
+        //保证定时器的唯一性和纯净性
+        shake(arr)
+      }
+
+      function shake(arr) {
+        timer = setInterval(() => {
+          aTimeImg[5].style.top = arr[iNow++] + "px"
+          if (iNow === arr.length) {
+            iNow = 0
+            clearInterval(timer)
+          }
+        }, 1000 / arr.length);
+      }
+
+      init(arr)
+
+      setInterval(() => {
+        init(arr)
+      }, 1000);
+    </script>
+  </body>
+
+</html>

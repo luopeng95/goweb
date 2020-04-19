@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //正则表达式 作用: 就是为了匹配或捕获字符串 满足不满足一个规则
+      //正则表达式 匹配/捕获
+      // 正则表达式 和 字符串 强关联
+
+      let str = "cbaabcabc";
+      // let reg = new RegExp("abc")
+      let reg = /abc/
+      let substr = "abc"
+      let reg2 = /abd/
+
+      //匹配有没有abc 在于 有没有
+      //捕获拿到abc 在于 是谁 在哪里
+      // RegExp.prototype.test(str: string)
+
+      console.log(reg.test(str)) //true
+      console.log(reg2.test(str)) //false
+
+      //在某个字符串中 搜索某个子串或者某个正则在这个字符串的哪个位置
+      //String.prototype.search(reg: regexp | str:string)
+      //return number 用来表达 第一个满足条件的头部的下标
+      console.log(str.search(reg)) //3
+      console.log(str.search(reg2)) //-1
+      console.log(str.search(substr)) //3
+
+      //在某个字符串中 搜索某个子串或者某个正则在这个字符串的哪个位置 他匹配到那个子串
+      // String.prototype.match(reg: regexp | substr: string)
+      //return Array|null
+      console.log(str.match(reg))
+      console.log(str.match(reg2))
+      console.log(str.match(substr))
+    </script>
+  </body>
+
+</html>

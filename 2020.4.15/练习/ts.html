@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #container{
+            overflow: hidden;
+        }
+        #banner{
+            background-color: turquoise;
+            height: 460px;
+            width: calc(100% * 3);
+            display:flex;
+            position: relative;
+            /* overflow: hidden; */
+        }
+        #banner>img{
+            /* width: 100%; */
+            flex: 1 1 100px;
+            /* margin-left: 10px; */
+            /* position: absolute; */
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="banner">
+            <img src="./banner1.jpg" alt="">
+            <img src="./banner2.jpg" alt="">
+            <img src="./banner3.jpg" alt="">
+        </div>
+    </div>
+    <script>
+        let odiv = document.getElementById("banner");
+        let oimgs = document.getElementsByTagName("img");
+        window.addEventListener("click", () => {
+            odiv.style.width="900px";
+            for(let i =0; i < 3; ++i){
+                oimgs[i].style.width = "300px";
+            }
+        })
+        console.log(parseInt("-1920px"));
+        // var searchInsert = function(nums, target) {
+        // if (nums[nums.length - 1] < target) return nums.length;
+        //     for (let i = 0; i < nums.length; ++i) {
+        //         if (nums[i] >= target) return i;
+        //     }
+        // };
+        // searchInsert([1,2,3,4,5], 6);
+
+        // let obj = {
+        //     name : "张三",
+        //     eat : {
+        //         eat2 : function () {
+        //             console.log(this);
+        //         }
+        //     }
+        // }
+        // obj.eat.eat2();// eat obj
+        // let temp = obj.eat.eat2;
+        // temp() //window
+
+        // function eat(){
+        //     console.log(this.name + "在吃");
+        // }
+
+        // let obj1 = {
+        //     name : "涨三倍"
+        // }
+        // let obj2 = {
+        //     name : "李四"
+        // }
+        // eat.call(obj1);
+        // eat.call(obj2);
+
+        // let n = eval("[0,1,2]");
+        // console.log(n);
+
+        // function show(a, b){
+        //     console.log(this);
+        //     return a + b;
+        // }
+        // let obj = {
+        //     name : "张三"
+        // }
+        // Function.prototype._call = function(thisArg, ...args){
+        //     // 兼容没有传thisArg的情况默认指向window
+        //     thisArg = thisArg || window;
+        //     thisArg.fnName = this;
+        //     let result;
+        //     if(!args.length){
+        //         result = thisArg.fnName();
+        //     }else{
+        //         result = thisArg.fnName(...args);
+        //     }
+        //     delete thisArg.fnName;
+        //     return result;
+        // }   
+        // console.log(show._call(null, 1, 2)) ;
+
+
+        // function sss(a,b) {
+        //     console.log(a)
+        //     console.log(b)
+        // }
+        // let m = ["1","2","3","4","5","6"];
+        // console.log(m.join(","));
+        // let n = m.join();
+        // sss(eval(n));
+
+        let a =  {
+            num : 1,
+            toString : function () {
+                return this.num++;
+            }
+        }
+
+        console.log(parseInt(0x0d954, 16))
+    </script>
+</body>
+</html>

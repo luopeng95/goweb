@@ -1,0 +1,27 @@
+let obj1 = {
+    name: "张三",
+    wife: {
+        name: "123",
+        age: 100
+    },
+    arr: [0, { se: "man", sex: { name: "das" } }, { o: "dpo" }, 3],
+}
+
+let obj2 = {
+    wife: {
+        name: "小红",
+    },
+    arr: [1, { sex: { qaz: "zxc" } }, [1, 2, 3]]
+}
+
+let exTend = (obj1, obj2) => {
+    for (let key in obj2) {
+        if (typeof obj2[key] === "object" && typeof obj1[key] === "object") {
+            exTend(obj1[key], obj2[key]);
+        } else {
+            obj1[key] = obj2[key];
+        }
+    }
+    return obj1;
+}
+let m = exTend(obj1, obj2);

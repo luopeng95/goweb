@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      // eval(javascriptstr: string) 传入的是一个长得像js代码的字符串
+      // eval script标签
+      // eval("console.log(1);alert(2)")
+      // eval("function show() {return 123};console.log(show());")
+      // call -> 改变this指向
+      function show(a, b) {
+        if (a === undefined) {
+          return this
+        }
+        return a + b
+      }
+      let obj = {
+        name: "张三"
+        // fnName: show
+      }
+      // show.call(obj) //张三
+      Function.prototype._call = function (thisArg) {
+        //如果第一个参数就没有的话 那么意味着 你想让this指向 window
+        thisArg = thisArg || window
+        //将要执行的函数 准备委托给对象来执行 因为在对象中 执行一个函数 默认是指向该对象的,这样在执行的时候 this的指向就指向为 那个对象了
+        // console.log(fnName) //存储一个this指向
+        thisArg.fnName = this //window.fnName = show
+        //当args.length === 0
+        let result;
+        if (arguments.length <= 1) {
+          //调用该函数
+          result = thisArg.fnName();
+          delete thisArg.fnName
+        } else {
+          //字符串用来收集所有的参数列表
+          let args = ""
+          for (let i = 1; i < arguments.length; i++) {
+            if (Object.prototype.toString.call(arguments[i]) === "[object String]") {
+              args += '"' + arguments[i] + '",'
+            } else if (Object.prototype.toString.call(arguments[i]) === "[object Number]") {
+              args += arguments[i] + ','
+            }
+          }
+          args = args.slice(0, -1); //"1,2"  "1", "2"
+          result = eval('thisArg["fnName"](' + args + ')')
+          delete thisArg.fnName
+        }
+        return result
+      }
+      console.log(show._call())
+      console.log(show._call(obj))
+      console.log(show._call(obj, 1, 2))
+      console.log(show._call(obj, 1, "李四"))
+      console.log(show._call(obj, "张三", "李四"))
+    </script>
+  </body>
+
+</html>

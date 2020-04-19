@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        select{
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <select name="province" id="province" data-id="0" class="sel"></select>
+    <select name="city" id="city" data-id="1" class="sel"></select>
+    <select name="areas" id="areas" data-id="2" class="sel"></select>
+    <select name="street" id="street" data-id="3" class="sel"></select>
+    <select name="village" id="village" data-id="4" class="sel"></select>
+    <script src="./递归菜单.js"></script>
+    <script>
+        let oselect = document.getElementById("province");
+        let dataId = oselect.getAttribute("data-id")
+        // console.log(window.Select);
+        let m = new Select(dataId, oselect);
+        // oselect.removeEventListener
+       
+    </script>
+</body>
+</html>

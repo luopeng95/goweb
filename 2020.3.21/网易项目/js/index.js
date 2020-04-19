@@ -1,30 +1,39 @@
+let obody = document.body;
 // 关闭提醒
-function closeRemind(){
+function closeRemind() {
     let div = document.getElementById("remind");
     div.style.display = "none";
 }
-
-function bannerChange(){
-    let ul = document.getElementById("banner_ul");
-    let margin = document.defaultView.getComputedStyle(ul,null).marginLeft;//当前的marginLeft值
-    let marginLeft = String(margin).split("").filter(margin => margin !== "-").join("");
-    let bodyWidth = document.body.offsetWidth;
-    switch(parseInt(marginLeft) / bodyWidth){
-        // 也可以找到lable标签进行单击操作
-        case 0:
-            document.getElementById("sildeInput2").checked = true;
-            break;
-        case 1:
-            document.getElementById("sildeInput3").checked = true;
-            break;
-        case 2:
-            document.getElementById("sildeInput1").checked = true;
-            break;
-    }
-    setTimeout("bannerChange()", 1000)
-
-//     console.log(document.getElementById("sildeInput2").checked);
-//     console.log(marginLeft);
-//     console.log(typeof(margin));
-//     console.log(document.body.offsetWidth);
+function init() {
+    // 初始化banner对象
+    let oul1 = document.getElementById("banner_ul");
+    let oul2 = document.getElementById("banner_ul2");
+    new sideBanner(oul1, oul2, "selectLi");
+    let focus = document.getElementsByClassName("nav_left_but1")[0];
+    focus.addEventListener("click", (e) => {
+        mask();
+    })
 }
+
+// 插入节点
+let appendEle = (parent, tag, text, attr) => {
+    let tag1 = document.createElement(`${tag}`);
+    console.log(text);
+    tag1.innerHTML = text;
+    for (let i in attr) {
+        tag1.setAttribute(i, attr[i]);
+    }
+    parent.appendChild(tag1);
+    return tag1;
+}
+
+// 生成遮罩和登录框
+function mask(){
+    let mask = appendEle(obody, "div", "", {"class":"mask"});
+    let login = appendEle(obody, "div", `<li>账号：<input type="text"></li><li>密码：<input type="password"></li><li><input type="button" value="确认"><input type="button" value="取消"></li>`, {"class":"login"})
+    
+    return mask;
+}
+
+
+init();

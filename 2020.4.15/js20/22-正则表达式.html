@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <form action="21-轮播图.html">
+      <!-- %20 -->
+      <!-- encodeURI -->
+      <!-- decodeURI -->
+      用户名: <input type="text" name="username" id="username">
+      密码: <input type="password" value="123456" name="pwd" id="pwd">
+      <input type="submit" value="提交">
+    </form>
+    <script>
+      let reg2 = /a/gim
+      // let reg = new RegExp(partten, flags)
+      let reg = new RegExp("a", "gim")
+
+      //正则 一般有两个作用
+      //查询 RegExp.prototype.test()
+      //匹配 RegExp.prototype.exec()
+
+      //正则只和String
+      // String.prototype.match() //*
+      // String.prototype.replace()
+      // String.prototype.search()
+      // String.prototype.split()
+
+      //元字符 基本的特殊符号 .(全字符) +(量词 表示一个以上) ! ?(量词 表示一个或0个) [](表示一个符号) () (区域/分组/提高优先级) |(正则的或) ^ $ (行首行尾)
+
+      //判断一个变量 是不是QQ号
+      //判断一个变量 是不是手机
+      //判断一个变量 是不是合法的账户或密码 0-9A-Za-z_ 只支持数字和大小写字母和下划线
+      //判断一个变量 是不是6-16位合法的账户或密码 0-9A-Za-z_ 只支持数字和大小写字母和下划线
+      //判断一个变量 是不是邮箱
+      //判断一个变量 是不是身份证(不要你写) 18位数字
+      //配合那个地区json 找到这个输入身份证的人的籍贯和出生年月和性别是哪里
+      //location.href
+    </script>
+  </body>
+
+</html>

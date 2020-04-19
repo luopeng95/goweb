@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //如何捕获到连续2位的数字
+      let str = "1 23 456 7890"
+
+      console.log(str.match(/\d/g)) //等价于/[0-9]/ Array(10)
+      //迭代器模式 i++ 数字不能停 默认正向匹配
+      console.log(str.match(/\d\d/g)) //等价于/[0-9][0-9]/ ["23", "45", "78". "90"]
+    </script>
+  </body>
+
+</html>

@@ -112,67 +112,43 @@
 /* BANNER  START */
     #banner{
         width: 100%;
-        background-color: yellow;
+        /* background-color: yellow; */
         /* 给上定位后续让小圆点移动位置 */
         position: relative;
         overflow: hidden;
     }
 
-    #banner input[name="sildeInput"] {
-        /* 让所有的input都隐藏起来 */
-        display: none;
-      }
-
-    #banner label[for^="sildeInput"] {
-        position: absolute;
-        bottom: 20px;
-        width: 20px;
-        height: 20px;
-        margin-right: 20px;
-        line-height: 20px;
-        color: #FFF;
-        background: black;
-        cursor: default;
-        border-radius: 50%;
-      }
-      #banner label[for="sildeInput1"] {
-        left: calc(50% - 40px);
-      }
-      
-      #banner label[for="sildeInput2"] {
-        left: 50%;
-      }
-      
-      #banner label[for="sildeInput3"] {
-        left: calc(50% + 40px);
-      }
-
-      #banner ul{
+    #banner_ul{
           width: calc(100% * 3);
           /* transition: all 0.5s; */
           display: flex;
-      }
-      #banner li{
-          /* float: left; */
-          width: 100%;
-      }
-      #banner li img{
-          width: 100%;
-      }
-      #sildeInput1:checked~ul {
-        margin-left: 0;
-      }
-      
-      #sildeInput2:checked~ul {
-        margin-left: -100%;
-      }
-      
-      #sildeInput3:checked~ul {
-        margin-left: -200%;
-      }
-      #banner input[name="sildeInput"]:checked+label{
-          background-color: white;
-      }
+    }
+      /* #banner_li{ */
+        /* float: left; */
+        /* width: 100%; */
+      /* } */
+    #banner_ul img{
+        width: 100%;
+
+    }
+
+    #banner_ul2{
+        position: absolute;
+        display: flex;
+        top: 90%;
+        left: 45%;
+    }
+    #banner_ul2>li{
+        background-color: black;
+        list-style: none;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        margin-left: 20px; 
+    }
+    #banner_ul2>.selectLi{
+        background-color: white;
+    }
 /* BANNER  END */
 
 /* CLASSIFY  START */
@@ -456,3 +432,23 @@
           margin-left: 10px;
       }
 /* FOOTER  END */
+
+/* MASL START*/
+.mask{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(70, 58, 58, 0.4);
+    width: 100%;
+    height: 100%;
+}
+.login{
+    position: fixed;
+    width: 300px;
+    height: 200px;
+    background-color: seashell;
+    top: calc(50% - 100px);
+    left: calc(50% - 150px);
+    z-index: 1000;
+}
+/* MASL END*/

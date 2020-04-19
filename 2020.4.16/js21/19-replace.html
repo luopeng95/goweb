@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      // String.prototype.replace(regexp: regexp | substr: string, newstring: string | newfunction: function)
+      // regexp: 要捕获的正则表达式
+      // substr: 要捕获子串
+      // newstring: 捕获到的子串或者正则 用 该子串来替代
+      // newfunction: 对捕获到的子串 用回调函数来改变 return
+
+      let str = "北京a上海b广州c深圳d";
+
+      let reg = /[a-d]/g
+
+      console.log(str.replace(reg, e => {
+        switch (e) {
+          case "a":
+            return "\n中国首都\n"
+          case "b":
+            return "\n东方明珠\n"
+          case "c":
+            return "\n小蛮腰\n"
+          case "d":
+            return "\n世界之窗\n"
+        }
+      }))
+    </script>
+  </body>
+
+</html>

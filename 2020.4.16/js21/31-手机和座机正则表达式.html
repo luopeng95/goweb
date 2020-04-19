@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let str1 = "010-12345678"
+      let str2 = "0755-12345678"
+      let str3 = "0918-1234567"
+      let str4 = "1234567"
+      let str5 = "12345678"
+
+      let reg = /^(0\d{2,3}-)?\d{7,8}$/
+
+      console.log(reg.test(str1))
+      console.log(reg.test(str2))
+      console.log(reg.test(str3))
+      console.log(reg.test(str4))
+      console.log(reg.test(str5))
+
+      // let reg2 = /^1(3|4|5|7|8)\d{9}$/
+    </script>
+  </body>
+
+</html>

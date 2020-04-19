@@ -21,7 +21,9 @@
         </select>
     </form>
 
-    <script src="jquery-3.4.1.min.js"></script>
+    <input type="text" id="ipt">
+    <input type="button" value="查询" id="but">
+    <div id="content"></div>
     <script>
 
         // 调用本地的json文件
@@ -133,6 +135,31 @@
                 }
 
         }
+        
+        // 加上地址查询
+        let oipt = document.getElementById("ipt");
+        let obut = document.getElementById("but");
+        let odiv = document.getElementById("content");
+        // let sArry = ["s1", "s2", "s3"];
+        obut.addEventListener("click", () =>{
+            // debugger;
+            let data = oipt.value;
+            let proV = "";
+            for(let i = 0; i < json.length-1; ++i){
+                // let optionsA = document.getElementById(sArry[i]).options;
+                // debugger;
+                for(let j = 0; j < json[i].length; ++j){
+                    console.log(data.slice(0, 3 + 2 * i));
+                    if(json[i][j]["code"] === data.slice(0, 2 + 2 * i)){
+                        proV += json[i][j]["name"];
+                        // document.getElementById(sArry[i]).value = optionsA[j].value;
+                        break;
+                    }
+                }
+            }
+            let sex = +data[16] % 2 === 0 ? "女性" : "男性";
+            odiv.innerHTML = `<pre>籍贯：${proV}\n出生日期：${data.slice(6,10)}年${data.slice(10, 12)}月${data.slice(12, 14)}日\n性别：${sex}</pre>`;
+        })
     </script>
 </body>
 </html>

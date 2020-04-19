@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div class="time_box">
+      <strong>00</strong>天
+      <strong>00</strong>时
+      <strong>00</strong>分
+      <strong>00</strong>秒
+    </div>
+    <script src="./js/tool.js"></script>
+    <script>
+      // 剩余时间 = 未来时间 - 当前时间
+      //时间是可以加减
+
+      //时间戳
+      //unix 时间戳 格林威治的1970年1月1日 0时0分0秒
+      setInterval(() => {
+        let nowDate = new Date() //用时间戳来初始化一个时间对象
+        let futureDate = new Date(2020, 3, 16, 18, 0, 0);
+
+        let ms = futureDate - nowDate //剩余时间 时间戳
+
+        //92381977 => 天时分秒
+        let s = ms / 1000; //92381
+
+        let days = Number.parseInt(s / 86400); //1天
+
+        let hours = Number.parseInt(s % 86400 / 3600) //xx时
+
+        let minutes = Number.parseInt(s % 86400 % 3600 / 60) //xx分
+
+        let seconds = Number.parseInt(s % 86400 % 3600 % 60) //xx秒
+
+        let aStrong = document.getElementsByTagName("strong");
+        aStrong[0].innerHTML = _formatDate(days)
+        aStrong[1].innerHTML = _formatDate(hours)
+        aStrong[2].innerHTML = _formatDate(minutes)
+        aStrong[3].innerHTML = _formatDate(seconds)
+      }, 1000);
+    </script>
+  </body>
+
+</html>

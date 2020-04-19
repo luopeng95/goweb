@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <input type="text" id="txt">
+    <button id="btn">验证</button>
+    <div id="result"></div>
+    <script>
+      let oTxt = document.getElementById("txt");
+      let oBtn = document.getElementById("btn");
+      let oResult = document.getElementById('result')
+      //正常业务下 判断正则 一般来源于文本框
+      // 如果你想要完全符合你的正则的话
+      //一般情况下 都需要加入行首和行尾 来确保是整个内容进行匹配
+      let reg = /^\w{6,16}$/
+
+      oBtn.addEventListener("click", () => {
+        let value = oTxt.value;
+        if (reg.test(value)) {
+          oResult.innerHTML = "true"
+        } else {
+          oResult.innerHTML = "false"
+        }
+      })
+
+      console.log(str.match(reg))
+
+      //安全程度 低(三者包含一者) 中(三者包含两者) 高(同时包含大小写和数字)
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="div1"></div>
+    <script>
+      //Number Boolean String Null Undefined Symbol
+      //Array Object Math Function
+      //Date
+
+      //1.如果没有参 表示根据当前客户端 生成一个时间对象
+      //2.如果有且仅有一个参数 表示 根据 timestamp 来生成一个时间对象
+      //3.如果至少2个参数 则根据下标来生成对应的时间
+      let oDiv = document.getElementById("div1");
+      let week = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"]
+      // let arr = ["初", "十", "廿", "三"]
+      // let arr2 = ["一", "二"]
+      //能否实现一个农历日历
+
+      setInterval(() => {
+        let dDate = new Date();
+        // let year = date.getYear() //从1900年开始算起 今年是第几年
+        let year = dDate.getFullYear()
+
+        //月份的下标 0-11 [1-12] Java
+        let month = dDate.getMonth()
+
+        // 获取日期
+        let date = dDate.getDate()
+
+        // 获取星期数 [0-6] 0:星期天
+        let day = dDate.getDay()
+
+        //小时
+        let hours = dDate.getHours()
+
+        //分钟
+        let minutes = dDate.getMinutes()
+
+        //秒
+        let seconds = dDate.getSeconds()
+
+        oDiv.innerText = `${year}年${month + 1}月${date}日 ${week[day]} ${hours}:${minutes}:${seconds}`
+      }, 1000);
+    </script>
+  </body>
+
+</html>

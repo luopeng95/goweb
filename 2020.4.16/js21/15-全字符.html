@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      // . 匹配 除了 \n 和 \t以外的所有字符
+      console.log("abc123#%".match(/./g)) //["a", "b", "c"]
+      console.log(".".match(/\./g)) //["."]
+      console.log(".".match(/[.]/g)) //["."]
+    </script>
+  </body>
+
+</html>

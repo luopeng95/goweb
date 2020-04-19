@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      // - 到 范围 只能用在[]
+      let str = "ace";
+      let reg = /[abc]/; //匹配一个字符 是a或b或c
+      let reg2 = /a|b|c/; //匹配一个字符 是a或b或c
+      let reg3 = /[a|b|c]/; //匹配一个字符 是a或b或c或| 错的 会匹配 "|" 这个东西
+      console.log(reg.test("|"))
+      console.log(reg2.test("|"))
+      console.log(reg3.test("|"))
+
+      let str2 = "asdfnhjksdfhjnBHJDKHBJKFSBGHUW"
+      let reg4 = /[A-Za-z_0-9]/g //表示的是ASCII的距离
+      console.log(str2.match(reg4))
+      console.log(str2.match(reg5))
+    </script>
+  </body>
+
+</html>

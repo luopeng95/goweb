@@ -8,14 +8,13 @@
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/index.css">
 </head>
-<body onload="bannerChange()">
+<body>
     <div id="container">
         <div id="remind">
             <div class="alert">
                 <span class="alert_sp1">网易云课堂微专业，帮助你掌握专业技能，令你求职或加薪多一份独特优势！<a href="https://study.163.com/" target="_blank">立即查看 ></a></span>
                 <a class="alert_sp2" href="javascript:closeRemind()">
                     <span class="iconfont icon-guanbi-copy">
-
                     </span>
                     不再提醒
                 </a>
@@ -45,20 +44,16 @@
     </div>
 
     <div id="banner">
-        <input type="radio" name="sildeInput" id="sildeInput1"  hidden />
-        <label for="sildeInput1"></label>
-      
-        <input type="radio" name="sildeInput" id="sildeInput2" hidden />
-        <label for="sildeInput2"></label>
-      
-        <input type="radio" name="sildeInput" id="sildeInput3" hidden checked/>
-        <label for="sildeInput3"></label>
-
         <ul id="banner_ul">
-            <li><img src="../images/banner/banner1.jpg" alt=""></li>
-            <li><img src="../images/banner/banner2.jpg" alt=""></li>
-            <li><img src="../images/banner/banner3.jpg" alt=""></li>
-          </ul>
+            <li data-id="2"><img src="../images/banner/banner3.jpg" alt=""></li>
+            <li data-id="0"><img src="../images/banner/banner1.jpg" alt=""></li>
+            <li data-id="1"><img src="../images/banner/banner2.jpg" alt=""></li>
+        </ul>
+        <ul id="banner_ul2">
+            <li data-class="0" class="cicreLi"></li>
+            <li data-class="1" class="cicreLi"></li>
+            <li data-class="2" class="cicreLi"></li>
+        </ul>
     </div>
 
     <div id="classify">
@@ -387,8 +382,7 @@
             </div>
         </div>
     </div>
-    <script src="../js/index.js">
-
-    </script>
+    <script src="../js/滑动轮播图.js"></script>
+    <script src="../js/index.js"></script>
 </body>
 </html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="div1"></div>
+    <script>
+      //Number Boolean String Null Undefined Symbol
+      //Array Object Math Function
+      //Date
+
+      //1.如果没有参 表示根据当前客户端 生成一个时间对象
+      //2.如果有且仅有一个参数 表示 根据 timestamp 来生成一个时间对象
+      //3.如果至少2个参数 则根据下标来生成对应的时间
+      let date = new Date();
+      let oDiv = document.getElementById("div1");
+      oDiv.innerText = date
+      // console.log(date.toLocaleString()) //toString
+      // console.log(+date) //valueOf
+    </script>
+  </body>
+
+</html>

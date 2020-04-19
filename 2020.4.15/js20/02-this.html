@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="div1">1</div>
+    <script>
+      let oDiv = document.querySelector("#div1"); //{}
+      let show = function (a, b) {
+        console.log(this)
+      }
+      // //添加一个属性
+      oDiv.onclick = show
+    </script>
+  </body>
+
+</html>

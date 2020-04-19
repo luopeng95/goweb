@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let str = "hooray snowing time to make a snowman"
+      // let reg = /\b\w/g
+      let reg = /\b(\w)\w*/g
+
+      //我想要拿到所有的单词数组
+      //[匹配]到所有的单词 但是只[捕获]首字母
+      console.log(str.replace(reg, (match, ...part) => {
+        console.log(match)
+        return part[0].toUpperCase() + match.slice(1)
+      }))
+    </script>
+  </body>
+
+</html>

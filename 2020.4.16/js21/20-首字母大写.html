@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let str = "hooray snowing time to make a snowman"
+      // let reg = /[ ]\w/g
+      let reg = /\b\w/g
+      // let reg = /(\b\w)|(\w\b)/g
+
+      //我想要拿到所有的单词数组
+      console.log(str.replace(reg, e => e.toUpperCase()))
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #container{
+            overflow: hidden;
+        }
+        #banner{
+            background-color: turquoise;
+            height: 460px;
+            /* width: calc(100% * 3); */
+            display:flex;
+            position: relative;
+            /* overflow: hidden; */
+        }
+        #banner>img{
+            /* transition: all 1s; */
+            /* width: 100%; */
+            /* flex: 1 1 100%; */
+            /* margin-left: 10px; */
+            /* position: absolute; */
+        }
+        /* #banner>img:nth-child(1){ */
+            /* margin-left: -1000px; */
+            /* margin-top: 100px; */
+        /* } */
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="banner">
+            <img src="./banner1.jpg" alt="">
+            <img src="./banner2.jpg" alt="">
+            <img src="./banner3.jpg" alt="">
+        </div>
+    </div>
+    <script>
+        let odiv = document.getElementById("banner");
+        let timer;
+        let imgs = document.getElementsByTagName("img");
+        let move = () => {
+            clearInterval(timer);
+            let maxWidth = window.innerWidth;
+            let movex = 1;
+            odiv.style.width = 3 * window.innerWidth + "px";
+            for(let i = 0; i < imgs.length; ++i){
+                imgs[i].style.width = parseInt(getComputedStyle(odiv).width) / 3 + "px";
+            }
+            console.log(getComputedStyle(imgs[0]).width);
+            timer = setInterval(()=>{
+                if(parseInt(getComputedStyle(imgs[0]).marginLeft) - movex < -maxWidth){
+                    console.log(imgs);
+                    imgs[0].style.marginLeft = 0;
+                    odiv.appendChild(imgs[0]);
+                    imgs[0].style.marginLeft = "-1px";
+                }else{
+                    imgs[0].style.marginLeft = parseInt(getComputedStyle(imgs[0]).marginLeft) - movex + "px";
+                }
+            },17)
+        }
+        console.log(window.innerWidth)
+        move();
+        window.addEventListener("resize", (e) => {
+            move();
+        })
+    </script>
+</body>
+</html>
