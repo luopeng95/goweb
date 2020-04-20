@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <!-- 验证你输入的内容是不是满足条件 -->
+    请输入一个1-12之间的数字
+    <input type="text" id="month">
+    <button id="btn">验证</button>
+    <!-- 结果区 -->
+    <div id="result"></div>
+    <script>
+      let oMonth = document.querySelector("#month");
+      let oBtn = document.querySelector("#btn");
+      let oResult = document.querySelector("#result");
+
+      //""
+      //-1 0
+      //13 14
+      //输入根本就是字符串
+      oBtn.addEventListener("click", function () {
+        let reg = /^\d+$/ //监听的是一个纯数字
+        if (oMonth.value === "") {
+          oResult.innerHTML = "结果不能为空"
+        } else if (reg.test(oMonth.value)) {
+          if (oMonth.value < 1) {
+            oResult.innerHTML = "月份过小"
+          } else if (oMonth.value > 12) {
+            oResult.innerHTML = "月份过大"
+          } else {
+            oResult.innerHTML = "是真正的月份"
+          }
+        } else {
+          oResult.innerHTML = "请输入一个月份"
+        }
+      })
+    </script>
+  </body>
+
+</html>

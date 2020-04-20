@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <!-- 验证你输入的内容是不是满足条件 -->
+    请输入一个1-12之间的数字
+    <input type="text" id="month">
+    <button id="btn">验证</button>
+    <!-- 结果区 -->
+    <div id="result"></div>
+    <script>
+      //异常 -> 忽略/抛出(程序会立马中止)
+      let oMonth = document.querySelector("#month");
+      let oBtn = document.querySelector("#btn");
+      let oResult = document.querySelector("#result");
+
+      //""
+      //-1 0
+      //13 14
+      //输入根本就是字符串
+      oBtn.addEventListener("click", function () {
+        let reg = /^\d+$/ //监听的是一个纯数字
+        let val = oMonth.value;
+        //try 尝试对try代码块的东西 进行检查 如果有错 就立马抛出一个异常 Error对象
+        try {
+          //一旦出现人为或者机器规定的错误 就会执行 catch语段
+          if (val === "") throw new Error("不能为空")
+          if (!reg.test(val)) throw new Error("您填写的内容不是纯数字")
+          if (val < 1) throw new Error("数字过小")
+          if (val > 13) throw new Error("数字过大")
+        } catch (error) {
+          //只有错的时候 才会执行catch中的代码
+          //如果try代码中 有错误 那么就会执行这里代码块 没有错就会无视这里的代码
+          //捕获刚刚try中间暴露的错误
+          console.log(error)
+          oResult.innerHTML = error
+        } finally {
+          //对也好,错也罢 都会执行finally中的语段
+          console.log("完事收工")
+        }
+      })
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      console.log(window.navigator);
+      console.log(window.navigator.geolocation) //地理位置
+      console.log(window.navigator.storage) //本地存储
+      //LocalStorage SessionStorage cookie的区别
+      console.log(window.navigator.userAgent) //用户的操作系统版本和浏览器版本
+
+      var u = window.navigator.userAgent;
+      if (u.indexOf("AppleWebKit") !== -1) {
+        console.log("chorme||Firefox||opera")
+      } else if (u.indexOf("Trident")) {
+        console.log("IE内核")
+      }
+
+      //判断移动端或者PC端
+      if (u.indexOf("Mobile") !== -1) {
+        console.log("移动端")
+        if (u.indexOf("iPhone") !== -1) {
+          console.log("苹果手机")
+        } else if (u.indexOf("Android") !== -1) {
+          console.log("安卓手机")
+        }
+      } else {
+        console.log("PC端")
+      }
+    </script>
+  </body>
+
+</html>

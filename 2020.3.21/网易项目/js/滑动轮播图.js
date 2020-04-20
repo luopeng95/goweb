@@ -32,11 +32,18 @@ class sideBanner{
                     this.changeMargin("left", abs);
             }else if(num < this.iNow){
                     this.changeMargin("right", abs);
+            }else{
+                this.changeImgLi();
+                // if(parseInt(getComputedStyle(this.imgLis[0]).marginLeft) < -this.oWidth){
+                // }else{
+                //     // this.changeMargin("left");
+                //     this.changeImgLi();
+                // }
             }
         })
         window.addEventListener("resize", ()=>{
-            this.changeImgLi();
             this.oWidth = document.body.scrollWidth;
+            this.changeImgLi();
             this.clearTimer1();
             this.clearTimer2();
             this.cicreParent.style.left = `${this.oWidth / this.oBodyMaxWidth * 47}%`;

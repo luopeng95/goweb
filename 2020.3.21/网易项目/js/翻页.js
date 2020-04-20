@@ -10,14 +10,15 @@ let appendEle = (parent, tag, text, attr) => {
 
 class Page{
     // num 是一页展示的个数，nums是一共有多少个资源
-    constructor(parent, num, nums, width){
+    constructor(parent, num, nums, width, divs){
         this.parent = parent;
         this.num = Math.ceil(nums / num);
         this.iNow = 1;
         this.init();
         this.left = 1;      //默认的左边界
-        this.right = 4;     //默认的右边界
+        this.right = divs;     //默认的右边界
         this.width = width  //分页div的宽度
+        this.divs = divs    //页面可见选项卡的个数
     }
     init(){
         this.insertEle();
@@ -74,11 +75,11 @@ class Page{
         if(this.iNow > this.right){
             this.changeMarginLeft("left");
             this.right = this.iNow;
-            this.left = this.iNow - 3;
+            this.left = this.iNow - this.divs + 1;
         }else if(this.iNow < this.left){
             this.changeMarginLeft("right");
             this.left = this.iNow;
-            this.right = this.iNow + 3;
+            this.right = this.iNow + this.divs - 1;
         }
     }
 
@@ -86,9 +87,10 @@ class Page{
     changeMarginLeft(type){
         let pageMain = document.getElementById("page_main").getElementsByTagName("div")[0];
         if(type === "left"){
-            console.log(pageMain)
+            console.log("右边界")
             pageMain.style.marginLeft = parseInt(getComputedStyle(pageMain).marginLeft) - this.width + "px";
         }else if(type === "right"){
+            console.log("左边界")
             pageMain.style.marginLeft = parseInt(getComputedStyle(pageMain).marginLeft) + this.width + "px";
         }
     }

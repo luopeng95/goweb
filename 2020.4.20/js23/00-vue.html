@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <!-- view -->
+    <div id="app">
+      {{message}}
+    </div>
+  </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    const vm = new Vue({
+      //view 表示vue监控的范围
+      el: "#app",
+      //model 数据层 类似于前端的DB 用来存放数据的地方 json
+      data: {
+        message: 'hello Vue'
+      },
+      methods: {}
+    })
+  </script>

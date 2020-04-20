@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <button id="open">新建窗口</button>
+    <script>
+      let oOpen = document.getElementById("open");
+      oOpen.addEventListener("click", function () {
+        newWindow = window.open("", "_blank", "width=200px,height=200px");
+        //document.write 会为一个网页绘制相应的界面 同时代码会被直接解析 但是注意 以前的内容会被完全覆盖
+        newWindow.document.write("<h1>我是一个新页面</h1>")
+      })
+    </script>
+  </body>
+
+</html>

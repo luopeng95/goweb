@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <button id="throttle">节流</button>
+    <script>
+      //函数防抖和节流的区别是什么?
+      // 函数节流 一个事件 在一段事件内(300-500ms)内被触发 但绑定的内容在期间只会执行一次
+      //函数防抖和节流的应用场景有哪些
+      //1. 选择元素
+      let oThrottle = document.getElementById("throttle");
+
+      //2. 绑定事件
+      oThrottle.addEventListener("click", throttle(show))
+
+      //3. 定义节流函数体
+      function throttle(cb) {
+        //4. 定义一个标识 这个标识用来确定 我们应不应该调用这个函数
+        let flag = true;
+        //5. 再写一个闭包函数 
+        function inner() {
+          //6. 如果 flag 这个变量是true的话 那么就可以调用这个函数 技能CD好了
+          if (flag) {
+            //7. 执行这个函数 且 将这个标志符 设置为false
+            cb()
+            oThrottle.removeEventListener("click", throttle);
+            flag = false
+            //8. 这个函数正在准备 当准备完毕之后 再将这个flag 又修正为true
+            setTimeout(() => {
+              flag = true
+              oThrottle.addEventListener("click", throttle);
+            }, 2000);
+          }
+        }
+        return inner
+      }
+
+      //4. 定义我们业务函数体
+      function show() {
+        console.log("click!")
+      }
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      span {
+        text-decoration: underline;
+        cursor: pointer;
+        color: blue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <button id="open">新建一个窗口</button>
+    <button id="close">关闭一个窗口</button>
+    <script>
+      let oOpen = document.querySelector("#open");
+      let oClose = document.querySelector("#close");
+      let newWindow = null;
+      oOpen.addEventListener("click", function () {
+        newWindow = window.open("./01-window.html", "", "width=200px,height=200px,scrollbars=1,resizable=0")
+      })
+      oClose.addEventListener("click", function () {
+        newWindow.close()
+      })
+    </script>
+  </body>
+
+</html>

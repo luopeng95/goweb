@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <button id="btn">下一个图片</button>
+    <img id="imgs" src="./img/1.jpg">
+    <script>
+      let oImg = document.querySelector("#imgs");
+      let oBtn = document.querySelector("#btn");
+      let imgArr = ["./img/1.jpg", "./img/2.jpg", "./img/3.jpg", "./img/4.jpg"]
+      let iNow = 0;
+
+      //通过hash值的变化 来切换图片
+      oBtn.addEventListener("click", function () {
+        oImg.src = imgArr[++iNow % imgArr.length]
+      })
+    </script>
+  </body>
+
+</html>
