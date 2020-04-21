@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./font/iconfont.css">
+    <style>
+      div {
+        width: 200px;
+        height: 40px;
+        border: 1px solid black;
+      }
+
+      .down {
+        font-size: 32px;
+        margin-left: 165px;
+      }
+
+      #div1::after {
+        content: "\e6a5";
+        font-family: "iconfont" !important;
+        font-size: 32px;
+        margin-left: 165px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <i class="iconfont down">&#xe6a5;</i>
+    </div>
+    <div id="div1"></div>
+  </body>
+
+</html>

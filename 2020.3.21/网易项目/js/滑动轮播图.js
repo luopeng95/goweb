@@ -14,7 +14,7 @@ class sideBanner{
         this.cicreLis = this.cicreParent.getElementsByTagName("li");//小圆点的li集合
         this.iNow = 0;                          //初始化iNow的值为0
         this.oBodyMaxWidth = window.screen.availWidth - 17;//页面的最大宽度
-        this.oWidth = document.body.scrollWidth;//设置一开始的一屏宽度，在发生resize的时候要重新赋值
+        this.oWidth = window.innerWidth <= 1200 ? 1200 : window.innerWidth;//设置一开始的一屏宽度，在发生resize的时候要重新赋值
         this.cicreClassName = cicreClassName;   //小圆点设置背景的className
         this.init();
     }
@@ -34,19 +34,15 @@ class sideBanner{
                     this.changeMargin("right", abs);
             }else{
                 this.changeImgLi();
-                // if(parseInt(getComputedStyle(this.imgLis[0]).marginLeft) < -this.oWidth){
-                // }else{
-                //     // this.changeMargin("left");
-                //     this.changeImgLi();
-                // }
             }
         })
         window.addEventListener("resize", ()=>{
-            this.oWidth = document.body.scrollWidth;
+            this.oWidth = window.innerWidth <= 1200 ? 1200 : window.innerWidth;
+            
             this.changeImgLi();
             this.clearTimer1();
             this.clearTimer2();
-            this.cicreParent.style.left = `${this.oWidth / this.oBodyMaxWidth * 47}%`;
+            // this.cicreParent.style.left = `${this.oWidth / this.oBodyMaxWidth * 47}%`;
             this.setInter();
         })
         window.addEventListener("visibilitychange", () => {
@@ -69,6 +65,12 @@ class sideBanner{
     }
     // 渲染图片的width和设置第一张图片的marginleft
     changeImgLi(){
+        // 解决横向滚动条出现过早
+        if(this.oWidth !== 1200){
+            document.body.style.overflowX = "hidden";
+        }else{
+            document.body.style.overflowX = "scroll";
+        }
         for(let i = 0; i < this.imgLis.length; ++i){
             this.imgLis[i].style.width = this.oWidth + "px";
         }

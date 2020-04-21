@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      /* 属性选择器的优先级和类相当 就是10  */
+
+      /*id 100 类 10 标签 1*/
+      /* 优先级 (0, 1, 1) */
+
+      /* 选中button标签且这个标签有disabled */
+      button[disabled] {
+        background-color: red;
+      }
+
+      /* 选中input标签且这个标签有一个属性名是type的属性且值为email */
+      input[type=email] {
+        background-color: blue;
+      }
+
+      /* 选中若干个div标签 且有class属性且值为div1开头的 */
+      div[class^=div1] {
+        background-color: pink;
+      }
+
+      /* 选中若干个div标签 且有class属性且值为ook结尾的 */
+      div[class$=ook] {
+        background-color: green;
+      }
+
+      /* 选中若干个div标签 且有class属性且值包含有div的标签 */
+      div[class*=div] {
+        color: skyblue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <button>按钮</button>
+    <button disabled>按钮</button>
+    <input type="button" disabled value="按钮">
+    <div>
+      <label for="">文本框</label>
+      <input type="text">
+    </div>
+    <div>
+      <label for="">邮箱框</label>
+      <input type="email">
+    </div>
+    <div class="div1">div1</div>
+    <div class="div2">div2</div>
+    <div class="div11">div11</div>
+    <div class="book">book</div>
+    <div class="cook">cook</div>
+  </body>
+
+</html>

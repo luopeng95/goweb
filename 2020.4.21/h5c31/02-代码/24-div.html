@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      ul,
+      li {
+        list-style: none;
+      }
+
+      div {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        /*监控变换的是什么属性*/
+        transition-property: width;
+        /*一次动画执行的时间是多长*/
+        transition-duration: 2s;
+        /* transition-timing-function
+        transition-delay */
+        /* transition: width 2s; */
+      }
+
+      div:hover {
+        width: 300px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- 变换的题目 做题思路
+     1.做一个开始状态
+     2.做一个结束状态
+     3.做一个transition 过渡
+    -->
+    <div></div>
+  </body>
+
+</html>

@@ -45,6 +45,9 @@ function init() {
             page.iNow = 1;
             page.insertDiv();
             page.changeBg();
+            // 还要重置边界值
+            page.left = 1;
+            page.right = 4;
             draw(olis, product, page.iNow);
             oUl2.style.display = "none";
             sel = "product";
@@ -54,6 +57,9 @@ function init() {
             page.iNow = 1;
             page.insertDiv();
             page.changeBg();
+            // 还要重置边界值
+            page.left = 1;
+            page.right = 4;
             draw(olis2, program ,page.iNow);
             oUl.style.display = "none";
             sel = "program";
@@ -74,6 +80,7 @@ function init() {
             page.changeiNow("left");
             page.changeBg();
             page.changeBound();
+            
             if(sel === "product"){
                 draw(olis, product, +page.iNow);
             }else{
@@ -168,4 +175,5 @@ let oContent = document.getElementsByClassName("content")[0];
 let page = new Page(oContent, 20, product.length, 37, 4);
 let pageDiv = document.getElementById("page_main").getElementsByTagName("div")
 pageDiv[page.iNow - 1].style.backgroundColor = "#9eeb74";
+
 init();

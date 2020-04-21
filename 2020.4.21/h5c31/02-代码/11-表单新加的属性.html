@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <!-- action 该表单将要提交的地址
+  一般情况下是该项目的后台 也可以是前台
+  -->
+    <form action="register.action">
+      <fieldset>
+        <legend>公司信息</legend>
+        <!-- placeholder html5 预提示文本
+        autocomplete 缺省值是on/off 自动保存到浏览器缓存 不会展示用户的某些历史信息
+        autofocus 自动聚焦
+        required 必填的
+        pattern 可以设置一个正则表达式
+        xxx=xxx 这种形式 也是可以修正为 xxx 即可 比如 checked="checked" checked
+        如果属性 只有两种值 true/false on/off 的话 那么 可以只写属性名
+        -->
+        <!-- 文本框 -->
+        <div>
+          用户名: <input type="text" name="username" id="username" placeholder="请输入用户名" value="zhangsan" autocomplete="off"
+            required pattern="\w{6,16}">
+        </div>
+        <!-- 密码框 -->
+        <div>
+          密码: <input type="password" name="pwd" id="pwd" placeholder="请输入密码" value="123456" autofocus>
+        </div>
+        <div>
+          <!-- 单选框 -->
+          性别: 男<input type="radio" name="gender" value="male" id="male">
+          女<input type="radio" name="gender" value="female" id="female" checked>
+        </div>
+        <div>
+          <!-- 多选框 -->
+          爱好
+          唱歌<input type="checkbox" name="hobby" value="0" id="hobby1">
+          跳舞<input type="checkbox" name="hobby" value="1" id="hobby1">
+          游泳<input type="checkbox" name="hobby" value="2" id="hobby1">
+        </div>
+        <div>
+          籍贯
+          <select name="provice" id="provice">
+            <option value="43">湖南省</option>
+            <option value="42">湖北省</option>
+            <option value="44" selected>广东省</option>
+            <option value="45">广西省</option>
+          </select>
+        </div>
+        <div>
+          自我介绍
+          <textarea name="description" id="description"></textarea>
+        </div>
+        <div>
+          照片
+          <!-- 文件上传 -->
+          <input type="file">
+        </div>
+        <div>
+          <!-- 普通按钮 -->
+          <button>我是一个普通的按钮</button>
+          <input type="button" value="我也是一个普通的按钮">
+        </div>
+        <div>
+          <!-- 提交按钮 -->
+          <input type="submit">
+        </div>
+        <div>
+          <!-- 图片提交按钮 -->
+          <input type="image" src="../img/yang.png">
+        </div>
+        <div>
+          <!-- 重置按钮 -->
+          <input type="reset">
+        </div>
+      </fieldset>
+    </form>
+  </body>
+
+</html>

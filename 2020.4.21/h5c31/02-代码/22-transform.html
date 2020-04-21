@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      #div1 {
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+        /* 只填写一个值 就是x轴的变换 */
+        /* transform: translateX(10px); */
+        /* transform: translate(10px); */
+        /* 如果是只改变y轴 就是y轴的变换 */
+        /* transform: translateY(10px); */
+        /* transform: translate(0, 10px); */
+        /* 如果填两个值 就是x和y轴的变换 */
+        transform: translate(10px, 10px);
+      }
+
+      #div1 {
+        /* 这个标签的左上角永远是原坐标点 0,0 */
+        /* 往x轴外移动20像素, 往y轴外移动20像素 */
+        /* transform: translate(10px, 10px); */
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="div1"></div>
+  </body>
+
+</html>
