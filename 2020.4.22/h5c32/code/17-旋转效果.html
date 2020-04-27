@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      div {
+        width: 200px;
+        height: 200px;
+        border: 3px solid black;
+        border-radius: 50%;
+        float: left;
+        transition: all .6s;
+      }
+
+      div:hover {
+        transform: rotate(180deg);
+        /* transform: rotate(.5turn); */
+      }
+
+      div:nth-of-type(1) {
+        background-image: url("./images/black1.jpg");
+      }
+
+      div:nth-of-type(2) {
+        background-image: url("./images/black2.jpg");
+      }
+
+      div:nth-of-type(3) {
+        background-image: url("./images/black3.jpg");
+      }
+
+      div:nth-of-type(4) {
+        background-image: url("./images/black4.jpg");
+      }
+    </style>
+  </head>
+
+  <body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </body>
+
+</html>

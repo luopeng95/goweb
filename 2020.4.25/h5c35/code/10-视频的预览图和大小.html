@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <video controls>
+      <source src="media/Intermission-Walk-in_512kb.mp4">
+      <source src="media/Intermission-Walk-in.ogv">
+    </video>
+    <script>
+      let v1 = document.querySelector("video");
+      //设置一个预览图 如果不给 就是这个视频的第一帧
+      v1.poster = "./image/2.png"
+
+      //638
+      v1.width = 624;
+      //493
+      v1.height = 351;
+    </script>
+  </body>
+
+</html>

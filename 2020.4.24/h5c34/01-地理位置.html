@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <p id="demo">点击获取当前位置(坐标)</p>
+    <button id="getGeo">获取地理位置</button>
+    <script>
+      console.log(window.navigator.geolocation);
+
+      let oBtn = document.querySelector("#getGeo")
+      let oDemo = document.querySelector("#demo")
+
+      oBtn.addEventListener("click", function () {
+        console.log("点击了")
+        if (navigator.geolocation) {
+          //访问当前位置
+          navigator.geolocation.getCurrentPosition(showPosition)
+        } else {
+          //应该是版本过低
+          oDemo.innerHTML = "当前版本不支持"
+        }
+      })
+
+      function showPosition(position) {
+        console.log("回调了")
+        // 经度 : coords.longitude
+        // 纬度 : coords.latitude
+        // 准确度 : coords.accuracy
+        // 海拔 : coords.altitude
+        // 海拔准确度 : coords.altitudeAcuracy
+        // 行进方向 : coords.heading
+        // 地面速度 : coords.speed
+        // 时间戳 : new Date(position.timestamp)
+        // p.innerHTML = `经度是${position.coords.longitude}
+        // 纬度 是${position.coords.latitude}
+        // 准确度 是${position.coords.accuracy}
+        // 海拔 是${position.coords.altitude}
+        // 海拔准确度 是${position.coords.altitudeAcuracy}
+        // 行进方向 是${position.coords.heading}
+        // 地面速度 是${position.coords.speed}
+        // 时间戳 是${new Date(position.timestamp)}
+        // `
+        oDemo.innerHTML += "经度是" + position.coords.longitude +
+          "纬度是" + position.coords.latitude +
+          "海拔准确度" + position.coords.altitudeAcuracy +
+          "行进方向" + position.coords.heading +
+          "地面速度" + position.coords.speed +
+          "时间戳" + new Date(position.timestamp)
+        // 准确度 是${position.coords.accuracy}
+        // 海拔 是${position.coords.altitude}
+        // 海拔准确度 是${position.coords.altitudeAcuracy}
+        // 行进方向 是${position.coords.heading}
+        // 地面速度 是${position.coords.speed}
+        // 时间戳 是${new Date(position.timestamp)}
+        // `
+      }
+    </script>
+  </body>
+
+</html>

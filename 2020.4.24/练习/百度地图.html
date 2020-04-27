@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #myMap{
+            /* width: 600px; */
+            height: 600px;
+        }
+        #r-result{
+            background-color: lightblue;
+            /* height: 30px; */
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="myMap"></div>
+    出发地<input type="text" id="start">
+    目的地<input type="text" id="end">
+    出行方式<select name="" id="way">
+        <option value="步行">步行</option>
+        <option value="地铁">地铁</option>
+        <option value="驾车">驾车</option>
+    </select>
+    <input type="button" value="搜索" id="but">
+    <div id="r-result"></div>
+    <script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=WCOxmcjBrEkEUGCmwiL5p6FTQIpINIGk"></script>
+
+    <script src="./百度地图.js"></script>
+</body>
+</html>

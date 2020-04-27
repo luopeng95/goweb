@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      ul,
+      li {
+        list-style: none;
+      }
+
+      i.iconfont {
+        color: #fff;
+      }
+
+      .f-dn {
+        display: none;
+      }
+
+      #panel {
+        width: 638px;
+        margin: 50px auto;
+        position: relative;
+      }
+
+      #videoDiv {
+        background-color: black;
+        width: 624px;
+        height: 351px;
+        position: relative;
+      }
+
+      #videoDiv .tips_play {
+        position: absolute;
+        font-size: 80px;
+        right: 20px;
+        bottom: 20px;
+      }
+
+      video {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+
+      #control {
+        width: 624px;
+        background-color: black;
+        z-index: 70;
+        color: white;
+        overflow: hidden;
+      }
+
+      #control .control-bottom {
+        height: 44px;
+        line-height: 44px;
+        color: white;
+      }
+
+      #control .control-top {
+        height: 16px;
+        overflow: hidden;
+      }
+
+      #control .control-top .control-timeline {
+        margin-top: 6px;
+        height: 4px;
+        background-color: gray;
+      }
+
+      #control .control-top .now-timeline {
+        width: 0;
+        height: 4px;
+        background-color: pink;
+        position: relative;
+      }
+
+      .icon-bilibili-fill {
+        font-size: 30px;
+        position: absolute;
+        top: -8px;
+        right: -16px;
+        cursor: pointer;
+      }
+
+      #control .control-bottom i {
+        font-size: 32px;
+        line-height: 44px;
+        cursor: pointer;
+      }
+
+      #control .playicon {
+        margin-right: 10px;
+      }
+
+      #control .volumnicon {
+        font-size: 26px;
+      }
+
+      .control-left {
+        height: 44px;
+        display: flex;
+        margin-left: 10px;
+        width: 200px;
+        float: left;
+      }
+
+      .control-right {
+        height: 44px;
+        width: 200px;
+        float: right;
+      }
+    </style>
+    <link rel="stylesheet" href="./font/iconfont.css">
+  </head>
+
+  <body>
+    <!-- 面板区 -->
+    <div id="panel">
+      <div id="videoDiv">
+        <!-- 视频区 -->
+        <video src="./media/test.mp4"></video>
+      </div>
+      <div id="control">
+        <!-- 时间进度条 -->
+        <div class="control-top">
+          <div class="control-timeline">
+            <div class="now-timeline">
+              <i class="iconfont icon-bilibili-fill now-icon"></i>
+            </div>
+          </div>
+        </div>
+        <!-- 用户操作区 -->
+        <div class="control-bottom">
+          <div class="control-left">
+            <i class="iconfont icon-bofang playicon"></i>
+            <div class="time-area">
+              <span class="time-current">00 : 00</span> / <span class="time-duration"></span>
+            </div>
+          </div>
+          <div class="control-right">
+            <i class="iconfont icon-laba volumnicon"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./js/tool.js"></script>
+    <script>
+      let panel = document.querySelector("#panel")
+      let videoDiv = document.querySelector("#videoDiv")
+      let video = document.querySelector("video")
+      let control = document.querySelector("#control")
+      let leftControl = document.querySelector("#leftControl")
+      let playIcon = document.querySelector(".playicon")
+      let volumnIcon = document.querySelector(".volumnicon")
+      //拿到总时间的span
+      let timeDurationSpan = document.querySelector(".time-duration")
+      //拿到当前时间的span
+      let timeCurrentSpan = document.querySelector(".time-current")
+      //拿到总时间长度的div
+      let controlTimeline = document.querySelector(".control-timeline")
+      //拿到当前时间的div
+      let nowTimeline = document.querySelector(".now-timeline")
+      //小滑块
+      let nowIcon = document.querySelector(".now-icon");
+
+      video.addEventListener("canplay", function () {
+        init()
+      })
+
+
+      function init() {
+        //为屏幕的右下方 加上一个小电视
+        let newIcon = document.createElement("i")
+        newIcon.className = "iconfont icon-CN_bilibiliB tips_play"
+        videoDiv.appendChild(newIcon)
+
+        //拿到总时间
+        let totalTime = video.duration;
+        let tm = _formatDate(Number.parseInt(totalTime / 60));
+        let ts = _formatDate(Number.parseInt(totalTime % 60));
+        timeDurationSpan.innerHTML = `${tm} : ${ts}`
+      }
+
+      //播放的入口一
+      //点击视频的入口
+      video.addEventListener("click", function () {
+        togglePlay(playIcon)
+      })
+
+      function changeTimeline() {
+        let nowTime = video.currentTime / video.duration
+        nowTimeline.style.width = controlTimeline.clientWidth * nowTime + "px"
+      }
+
+      function changeTime() {
+        let currentTime = video.currentTime;
+        let cm = _formatDate(Number.parseInt(currentTime / 60));
+        let cs = _formatDate(Number.parseInt(currentTime % 60));
+        timeCurrentSpan.innerHTML = `${cm} : ${cs}`
+      }
+
+      //如果视频正在播放 那么每次都要刷新timeCurrentSpan
+      video.addEventListener('play', (event) => {
+        setInterval(() => {
+          changeTime()
+          changeTimeline()
+        }, 100);
+      });
+
+      //播放的入口二
+      //点击左下方按钮的入口
+      playIcon.addEventListener("click", function () {
+        togglePlay(this)
+      })
+
+      //静音的入口
+      volumnIcon.addEventListener("click", function () {
+        toggleVolumn(this)
+      })
+
+      function toggleVolumn(icon) {
+        // 是没有静音的状态
+        if (!video.muted) {
+          //静音
+          video.muted = true
+        } else {
+          //不静音
+          video.muted = false
+        }
+        icon.classList.toggle(".icon-jingyin")
+        icon.classList.toggle(".icon-laba")
+      }
+      //切换是播放还是暂停
+      function togglePlay(icon) {
+        if (video.paused) {
+          video.play()
+          icon.classList.add("icon-zanting1")
+          icon.classList.remove("icon-bofang")
+        } else {
+          //在播放
+          video.pause()
+          icon.classList.remove("icon-zanting1")
+          icon.classList.add("icon-bofang")
+        }
+        document.querySelector(".tips_play").classList.toggle("f-dn")
+      }
+
+      //绑定一个可拖曳的小滑块
+      nowIcon.addEventListener("mousedown", function (e) {
+        //拿到当前时间的滑块的宽度
+        console.log(nowTimeline.clientWidth)
+        //按下可以拖曳状态
+        window.addEventListener("mousemove", drag)
+        window.addEventListener("mouseup", function () {
+          //移除掉这个视频播放的事件
+          window.removeEventListener("mousemove", drag)
+        })
+      })
+
+      function drag(e) {
+        //鼠标的位置 减去 播放器和浏览器的距离 就是你现在鼠标所在的位置
+        nowTimeline.style.width = e.x - controlTimeline.offsetLeft -
+          Number.parseInt(window.getComputedStyle(panel).marginLeft) + "px"
+        //拖曳完毕 将视频时间转换
+        //视频当前的时间 = 当前的div长度 - 总div的长度 / 总时间
+        video.currentTime = nowTimeline.clientWidth / controlTimeline.clientWidth * video.duration;
+        changeTime()
+      }
+    </script>
+  </body>
+
+</html>

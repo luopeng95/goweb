@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #myCanvas {
+            border: gray 1px solid;
+            /* height: 600px;
+            width: 600px; */
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="600" height="600"></canvas>
+
+    <script>
+        let cts = document.querySelector("#myCanvas");
+        // let pen = cts.getContext("2d");
+        // let r = cts.clientWidth / 2;
+        // pen.translate(r, r);
+        class Tela {
+            constructor(parent) {
+                this.parent = parent;
+                this.r = this.parent.width / 2 - 50;
+                this.pen = this.parent.getContext("2d");
+                this.pen.translate(this.r + 50, this.r + 50);
+                this.pen.textAlign = "center";
+                this.pen.textBaseline = "middle";
+                this.pen.font = "20px 宋体";
+                this.init();
+            }
+
+            init() {
+                setInterval(() => {
+                    this.clear();
+                    this.dataObj = new Date();
+                    this.houres = this.dataObj.getHours();
+                    this.minutes = this.dataObj.getMinutes();
+                    this.seconds = this.dataObj.getSeconds();
+                    this.panle();
+                    this.hours();
+                    this.min();
+                    this.sec();
+                }, 100)
+            }
+
+            panle() {
+
+                // 先画一个圆，使用arc方法，参数要使用弧度
+                this.pen.beginPath();
+                this.pen.arc(0, 0, this.r, 0, 2 * Math.PI);
+                this.pen.stroke();
+                this.pen.closePath();
+
+                // 设置文字
+                // 加上300进行位置补偿
+                for (let i = 0; i < 12; i++) {
+                    this.pen.fillText(i + 1, (this.r - 30) * Math.cos((i * 30 + 300) * Math.PI / 180), (this.r - 20) * Math.sin((i * 30 + 300) * Math.PI / 180))
+                }
+                // console.log(Math.cos(9 * 30 * Math.PI / 180)*250);
+                // 画60个圆点
+                // x => cos(i * 6(360deg / 60) * Math.PI / 180 ) * this.r
+                // y => sin(i * 6(360deg / 60) * Math.PI / 180 ) * this.r
+                for (let i = 0; i < 60; i++) {
+                    this.pen.beginPath();
+                    if (i % 5 === 0) {
+                        this.pen.fillStyle = "red"
+                        this.pen.arc((this.r - 10) * Math.cos(i * 6 * Math.PI / 180), (this.r - 10) * Math.sin(i * 6 * Math.PI / 180), 4, 0, 2 * Math.PI)
+                    } else {
+                        this.pen.fillStyle = "black"
+                        this.pen.arc((this.r - 10) * Math.cos(i * 6 * Math.PI / 180), (this.r - 10) * Math.sin(i * 6 * Math.PI / 180), 2, 0, 2 * Math.PI)
+                    }
+                    this.pen.fill()
+                }
+                this.pen.closePath();
+            }
+
+            hours() {
+                // 画一条线
+                // 分针所带来的弧度影响
+                this.pen.beginPath();
+                this.pen.strokeStyle = "deepskyblue";
+                this.pen.lineWidth = 20;
+                this.pen.lineCap = "round";
+                this.pen.lineTo(0, 0);
+                this.pen.lineTo((this.r - 100) * Math.cos(((this.houres - 1) * 30 + 300 + (6 * this.minutes / 12)) * Math.PI / 180), (this.r - 100) * Math.sin(((this.houres - 1) * 30 + 300 + (6 * this.minutes / 12)) * Math.PI / 180))
+                this.pen.stroke();
+                this.pen.closePath();
+            }
+
+            min() {
+                this.pen.beginPath();
+                this.pen.strokeStyle = "skyblue";
+                this.pen.lineWidth = 15;
+                this.pen.lineCap = "round";
+                this.pen.lineTo(0, 0);
+                this.pen.lineTo((this.r - 80) * Math.cos((this.minutes * 6 + 270) * Math.PI / 180), (this.r - 80) * Math.sin((this.minutes * 6 + 270) * Math.PI / 180));
+                this.pen.stroke();
+                this.pen.closePath();
+            }
+
+            sec() {
+                this.pen.beginPath();
+                this.pen.strokeStyle = "redblue";
+                this.pen.lineWidth = 5;
+                this.pen.lineCap = "round";
+                this.pen.lineTo(0, 0);
+                this.pen.lineTo((this.r - 50) * Math.cos((this.seconds * 6 + 270) * Math.PI / 180), (this.r - 50) * Math.sin((this.seconds * 6 + 270) * Math.PI / 180));
+                this.pen.stroke();
+                this.pen.closePath();
+            }
+            clear() {
+                // 清空画布
+                this.pen.clearRect(-this.r, -this.r, this.r * 2, this.r * 2);
+            }
+        }
+        new Tela(cts);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid gray;
+            width: 600px;
+            height: 600px;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas"></canvas>
+    <script>
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        ctx.beginPath();
+        ctx.moveTo(20, 20);           // 创建开始点
+        ctx.lineTo(100, 20);          // 创建水平线
+        ctx.arcTo(100, 70, 150, 70, 50); // 创建弧
+        // ctx.lineTo(150, 120);         // 创建垂直线
+        ctx.stroke();                // 进行绘制
+    </script>
+</body>
+
+</html>

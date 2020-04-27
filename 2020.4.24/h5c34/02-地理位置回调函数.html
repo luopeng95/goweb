@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <p id="demo">点击获取当前位置(坐标)</p>
+    <button id="getGeo">获取地理位置</button>
+    <script>
+      console.log(window.navigator.geolocation);
+
+      let oBtn = document.querySelector("#getGeo")
+      let oDemo = document.querySelector("#demo")
+
+      oBtn.addEventListener("click", function () {
+        console.log("点击了")
+        if (navigator.geolocation) {
+          //访问当前位置
+          // navigator.geolocation.getCurrentPosition(successcallback: function, errorcallback: function, options: object)
+          //enableHighAccuracy 开启高精度模式 一般需要开启 默认是false
+          //timeout 获取一次地理位置 最长等待时间 ms
+          //maximumAge 位置信息的一个最大缓存时间 默认缓存时间 0
+          navigator.geolocation.getCurrentPosition(successCallback, errorCallback, {
+            enableHighAccuracy: true,
+            timeout: 10000,
+            maximumAge: 2000
+          })
+        } else {
+          //应该是版本过低
+          oDemo.innerHTML = "当前版本不支持"
+        }
+      })
+
+      function successCallback(position) {
+        //position 回调参数 总是 position对象
+        console.log("回调了")
+        oDemo.innerHTML += "经度是" + position.coords.longitude +
+          "纬度是" + position.coords.latitude +
+          "海拔准确度" + position.coords.altitudeAcuracy +
+          "行进方向" + position.coords.heading +
+          "地面速度" + position.coords.speed +
+          "时间戳" + new Date(position.timestamp)
+      }
+
+      function errorCallback(error) {
+        //error 回调参数 PositionError对象
+        switch (error.code) {
+          case 1:
+            oDemo.innerHTML = "用户拒绝访问地理位置"
+            break
+          case 2:
+            oDemo.innerHTML = "地理位置获取失败，因为至少有一个内部位置源返回一个内部错误。"
+          case 3:
+            oDemo.innerHTML = "获取地理位置超时"
+        }
+      }
+    </script>
+  </body>
+
+</html>

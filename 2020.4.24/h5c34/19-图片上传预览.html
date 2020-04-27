@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    </style>
+  </head>
+
+  <body>
+    <input type="file" id="file" multiple>
+    <div id="preLoad"></div>
+    <script>
+      let oFile = document.querySelector("#file");
+      let oPreLoad = document.querySelector("#preLoad");
+
+      //FileReader 文件读取对象
+      //fr 可以读取不同格式的对象
+      //readAsText 一般用来阅读纯文本 默认的字符集编码 utf-8
+      //readAsDataURL 一般用来阅读文件(图片/视频/音频/PDF)
+      //data:文件类型/文件后缀
+      //data:image/png|jpg|jpeg|gif 存储图片采用的方式是base64 就可以直接嵌入到页面或者样式
+
+      oFile.addEventListener("change", function () {
+        console.log("文件上传触发了");
+
+        for (let i = 0; i < oFile.files.length; i++) {
+          //读到了每个文件对象
+          let file = oFile.files[i];
+          //需要初始化一个文件读取对象
+          let fr = new FileReader();
+          //使用文件读取对象的readAsDataURL方法来读取每个图片
+          fr.readAsDataURL(file);
+          //当读取成功之后 要显示读取之后的结果 某张图片
+          fr.addEventListener("load", function () {
+            //base64 格式
+            console.log(fr.result)
+            //我就可以根据这个结果去初始化一个图片对象
+            let oImg = new Image();
+            oImg.src = fr.result;
+            oImg.width = 200;
+            oPreLoad.appendChild(oImg);
+            // document.body.style.backgroundImage = "url('" + fr.result + "')"
+          })
+        }
+      })
+
+      //ajax
+    </script>
+  </body>
+
+</html>

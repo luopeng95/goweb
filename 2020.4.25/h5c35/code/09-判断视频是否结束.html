@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <video id="a1" controls src="./media/Intermission-Walk-in_512kb.mp4"></video>
+    <input id="play" type="button" value="播放">
+    <input id="pause" type="button" value="暂停">
+    <script>
+      let a1 = document.querySelector("#a1");
+      let playbtn = document.querySelector("#play")
+      let pausebtn = document.querySelector("#pause")
+      playbtn.addEventListener("click", function () {
+        a1.play()
+      })
+      pausebtn.addEventListener("click", function () {
+        a1.pause()
+      })
+      a1.addEventListener("ended", function () {
+        alert("播放完毕,5s钟播放下一集")
+        // this.src =
+      })
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+    </style>
+  </head>
+
+  <body>
+    <select id="sel">
+      <option value="pink">粉色</option>
+      <option value="blue">蓝色</option>
+      <option value="yellow">黄色</option>
+    </select>
+
+    <script>
+      let sel = document.querySelector("#sel");
+      //创建一个ls对象
+      let ls = window.localStorage;
+      // 初始化
+      document.body.style.backgroundColor = ls.getItem("color")
+      //令那个元素选中
+      document.querySelector(`[value=${ls.getItem("color")}]`).selected = true
+      console.log(ls)
+
+      sel.addEventListener("change", function (e) {
+        //设置一个键值对 color = 颜色 然后存到本地存储中
+        ls.setItem("color", sel.value);
+        document.body.style.backgroundColor = sel.value
+      })
+    </script>
+  </body>
+
+</html>

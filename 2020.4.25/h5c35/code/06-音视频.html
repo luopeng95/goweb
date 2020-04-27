@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <audio id="a1" controls src="./media/johann_sebastian_bach_air.mp3"></audio>
+    <script>
+      let a1 = document.querySelector("#a1");
+
+      //音视频的时长 媒体总时间(只读)
+      console.log(`a1.duration: ${a1.duration}`)
+      //音量 0.0 1.0 100 0
+      console.log(`a1.volume: ${a1.volume}`)
+      //是否静音
+      console.log(`a1.muted: ${a1.muted}`)
+      //是否暂停
+      console.log(`a1.paused: ${a1.paused}`)
+      //是否播放完毕
+      console.log(`a1.ended: ${a1.ended}`)
+      //是否有播放错误 错误码
+      console.log(`a1.error: ${a1.error}`)
+      //返回音视频地址的string
+      console.log(`a1.currentSrc: ${a1.currentSrc}`)
+    </script>
+  </body>
+
+</html>

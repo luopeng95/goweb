@@ -152,7 +152,7 @@ let draw = (parentNode, product, num) => {
 
 let contentUl = document.getElementsByClassName("content_right_ul")[0].getElementsByTagName("li");
 
-// 改变marginTop值
+// 改变marginTop值----右边的轮播图
 let changeMarginTop = (maxWidth) => {
     // debugger;
     let movey = maxWidth / 70;

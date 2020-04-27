@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+                list-style: none;
+            }
+
+            .shopcart {
+                margin: 0 auto;
+                width: 800px;
+                height: 630px;
+                border: 1px solid black;
+            }
+
+            .shopcart>ul {
+                padding: 10px;
+                height: 250px;
+                border-bottom: 1px solid black;
+            }
+
+            .shopcart>ul li {
+                float: left;
+                margin-right: 10px;
+                border: 1px solid gray;
+                color: brown;
+            }
+
+            .shopcart>ul li:last-child {
+                margin: 0;
+            }
+
+            .shopcart>ul li img {
+                width: 185px;
+                height: 200px;
+            }
+
+            .shopcart>ul li p {
+                text-align: center;
+            }
+
+            .shopcart>ul li span {
+                display: block;
+                padding-right: 10px;
+                text-align: right;
+            }
+
+            .shopcart .result {
+                position: relative;
+                width: 780px;
+                height: 329px;
+                padding: 10px;
+            }
+
+            .shopcart .result li {
+                width: 100%;
+                height: 70px;
+                padding: 2px 0;
+                border-bottom: 2px dotted rgb(173, 87, 87);
+                /* margin-bottom: 2px; */
+            }
+
+            .shopcart .result img {
+                margin: 0 10px;
+                width: auto;
+                height: 70px;
+                vertical-align: middle;
+            }
+
+            .shopcart .result p {
+                display: inline-block;
+                width: 300px;
+            }
+
+            .shopcart .result span {
+                margin-right: 120px;
+            }
+
+            .shopcart .result .totalPrice {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 780px;
+                height: 30px;
+                line-height: 42px;
+                padding: 0 10px;
+                /* border-top: 2px dotted rgb(173, 87, 87); */
+            }
+
+            .shopcart .result .totalPrice span {
+                float: right;
+                margin-right: 40px;
+                font-size: 20px;
+                color: brown;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="shopcart">
+            <ul>
+                <li data-id="0" draggable="true">
+                    <img src="./image/img1.jpg" alt="">
+                    <p>JavaScript语言精粹</p>
+                    <span>￥30.90</span>
+                </li>
+                <li data-id="1" draggable="true">
+                    <img src="./image/img2.jpg" alt="">
+                    <p>JavaScript权威指南</p>
+                    <span>￥52.50</span>
+                </li>
+                <li data-id="2" draggable="true">
+                    <img src="./image/img3.jpg" alt="">
+                    <p>精通JavaScript</p>
+                    <span>￥39.80</span>
+                </li>
+                <li data-id="3" draggable="true">
+                    <img src="./image/img4.jpg" alt="">
+                    <p>JavaScript DOM编程艺术</p>
+                    <span>￥40.00</span>
+                </li>
+            </ul>
+            <div class="result"></div>
+        </div>
+        <script>
+            let json = [{
+                    id: 0,
+                    imgsrc: './img/img1.jpg',
+                    title: "JavaScript语言精粹",
+                    price: "30.90",
+                    num: 1
+                },
+                {
+                    id: 1,
+                    imgsrc: './img/img2.jpg',
+                    title: "JavaScript权威指南",
+                    price: "52.50",
+                    num: 1
+                },
+                {
+                    id: 2,
+                    imgsrc: './img/img3.jpg',
+                    title: "精通JavaScript",
+                    price: "39.80",
+                    num: 1
+                },
+                {
+                    id: 3,
+                    imgsrc: './img/img4.jpg',
+                    title: "JavaScript DOM编程艺术",
+                    price: "40.00",
+                    num: 1
+                },
+            ]
+            let resultData = []
+            let total = 0;
+            //购物车整体
+            let shopcart = document.querySelector('.shopcart')
+            //商品栏
+            let cartUl = shopcart.querySelector('ul')
+            //所有的li
+            let goodsLi = document.querySelectorAll(".shopcart ul li");
+            //整个价格栏目
+            let result = document.querySelector(".result")
+            //被拖动的那个li对应的对象
+            let dragObj = null;
+
+            //对这里所有的li都绑定一个拖曳事件
+            for (let i = 0; i < goodsLi.length; i++) {
+                goodsLi[i].addEventListener("dragstart", function (e) {
+                    json.map(e => {
+                        if (String(e.id) === String(this.getAttribute("data-id"))) {
+                            dragObj = e;
+                        }
+                    })
+                })
+            }
+
+            //为result可以接受丢弃的内容做准备 因为默认任何元素是不可以拖曳且不可以接收拖曳的内容
+            result.addEventListener("dragover", function (e) {
+                //本身是不让接收拖曳 但是现在我想拖曳 所以我允许拖曳 阻止浏览器默认事件发生
+                e.preventDefault();
+            })
+
+            //drop 丢弃事件
+            result.addEventListener("drop", function (e) {
+                //判断拖曳的对象在不在结果数组中
+                searchData(resultData, dragObj)
+                // 在的话 就+1 不在话push
+                drawResult(resultData)
+
+            })
+
+            //监听这个结果区域的所有的checkbox 事件委托
+            result.addEventListener("click", function (e) {
+                let method = e.target.getAttribute("data-method")
+                if (method === "item") {
+                    //为了监听单选按钮
+                    //找到父元素
+                    //拿到父元素的id
+                    let id = e.target.parentElement.getAttribute("data-id")
+                    let obj = search(resultData, id)
+                    let price = obj.price * obj.count;
+                    clacPrice(price)
+                } else if (method === "all") {
+                    //为了监听全选按钮
+                }
+                // clacPrice(resultData)
+            })
+
+            //在结果数组中 根据id找到对应的对象
+            //0
+            function search(data, id) {
+                for (let i = 0; i < data.length; i++) {
+                    if (String(id) === String(data[i].id)) {
+                        return data[i]
+                    }
+                }
+            }
+
+            function searchData(data, obj) {
+                let flag = true //没有查询到
+                data.map(e => {
+                    if (String(obj.id) === String(e.id)) {
+                        //如果查询到了 就说明有
+                        e.count++
+                        //将开关变成假
+                        flag = !flag
+                    }
+                })
+                //否则没有
+                if (flag) {
+                    let newObj = {
+                        id: obj.id,
+                        title: obj.title,
+                        price: obj.price,
+                        imgsrc: obj.imgsrc,
+                        //默认没选中
+                        checked: false,
+                        count: 1
+                    }
+                    data.push(newObj)
+                }
+            }
+
+            function drawResult(data) {
+                result.innerHTML = "";
+                data.map(e => {
+                    result.innerHTML += `
+                    <li data-id="${e.id}">
+                        <input type="checkbox" data-method="item"/>
+                        <img src="${e.imgsrc}" />
+                        <span>${e.title}</span>
+                        <span>${e.price}</span>
+                        <span>${e.count}</span>
+                    </li>
+                    `
+                    // total += e.price * e.count
+                })
+                result.innerHTML += `
+                    <li class="totalPrice">
+                        <input type="checkbox" data-method="all"/>
+                        <span>${total?total:"请选择商品"}</span>
+                    </li>
+                `
+            }
+
+            //计算价格
+            function clacPrice(price) {
+                //计算价格
+                total += price;
+                //找到价格的那个span
+                let totalPrice = document.querySelector(".totalPrice span");
+                totalPrice.innerHTML = total
+            }
+        </script>
+    </body>
+
+</html>

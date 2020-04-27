@@ -293,9 +293,9 @@
       /* #content_left_ul{
           font-size: 0px;
       } */
-      #content_left_ul{
+      /* #content_left_ul{ */
           /* display: none; */
-      }
+      /* } */
       #content_left_ul>li{
           display: flex;
           margin-top: 20px;
@@ -466,9 +466,9 @@
           background-color: white;
       }
 
-      .page{
+      /* .page{ */
           /* background-color: skyblue; */
-      }
+      /* } */
       #page_arrowLeft,#page_arrowRight{
           background-color:#9eeb74;
           width: 37px;

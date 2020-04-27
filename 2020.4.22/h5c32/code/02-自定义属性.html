@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="div1" data-name="张三" data-age="20"></div>
+    <script>
+      let oDiv1 = document.getElementById("div1");
+      //直接点操作符
+      console.log(oDiv1["data-name"]);
+
+      //dataset 可以用来所有的data开头的属性
+      console.log(oDiv1.dataset.name)
+      console.log(oDiv1.dataset.age)
+
+      //2.getAttribute() 可以
+      console.log(oDiv1.getAttribute("data-name"));
+    </script>
+  </body>
+
+</html>

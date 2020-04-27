@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    数据: <input id="data" type="text">
+    <input type="button" value="确认存储" id="btn">
+    <script>
+      let btn = document.querySelector("#btn");
+      let data = document.querySelector("#data");
+
+      btn.addEventListener("click", function () {
+        let value = data.value;
+        //存入Storege 形式 用键值对的形式 k=v 而且必须是字符串
+
+        //拿到sessionStorage对象
+        let ss = window.sessionStorage;
+
+        //将这个对象 设置sessionStorage对象中
+        ss.setItem("data", value)
+
+        console.log(ss.getItem("data"))
+      })
+    </script>
+  </body>
+
+</html>

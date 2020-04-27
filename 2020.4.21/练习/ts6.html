@@ -6,7 +6,7 @@
     <title>Document</title>
     <style>
         div{
-            background-color: violet;
+            /* background-color: violet; */
             width: 500px;
             height: 500px;
             margin: 200px auto ;
@@ -17,6 +17,7 @@
             height: 100%;
             transition: all .4s;
             position: absolute;
+            left: 0px;
         }
         /* img:hover{
             transform: scale(1.2);
@@ -30,12 +31,10 @@
     <script>
         let oImg = document.getElementById("img1");
         oImg.addEventListener("mouseover", ()=>{
-            oImg.style.left = "0px"
-            oImg.style.top = "0px"
-            oImg.style.width = 600 +"px";
-            oImg.style.height = 600 +"px";
-            oImg.style.left = "-50px"
-            oImg.style.top = "-50px"
+                oImg.style.left = "-50px";
+                oImg.style.top = "-50px";
+                oImg.style.width = 600 +"px";
+                oImg.style.height = 600 +"px";
         })
         oImg.addEventListener("mouseout", ()=>{
             oImg.style.width = 500 +"px";

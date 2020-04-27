@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            position: relative;
+            min-width: 1200px;
+            overflow: hidden;
+
+        }
+        img{
+            width: 100%;
+        }
+        @keyframes move{
+            0%{
+                margin-left: 0px;
+            }
+            33.333%{
+                margin-left: -100%;
+            }
+            66.666%{
+                margin-left: -200%;
+            }
+            99.999%{
+                margin-left: -300%;
+            }
+            100%{
+                margin-left: 0px;
+            }
+        }
+        ul{
+            width: calc(100% * 4);
+            list-style: none;
+            display: flex;
+            overflow: hidden;
+            position: relative;
+            /* transition: all 0.5s; */
+            animation: move 10s linear infinite ;
+        }
+        li{
+            flex: 1 1 100%;
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <ul>
+            <li><img src="./banner1.jpg" alt=""></li>
+            <li><img src="./banner2.jpg" alt=""></li>
+            <li><img src="./banner3.jpg" alt=""></li>
+            <li><img src="./banner1.jpg" alt=""></li>
+            <!-- <li><img src="./banner3.jpg" alt=""></li> -->
+        </ul>
+    </div>
+</body>
+</html>

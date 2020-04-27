@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      body {
+        background: green;
+      }
+
+      .container {
+        width: 430px;
+        margin: 50px auto;
+      }
+
+      .container>img {
+        transition: all 1s;
+      }
+    </style>
+  </head>
+
+  <body>
+    <button id="btn1">打散</button>
+    <button id="btn2">合并</button>
+    <div class="container">
+      <img src="./images/shield_1.png" alt="">
+      <img src="./images/shield_2.png" alt="">
+      <img src="./images/shield_3.png" alt="">
+      <img src="./images/shield_4.png" alt="">
+      <img src="./images/shield_5.png" alt="">
+      <img src="./images/shield_6.png" alt="">
+      <img src="./images/shield_7.png" alt="">
+      <img src="./images/shield_8.png" alt="">
+      <img src="./images/shield_9.png" alt="">
+    </div>
+    <script>
+      let oBtn1 = document.querySelector("#btn1");
+      let oBtn2 = document.querySelector("#btn2");
+      let aImg = document.querySelectorAll(".container img");
+      let screenWidth = document.documentElement.clientWidth;
+      let screenHeight = document.documentElement.clientHeight;
+
+      oBtn1.addEventListener("click", function () {
+        //点完之后所有的图片都要散开
+        for (let i = 0; i < aImg.length; i++) {
+          let randX = Math.random() * (screenWidth - aImg[i].clientWidth) - aImg[i].offsetLeft
+          let randY = Math.random() * (screenHeight - aImg[i].clientHeight) - aImg[i].offsetTop
+          let randD = Math.random() * 720 - 360;
+          //让每一个图片都位移且旋转
+          aImg[i].style.transform = `translate(${randX}px, ${randY}px) rotate(${randD}deg)`
+        }
+      })
+
+      oBtn2.addEventListener("click", function () {
+        for (let i = 0; i < aImg.length; i++) {
+          aImg[i].style.transform = ""
+        }
+      })
+    </script>
+  </body>
+
+</html>

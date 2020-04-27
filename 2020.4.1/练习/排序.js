@@ -25,10 +25,10 @@ function rank2(nums){
 let m = [2,4,5,1,9,2];
 
 
-// 第三种
+// 选择排序
 let rank3 = arr => {
     let nums = [];
-    for(let i = arr.length - 1; i > -0; --i){
+    for(let i = arr.length - 1; i > -1; --i){
         let small = arr[i];
         let index = i;
         for(let j = 0; j < i; ++j){
@@ -43,7 +43,7 @@ let rank3 = arr => {
     return nums;
 }
 let q = [0, 1, 100, 0, 20, 90, 10, 10, 100, 0, 20, 0];
-// console.log(rank3(q));
+console.log(rank3(q));
 
 // 快速排序
 let rank4 = arr => {
@@ -67,4 +67,4 @@ let rank4 = arr => {
     }
 }
 let p = [2,1,4,0];
-console.log(rank4(p));
+// console.log(rank4(p));

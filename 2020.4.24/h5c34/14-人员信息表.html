@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <table>
+      <tr>
+        <td>姓名</td>
+        <td><input type="text" id="username"></td>
+      </tr>
+      <tr>
+        <td>电话号码</td>
+        <td><input type="text" id="tel"></td>
+      </tr>
+      <tr>
+        <td>性别</td>
+        <td><input type="text" id="gender"></td>
+      </tr>
+      <tr>
+        <td></td>
+        <input type="button" value="保存" id="save">
+      </tr>
+      <tr>
+        <td><input type="text" id="findTxt"></td>
+        <td><input type="button" value="根据名字检索" id="find"></td>
+      </tr>
+    </table>
+    <div id="result"></div>
+    <script>
+      let username = document.querySelector("#username")
+      let tel = document.querySelector("#tel")
+      let gender = document.querySelector("#gender")
+      let saveBtn = document.querySelector("#save")
+      let findBtn = document.querySelector("#find")
+      let findTxt = document.querySelector("#findTxt")
+      let result = document.querySelector("#result")
+      //如果本地存储有数组 就用它 如果没有 就直接初始化
+      let arr = JSON.parse(localStorage.getItem("persons")) || []
+      let id = arr.length;
+
+      //保存按钮
+      saveBtn.addEventListener("click", function () {
+        //初始化一个对象
+        //ls和ss他不能存对象 只能存字符串
+        let obj = {
+          id,
+          username: username.value,
+          tel: tel.value,
+          gender: gender.value
+        }
+        arr.push(obj)
+        let str = JSON.stringify(arr)
+        //把这个对象塞到ls中
+        localStorage.setItem("persons", str)
+        id++
+      })
+
+      //查找按钮
+      findBtn.addEventListener("click", function () {
+        let str = localStorage.getItem("persons");
+        let data = JSON.parse(str);
+        let r = data.filter(e => {
+          return e.username === findTxt.value
+        })
+        // result.innerHTML = `
+        // <p>名字: ${e.username}</p>
+        // <p>电话: ${e.tel}</p>
+        // <p>性别: ${e.gender}</p>
+        // `
+        console.log(r)
+        result.innerHTML = r.length ? `
+        <p>名字: ${r[0].username}</p>
+        <p>电话: ${r[0].tel}</p>
+        <p>性别: ${r[0].gender}</p>
+        ` : "查无此人"
+      })
+    </script>
+  </body>
+
+</html>

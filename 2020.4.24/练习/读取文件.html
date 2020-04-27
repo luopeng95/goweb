@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* CSS Document */
+        .mr-cont {
+            width: 800px;
+            margin: 0 auto;
+            background: url(./bg.jpg);
+            border: 1px solid #f00;
+        }
+
+        h3 {
+            text-align: center;
+        }
+
+        .mr-cont>div {
+            margin-left: 40px;
+        }
+
+        .readd span {
+            line-height: 40px;
+        }
+
+        #result,
+        textarea {
+            text-align: center;
+            height: 150px;
+            width: 710px;
+            border: 1px solid #000;
+            font-size: 18px;
+            background: #fff;
+        }
+
+        textarea {
+            display: none;
+            text-align: left;
+        }
+
+        img {
+            margin-top: 10px;
+            height: 130px;
+            width: 300px;
+
+        }
+
+        .btn {
+            margin: 20px 60px;
+            position: relative;
+        }
+
+        [type="file"] {
+            position: absolute;
+            left: 154px;
+            opacity: 0;
+            width: 75px;
+            font-size: 18px;
+        }
+
+        [type="button"] {
+            margin-left: 150px;
+            background: rgba(255, 255, 255, 0);
+            border: #eff5fb;
+            text-decoration: underline;
+            color: #fff;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mr-cont">
+        <h3>查看文件</h3>
+        <div class="readd">
+            <span>下方白色区域显示文件内容：</span>
+            <div id="result">
+                <textarea id="text"></textarea> </div>
+        </div>
+        <div class="btn">
+            <input type="button" value="选择文件">
+            <input type="file" id="file">
+            <input type="button" value="查看文件" onClick="readAsText()">
+        </div>
+    </div>
+
+    <script>
+        // JavaScript Document
+        var result = document.getElementById("result");
+        function readAsText() {
+            var file = document.getElementById("file").files[0]; //获取文件
+            console.log(file.type)
+            var reader = new FileReader();
+            var type1 = file.type;
+            if (/image\/\w+/.test(type1)) {
+                if (confirm('确定打开该图片吗')) {
+                    var reader = new FileReader();
+                    reader.readAsDataURL(file); //将文件以Data URL形式进行读入页面
+                    reader.onload = function (e) {
+                        var result = document.getElementById("result");
+                        result.innerHTML = '<img src="' + this.result + '" alt=""/>' //在页面上显示文件
+                    }
+                }
+            } else if (/text\/\w+/.test(type1)) {
+                if (confirm("确定查看该文件？")) {
+                    reader.readAsText(file, "GB2312");
+                    reader.onload = function () {
+                        var result = document.getElementById("text");
+                        text.style.display = "block";
+                        //在页面上显示读入文本
+                        text.innerHTML = this.result;
+                    }
+                }
+            } else {
+                alert("无法识别该文件")
+            }
+        }
+
+    </script>
+</body>
+
+</html>

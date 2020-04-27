@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      div {
+        width: 210px;
+        height: 297px;
+        border: 1px solid pink;
+        margin: 300px auto;
+        position: relative;
+      }
+
+      img {
+        transform-origin: left top;
+        transition: all .6s;
+        width: 210px;
+        position: absolute;
+      }
+
+      div:hover img:nth-of-type(1) {
+        transform: rotate(0deg);
+      }
+
+      div:hover img:nth-of-type(2) {
+        transform: rotate(60deg);
+      }
+
+      div:hover img:nth-of-type(3) {
+        transform: rotate(120deg);
+      }
+
+      div:hover img:nth-of-type(4) {
+        transform: rotate(180deg);
+      }
+
+      div:hover img:nth-of-type(5) {
+        transform: rotate(240deg);
+      }
+
+      div:hover img:nth-of-type(6) {
+        transform: rotate(300deg);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <img src="./images/pk1.png" alt="">
+      <img src="./images/pk1.png" alt="">
+      <img src="./images/pk1.png" alt="">
+      <img src="./images/pk1.png" alt="">
+      <img src="./images/pk1.png" alt="">
+      <img src="./images/pk1.png" alt="">
+    </div>
+  </body>
+
+</html>

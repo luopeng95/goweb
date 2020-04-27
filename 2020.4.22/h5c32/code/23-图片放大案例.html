@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      div {
+        width: 200px;
+        height: 200px;
+        border: 3px solid black;
+        float: left;
+        overflow: hidden;
+      }
+
+      img {
+        transition: all .6s;
+      }
+
+      div:hover img {
+        /* scale 第一个参数 是根据X轴对原有的内容进行缩放 */
+        /* scale 第二个参数 是根据Y轴对原有的内容进行缩放 */
+        /* scale 只有一个参数 对整体进行缩放 translate(x,y) */
+        /* scale 缩放 不会影响到其他元素 子元素img放大 并没有影响到他的父元素div */
+        /* 因为图片大小超出了div的宽度,超出的内容我们决定使用overflow:hidden的形式来进行隐藏  */
+        transform: scale(1.2);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <img src="./images/black1.jpg" alt="">
+    </div>
+    <div>
+      <img src="./images/black2.jpg" alt="">
+    </div>
+    <div>
+      <img src="./images/black3.jpg" alt="">
+    </div>
+    <div>
+      <img src="./images/black4.jpg" alt="">
+    </div>
+  </body>
+
+</html>
