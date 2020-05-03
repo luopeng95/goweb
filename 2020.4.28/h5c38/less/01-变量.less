@@ -1,0 +1,72 @@
+/* 定义变量 */
+//定义一个变量为c 他的值是yellow -
+@c: yellow;
+//大c和小c 不是一个c 大小写敏感
+@C: blue;
+@background_color: skyblue;
+@f12: 12px;
+
+header {
+  color: @c;
+  background-color: @background_color;
+  font-size: @f12;
+}
+
+h1 {
+  color: @c;
+}
+
+//属性名插值
+@b: .box;
+
+@{b} {
+  font-size: 32px;
+  color: @C;
+}
+
+@back: background;
+
+@{b} {
+  @{back}-color: red;
+}
+
+//URL插值
+@image: "../image";
+@host: "C:/Users/lenovo/Desktop/2020/h5c38/image/focus.jpg";
+@test_ip: "117.5.222.98";
+
+body {
+  background-image: url("@{host}");
+  // background-image: url("@{image}/focus.jpg");
+}
+
+//媒体查询
+@md: ~"(min-width: 320px)";
+
+@media screen,
+@md {
+  div {
+    width: 100px
+  }
+}
+
+/* 可以做一个浏览器私有属性前缀 */
+h3 {
+  -moz-transition: all 2s;
+  -ms-transition: all 2s;
+  -o-transition: all 2s;
+  -webkit-transition: all 2s;
+  transition: all 2s;
+}
+
+h4 {
+  #prefix(transition, all 2s)
+}
+
+#prefix(@key, @val) {
+  @{key}: @val;
+  -moz-@{key}: @val;
+  -ms-@{key}: @val;
+  -o-@{key}: @val;
+  -webkit-@{key}: @val;
+}

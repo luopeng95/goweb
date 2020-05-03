@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      /* 匹配一个屏幕且他的宽度大于1200px 匹配的屏幕最小不得小于1200px */
+      @media screen and (min-width: 1200px) {}
+
+      /* 匹配一个屏幕且他的宽度大于992px 匹配的屏幕最小不得小于992px */
+      @media screen and (min-width: 992px) {
+
+        .col-md-1,
+        .col-md-2,
+        .col-md-3,
+        .col-md-4,
+        .col-md-5,
+        .col-md-6,
+        .col-md-7,
+        .col-md-8,
+        .col-md-9,
+        .col-md-10,
+        .col-md-11,
+        .col-md-12 {
+          float: left;
+        }
+
+        .col-md-12 {
+          width: 100%;
+        }
+
+        .col-md-11 {
+          width: 91.66666667%;
+        }
+
+        .col-md-10 {
+          width: 83.33333333%;
+        }
+
+        .col-md-9 {
+          width: 75%;
+        }
+
+        .col-md-8 {
+          width: 66.66666667%;
+        }
+
+        .col-md-7 {
+          width: 58.33333333%;
+        }
+
+        .col-md-6 {
+          width: 50%;
+        }
+
+        .col-md-5 {
+          width: 41.66666667%;
+        }
+
+        .col-md-4 {
+          width: 33.33333333%;
+        }
+
+        .col-md-3 {
+          width: 25%;
+        }
+
+        .col-md-2 {
+          width: 16.66666667%;
+        }
+
+        .col-md-1 {
+          width: 8.33333333%;
+        }
+      }
+
+      /* 匹配的屏幕大小不得小于 768px */
+      @media screen and (min-width: 768px) {}
+
+      /* 小于768的全部都被这个媒体查询所捕获 匹配的屏幕大小不得超过 768px */
+      @media screen and (max-width: 768px) {}
+
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      .row div {
+        border: 1px solid black;
+        background-color: pink;
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="row">
+      <div class="col-md-1">1</div>
+      <div class="col-md-1">2</div>
+      <div class="col-md-1">3</div>
+      <div class="col-md-1">4</div>
+      <div class="col-md-1">5</div>
+      <div class="col-md-1">6</div>
+      <div class="col-md-1">7</div>
+      <div class="col-md-1">8</div>
+      <div class="col-md-1">9</div>
+      <div class="col-md-1">10</div>
+      <div class="col-md-1">11</div>
+      <div class="col-md-1">12</div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6" style="background-color: yellowgreen;">1</div>
+      <div class="col-md-6" style="background-color: yellowgreen;">2</div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4" style="background-color: yellow;">1</div>
+      <div class="col-md-4" style="background-color: yellow;">2</div>
+      <div class="col-md-4" style="background-color: yellow;">3</div>
+    </div>
+  </body>
+
+</html>

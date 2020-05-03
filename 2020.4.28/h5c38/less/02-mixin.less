@@ -1,0 +1,71 @@
+.border_class {
+  border: 1px solid black
+}
+
+#box {
+  background-color: green;
+  color: white;
+}
+
+.box1 {
+  .border_class;
+  #box
+}
+
+//既然他可以被理解是一个函数 那么可以传参
+
+.marginBottom(@mb) {
+  margin-bottom: @mb;
+}
+
+.f-mb20 {
+  .marginBottom(20px)
+}
+
+.f-mb30 {
+  .marginBottom(30px)
+}
+
+/* 甚至可以有默认值 */
+.circle(@bd: 50%) {
+  border-radius: @bd;
+}
+
+.box2 {
+  .circle()
+}
+
+//能传参就算了 还能传不定参
+//函数声明必须是. 或 #
+.padding(...) {
+  padding: @arguments;
+}
+
+.type1 {
+  .padding(10px)
+}
+
+.type2 {
+  .padding(10px, 20px)
+}
+
+.type3 {
+  .padding(10px, 20px, 30px)
+}
+
+.type4 {
+  .padding(10px, 20px, 30px, 40px)
+}
+
+//既然有入参 甚至还返回值 返回的还是一个对象
+
+.count(@x, @y) {
+  @sum: @x - @y;
+  @mul: @x * @y;
+}
+
+.class1 {
+  .count(20px, 10px); //调用函数
+  margin: @sum; //外边距是10px
+  padding: @mul; //内边距是200px
+}

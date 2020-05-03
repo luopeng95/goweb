@@ -1,0 +1,38 @@
+.border_class {
+  border: 1px solid black;
+}
+#box {
+  background-color: green;
+  color: white;
+}
+.box1 {
+  border: 1px solid black;
+  background-color: green;
+  color: white;
+}
+.f-mb20 {
+  margin-bottom: 20px;
+}
+.f-mb30 {
+  margin-bottom: 30px;
+}
+/* 甚至可以有默认值 */
+.box2 {
+  border-radius: 50%;
+}
+.type1 {
+  padding: 10px;
+}
+.type2 {
+  padding: 10px 20px;
+}
+.type3 {
+  padding: 10px 20px 30px;
+}
+.type4 {
+  padding: 10px 20px 30px 40px;
+}
+.class1 {
+  margin: 10px;
+  padding: 200px;
+}

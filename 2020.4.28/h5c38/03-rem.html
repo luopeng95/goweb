@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      html {
+        font-size: 37.5px;
+      }
+
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      .div1 {
+        font-size: 30px;
+        width: 10rem;
+        /* rem自始至终监控的都是html的font-size*/
+        /* 此时此刻 html的font-size为100px */
+        /* 1rem = 100px */
+        height: 1rem;
+        border: 0.02rem solid black;
+        box-sizing: border-box;
+        background-color: pink;
+      }
+
+      .div2 {
+        width: 5rem;
+        height: 1rem;
+        border: 0.02rem solid black;
+        box-sizing: border-box;
+        background-color: yellow;
+      }
+
+      .div3 {
+        width: 1rem;
+        height: 1rem;
+        border: 0.02rem solid black;
+        box-sizing: border-box;
+        background-color: green;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="div1">
+    </div>
+    <div class="div2">
+    </div>
+    <div class="div3">
+    </div>
+  </body>
+
+</html>

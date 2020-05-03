@@ -1,0 +1,19 @@
+.box1 {
+  color: red;
+}
+.box2 {
+  color: blue;
+}
+.box3 {
+  /* less只支持 true */
+}
+/* 与 and 或 , 非 not */
+.box4 {
+  color: red;
+}
+.box5 {
+  color: red;
+}
+.box6 {
+  color: red;
+}

@@ -1,0 +1,18 @@
+ul li {
+  background-image: url("../image/localnav_bg.png");
+}
+ul li .col-1 {
+  background-position: 0 -64px;
+}
+ul li .col-2 {
+  background-position: 0 -128px;
+}
+ul li .col-3 {
+  background-position: 0 -192px;
+}
+ul li .col-4 {
+  background-position: 0 -256px;
+}
+ul li .col-5 {
+  background-position: 0 -320px;
+}

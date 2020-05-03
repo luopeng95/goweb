@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      ul {
+        margin: auto;
+        border-radius: 16px;
+        overflow: hidden;
+        width: 351px;
+        list-style: none;
+        display: grid;
+        /* 每个纵向的网格线的位置是哪里 */
+        grid-template-columns: 31% 23% 23% 23%;
+        grid-template-rows: 33.33% 33.33% 33.33%;
+      }
+
+      li {
+        border: 1px solid #fff;
+        height: 65px;
+        background-color: pink;
+      }
+
+      li:nth-child(3) {
+        grid-column-start: 3;
+        grid-column-end: 5;
+      }
+    </style>
+  </head>
+
+  <body>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+      <li>7</li>
+      <li>8</li>
+      <li>9</li>
+      <li>10</li>
+      <li>11</li>
+    </ul>
+  </body>
+
+</html>

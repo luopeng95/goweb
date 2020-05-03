@@ -1,0 +1,17 @@
+ul {
+  li {
+    background-image: url("../image/localnav_bg.png");
+
+    //声明fn
+    .fn(@max, @i: 1) when (@i <=@max) {
+      .col-@{i} {
+        background-position: 0 -(image-height("../image/localnav_bg.png") / @max * @i);
+      }
+
+      .fn(@max, @i + 1)
+    }
+
+    //调用fn函数
+    .fn(5);
+  }
+}
