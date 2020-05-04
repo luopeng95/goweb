@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      /* transform-style preserve-3d 建立一个3D空间 
+        默认值 flat 展开的(2D世界)
+      */
+      .container {
+        width: 600px;
+        height: 400px;
+        border: 1px solid black;
+        margin: 100px auto;
+        transform-style: preserve-3d;
+        /* 景深 代表 网页和这个物体的一个距离 */
+        /* transform-origin: 50% 50% 0*/
+        perspective: 100px;
+        /* transform-origin: 0; */
+      }
+
+      .box {
+        width: 100px;
+        height: 100px;
+        margin: 150px auto;
+        background-color: pink;
+        transition: all 1s;
+      }
+
+      .container:hover .box {
+        transform: rotateX(-135deg)
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="box">123</div>
+    </div>
+  </body>
+
+</html>

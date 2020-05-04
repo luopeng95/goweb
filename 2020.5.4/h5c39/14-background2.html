@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      div {
+        width: 1000px;
+        height: 600px;
+        padding: 50px;
+        border: 10px dotted pink;
+        background-color: gray;
+        /* 背景图片 */
+        background-image: url("./img/11.jpg");
+        /* 背景图片不重复 */
+        background-repeat: no-repeat;
+        /* background-origin: border-box | padding-box(默认值) | content-box  */
+        /* background-origin: border-box; */
+        /* 背景图片绘制的起始位置是哪里 
+        border-box 就是在边框开始绘制背景图
+        padding-box 就是在padding区开始绘制背景图
+        content-box 就是在内容区开始绘制背景图 */
+        background-origin: padding-box;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div></div>
+  </body>
+
+</html>

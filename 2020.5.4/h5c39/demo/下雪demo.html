@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #box {
+            width: 100%;
+            height: 315px;
+            background: url(./image.snow/header-bg.png) repeat-x ;
+            position: relative;
+        }
+        
+        .tree {
+            width: 112px;
+            height: 117px;
+            background: url(./image.snow/tree.png) no-repeat;
+            position: absolute;
+            animation: move 1s linear forwards;
+            transform: translateY(-300px);
+        }
+        
+        .tree1 {
+            left: 100px;
+            top: 120px;
+        }
+        
+        .tree2 {
+            left: 250px;
+            top: 150px;
+            animation-delay: 0.5s;
+        }
+        
+        .tree3 {
+            left: 400px;
+            top: 120px;
+            animation-delay: 0.7s;
+        }
+        
+        .tree4 {
+            left: 550px;
+            top: 150px;
+            animation-delay: 0.2s;
+        }
+        
+        .tree5 {
+            left: 700px;
+            top: 120px;
+        }
+        
+        .tree6 {
+            left: 850px;
+            top: 150px;
+            animation-delay: 0.3s;
+        }
+        
+        .person {
+            background: url(./image.snow/ice.png) no-repeat;
+            width: 115px;
+            height: 103px;
+            position: absolute;
+            left: 600px;
+            top: 200px;
+            animation: move 1s linear forwards;
+        }
+        
+        .snow {
+            width: 100%;
+            height: 315px;
+            background: url(./image.snow/snow-bg.png);
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 2;
+            animation: snow 8s linear infinite;
+        }
+        
+        @keyframes snow {
+            from {
+                background-position-y: 0px;
+            }
+            to {
+                background-position-y: 500px;
+            }
+        }
+        
+        @keyframes move {
+            from {
+                transform: translateY(-300px);
+            }
+            to {
+                transform: translateY(0px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div class="tree tree1"></div>
+        <div class="tree tree2"></div>
+        <div class="tree tree3"></div>
+        <div class="tree tree4"></div>
+        <div class="tree tree5"></div>
+        <div class="tree tree6"></div>
+        <div class="person"></div>
+    </div>
+
+    <div class="snow"></div>
+</body>
+
+</html>

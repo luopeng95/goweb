@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        left: 400px;
+        top: 200px;
+        transform-style: preserve-3d;
+        /* perspective: 100px; */
+        border: 1px solid black;
+        position: absolute;
+        transition: all 3s;
+      }
+
+      .box div {
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        line-height: 100px;
+        font-size: 50px;
+        position: absolute;
+      }
+
+      /*2. 做骰子的六个面
+        正面是1,顶面是2,左面是3.右面是4,底面是5,反面是6
+      */
+      .box div:nth-child(1) {
+        background-color: rgba(255, 0, 0, 1);
+      }
+
+      .box div:nth-child(2) {
+        transform: rotateX(90deg);
+        background-color: rgba(0, 255, 0, 1);
+        /*将轴线变成 顶边 */
+        transform-origin: top;
+      }
+
+      .box div:nth-child(3) {
+        transform-origin: left;
+        transform: rotateY(-90deg);
+        background-color: rgba(100, 244, 100, 1);
+      }
+
+      .box div:nth-child(4) {
+        transform-origin: right;
+        transform: rotateY(90deg);
+        background-color: rgba(100, 244, 100, 1);
+      }
+
+      .box div:nth-child(5) {
+        transform-origin: bottom;
+        transform: rotateX(-90deg);
+        background-color: rgba(100, 244, 244, 1);
+      }
+
+      .box div:nth-child(6) {
+        transform: translateZ(100px);
+        background-color: rgba(0, 0, 255, 1);
+      }
+
+      /* .box:hover { */
+      /* 1 */
+      /* transform: rotateX(-180deg); */
+      /* 2 */
+      /* transform: rotateX(-90deg); */
+      /* 3 */
+      /* transform: rotateY(90deg); */
+      /* 4 */
+      /* transform: rotateY(-90deg); */
+      /* 5 */
+      /* transform: rotateX(90deg); */
+      /* 6 没有变就是6 */
+      /* transform: rotateX(720deg) rotateY(1080deg);
+        transform-origin: center center center;
+      } */
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- 骰子空间 这个空间是将要变成3D空间 -->
+      <div class="box">
+        <!-- 骰子的六个面 -->
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+      </div>
+    </div>
+    <script>
+      let oBox = document.querySelector(".box");
+
+      let _random = (min, max, digits) => {
+        let num;
+        //仅有一个参数的时候 0-min
+        if (!max) {
+          num = Math.random() * min
+        } else {
+          //min,max
+          num = Math.random() * (max - min) + min
+        }
+        if (digits === "undefined" || digits === 0) {
+          num = Math.floor(num)
+        } else {
+          num = Number(num.toFixed(digits))
+        }
+        return num
+      }
+
+      oBox.addEventListener("click", function () {
+        let num = _random(1, 6)
+        this.style.transform = `rotateX(0) rotateY(0)`
+        console.log(num)
+        /* 因为第一次 你已经转了三圈了 所以下一次也不会转 做全局变量*/
+        let x = 1080;
+        let y = 1080;
+        switch (num) {
+          case 1:
+            x -= 180;
+            break
+          case 2:
+            x -= 90;
+            break
+          case 3:
+            y += 90;
+            break
+          case 4:
+            y -= 90;
+            break
+          case 5:
+            x += 90;
+            break
+          case 6:
+            break
+        }
+        this.style.transform = `rotateX(${x}deg) rotateY(${y}deg)`
+      })
+    </script>
+  </body>
+
+</html>

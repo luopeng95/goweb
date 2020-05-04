@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      div {
+        width: 300px;
+        height: 100px;
+        padding: 50px;
+        border: 10px dotted pink;
+        background-color: gray;
+        /* 背景图片 */
+        /* background-image: url("./img/11.jpg"); */
+        /* 背景图片不重复 */
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        /* background-clip: border-box | padding-box(默认值) | content-box  */
+        /* background-clip: border-box; */
+        /* 背景这个属性的影响的位置 默认border-box 从边框到padding到content都会有背景
+        border-box 就是在边框开始绘制背景
+        padding-box 就是在padding区开始绘制背景
+        content-box 就是在内容区开始绘制背景 */
+        /* background-clip: padding-box; */
+        background-clip: content-box;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div></div>
+  </body>
+
+</html>

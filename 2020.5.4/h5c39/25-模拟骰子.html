@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      .box {
+        width: 600px;
+        height: 400px;
+        transform-style: preserve-3d;
+        /* perspective: 100px; */
+        border: 1px solid black;
+        position: relative;
+        transition: all 3s;
+      }
+
+      .box div {
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        line-height: 100px;
+        font-size: 50px;
+        position: absolute;
+        left: calc(600px - 50%);
+        top: calc(400px - 50%);
+      }
+
+      /*2. 做骰子的六个面
+        正面是1,顶面是2,左面是3.右面是4,底面是5,反面是6
+      */
+      .box div:nth-child(1) {
+        background-color: rgba(255, 0, 0, .5);
+      }
+
+      .box div:nth-child(2) {
+        transform: rotateX(90deg);
+        background-color: rgba(0, 255, 0, .5);
+        /*将轴线变成 顶边 */
+        transform-origin: top;
+      }
+
+      .box div:nth-child(3) {
+        transform-origin: left;
+        transform: rotateY(-90deg);
+        background-color: rgba(100, 244, 100, .5);
+      }
+
+      .box div:nth-child(4) {
+        transform-origin: right;
+        transform: rotateY(90deg);
+        background-color: rgba(100, 244, 100, .5);
+      }
+
+      .box div:nth-child(5) {
+        transform-origin: bottom;
+        transform: rotateX(-90deg);
+        background-color: rgba(100, 244, 244, .5);
+      }
+
+      .box div:nth-child(6) {
+        transform: translateZ(100px);
+        background-color: rgba(0, 0, 255, .5);
+      }
+
+      .box:hover {
+        transform: rotateX(-45deg) rotateY(-90deg);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- 骰子空间 这个空间是将要变成3D空间 -->
+      <div class="box">
+        <!-- 骰子的六个面 -->
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+      </div>
+    </div>
+  </body>
+
+</html>

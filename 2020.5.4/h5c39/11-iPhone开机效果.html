@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      body {
+        background-color: #000;
+        text-align: center;
+        font: 50px "microsoft yahei"
+      }
+
+      h1 {
+        color: rgba(255, 255, 255, .3);
+        position: relative;
+        width: 600px;
+        margin: 100px auto;
+        overflow: hidden;
+      }
+
+      .start::after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 182px;
+        /* background-color: #fff; */
+        position: absolute;
+        top: -30px;
+        left: -100px;
+        transform-origin: 0 0;
+        transform: rotate(30deg);
+        background-image: linear-gradient(to right,
+            rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 1) 20px, rgba(255, 255, 255, 1) 40px, rgba(255, 255, 255, 0) 60px);
+        /* 因为不想过渡回去了 所以删掉起始的过渡 */
+        /* transition: all 3s; */
+      }
+
+      .end::after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 182px;
+        /* background-color: #fff; */
+        position: absolute;
+        top: -30px;
+        left: 700px;
+        transform-origin: 0 0;
+        transform: rotate(30deg);
+        background-image: linear-gradient(to right,
+            rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 1) 20px, rgba(255, 255, 255, 1) 40px, rgba(255, 255, 255, 0) 60px);
+        transition: all 3s;
+      }
+
+      /* h1:hover::after {
+        left: 600px;
+      } */
+    </style>
+  </head>
+
+  <body>
+    <h1 class="start">移动滑块解锁</h1>
+    <script>
+      let h1 = document.querySelector("h1");
+      h1.addEventListener("mouseover", function () {
+        h1.className = "end"
+      })
+      // 过渡完毕事件
+      h1.addEventListener("transitionend", function () {
+        console.log("过渡结束了")
+        h1.className = "start"
+      })
+    </script>
+  </body>
+
+</html>

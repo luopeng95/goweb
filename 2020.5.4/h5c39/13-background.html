@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      div {
+        width: 1000px;
+        height: 600px;
+        /* 背景颜色 */
+        background-color: gray;
+        /* 背景图片 */
+        background-image: url("./img/11.jpg");
+        /* 背景图片不重复 */
+        background-repeat: no-repeat;
+        /* 背景图片定位 */
+        /* background-position: center; */
+        /* css3 新增的属性 */
+        /* 背景图片 是固定定位 锁定在屏幕上 */
+        /* background-attachment: fixed; */
+        /* 100px 只有一个值 按照比例缩小到一百像素 另外一个高度变成auto 所以不会失真*/
+        /* background-size: 100px; */
+        /* 可能会导致失真 */
+        /* background-size: 100px 100px; */
+        /* 百分比是根据盒子的大小来缩放的 所以也可能会导致失真 */
+        /* background-size: 10% 50%; */
+        /* background-size: 100% 100%; */
+        /* 将背景图片 在不失真的情况下 尽量大的去放大整张背景图片 总是不会缺少内容 (盒子相对于图片的短边) */
+        /* background-size: contain; */
+        /* 会尽量填满整个背景 但是如果这样的话 可能就会裁剪掉一部分的背景图片内容 (盒子相对于图片的长边)*/
+        background-size: cover;
+        /* background-origin: border-box | padding-box | content-box  */
+      }
+    </style>
+  </head>
+
+  <body>
+    <div></div>
+  </body>
+
+</html>

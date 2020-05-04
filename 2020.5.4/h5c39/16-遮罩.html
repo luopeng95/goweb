@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      div {
+        width: 1000px;
+        height: 400px;
+        padding: 50px;
+        border: 10px dotted pink;
+        background-image: url("./img/11.jpg");
+        background-color: gray;
+        background-size: 100% 100%;
+        /* mask-image 遮罩图片 */
+        -webkit-mask-image: url("./img/mask.png");
+        /* mask-size 遮罩的大小 */
+        -webkit-mask-size: 40px;
+        /* mask-repeat 遮罩图片不重复 */
+        -webkit-mask-repeat: no-repeat;
+        transition: all 2s;
+      }
+
+      div:hover {
+        -webkit-mask-size: 400px;
+        -webkit-mask-position: 660px 0;
+      }
+
+      /*
+      ** mask-image ** 通过读取透明度对html元素进行遮罩，黑色代表透明，白色代表不透明，灰色为半透明。适用于所有元素，在SVG中，它作用于包含<defs>元素和所有图形元素的容器
+      */
+    </style>
+  </head>
+
+  <body>
+    <div></div>
+  </body>
+
+</html>

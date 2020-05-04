@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
+      }
+
+      .home {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        width: 50px;
+        height: 50px;
+        background-image: url("./img/home.png");
+        z-index: 100;
+        transition: all 1s;
+      }
+
+      .menu_list {
+        position: relative;
+      }
+
+      .menu_list img {
+        width: 50px;
+        height: 50px;
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="menu" class="menu">
+      <!-- 开始点击的那个菜单 -->
+      <div id="home" class="home"></div>
+      <!-- 弹出菜单表 -->
+      <div class="menu_list" id="menu_list">
+        <img src="./img/clos.png">
+        <img src="./img/full.png">
+        <img src="./img/open.png">
+        <img src="./img/prev.png">
+        <img src="./img/prev.png">
+        <img src="./img/prev.png">
+        <img src="./img/prev.png">
+        <img src="./img/prev.png">
+        <img src="./img/prev.png">
+      </div>
+    </div>
+
+    <script>
+      //开始的主页键
+      let oHome = document.querySelector("#home");
+      //所有的菜单按钮的父元素
+      let oMenu = document.querySelector(".menu_list");
+      //所有的菜单按钮
+      let aMenuList = document.querySelectorAll(".menu_list img");
+      //移动的总距离
+      let size = 300;
+      //打开或关闭的标志 没打开false 打开了true
+      let flag = false;
+      oHome.addEventListener("click", function () {
+        if (flag === false) {
+          //先让主页按钮转一圈
+          oHome.style.transform = "rotate(360deg)"
+          //再让其他的二级菜单定位
+          for (let i = 0; i < aMenuList.length; i++) {
+            let degCount = 90 / (aMenuList.length - 1);
+            aMenuList[i].style.right = size * Math.sin(2 * Math.PI / 360 * degCount * i) + "px"
+            aMenuList[i].style.bottom = size * Math.cos(2 * Math.PI / 360 * degCount * i) + "px" //转两个圈
+            aMenuList[i].style.transform = "rotate(720deg)";
+            aMenuList[i].style.transition = `all 1s ${i/10 + .2}s`;
+          }
+          flag = true
+        } else {
+          //先让主页按钮转一圈
+          oHome.style.transform = "rotate(0)"
+          //再让其他的二级菜单定位
+          for (let i = 0; i < aMenuList.length; i++) {
+            let degCount = 90 / (aMenuList.length - 1);
+            aMenuList[i].style.right = "10px"
+            aMenuList[i].style.bottom = "10px" //转两个圈
+            aMenuList[i].style.transform = "rotate(0deg)";
+            // aMenuList[i].style.transition = `all 1s ${i/10 + .2}s`;
+          }
+          flag = false
+        }
+        // aMenuList[0].style.transform = "translateY(-100px)"
+      })
+    </script>
+  </body>
+
+</html>
