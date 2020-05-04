@@ -4,8 +4,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        #sideBanner{
+            /* background-color: aqua; */
+            width: 600px;
+            height: 300px;
+            margin: 150px auto 0;
+            position: relative;
+        }
+        #sideBanner:hover{
+            transform-style: preserve-3d;
+            transition: all 12s;
+            transform-origin: bottom;
+            transform: rotateX(-90deg);
+        }
+        #dd1{
+            /* background-color: aquamarine; */
+            width: 600px;
+            height: 300px;
+            position: absolute;
+            transform-style: preserve-3d;
+            /* perspective: 100px; */
+            display: flex;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            transform: rotateX(-90deg);
+        }
+        #dd1>li{
+            background-image: url(../h5c39/demo/3d幻灯片/1.jpg);
+            flex: 1 1 0;
+            transform-origin: center center;
+            transform-style: preserve-3d;
+        }
+        /* #dd2当做上边 */
+        #dd2{
+            background-color: brown;
+            transform-origin: top;
+        }
+    </style>
 </head>
 <body>
-    
+    <div id="container">
+        <div id="sideBanner">
+            <ul id="dd1">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <!-- <img src="../h5c39/demo/3d幻灯片/1.jpg" alt=""> -->
+            <!-- <div id="dd2"></div> -->
+        </div>
+        <div id="but">点击</div>
+    </div>
+
+    <script>
+        let oBut = document.getElementById("but");
+        let oLis = document.getElementsByTagName("li");
+        oBut.addEventListener("click",()=>{
+            change();
+        })
+        for(let i = 0; i < oLis.length; ++i){
+                oLis[i].style.backgroundPosition = `${i*20}px 0`
+            }
+        let change = ()=>{
+            for(let i = 0; i < oLis.length; ++i){
+                // console.log(oLis[i]);
+                // oLis[i].style.transformOrigin = `cente`;
+                oLis[i].style.transform = `rotateX(90deg)`;
+                oLis[i].style.transition = `all 2s ${i+0.2}s`;
+            }
+        }
+    </script>
 </body>
 </html>
