@@ -1,0 +1,40 @@
+
+#lp-banner-ul1 {
+    width: calc(100% * 5);
+    display: flex;
+    /* position: relative; */
+}
+
+#lp-banner-ul1>li {
+    /* width: 100%; */
+    list-style: none;
+    /* flex: 0 0 100%/3; */
+    max-height: 460px;
+    /* transition: margin-left .5s; */
+}
+
+#lp-banner-ul1 img {
+    width: 100%;
+    height: 100%;
+}
+
+#lp-banner-ul2 {
+    position: absolute;
+    display: flex;
+    top: 90%;
+    left: 35%;
+}
+
+#lp-banner-ul2>li {
+    background-color: black;
+    list-style: none;
+    width: 10px;
+    height: 5px;
+    border-radius: 20%;
+    margin-left: 10px;
+}
+
+#lp-banner-ul2>.selectLi {
+    background-color: white;
+    transform: scale(1.5,1.5);
+}
