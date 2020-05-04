@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let str = "abc ABC abc"
+      let reg = /(a)b(c)/gi
+      let reg2 = /z/
+
+      //g: global 全局的
+      //i: ignore 忽略大小写
+      //m: mutiple 多行模式
+      //如果你要用exec那么正则必须有g
+
+      //非贪心模式 变成 贪心模式
+      // console.log(reg.exec(str)[0]) //我捕获到了一个元素 他是xxx
+      // console.log(reg.exec(str).index) //我捕获到了一个元素 他的下标是xxx
+      // console.log(reg.exec(str).input) //我的原始字符串
+      // console.log(reg2.exec(str))
+      console.log(reg.exec(str)) //0
+      console.log(reg.exec(str)) //4
+      console.log(reg.exec(str)) //8
+      console.log(reg.exec(str)) //null
+    </script>
+  </body>
+
+</html>

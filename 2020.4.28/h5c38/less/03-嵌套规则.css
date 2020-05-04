@@ -1,0 +1,24 @@
+header {
+  height: 100px;
+}
+header h1 {
+  width: 100px;
+  height: 60px;
+  background-color: red;
+}
+header h1 a {
+  color: white;
+  text-decoration: none;
+}
+header h1 a:hover {
+  color: blue;
+}
+header h1 a > span {
+  color: yellow;
+}
+header h1 a + span {
+  color: purple;
+}
+header h1 a ~ span {
+  color: purple;
+}

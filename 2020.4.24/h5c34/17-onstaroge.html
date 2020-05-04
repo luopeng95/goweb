@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <input type="checkbox" value="梨子">梨子
+    <input type="checkbox" value="苹果">苹果
+    <input type="checkbox" value="香蕉">香蕉
+    <input type="checkbox" value="桃子">桃子
+    <input type="checkbox" value="西瓜">西瓜
+
+    <script>
+      //ls 所有的网页都共享同一个ls 关闭浏览器还有
+      //ss 不同的网页有不同的ss 关闭浏览器没有
+      let aInput = document.querySelectorAll("input");
+
+      init()
+
+      //当本地存储发生变化的时候 会触发该方法
+      window.addEventListener("storage", function () {
+        init()
+      })
+
+      for (let i = 0; i < aInput.length; i++) {
+        aInput[i].addEventListener("click", function () {
+          let obj = {
+            value: this.value,
+            select: this.checked
+          }
+          queryData(fruitArr, obj)
+          //如果选中了 就放到本地存储中
+          localStorage.setItem("select", JSON.stringify(fruitArr))
+        })
+      }
+
+      function init() {
+        let fruitArr = JSON.parse(localStorage.getItem("select")) || [];
+        for (let i = 0; i < aInput.length; i++) {
+          for (let j = 0; j < fruitArr.length; j++) {
+            if (fruitArr[j].value === aInput[i].value) {
+              aInput[i].checked = fruitArr[j].select
+            }
+          }
+        }
+      }
+
+      function queryData(arr, obj) {
+        for (let i = 0; i < arr.length; i++) {
+          //已经有这个对象
+          if (arr[i].value === obj.value) {
+            arr[i] = obj
+            return
+          }
+        }
+        //如果整个过程中都招不到 就push
+        fruitArr.push(obj)
+      }
+    </script>
+  </body>
+
+</html>

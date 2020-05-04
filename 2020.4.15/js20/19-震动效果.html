@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      div {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+        position: relative;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="div1" style="top: 100px"></div>
+    <script>
+      // let oDiv = document.getElementById("div1");
+      // let flag = true
+      // let now = oDiv.offsetTop;
+      // setInterval(() => {
+      //   if (flag) {
+      //     oDiv.style.top = now + 10 + "px"
+      //   } else {
+      //     oDiv.style.top = now - 10 + "px"
+      //   }
+      //   flag = !flag
+      // }, 100);
+      let arr = [10, -9, 8, -7, 6, -5, 4, -3, 2, -1, 0]
+      let oDiv = document.getElementById("div1");
+      let iNow = 0
+      setInterval(() => {
+        oDiv.style.top = arr[iNow++ % arr.length] + "px"
+      }, 100);
+    </script>
+  </body>
+
+</html>

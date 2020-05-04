@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //学生信息表
+      //在校生 毕业生
+      //姓名
+      //年龄
+      //专业
+      //毕业年限
+      // let show = (name, age, job, year = 0) => {
+      // console.log(`该生的姓名是${name}`)
+      // console.log(`该生的年龄是${age}`)
+      // console.log(`该生的专业是${job}`)
+      // console.log(`该生的毕业年限是${year}`)
+      // }
+
+      function show() {
+        // console.log(arguments.length)
+        //当参数的个数 有4个的时候 就是毕业生
+        if (arguments[3]) {
+          console.log(`该生的姓名是${arguments[0]}`)
+          console.log(`该生的年龄是${arguments[1]}`)
+          console.log(`该生的专业是${arguments[2]}`)
+          console.log(`该生的毕业年限是${arguments[3]}`)
+        } else {
+          //当参数的个数 只有三个的时候 我就认为是 在校生
+          console.log(`该生的姓名是${arguments[0]}`)
+          console.log(`该生的年龄是${arguments[1]}`)
+          console.log(`该生的专业是${arguments[2]}`)
+        }
+      }
+      //当实参数量少于形参的时候 默认值为 undefined
+      show("张三", 20, "信息工程")
+      show("李四", 30, "法学", 8)
+    </script>
+  </body>
+
+</html>

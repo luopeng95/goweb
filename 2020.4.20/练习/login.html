@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li{
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <form method="GET" name="myForm" action="./wait.html">
+        <ul>
+            <li>账号：<input type="text" name="username" placeholder="zhangsan"></li>
+            <li>密码：<input type="password" name="pwd" placeholder="123456"></li>
+            <li><button type="submit" id="but">确认</button><button type="button">取消</button></li>
+        </ul>
+    </form>
+
+    <script>
+        let oBut = document.getElementById("but");
+        let myForm = document.forms[0];
+        myForm.addEventListener("submit", (e)=>{
+            let oIpt = document.getElementsByTagName("input");
+            if(oIpt[0].value === "zhangsan" && +oIpt[1].value === 123456){
+                document.cookie = `username=${oIpt[0].value}`;
+                document.cookie = `pwd=${oIpt[1].value}`;
+                return true;
+            }else{
+                alert("账号或者密码错误");
+            }
+            e.preventDefault();
+        })
+        console.log(document.cookie);
+    </script>
+</body>
+</html>

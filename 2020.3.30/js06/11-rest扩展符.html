@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let arr = [4, 8, 2]
+      //对数组中的所有值 求最大值
+      //Input arr:Array
+      //Output :Number
+      //rest扩展符
+      //1. 将若干个分散的内容(若干个变量) 整合成一个整体(数组)
+      //2. 将一个完整的整体 切割成若干个分散的内容 arr -> N个变量的形式
+      let fn1 = (arr) => Math.max(...arr)
+
+      // Math.max(4, 8, 2)
+      console.log(fn1(arr))
+    </script>
+  </body>
+
+</html>

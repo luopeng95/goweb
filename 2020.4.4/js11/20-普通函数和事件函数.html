@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      function show(a) {
+        console.log(a)
+      }
+
+      //普通函数的调用 普通函数的参数 永远可以让开发者自行指定
+      show(1) //1
+
+      //事件函数的调用 不允许开发者直接传参 因为事件函数 自带一个事件对象
+      //鼠标左键 0 右键 2 中键按下 1
+      window.onclick = show
+    </script>
+  </body>
+
+</html>

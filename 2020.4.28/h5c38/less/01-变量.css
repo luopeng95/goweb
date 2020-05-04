@@ -1,0 +1,47 @@
+/* 定义变量 */
+header {
+  color: yellow;
+  background-color: skyblue;
+  font-size: 12px;
+}
+
+h1 {
+  color: yellow;
+}
+
+.box {
+  font-size: 32px;
+  color: blue;
+}
+
+.box {
+  background-color: red;
+}
+
+body {
+  background-image: url("C:/Users/lenovo/Desktop/2020/h5c38/image/focus.jpg");
+}
+
+@media screen,
+(min-width: 320px) {
+  div {
+    width: 100px;
+  }
+}
+
+/* 可以做一个浏览器私有属性前缀 */
+h3 {
+  -moz-transition: all 2s;
+  -ms-transition: all 2s;
+  -o-transition: all 2s;
+  -webkit-transition: all 2s;
+  transition: all 2s;
+}
+
+h4 {
+  transition: all 2s;
+  -moz-transition: all 2s;
+  -ms-transition: all 2s;
+  -o-transition: all 2s;
+  -webkit-transition: all 2s;
+}

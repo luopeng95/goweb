@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      #div1 {
+        width: 32px;
+        height: 48px;
+        background-image: url("img/mingren.png");
+        position: absolute;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="div1"></div>
+    <script>
+      //键盘事件
+      //mousedown -> mouseup -> click
+      //keydown 键盘按下
+      //keypress 键盘按压
+      //keyup 键盘抬起
+      //128 / 4 = 32px 192 / 4 = 48px
+      let oDiv = document.getElementById("div1")
+      //迈左腿还是迈右腿
+      let step = ["-32px", "-96px"]
+      //每次接收到指令的时候鸣人移动了多少步
+      let iNow = 0;
+      //鸣人每次4步的那个定时器
+      let timer = null;
+      //第一种 按一次s 就往下走4步
+      //第二种 按一次s 就往下走1步
+      document.addEventListener("keydown", e => {
+        switch (e.key) {
+          case "s":
+            clearInterval(timer)
+            timer = setInterval(() => {
+              //人脸面对的方向
+              oDiv.style.backgroundPositionY = "0"
+              oDiv.style.top = oDiv.offsetTop + 12 + "px"
+              oDiv.style.backgroundPositionX = step[iNow++ % step.length]
+              if (iNow === 5) {
+                iNow = 0;
+                oDiv.style.backgroundPositionX = 0;
+                clearInterval(timer)
+              }
+            }, 60);
+            break;
+          case "d":
+            clearInterval(timer)
+            timer = setInterval(() => {
+              //人脸面对的方向
+              oDiv.style.backgroundPositionY = "-96px"
+              oDiv.style.left = oDiv.offsetLeft + 8 + "px"
+              //移动左右脚
+              oDiv.style.backgroundPositionX = step[iNow++ % step.length]
+              if (iNow === 5) {
+                iNow = 0;
+                oDiv.style.backgroundPositionX = 0;
+                clearInterval(timer)
+              }
+            }, 60);
+            break;
+            oDiv.style.left = oDiv.offsetLeft + 100 + "px"
+            break;
+          case "a":
+            oDiv.style.left = oDiv.offsetLeft - 100 + "px"
+            break;
+          case "w":
+            oDiv.style.top = oDiv.offsetTop - 100 + "px"
+            break;
+        }
+      })
+    </script>
+  </body>
+
+</html>

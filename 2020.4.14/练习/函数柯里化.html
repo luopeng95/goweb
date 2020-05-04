@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 通用函数柯里化，第一个传入回调参数，后续传入单个或者部分参数
+        // 将传入的参数全部使用扩展运算符封装成数组，调用fn的时候使用apply改变this的指向
+        // 在这里也可以使用call或者bind，但是要注意它们的参数传入要使用参数列表的形式传入
+        let currying = (fn, ...rest1) => {
+            return function (...rest2){
+                // 针对这个函数下面的两个写法都可以
+                return fn.apply(null, rest1.concat(rest2));
+                // fn(...rest1, ...rest2);
+            }
+        }
+
+        // 简单柯里化函数
+        let sayHello = (name, age, fruit) => {
+            console.log(`我叫${name}，我今年${age}岁，我喜欢的水果是${fruit}`);
+        }
+
+        // currying(sayHello, "张三")(10, "苹果");
+
+        console.log(sayHello.length);
+
+        let currying2 = (fn, ...rest1) => {
+            return function (...rest2){
+                // 针对这个函数下面的两个写法都可以
+                return fn.apply(null, rest1.concat(rest2));
+                // fn(...rest1, ...rest2);
+            }
+        }
+        // 高阶柯里化函数
+        let currying3 = (fn, ...args) => {
+            // 拿到传入参数的个数
+            let length = fn.length;
+            
+            // 收集参数
+            return (...arr) => {
+                args.push(...arr);
+                return args.length >= length ? fn.apply(null, args) : currying3(fn, ...args);
+            }
+        }
+        currying3(sayHello, "李四")(10)("banana");
+    </script>
+</body>
+</html>

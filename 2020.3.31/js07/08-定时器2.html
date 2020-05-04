@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      #div1 {
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+
+  <body>
+    <script>
+      // 设置一个定时器
+      // setTimeout(callback: function, timeout: number)
+      // 清除一个定时器
+      // clearTimeout(id: number)
+      // 设置一个循环定时器
+      // setInterval(callback: function, timeout: number)
+      // 清除一个循环定时器
+      // clearInterval(id: number)
+      //在函数中 参数居然可以是函数 这个参数就被称为回调函数 callback
+
+      //在2000ms后会自动执行第一个参数中的函数 也就是会延迟展示函数中的内容
+      //设置定时函数 会返回一个数字类型的id
+      setInterval(function () {
+        console.log("我是定时器")
+      }, 2000)
+      clearInterval(1);
+    </script>
+  </body>
+
+</html>

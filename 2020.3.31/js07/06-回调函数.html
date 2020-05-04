@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      function show(cb) {
+        console.log("我是主函数")
+        cb()
+      }
+
+      function fn1() {
+        //因为调用函数 所以会执行这行代码
+        console.log("我是次函数1")
+      }
+
+      function fn2() {
+        console.log("我是次函数2")
+      }
+
+      // console.log(fn1);
+      // function fn1() {
+      // console.log("我是次函数1")
+      // }
+      // console.log(fn1());
+      //这个函数的返回值
+      //return 值
+      show(fn1)
+      show(fn2)
+    </script>
+  </body>
+
+</html>

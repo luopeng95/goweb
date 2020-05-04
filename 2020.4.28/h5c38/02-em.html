@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN" style="font-size: 62.5%">
+  <!-- 默认规定 标签的文字的大小为 16px 100% <=> 16px  -->
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      /* 网页浏览器默认的字体大小为 16px 16px * 62.5% = 10px 好计算 */
+      /* 换言之 我们就得到一个公式 10px = 1em */
+      /* 此时此刻 下面两个div的宽高度就是 100px */
+      /* 不过遇到的尴尬还是一样的 就是我无法修改字体的大小
+        chrome 最小的字号 12px
+        zoom
+        scale
+      */
+      .div1 {
+        /* 现在我想要div1中的文字的大小是20像素 */
+        /* width: 10em; */
+        /* height: 10em; */
+        background-color: skyblue;
+      }
+
+      .div2 {
+        /* 现在我想要div2中的文字的大小是40像素 */
+        width: 10em;
+        height: 10em;
+        background-color: green;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="div1">20</div>
+    <div class="div2">30</div>
+  </body>
+
+</html>

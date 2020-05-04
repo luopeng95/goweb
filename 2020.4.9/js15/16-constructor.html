@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let obj = new Object()
+      let arr = new Array()
+      let fun = new Function()
+
+      //表示该实例是那个工厂 实际(最终) 构造的
+      console.log(obj.constructor) //Object() { [native code] }
+      console.log(arr.constructor) //Array() { [native code] }
+      console.log(fun.constructor) //Function() { [native code] }
+
+      console.log(obj.constructor === Object) //true
+      console.log(arr.constructor === Array) //true
+      console.log(fun.constructor === Function) //true
+
+      console.log(arr.constructor === Object) //false
+      //描述 consructor
+      // 用法 x.consructor === X
+      //返回值 Boolean
+      //缺点 1.不嫩判断基本数据类型
+      //2.自定义类你需要手动指定constructor
+    </script>
+  </body>
+
+</html>

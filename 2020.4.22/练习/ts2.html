@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            background-color: cornflowerblue;
+            width: 190px;
+            height: 40px;
+        }
+        input{
+            box-sizing: border-box;
+            width: 150px;
+            height: 40px;
+        }
+        span{
+            background-color: cyan;
+            display: inline-block;
+            width: 30px;
+            height: 40px;
+            text-align: center;
+            /* line-height: 40px; */
+            font-size: 20px;
+            transform: rotate(90deg);
+            transform-origin: 40% 40%;
+        }
+        span:hover{
+            transform: rotate(0deg);
+            transition: all .4s;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="text">
+        <span>></span>
+    </div>
+</body>
+</html>

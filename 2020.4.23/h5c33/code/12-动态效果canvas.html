@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      body {
+        background-color: #000;
+      }
+
+      #canvas {
+        background-color: #fff;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- canvas 画布 -->
+    <canvas id="canvas" width="400" height="400">
+      <!-- 一般情况下 html5的标签 某些浏览器是不支持的 如果不支持 就在标签直接写不支持的内容 -->
+      不支持canvas的浏览器
+    </canvas>
+    <script>
+      let canvas = document.querySelector("#canvas")
+      //为canvas设定一个绘制环境 (是画笔)
+      let context = canvas.getContext("2d");
+      //中立变量 用来计算盒子的位置
+      let iNow = 0;
+      //中立变量 定时器
+      let timer = null;
+      const BOX_WIDTH = 100;
+      const BOX_HEIGHT = 100;
+      timer = setInterval(() => {
+        //先清除掉上一个老的矩形
+        context.clearRect(iNow, iNow, BOX_WIDTH, BOX_HEIGHT);
+        iNow++
+        //然后绘制一个新的矩形
+        context.fillRect(iNow, iNow, BOX_WIDTH, BOX_HEIGHT);
+        if (iNow === canvas.clientWidth - BOX_WIDTH) {
+          clearInterval(timer)
+        }
+      }, 30);
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let str = "adsj1233a$&*sfnjk2fasd*#^&*@37ufs2d24178  9  df __fas($*d --!!jio";
+      //在这一段字符串中拿到所有的数字 且放置在一个数组中
+      // function filterNumber(str) {
+      //   let splitArr = str.split("");
+      //   console.log(splitArr)
+      //   return splitArr.filter(e => {
+      //     return e >= "0" && e <= "9"
+      //     // return !Number.isNaN(+e)
+      //   })
+      // }
+
+      function filterNumber(str) {
+        let arr = [];
+        for (let i = 0; i < str.length; i++) {
+          if (str[i] >= "0" && str[i] <= "9") {
+            arr.push(str[i])
+          }
+        }
+        return arr
+      }
+      console.log(filterNumber(str))
+    </script>
+  </body>
+
+</html>

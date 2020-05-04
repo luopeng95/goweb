@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let arr = [1, 2, 3];
+      // arr总会附带一个属性 length
+      // arr的length 非常特殊 他的动态的 并且可读可写
+      //一般情况下 length属性只可读 不可写
+
+      //增
+      //这个数组的长度变成20了
+      // arr.length = 20;
+      arr[19] = "haha"
+      console.log(arr)
+
+      //删
+      arr.length = 2;
+      console.log(arr) //[1, 2]
+
+      //特别的 当length 为0的时候 就是清空数组内容 暴力清空数组内容
+      arr.length = 0;
+      console.log(arr) //[]
+
+      // 改
+      let arr2 = ["北京", "上海", "深圳"];
+      arr2[1] = "广州"
+      console.log(arr2)
+
+      // 查
+      // 第一个元素 永远是0
+      // 最后一个元素 永远是 length - 1
+      for (let i = 0; i < arr2.length; i++) {
+        console.log(arr2[i])
+      }
+      // let arr2 = new Array();
+    </script>
+  </body>
+
+</html>

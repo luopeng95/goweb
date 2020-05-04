@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/createTable.css">
+  </head>
+
+  <body>
+    <ul id="table_ul" class="table table-hover table-striped">
+    </ul>
+    <script src="js/createTable.js"></script>
+    <script>
+      let json = [{
+        name: "付珍",
+        salary: 30000,
+        age: 20
+      }, {
+        name: "杨川",
+        salary: 20000,
+        age: 30
+      }, {
+        name: "杨宇航",
+        salary: 50000,
+        age: 50
+      }]
+      createTable("table_ul", json, {
+        selectable: true,
+        operation: true
+      })
+    </script>
+  </body>
+
+</html>

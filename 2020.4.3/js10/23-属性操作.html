@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      .box {
+        background-color: pink;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="div1" class="box">1</div>
+    <script>
+      let oDiv = document.getElementById("div1");
+      //一般的官方基本属性 内置基本属性 你直接使用点操作符是没有任何问题的
+      //oDiv.id = xxxx 合法
+      //oDiv.className = xxxx 合法
+      //oDiv.src = xxx 合法
+      // oDiv.abc = xxx 不合法
+      //比如 id className style src href
+
+      //但是 如果你想要增删改查一个自定义属性的话 那么建议不要使用点操作符的形式
+      // console.log(oDiv.id)
+      // console.log(oDiv.className)
+      // oDiv.aaa = "张三"
+      // console.log(oDiv.aaa)
+
+      //增
+      //为oDiv添加了一个属性名为aaa的且属性值为"张三"的属性
+      oDiv.setAttribute("aaa", "张三")
+
+      //改
+      oDiv.setAttribute("aaa", "李四")
+
+      //删
+      oDiv.removeAttribute("class")
+
+      //查
+      console.log(oDiv.getAttribute("aaa")) //"李四"
+    </script>
+  </body>
+
+</html>

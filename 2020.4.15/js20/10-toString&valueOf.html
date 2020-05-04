@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //包装类型
+      //数据类型 有一种是包装(Integet) 有一种是未包装的 (int)
+      //自动拆装箱
+      //valueOf(): 返回一个对象的原始值
+      // console.log(Number(1).valueOf())
+      //toString(): 输出这个对象的字符串类型
+      // console.log(Number(1).toString())
+      //在隐式转换的时候(数值计算) 如 a + 1 a >= 1 a == 1 会优先调用valueOf()
+      //而在输出的时候 会优先调用toString() console.log(a) || alert(a) toString()
+      //一般情况下 valueOf 高于 toString  (Date数据类型除外)
+      // Object.prototype.valueOf = function () {
+      //   return {}
+      // }
+      // Object.prototype.toString = function () {
+      //   return "toString"
+      // }
+      //1. 对象 如果没有重写这两个方法 那么就会默认先调用toString 然后在调用 valueOf
+      //2. 如果重写这两个方法 就会先valueOf() 再调用 toString()
+      //3. 如果只重写其中一个方法且返回值是基本数据类型 就会默认先调用这个方法
+      //4. 如果这两个方法 返回值 都不是基本数据类型 就会报错
+
+      // let obj = {}
+      // console.log(obj)
+      // console.log(obj + "hhh")
+      // console.log(obj + 123)
+      // console.log(obj == 123) //== 会发生隐式转换
+
+      // Function.prototype.valueOf = function () {}
+      // Function.prototype.toString = function () {}
+      // let fun = function () {}
+      // console.log(fun); //函数实例并不能以函数的形式 展示在控制台上 堆内存的那个字符串
+      // console.log(fun + "hhh");
+      // console.log(fun + 123);
+      // console.log(fun == 0);
+
+      function inner() {
+        return 123;
+      }
+      Function.prototype.valueOf = function () {
+        debugger
+      }
+      Function.prototype.toString = function () {
+        debugger
+      }
+      Object.prototype.valueOf = function () {
+        debugger
+      }
+      Object.prototype.toString = function () {
+        debugger
+      }
+      console.log(inner)
+    </script>
+  </body>
+
+</html>

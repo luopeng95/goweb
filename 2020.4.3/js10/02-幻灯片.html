@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            img {
+                width: 500px;
+                height: auto;
+                display: none;
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- 用来展示图片的父容器 -->
+        <div id="container">
+            <img src="image/1.jpg">
+            <img src="image/2.jpg">
+            <img src="image/3.jpg">
+        </div>
+
+        <script>
+            let oDiv = document.getElementById("container")
+            let aImg = document.getElementsByTagName("img")
+
+            let iNow = 0
+            setInterval(() => {
+                for (let i = 0; i < aImg.length; i++) {
+                    aImg[i].style.display = "none"
+                }
+                aImg[iNow++ % aImg.length].style.display = "block"
+            }, 1000)
+        </script>
+    </body>
+
+</html>

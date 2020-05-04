@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="div1">1</div>
+    <div id="div2">2</div>
+    <div id="div3">3</div>
+    <script>
+      let oDiv1 = document.querySelector("#div1")
+      let oDiv2 = document.querySelector("#div2")
+      let oDiv3 = document.querySelector("#div3")
+
+      let change = function (color, width, height) {
+        this.style.backgroundColor = color
+        this.style.width = width
+        this.style.height = height
+      }
+
+      oDiv1.addEventListener("click", function () {
+        change.call(this, "pink", "100px", "100px") //this指向被改变的函数的调用
+      })
+      oDiv2.addEventListener("click", function () {
+        change.apply(this, ["skyblue", "100px", "100px"])
+      })
+      oDiv3.addEventListener("click", function () {
+        //thisArg
+        //arg1, arg2....
+        //bind仅仅只是绑定函数
+        //call和apply 绑定且调用函数
+        //call() === bind()()
+        //为oDiv3 拷贝 一份 change函数 让this指针指向oDiv3 且函数名 copyChange
+        // let copyChange = change.bind(this, "pink", "100px", "100px")
+        // copyChange()
+        //语法
+        //call(this, arg1, arg2, arg3....)
+        //参数 this指针 各个函数参数{参数列表}
+        //作用 马上调用
+        //apply(this, augumentArr)
+        //参数 this指向 参数数组
+        //作用 马上调用
+        //语法
+        //bind(this, arg1, arg2, arg3....)
+        //参数 this指针 各个函数参数{参数列表}
+        //返回值 复制后的函数
+        //作用 仅仅只是绑定
+        change.bind(this, "pink", "100px", "100px")()
+      })
+    </script>
+  </body>
+
+</html>

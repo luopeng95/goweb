@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>整数倒序</title>
+</head>
+<body>
+    <script>
+        function reverSe(x){
+            let border = 2 ** 31;
+            let max = border - 1;//最大值
+            let min = - border;//最小值
+
+            let result = (x > 0 ? 1 : -1) * String(x).split("").filter(x => x !== "-").reverse().join("");
+            return result > max || result < min ? 0 : result;
+        }
+    </script>
+</body>
+</html>

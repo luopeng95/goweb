@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      input {
+        padding: 4px;
+      }
+
+      .tab li {
+        width: 200px;
+        height: 200px;
+        border: 1px solid black;
+        display: none;
+      }
+
+      .tab .clicked {
+        background-color: pink;
+      }
+
+      .tab .active {
+        display: block;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="tab" class="tab">
+      <!-- 触发器 -->
+      <div>
+        <!-- 当前默认被点击的是第一个按钮 -->
+        <input class="clicked" type="button" value="0">
+        <input type="button" value="1">
+        <input type="button" value="2">
+      </div>
+      <!-- 渲染区 -->
+      <ul>
+        <!-- 表示当前被点击的按钮对应的div的展示 -->
+        <li class="active">000000000000000000</li>
+        <li>111111111111111111</li>
+        <li>222222222222222222</li>
+      </ul>
+    </div>
+    <script>
+      let oTab = document.getElementById("tab")
+    </script>
+  </body>
+
+</html>

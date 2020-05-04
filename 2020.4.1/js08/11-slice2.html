@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      // slice 切割
+      let arr = [
+        ["长沙", "常德", "湘潭"],
+        ["深圳", "广州", "茂名"]
+      ];
+      let arr2 = arr.slice();
+      arr2[1][0] = "湛江"
+      console.log(arr) //广州
+      console.log(arr2) //长沙
+      // let arr = [{
+      //   "name": "张三",
+      //   "age": 20
+      // }, {
+      //   "name": "李四",
+      //   "age": 18
+      // }]
+      // let arr2 = arr.slice();
+      // arr2[1].age = 50
+      // console.log(arr)
+      // console.log(arr2)
+    </script>
+  </body>
+
+</html>

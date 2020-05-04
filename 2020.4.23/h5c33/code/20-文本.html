@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      body {
+        background-color: #000;
+      }
+
+      #canvas {
+        background-color: #fff;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- <img id="img1" src="../img/1.jpg" alt=""> -->
+    <!-- canvas 画布 -->
+    <canvas id="canvas" width="400" height="400">
+      <!-- 一般情况下 html5的标签 某些浏览器是不支持的 如果不支持 就在标签直接写不支持的内容 -->
+      不支持canvas的浏览器
+    </canvas>
+    <script>
+      let canvas = document.querySelector("#canvas")
+      //为canvas设定一个绘制环境 (是画笔)
+      let context = canvas.getContext("2d");
+
+      //font属性来设置文字内容
+      context.beginPath();
+      context.moveTo(0, 200.5);
+      context.lineTo(400, 200.5);
+
+      context.moveTo(200.5, 0)
+      context.lineTo(200.5, 400);
+      context.stroke();
+      context.font = '60px 幼圆';
+      //文本对齐方式 做水平居中
+      context.textAlign = 'center';
+      //做垂直居中?
+      context.textBaseline = 'middle';
+
+      // context.fillText("回", 200, 200);
+      context.strokeText("付珍", 200, 200);
+    </script>
+  </body>
+
+</html>

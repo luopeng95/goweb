@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let str1 = "123456789@qq.com"
+      let str2 = "123456789@163.com"
+      let str3 = "123456789@163.com.cn"
+      let str4 = "123456789@163.edu"
+      let str5 = "123456789@163.gov"
+      let str6 = "123456789@163.gov.jp"
+      let str7 = "hu_p@163.com.cn"
+      let str8 = "hu_p@163.com"
+      let str8 = "hu_p@163.cn"
+
+      //@ .
+      //一段单词 +  @ + 一段单词 + . + 一段单词(2,4) + . + 一段单词(2,4)
+
+      // let reg = /^\w+@\w+\.\w{2,4}(\.\w{2,4})?$/
+      let reg = /^\w+@\w+[.]\w{2,4}([.]\w{2,4})?$/
+      // let reg2 = /^\w+@\w+(\.\w{2,4}){1,2}$/
+      let reg2 = /^\w+@\w+([.]\w{2,4}){1,2}$/
+
+      console.log(reg.test(str1))
+      console.log(reg.test(str2))
+      console.log(reg.test(str3))
+      console.log(reg.test(str4))
+      console.log(reg.test(str5))
+      console.log(reg.test(str6))
+      console.log(reg.test(str7))
+      console.log(reg.test(str8))
+    </script>
+  </body>
+
+</html>

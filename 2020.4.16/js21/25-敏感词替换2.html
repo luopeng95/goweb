@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    转换前
+    <input type="text" id="txt1">
+    <button id="btn">转换</button>
+    转换后
+    <input type="text" id="txt2">
+    <script>
+      let oTxt1 = document.querySelector("#txt1")
+      let oBtn = document.querySelector("#btn")
+      let oTxt2 = document.querySelector("#txt2")
+      //你 我 他 他妈 正则表达式
+      let reg = /(你|我|他(妈){0,1}|正则表达式)/g
+
+      oBtn.addEventListener("click", function () {
+        //拿到转换前的字符串
+        let beforeTxt = oTxt1.value;
+
+        //根据正则和文字来转换
+        let changeTxt = beforeTxt.replace(reg, e => {
+          let result = ""
+          for (let i = 0; i < e.length; i++) {
+            result += "*"
+          }
+          return result
+        })
+
+        //将转换后的内容 赋值给第二个文本框
+        oTxt2.value = changeTxt;
+      })
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <ul id="container">
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <script>
+      let oUl = document.getElementById("container")
+      //HTMLCollection
+      let aLi = oUl.getElementsByTagName("li")
+      //1. 将aLi的数据类型 强制转换成 Array 类型
+      //2. 遍历aLi这个数据
+      Array.from(aLi, (e) => {
+        e.style.backgroundColor = "pink"
+      })
+    </script>
+  </body>
+
+</html>

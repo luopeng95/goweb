@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      function outer() {
+        //定义一个局部变量
+        let a = 1;
+
+        //定义一个内部函数
+        function inner() {
+          console.log(a)
+          a = a + 1
+        }
+
+        //返回的是一个内部的函数体
+        return inner
+      }
+
+      //1. 开辟一个outer作用域
+      //2. 将inner函数体 返回给 add
+      //局部变量 在函数执行完毕之后(触碰到大括号 或者 触碰到return)的时候 该作用域都会销毁
+      let add = outer(); //inner
+
+      add() //inner()
+      add()
+      add()
+    </script>
+  </body>
+
+</html>

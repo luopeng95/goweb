@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      /* 我选中的就是第一个元素 但是第一个元素不满足条件 所以无法选中 */
+      ul li:first-child {
+        background-color: red;
+      }
+
+      ul li:last-child {
+        background-color: blue;
+      }
+
+      /* 我选中的永远是第一个E */
+      ul li:first-of-type {
+        background-color: red;
+      }
+
+      ul li:last-of-type {
+        background-color: blue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <ul>
+      <span>我是span</span>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </body>
+
+</html>

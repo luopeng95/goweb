@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    /* 绝对定位 1.脱离文档流
+      2.绝对定位的偏移量 相对的是祖先级定位元素而言
+      特别的 如果没有父级定位元素,则按照文档流(当时渲染时候)做参考
+    */
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    div {
+      width: 100px;
+      height: 100px;
+    }
+
+    .div1 {
+      background-color: pink;
+    }
+
+    .div2 {
+      background-color: blue;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+
+    .div3 {
+      background-color: green;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 能不用定位尽量不用定位 因为布局往往的都是方正的 -->
+  <div class="div1"></div>
+  <div class="div2"></div>
+  <div class="div3"></div>
+</body>
+
+</html>

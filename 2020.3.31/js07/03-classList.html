@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      .bd {
+        border: 1px solid black;
+      }
+
+      .bc {
+        background-color: pink;
+      }
+
+      div {
+        width: 100px;
+        height: 100px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="div1" class="bc bd"></div>
+    <script>
+      let oDiv = document.getElementById("div1");
+      oDiv.onclick = function () {
+        // oDiv.className = "bc2"
+        oDiv.classList.toggle("bc");
+      }
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //4. 寄生继承
+      //创建一个寄生对象(中介) 中介的本身相当于一个桥 连接Person Teacher
+      function Person(name, age) {
+        this.name = name;
+        this.age = age;
+        console.log("Person")
+      }
+      Person.prototype.eat = function () {
+        return this.name + "在吃"
+      }
+      Person.prototype.sleep = function () {
+        return this.name + "在睡"
+      }
+
+      //o就是父类的原型
+      function object(o) {
+        //F 充当一个寄生者(中介对象) Teacher和Person之间的对象
+        function F() {}
+        //F的原型 指向 Person.prototype 父类的原型
+        F.prototype = o
+        //F是Person的子类
+        //new F() 返回给真子类 也就是 Teahcer.prototype
+        return new F()
+      }
+
+      function Teacher(name, age, tAge) {
+        this.tAge = tAge;
+        Person.call(this, name, age) //2
+      }
+      // Teacher.prototype = Person.prototype
+      // Teacher.prototype = new Person //1 不应该执行这个new Person 就意味着Teacher是Person的子类
+      // Teahcer.prototype = new F() Teacher是F的子类
+      Teacher.prototype = object(Person.prototype)
+      Teacher.prototype.constructor = Teacher
+      Teacher.prototype.teach = function () {
+        return this.name + "在教书"
+      }
+      let t1 = new Teacher("老胡", 30, 10)
+    </script>
+  </body>
+
+</html>

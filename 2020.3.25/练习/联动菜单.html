@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" name="myForm">
+
+        <select name="s1" id="s1" onchange="change()">
+            <option selected>数码设备</option>
+            <option>家用电器</option>
+            <option>礼品工艺</option>
+        </select>
+    
+        <select name="s2" id="s2">
+            <option>数码相机</option>
+            <option>打印机</option>
+        </select>
+    </form>
+    <script>
+        let arr = new Array(3);
+        arr["数码设备"] = new Array("数码相机","打印机");
+        arr["家用电器"] = new Array("电视机","电冰箱");
+        arr["礼品工艺"] = new Array("鲜花","彩带");
+
+        function removeList(rLists){
+            // for( let i = 0; i < rLists.options.length ; i++){
+                // rLists.options[i] = null;
+                // rLists.remove(i);
+                // console.log(rLists);
+            // }
+            rLists.innerHTML = null;
+        }
+
+        function change(s1, s2){
+            // 获取最新的s1的值
+            let otxt = document.myForm.s1.value
+            console.log(otxt);
+            let os2 = document.myForm.s2
+            // 删除s2原先的值
+            removeList(os2);
+            console.log(os2);
+            // debugger;
+            // 给s2赋予最新的值
+            // 用otxt确认要赋予哪些值和长度
+            let ovalue = arr[otxt]
+            for (let i = 0; i < ovalue.length; i++){
+                os2.innerHTML += `<option>${arr[otxt][i]}</option>`;
+                // os2.options[i] = new Option(arr[otxt][i],arr[otxt][i]);
+            }
+        }
+        // console.log(arr);
+    </script>
+</body>
+</html>

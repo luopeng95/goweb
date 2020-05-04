@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let o = {
+        name: "张三"
+      }
+      let a = [1, 2, 3]
+
+      //也不是真正的深复制
+      function deepClone(obj) {
+        let newObj;
+        //判断是对象还是数组
+        if (Object.prototype.toString.call(obj) === "[object Array]") {
+          //是数组
+          newObj = new Array();
+          Array.from(obj, e => {
+            newObj.push(e)
+          })
+        } else if (Object.prototype.toString.call(obj) === "[object Object]") {
+          //是对象
+          newObj = new Object();
+          for (let key in obj) {
+            newObj[key] = obj[key]
+          }
+        }
+        return newObj
+      }
+
+      let no = deepClone(o)
+      let na = deepClone(a)
+      console.log(no)
+      console.log(na)
+      console.log(no === o) //false
+      console.log(na === a) //false
+    </script>
+  </body>
+
+</html>

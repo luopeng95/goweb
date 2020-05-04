@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      body {
+        background-color: pink;
+      }
+
+      #bagua {
+        width: 200px;
+        height: 400px;
+        margin: 100px auto;
+        background-color: #fff;
+        border-left: 200px solid black;
+        /* 变成圆的代码 是圆角矩形 */
+        border-radius: 50%;
+        transition-property: all;
+        transition-duration: 500ms;
+      }
+
+      #bagua::before {
+        /* 伪类必须提供一个content属性,否则无效 */
+        content: "";
+        display: block;
+        width: 50px;
+        height: 50px;
+        border: 75px solid black;
+        border-radius: 50%;
+        margin-left: -100px;
+        background-color: #fff;
+      }
+
+      #bagua::after {
+        content: "";
+        display: block;
+        width: 50px;
+        height: 50px;
+        border: 75px solid #fff;
+        border-radius: 50%;
+        margin-left: -100px;
+        background-color: #000;
+      }
+
+      #bagua:hover {
+        transform: rotate(0.5turn);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="bagua">
+      <!-- <div id="y1"></div> -->
+      <!-- <div id="y2"></div> -->
+    </div>
+  </body>
+
+</html>

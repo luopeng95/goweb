@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let countRecursion = (a, b) => {
+            let max = a > b ? a : b;
+            let min = a > b ? b : a;
+            let total = 0;
+            let count = (min, max) => {
+                if(min <= max){
+                    return  min + count(min + 1, max);
+                }else{
+                    return 0;
+                }
+            }
+            // console.log(count(min, max));
+            total = count(min, max);
+            return total;
+        }
+        console.log(countRecursion(100, -10));
+    </script>
+</body>
+</html>

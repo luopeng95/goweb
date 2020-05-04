@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    div {
+      width: 100px;
+      height: 100px;
+    }
+
+    .div1 {
+      background-color: pink;
+    }
+
+    /* 这两个标签之间有关联 耦合度高 */
+    .div2 {
+      background-color: blue;
+      /* 使用相对定位之后 他还会附赠你四个属性 top/left/right/bottom (定位偏移量) */
+      /* 相对定位不会脱离文档流 相对定位的参考系他原本在文档流中的位置 */
+      position: relative;
+      left: 100px;
+      top: 100px;
+    }
+
+    .div3 {
+      background-color: green;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 能不用定位尽量不用定位 因为布局往往的都是方正的 -->
+  <div class="div1"></div>
+  <div class="div2"></div>
+  <div class="div3"></div>
+</body>
+
+</html>

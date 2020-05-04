@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        #ul1{
+            /* background-color: darkseagreen; */
+            border: 1px solid black;
+            height: 400px;
+            display: flex;
+        }
+        #ul1 p{
+            /* background-color: darkturquoise; */
+            text-align: center;
+            padding: 5px;
+            height: 40px;
+        }
+        #ul1 li{
+            list-style: none;
+            margin-right: 40px;
+            /* border: 1px solid gray; */
+        }
+        #ul1 img{
+            width: 200px;
+            height: 260px;
+        }
+        #ul2{
+            background-color: deepskyblue;
+            width: 600px;
+            height: 400px;
+        }
+        #ul2>li:first-child{
+            padding: 10px;
+            box-sizing: border-box;
+            text-align: center;
+            background-color: firebrick;
+            height: 50px;
+        }
+        #ul2>li:last-child{
+            padding: 10px;
+            box-sizing: border-box;
+            background-color: firebrick;
+            height: 50px;
+        }
+        #ul2>li:nth-child(2){
+            background-color: skyblue;
+            height: 300px;
+        }
+        #ul2 div{
+            background-color: slategray;
+            height: 50px;
+        }
+        #ul2 span{
+            display: inline-block;
+            height: 30px;
+            line-height: 50px;
+        }
+        #ddd{
+            background-color: rgb(228, 102, 171);
+            position: absolute;
+            left: 700px;
+            top: 402px;
+            height: 400px;
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <ul id="ul1">
+    </ul>
+    <ul id="ul2">
+        <li>这是非常非常简陋的购物车</li>
+        <li id="main">
+            <!-- <div>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div> -->
+        </li>
+        <li id="count">总计：</li>
+    </ul>
+    <div id="ddd">
+        这里是删除区
+    </div>
+    <script>
+        let json = [{"id":1,"imgUrl":"./img1.jpg","name":"js语言精粹","price":"￥10"},{"id":2,"imgUrl":"./img2.jpg","name":"js权威指南","price":"￥20"},{"id":3,"imgUrl":"./img3.jpg","name":"精通js","price":"￥30"},{"id":4,"imgUrl":"./img4.jpg","name":"DOM编程艺术","price":"￥40"}]
+
+        let oUl1 = document.getElementById("ul1");
+        let oUl2 = document.getElementById("ul2");
+        let mainLi = document.getElementById("main");
+        let count = 0;
+        let oCu = document.getElementById("count");
+        let nums = [];//记录已经在购物车中id
+        let oDiv;
+        let del = document.getElementById("ddd");
+        class List{
+            constructor(parent, json){
+                this.parent = parent;
+                this.json = json;
+                this.init();
+            }
+            init(){
+                this.createLi();
+                this.addEvent(parent);
+            }
+
+            // 初始化
+            createLi(){
+                for(let i = 0; i < this.json.length; ++i){
+                    this.parent.innerHTML += `<li draggable="true" id=${this.json[i]["id"]}> 
+            <img src=${this.json[i]["imgUrl"]}>
+            <p>${this.json[i]["name"]}</p>
+            <p>${this.json[i]["price"]}</p>
+        </li>`
+                }
+            }
+
+            // 绑定事件
+            addEvent(){
+                this.olis = this.parent.getElementsByTagName("li");
+                for(let i = 0; i < this.olis.length; ++i){
+                    this.olis[i].addEventListener("dragstart", (e)=>{
+                        e.dataTransfer.setDragImage(this.olis[i].getElementsByTagName("img")[0], 0, 0);
+                        this.book = this.olis[i];
+                    })
+                }
+            }
+        }
+
+      oUl2.addEventListener("dragover", (e)=>{
+        e.preventDefault();
+      })
+
+      oUl2.addEventListener("drop",(e)=>{
+          let num = +list1.book.id
+          if(nums.includes(num)){
+              return null;
+            }
+            nums.push(num);
+          count += parseInt(json[num-1]["price"].slice(1,));
+          mainLi.innerHTML += `<div draggable="true" id=${mainLi.children.length + 1} pri=${parseInt(json[num-1]["price"].slice(1,))} data-class=${json[num-1]["id"]}>
+                <span style="width:100px">${mainLi.children.length + 1}</span>
+                <span style="width:300px">${json[num-1]["name"]}</span>
+                <span style="width:100px">${json[num-1]["price"]}</span>
+            </div>`
+          oCu.innerHTML = "总计：" + count;
+          e.stopPropagation();
+      })
+
+      mainLi.addEventListener("dragstart", (e)=>{
+          oDiv = e.target;
+      })
+      del.addEventListener("dragover", (e)=>{
+        e.preventDefault();
+    })
+    del.addEventListener("drop",(e)=>{
+        if(oDiv){
+            for(let i = 0; i < nums.length; ++i){
+                if(nums[i] === +oDiv.getAttribute("data-class")){
+                    nums.splice(i,1);
+                }
+            }
+            count -= +oDiv.getAttribute("pri");
+            oCu.innerHTML = "总计：" + count;
+            mainLi.removeChild(oDiv);
+            oDiv = ""
+        }
+        console.log(nums);
+      })
+
+        let list1 = new List(oUl1, json);
+    </script>
+</body>
+</html>

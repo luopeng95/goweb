@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .news {
+        border: 1px solid black;
+        width: 200px;
+        min-height: 20px;
+      }
+    </style>
+</head>
+<body>
+    <input type="button" value="开始" id="start">
+    <input type="button" value="暂停" id="pause">
+    <input type="button" value="回退" id="back">
+    <p class="news" id="news"></p>
+
+    <script>
+        let index = 0;
+        let news = document.getElementById("news");
+        let start = document.getElementById("start");
+        let pause = document.getElementById("pause");
+        let back = document.getElementById("back");
+        let time;
+        // 打字机的初始化
+        let initNews = (str, seprate) => {
+            // 得到处理后的字符串
+            str2 = changeStr(str, seprate);
+
+            // 开始的点击事件
+            start.onclick = function sClick() {
+                clearTimeout(time);
+                change(str2, "add");
+                addNews(str2);
+                time = setTimeout(sClick, 100);
+            }
+
+            // 暂停的点击事件
+            pause.onclick = () => {
+                clearTimeout(time);
+            }
+
+            // back的点击事件
+            back.onclick = function bClick(){
+                clearTimeout(time);
+                change(str2, "back");
+                addNews(str2);
+                time = setTimeout(bClick, 100);
+            }
+        }
+        // 逻辑代码：初始化字符串
+        let changeStr = (str, seprate) =>{
+            // 处理字符串
+            let str2 = str.split(seprate)
+            for(let i = 0; i < str2.length; ++i){
+                str2[i] = str2[i].replace(str2[i][0], str2[i][0].toUpperCase());
+            }
+            return str2.join(seprate)
+        }
+
+        // 逻辑代码:改变index的值
+        let change = (str, active) => {
+            switch(active){
+                case "add":
+                    if(index < str.length){
+                        ++index;
+                    }
+                    break;
+                case "back":
+                    if(index > 0){
+                        --index;
+                    }
+                    break;
+            }
+        }
+
+        // 业务代码:在p标签上输出内容
+        let addNews = (str) => {
+            news.innerHTML = str.slice(0, index);
+        }
+
+        let str = "Project Gutenberg is a library of over 60,000 free eBooks. Choose among free epub and Kindle eBooks, download them or read them online. You will find the world's great literature here, with focus on older works for which U.S. copyright has expired"
+        initNews(str, " ");
+    </script>
+</body>
+</html>

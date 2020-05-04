@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      * {
+        background-color: green;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>帮助页</h1>
+    <input id="back" type="button" value="向前">
+    <input id="forward" type="button" value="向后">
+    <a href="./index1.html">去首页</a>
+    <a href="./about1.html">去关于页</a>
+    <a href="./tips1.html">去帮助页</a>
+
+    <script>
+      //history.forward() 网页前进一步 history.go(1)
+      //history.back() 网页后退一步 history.go(-1)
+      //history.go(number) 网页移动步数
+      let oForward = document.getElementById("forward")
+      let oBack = document.getElementById("back")
+
+      oBack.addEventListener("click", function () {
+        history.back() //令当前window对象跳转到历史对象的上一个页面 等价于history.go(-1)
+      })
+      oForward.addEventListener("click", function () {
+        history.forward() //令当前window对象跳转到历史对象的后一个页面 等价于history.go(1)
+      })
+    </script>
+  </body>
+
+</html>

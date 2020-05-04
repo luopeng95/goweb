@@ -1,0 +1,282 @@
+{
+  "id": "1781133",
+  "name": "播放器",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "播放器",
+  "glyphs": [
+    {
+      "icon_id": "2154282",
+      "name": "循环播放_32",
+      "font_class": "xunhuanbofang",
+      "unicode": "e66c",
+      "unicode_decimal": 58988
+    },
+    {
+      "icon_id": "2154290",
+      "name": "全屏_32",
+      "font_class": "quanping",
+      "unicode": "e66e",
+      "unicode_decimal": 58990
+    },
+    {
+      "icon_id": "2154723",
+      "name": "设置_44",
+      "font_class": "shezhi",
+      "unicode": "e67e",
+      "unicode_decimal": 59006
+    },
+    {
+      "icon_id": "2154820",
+      "name": "播放器-弹幕（关）_44",
+      "font_class": "bofangqi-danmuguan",
+      "unicode": "e696",
+      "unicode_decimal": 59030
+    },
+    {
+      "icon_id": "2154821",
+      "name": "播放器-弹幕（开）_44",
+      "font_class": "bofangqi-danmukai",
+      "unicode": "e697",
+      "unicode_decimal": 59031
+    },
+    {
+      "icon_id": "2154822",
+      "name": "播放器-选集_44",
+      "font_class": "bofangqi-xuanji",
+      "unicode": "e698",
+      "unicode_decimal": 59032
+    },
+    {
+      "icon_id": "2154823",
+      "name": "播放器-（锁屏）_44",
+      "font_class": "bofangqi-suoping",
+      "unicode": "e699",
+      "unicode_decimal": 59033
+    },
+    {
+      "icon_id": "2154824",
+      "name": "播放器-弹幕顶部（关）_44",
+      "font_class": "bofangqi-danmudingbuguan",
+      "unicode": "e69a",
+      "unicode_decimal": 59034
+    },
+    {
+      "icon_id": "2154828",
+      "name": "播放器-弹幕顶部（开）_44",
+      "font_class": "bofangqi-danmudingbukai",
+      "unicode": "e69b",
+      "unicode_decimal": 59035
+    },
+    {
+      "icon_id": "2154853",
+      "name": "播放器-弹幕底部（关）_44",
+      "font_class": "bofangqi-danmudibuguan",
+      "unicode": "e69c",
+      "unicode_decimal": 59036
+    },
+    {
+      "icon_id": "2154854",
+      "name": "播放器-弹幕底部（开）_44",
+      "font_class": "bofangqi-danmudibukai",
+      "unicode": "e69d",
+      "unicode_decimal": 59037
+    },
+    {
+      "icon_id": "2154855",
+      "name": "播放器-弹幕滚动（关）_44",
+      "font_class": "bofangqi-danmugundongguan",
+      "unicode": "e69e",
+      "unicode_decimal": 59038
+    },
+    {
+      "icon_id": "2154856",
+      "name": "播放器-弹幕滚动（开）_44",
+      "font_class": "bofangqi-danmugundongkai",
+      "unicode": "e69f",
+      "unicode_decimal": 59039
+    },
+    {
+      "icon_id": "2154857",
+      "name": "播放器-弹幕彩色（关）_44",
+      "font_class": "bofangqi-danmucaiseguan",
+      "unicode": "e6a0",
+      "unicode_decimal": 59040
+    },
+    {
+      "icon_id": "2154860",
+      "name": "播放器-弹幕彩色（开）_44",
+      "font_class": "bofangqi-danmucaisekai",
+      "unicode": "e6a1",
+      "unicode_decimal": 59041
+    },
+    {
+      "icon_id": "2154862",
+      "name": "播放器-弹幕字体（大）_44",
+      "font_class": "bofangqi-danmuzitida",
+      "unicode": "e6a2",
+      "unicode_decimal": 59042
+    },
+    {
+      "icon_id": "2154863",
+      "name": "播放器-弹幕字体（小）_44",
+      "font_class": "bofangqi-danmuzitixiao",
+      "unicode": "e6a3",
+      "unicode_decimal": 59043
+    },
+    {
+      "icon_id": "2154945",
+      "name": "播放器-播放_44",
+      "font_class": "bofangqi-bofang",
+      "unicode": "e6a4",
+      "unicode_decimal": 59044
+    },
+    {
+      "icon_id": "2154946",
+      "name": "播放器-暂停_44",
+      "font_class": "bofangqi-zanting",
+      "unicode": "e6a5",
+      "unicode_decimal": 59045
+    },
+    {
+      "icon_id": "2154947",
+      "name": "播放器-下一集_44",
+      "font_class": "bofangqi-xiayiji",
+      "unicode": "e6a6",
+      "unicode_decimal": 59046
+    },
+    {
+      "icon_id": "2154951",
+      "name": "播放器-AirPlay_44",
+      "font_class": "bofangqi-AirPlay",
+      "unicode": "e6a9",
+      "unicode_decimal": 59049
+    },
+    {
+      "icon_id": "2154952",
+      "name": "播放器-后台播放_44",
+      "font_class": "bofangqi-houtaibofang",
+      "unicode": "e6aa",
+      "unicode_decimal": 59050
+    },
+    {
+      "icon_id": "2224343",
+      "name": "排行榜_44",
+      "font_class": "paihangbang",
+      "unicode": "e6ae",
+      "unicode_decimal": 59054
+    },
+    {
+      "icon_id": "2306764",
+      "name": "BILIBILI_LOGO",
+      "font_class": "bilibili",
+      "unicode": "e6b4",
+      "unicode_decimal": 59060
+    },
+    {
+      "icon_id": "2511135",
+      "name": "已追番",
+      "font_class": "yizhuifan",
+      "unicode": "e6db",
+      "unicode_decimal": 59099
+    },
+    {
+      "icon_id": "6119216",
+      "name": "上-三角",
+      "font_class": "top-s",
+      "unicode": "e627",
+      "unicode_decimal": 58919
+    },
+    {
+      "icon_id": "7944524",
+      "name": "不循环播放 -01",
+      "font_class": "buxunhuanbofang-",
+      "unicode": "e639",
+      "unicode_decimal": 58937
+    },
+    {
+      "icon_id": "8341781",
+      "name": "播放",
+      "font_class": "bofang",
+      "unicode": "e63a",
+      "unicode_decimal": 58938
+    },
+    {
+      "icon_id": "8341782",
+      "name": "暂停",
+      "font_class": "zanting",
+      "unicode": "e63b",
+      "unicode_decimal": 58939
+    },
+    {
+      "icon_id": "8341785",
+      "name": "停止",
+      "font_class": "tingzhi",
+      "unicode": "e63d",
+      "unicode_decimal": 58941
+    },
+    {
+      "icon_id": "8341787",
+      "name": "打开",
+      "font_class": "dakai",
+      "unicode": "e63f",
+      "unicode_decimal": 58943
+    },
+    {
+      "icon_id": "8341788",
+      "name": "静音",
+      "font_class": "jingyin",
+      "unicode": "e640",
+      "unicode_decimal": 58944
+    },
+    {
+      "icon_id": "8341789",
+      "name": "音量",
+      "font_class": "yinliang",
+      "unicode": "e641",
+      "unicode_decimal": 58945
+    },
+    {
+      "icon_id": "8358247",
+      "name": "还原",
+      "font_class": "huanyuan",
+      "unicode": "e66f",
+      "unicode_decimal": 58991
+    },
+    {
+      "icon_id": "8358248",
+      "name": "全屏",
+      "font_class": "quanping1",
+      "unicode": "e670",
+      "unicode_decimal": 58992
+    },
+    {
+      "icon_id": "8358901",
+      "name": "赞1",
+      "font_class": "zan",
+      "unicode": "e6a7",
+      "unicode_decimal": 59047
+    },
+    {
+      "icon_id": "8358902",
+      "name": "赞2",
+      "font_class": "zan1",
+      "unicode": "e6a8",
+      "unicode_decimal": 59048
+    },
+    {
+      "icon_id": "10262050",
+      "name": "设 置",
+      "font_class": "shezhi1",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "10918080",
+      "name": "bilibili-line",
+      "font_class": "bilibili-line",
+      "unicode": "e75d",
+      "unicode_decimal": 59229
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form{
+            /* background-color: aqua; */
+            line-height: 0px;
+        }
+        input{
+            vertical-align: top;
+        }
+        select{
+            vertical-align: top;
+            width: 70px;
+            /* height: 50px; */
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <form action="" name="myForm">
+        <select name="job" id="job" multiple="true">
+            <option value="1">医生</option>
+            <option value="2">歌手</option>
+            <option value="3">老师</option>
+            <option value="4">演员</option>
+            <option value="5">学生</option>
+            <option value="6">业务员</option>
+            <option value="7">老板</option>
+            <option value="8">经理</option>
+            <option value="9">程序员</option>
+            <option value="10">厨师</option>
+        </select>
+        
+        <input type="button" value=">>>" onclick="addJob('job', 'myJob')">
+        <input type="button" value="<<<" onclick="addJob('myJob', 'job')">
+        <select name="myJob" id="myJob" multiple="true"></select>
+    </form>
+
+    <script>
+        function addJob(Id, changId){
+            // 复制和删除职位里面已选的职业
+            let ev = document.getElementById(Id);
+            console.log(ev);
+            for(let i = ev.options.length - 1; i > -1; --i){
+                if(ev.options[i].selected === true){
+                    let node = ev.options[i].cloneNode(true);
+                    let id = node.value;
+                    console.log(node);
+                    document.getElementById(changId).appendChild(node);
+                    ev.remove(i);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

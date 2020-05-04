@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let show = (greetstr, username) => `${username}, ${greetstr}`
+
+      let show1 = show.bind(null, "欢迎来到京北商城");
+
+      console.log(show1("张三"))
+      console.log(show1("李四"))
+      console.log(show1("王五"))
+
+      // console.log("张三,欢迎来到XX商城")
+      // console.log("李四,欢迎来到XX商城")
+      // console.log("王五,欢迎来到XX商城")
+
+      // function show(username) {
+      //   return username + ",欢迎来到XX商城"
+      // }
+      // 两个参数相加 x+y
+      // 加5+x函数
+      // function add(x, y) {
+      //   return x + y
+      // }
+
+      // function addFive(x) {
+      //   return x + 5
+      // }
+
+      //一个常量和x相加
+      let add = (x, y, z) => x + y + z
+      //这两个偏函数
+      //一 确定他是add函数
+      //二 传一个参 x 固定5
+      let addFive = add.bind(null, 5)
+      let addOneAndTwo = add.bind(null, 1, 2)
+      //再传另外一个参 y 10
+      console.log(addFive(10, 20)) //35
+      console.log(addOneAndTwo(20)) //23
+    </script>
+  </body>
+
+</html>

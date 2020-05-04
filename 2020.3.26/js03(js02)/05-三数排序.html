@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let a = 10,
+        b = 9,
+        c = 11,
+        t;
+      //9 10 11
+      //如果a大于b a和b就交换顺序 a开始变得比b小 a < b
+      if (a > b) {
+        [a, b] = [b, a]
+      }
+      //如果a大于c a和c就交换顺序 a开始变得比b小 a < c
+      if (a > c) {
+        [a, c] = [c, a]
+      }
+      if (b > c) {
+        [b, c] = [c, b]
+      }
+      console.log(a, b, c)
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            background-color: cornflowerblue;
+            width: 900px;
+            height: 900px;
+        }
+        li{
+            /* background-color: coral; */
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <ul id="uu">
+
+        </ul>
+    </div>
+
+    <script>
+        // 目标：函数输入创建的li的个数自动创建并上色与之前的一样
+        // 输入X，可以使用innerHTML和createElement来创建li，使用循环创建
+        function creationFlag(num){
+            // 先使用for循环将所有的旗子创建出来
+            let oul = document.querySelector("ul");
+            // console.log(oul);
+            for (let i = 0; i < num; i++){
+                // 使用createElement创建
+                // let li = document.createElement("li");
+                // oul.appendChild(li);
+
+                // 使用innerHTML创建
+                oul.innerHTML = oul.innerHTML + "<li></li>"
+            }
+            // console.log(oul);
+
+            // 创建好li之后先对所有的小彩旗进行上色
+            let oli = document.getElementsByTagName("li");
+            for (let i = 0; i < num; i++){
+                if( (i % 3) === 0){
+                    oli[i].color = "red";
+                    oli[i].style.background = "red";
+                }else if((i % 3) === 1){
+                    oli[i].color = "yellow"
+                    oli[i].style.background = "yellow"
+                }else{
+                    oli[i].color = "blue";
+                    oli[i].style.background = "blue"
+                    // 到这里就上好色了
+                }
+
+                // 接下来给每个li定义鼠标移入和移出事件
+                // 因为鼠标点击后要变成黑色，也要定义一个属性来控制区分
+
+                oli[i].cli = false;
+                oli[i].onmouseover = function (){
+                    if(this.cli != true){
+                        this.style.background = "green";
+                    }
+                }
+
+                oli[i].onmouseout = function(){
+                    if(this.cli !== true){
+                        this.style.background = this.color;
+                    }
+                }
+
+                oli[i].onclick = function(){
+                    if(this.cli){
+                        this.style.background = this.color;
+                        this.cli = false;
+                    }else{
+                        this.style.background = "black";
+                        this.cli = true;
+                    }
+                }
+                
+            }
+        }
+        creationFlag(50);
+    </script>
+</body>
+</html>

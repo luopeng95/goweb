@@ -1,0 +1,33 @@
+//一句话说明白 嵌套就是后代选择器 &就是交集选择器
+header {
+  height: 100px;
+
+  //选择的是header中的h1标签
+  h1 {
+    width: 100px;
+    height: 60px;
+    background-color: red;
+
+    a {
+      color: white;
+      text-decoration: none;
+
+      &:hover {
+        color: blue;
+      }
+
+      >span {
+        color: yellow;
+      }
+
+      +span {
+        color: purple;
+      }
+
+      ~span {
+        color: purple;
+      }
+    }
+
+  }
+}

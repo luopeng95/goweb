@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<input type="button" value="反选" id="input1"/>
+<div id="div1">
+    <input type="checkbox"/>
+    <input type="checkbox"/>
+    <input type="checkbox"/>
+    <input type="checkbox"/>
+    <input type="checkbox"/>
+</div>
+
+<script>
+	var oButton=document.getElementById('input1');
+	var oDiv = document.getElementById('div1');  //获取一个元素
+	var aCB=oDiv.getElementsByTagName('input');	 
+
+
+
+	oButton.onclick=function(){
+		for(var i=0; i<aCB.length; i++)
+		{
+			if(aCB[i].checked)
+			{
+				aCB[i].checked=false;	
+			}else{
+				aCB[i].checked=true;	
+			}
+				
+		}
+		
+		
+		
+	};
+
+</script>
+
+
+</body>
+</html>

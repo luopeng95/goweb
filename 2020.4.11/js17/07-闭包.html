@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //因为我要求你的变量 尽量是局部变量 因为全局变量会污染全局作用域 但是又要求i有记忆功能持续的输出1,2,3
+
+      //必须是局部变量,记忆该变量
+
+      //我既要变量是局部变量[不污染作用域],又要保存着内部的变量[保存变量]
+      //闭包概念: 形成一个[不被销毁]的[私有作用域]
+      //闭包作用: 保存变量[不被销毁] 保护变量[私有作用域]
+      //闭包形式: 函数嵌套函数,且返回一个堆内存
+
+      //内部闭包
+      function outer() {
+        let a = 1;
+
+        function inner() {
+          console.log(a)
+          a = a + 1;
+        }
+        inner()
+        inner()
+        inner()
+      }
+      outer() //1,2,3
+      outer() //1,2,3
+    </script>
+  </body>
+
+</html>

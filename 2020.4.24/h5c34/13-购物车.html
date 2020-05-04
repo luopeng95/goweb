@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <ul>
+      <li>
+        <input id="minus" type="button" value="-">
+        <input id="conut" type="text" value="0">
+        <input id="add" type="button" value="+">
+      </li>
+    </ul>
+    <script>
+      let add = document.querySelector("#add")
+      let minus = document.querySelector("#minus")
+      let count = document.querySelector("#conut")
+
+      //初始化的时候 需要读取这个count
+      count.value = localStorage.getItem("count1") || 0;
+
+      add.addEventListener("click", function () {
+        count.value = Number.parseInt(count.value) + 1
+        changeStorage()
+      })
+
+      minus.addEventListener("click", function () {
+        count.value = Number.parseInt(count.value) - 1
+        changeStorage()
+      })
+
+      function changeStorage() {
+        localStorage.setItem("count1", count.value)
+      }
+    </script>
+  </body>
+
+</html>

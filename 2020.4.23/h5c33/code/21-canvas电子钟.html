@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      body {
+        background-color: #000;
+      }
+
+      #canvas {
+        background-color: #fff;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- <img id="img1" src="../img/1.jpg" alt=""> -->
+    <!-- canvas 画布 -->
+    <canvas id="canvas" width="400" height="400">
+      <!-- 一般情况下 html5的标签 某些浏览器是不支持的 如果不支持 就在标签直接写不支持的内容 -->
+      不支持canvas的浏览器
+    </canvas>
+    <script>
+      let canvas = document.querySelector("#canvas")
+      //为canvas设定一个绘制环境 (是画笔)
+      let context = canvas.getContext("2d");
+      //一些基本参数
+      //画布的宽度
+      let width = canvas.width //400
+      //画布的高度
+      let height = canvas.height //400
+      //面板的半径
+      let r = width / 2; //200
+      //相对单位
+      let em = width / 200 //相对单位 2px
+      let arr = ["3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "1", "2"];
+      //确定面板的中心点
+      context.translate(200, 200);
+      init();
+      setInterval(() => {
+        init();
+      }, 1000);
+      //初始化方法
+      function init() {
+        let now = new Date();
+        let h = now.getHours();
+        let m = now.getMinutes();
+        let s = now.getSeconds();
+        context.clearRect(-200, -200, 400, 400);
+        drawPanle()
+        drawHour(h, m)
+        drawMinute(m)
+        drawSecond(s)
+      }
+
+      //绘制面板
+      function drawPanle() {
+        //绘制圆的轨迹
+        context.arc(0, 0, r - 10, 0, 2 * Math.PI);
+        //上色 绘制一个圆
+        context.stroke();
+
+        //绘制文字 确定文字的字号&字体
+        context.font = '20px 微软雅黑';
+        //文本水平居中
+        context.textAlign = 'center';
+        //文本垂直居中
+        context.textBaseline = 'middle';
+        // 临边 = 斜边 * conθ
+        // 对边 = 斜边 * sinθ
+        // 弧度 = 角度 * Math.PI / 180 = 2π
+        let fr = r - 30;
+        let rad = 30 * Math.PI / 180;
+        for (let i = 0; i < 12; i++) {
+          context.fillText(arr[i], fr * Math.cos(i * rad), fr * Math.sin(i * rad))
+        }
+
+        let dr = r - 15;
+        let drad = 6 * Math.PI / 180;
+        //做60个点
+        for (let i = 0; i < 60; i++) {
+          context.beginPath();
+          if (i % 5 === 0) {
+            context.fillStyle = "red"
+            context.arc(dr * Math.cos(i * drad), dr * Math.sin(i * drad), 4, 0, 2 * Math.PI)
+          } else {
+            context.fillStyle = "black"
+            context.arc(dr * Math.cos(i * drad), dr * Math.sin(i * drad), 2, 0, 2 * Math.PI)
+          }
+          context.fill()
+        }
+        context.closePath();
+      }
+
+      //绘制时针
+      function drawHour(hour, minute) {
+        //弧度 = 角度 * Math.PI / 180 = 2π
+        hour = hour - 3;
+        //时针本身的弧度
+        let rad = hour * 30 * Math.PI / 180;
+        //分针所带来的一个小弧度
+        let mrad = 30 * Math.PI / 180 / 60 * minute;
+        let hr = r - 100
+        context.strokeStyle = "red";
+        context.lineWidth = 20;
+        context.lineCap = 'round';
+        context.beginPath();
+        context.moveTo(0, 0);
+        context.lineTo(hr * Math.cos(rad + mrad), hr * Math.sin(rad + mrad));
+        context.stroke()
+        context.closePath();
+      }
+
+      //绘制分针
+      function drawMinute(minute) {
+        minute = minute - 15;
+        let rad = minute * 6 * Math.PI / 180;
+        let mr = r - 80
+        context.strokeStyle = "blue";
+        context.lineWidth = 10;
+
+        context.beginPath();
+        context.moveTo(0, 0);
+        context.lineTo(mr * Math.cos(rad), mr * Math.sin(rad));
+        context.stroke()
+        context.closePath();
+      }
+
+      //绘制秒针
+      function drawSecond(second) {
+        second = second - 15;
+        let rad = second * 6 * Math.PI / 180;
+        let sr = r - 50
+        context.strokeStyle = "black";
+        context.lineWidth = 2;
+
+        context.beginPath();
+        context.moveTo(0, 0);
+        context.lineTo(sr * Math.cos(rad), sr * Math.sin(rad));
+        context.stroke()
+        context.closePath();
+      }
+    </script>
+  </body>
+
+</html>

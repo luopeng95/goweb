@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let arr = ["唱歌", "跳舞", "游泳"];
+
+      function clone(oldArr) {
+        //创建一个新的堆内存 array
+        let newArr = new Array();
+        Array.from(oldArr, e => {
+          newArr.push(e)
+        })
+        return newArr
+      }
+      let newArr = clone(arr)
+      newArr[0] = "喝酒"
+      console.log(arr)
+      console.log(newArr)
+    </script>
+  </body>
+
+</html>

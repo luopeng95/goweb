@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      a {
+        border: 1px solid red;
+      }
+
+      .tips {
+        position: absolute;
+        border: 1px solid black;
+        background-color: #fff;
+        margin-top: 5px;
+        padding: 5px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <p>
+      当见证<a href="javascript:;" tips="湖北省会">武汉</a>百年沧桑的江汉关楼顶大钟的时针指向2020年4月8日零点，历时76天的离汉通道管制措施即刻解除。<a href="javascript:;"
+        tips="2020年">庚子年</a>春节前夕，中国打响了一场空前的新冠肺炎疫情防控战争。而<a href="javascript:;"
+        tips="湖北省会">武汉</a>是这场战争的“风暴眼”。一种名为新冠病毒引起的肺炎疫情彼时正快速向<a href="javascript:;"
+        tips="湖北省会">武汉</a>全城蔓延，这个有着千万人口的城市处于“黑云压城城欲摧”的至暗时刻。封一座城，护一国人。唯有封住<a href="javascript:;"
+        tips="湖北省会">武汉</a>的城门，才能阻隔疫情的蔓延。1月23日，一道“封城”令关闭了素有“九省通衢”之称的<a href="javascript:;"
+        tips="湖北省会">武汉</a>所有对外交通通道，昔日繁华都市近乎停摆。
+    </p>
+    <script>
+      let aLink = document.querySelectorAll("p a");
+      for (let i = 0; i < aLink.length; i++) {
+        aLink[i].addEventListener("mouseenter", function () {
+          let newDiv = document.createElement("div");
+          newDiv.className = "tips"
+          newDiv.innerText = this.getAttribute("tips")
+          newDiv.style.left = aLink[i].offsetLeft + aLink[i].offsetWidth + "px"
+          newDiv.style.top = aLink[i].offsetTop + aLink[i].offsetHeight + "px"
+          document.body.appendChild(newDiv)
+        })
+        aLink[i].addEventListener("mouseleave", e => {
+          let tipsDiv = document.querySelector(".tips")
+          document.body.removeChild(tipsDiv)
+        })
+      }
+    </script>
+  </body>
+
+</html>

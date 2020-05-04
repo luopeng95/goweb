@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let i = 10;
+
+      function outer() {
+        function inner(j) {
+          console.log(++i + j)
+        }
+        return inner
+      }
+
+      let f = outer()
+      f(2) //i=11 13
+      outer()(4) //i=12  16
+      outer()(6) //i=13  19
+      f(7) //i=14  21
+      let g = outer()
+      g(9) //i=15 24
+    </script>
+  </body>
+
+</html>

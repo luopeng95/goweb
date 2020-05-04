@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //1.先执行add(1, 2, 3) => inner同时闭包存储 1,2,3 inner(4, 5)(6, 7)
+      //2.再执行inner(4, 5) => add(1,2,3,4,5)
+      //3.再执行add(1,2,3,4,5) => inner 同时闭包更新为 1,2,3,4,5 inner(6, 7)
+      //4.再执行inner(6, 7) => add(1, 2, 3, 4, 5, 6, 7)
+      //5.再执行add(1, 2, 3, 4, 5, 6, 7) => inner 同时闭包更新为 1, 2, 3, 4, 5, 6, 7 console.log(inner)
+      //6.在页面即将打印的瞬间 他会自动调用toString(),我决定改写toString 对闭包外参数进行叠加 输出结果
+
+      //add(1, 2, 3)(4, 5)(6, 7)
+      //inner(4, 5)(6, 7) 记住了[1,2,3]
+      //1. 调用add([1, 2, 3])
+      //7. 又执行add([1, 2, 3, 4, 5])
+      //13. 再执行add([1, 2, 3, 4, 5, 6, 7])
+      function add(...outerArgs) {
+        //2. 为inner绑定一个本地方法叫toString()
+        //8. 又为inner绑定一个本地方法叫toString()
+        //14. 再为inner绑定一个本地方法叫toString()
+        //17. 在打印的那一瞬间 toString方法会自动调用 在调用的瞬间 对所有参数进行粘合
+        inner.toString = function () {
+          // 参数的处理
+          let result = 0;
+          for (let i = 0; i < outerArgs.length; i++) {
+            result += outerArgs[i]
+          }
+          return result
+        }
+
+        //3. 初始化一个inner函数 同时接收参数
+        //5. 执行inner([4, 5])  //记住[1,2,3]
+        //9. 又初始化一个inner函数 同时接收参数
+        //11. 执行inner([6, 7])//记住[1,2,3,4,5]
+        //15. 再初始化一个inner函数 同时接收参数
+        function inner(...innerArgs) {
+          //6. 返回add函数(...[1, 2, 3], ...[4, 5])
+          //6. 返回add函数(1, 2, 3, 4, 5)
+          //12. 返回add函数(1,2,3,4,5,6,7)
+          return add(...outerArgs, ...innerArgs)
+        }
+
+        //4.返回inner函数 形成一个闭包
+        //10. 又返回一个崭新的inner函数 形成一个更新闭包
+        //16. 再返回一个暂行的inner函数 同时形成一个最新的闭包
+        return inner
+      }
+      console.log(add(1, 2, 3)(4, 5)(6, 7))
+
+      //Date() 日期日历
+      //RegExp() 正则表达式(可以很难)
+    </script>
+  </body>
+
+</html>

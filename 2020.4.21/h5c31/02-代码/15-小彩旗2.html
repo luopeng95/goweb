@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      /* n可以取常量 常量的取值范围 012345... */
+      /* 246810 */
+      /*even偶数等价于 2n */
+      /*odd奇数等价于 2n-1/2n+1 */
+      /* ul li:nth-child(2n) {
+        background-color: pink;
+      }
+
+      ul li:nth-child(2n-1) {
+        background-color: skyblue;
+      } */
+
+      /* ul li:nth-child(even) {
+        background-color: pink;
+      }
+
+      ul li:nth-child(odd) {
+        background-color: skyblue;
+      } */
+
+      /* 选中前五个 */
+      ul li:nth-child(-n+5) {
+        background-color: pink;
+      }
+
+      /* 选中后五个 */
+      ul li:nth-child(n+5) {
+        background-color: pink;
+      }
+    </style>
+  </head>
+
+  <body>
+    <ul>
+      <!-- <span>我是span</span> -->
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+      <li>7</li>
+      <li>8</li>
+      <li>9</li>
+      <li>10</li>
+    </ul>
+  </body>
+
+</html>

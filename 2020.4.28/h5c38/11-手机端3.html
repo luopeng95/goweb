@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      html {
+        font-size: 13.33333vw
+      }
+
+      @media screen and (max-width:320px) {
+        html {
+          font-size: 42.667px;
+          /*320除以750=0.42667*/
+        }
+      }
+
+      @media screen and (min-width:540px) {
+        html {
+          font-size: 72px;
+          /*540除以750=0.72*/
+        }
+      }
+
+      div {
+        width: 2rem;
+        height: 2rem;
+        background-color: pink;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div></div>
+  </body>
+
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* #container{
+            text-align: center;
+        } */
+        input{
+            margin-right: 20px;
+            box-sizing: border-box;
+            height: 25px;
+            /* line-height: 25px; */
+            width: 200px;
+        }
+        button{
+            box-sizing: border-box;
+            height: 25px;
+        }
+        #main>li{
+            list-style: none;
+            padding: 5px;
+            width: 150px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        #think{
+            background-color: dimgray;
+            width: 200px;
+            height: 150px;
+            overflow: hidden;
+            display: none;
+            position: absolute;
+            z-index: 10;
+        }
+        #main{
+            /* background-color: darkturquoise; */
+            width: 500px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        #think>li{
+            list-style: none;
+            padding: 5px;
+            width: 200px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <input type="text" id="ipt">
+        <button type="button" id="but">确定</button>
+        <div id="think">
+
+        </div>
+        <div id="main">
+
+        </div>
+    </div>
+    <!-- <script src="./jquery-3.4.1.min.js"></script> -->
+    <script src="./readJson.js"></script>
+    <script>
+        let json;
+        readJson("./provinces.json", function(res){
+            json = JSON.parse(res);
+        })
+        let odiv = document.getElementById("main");
+        let oipt = document.getElementById("ipt");
+        let obut = document.getElementById("but");
+        let othink = document.getElementById("think");
+        let exist = [];
+        
+        // 初始化函数
+        function init(arr){
+            for ( let i = 0; i < arr.length; ++i){
+                odiv.innerHTML += `<li class="l1">${arr[i].name}</li>`
+            }
+
+            obut.onclick = () => {
+                change();
+                render();
+            }
+
+            oipt.oninput = () => {
+                othink.style.display = "block";
+                // 初始化exist数组和调用render方法是为了在输入框减少内容的时候让下面不会被选中
+                exist = [];
+                render();
+                // 执行预搜索的逻辑和业务模块并给li赋予事件
+                think();
+                print();
+                clickLi();
+            }
+
+            oipt.onblur = () => {
+                setTimeout(() => {
+                    othink.style.display = "none";
+                }, 200);
+            }
+        }
+        
+        // 实现逻辑层，用exsit数组来表示被选中的元素
+        function change(){
+            exist = [];
+            // console.log(exist);
+            for (let i = 0; i < json.length; ++i){
+                let oipts = oipt.value.split("，")
+                for(let j = 0; j < oipts.length; ++j){
+                    if(oipts[j]){
+                        if (json[i].name.indexOf(oipts[j]) === 0){
+                            exist.push(i);
+                        }
+                    }
+
+                }
+            }
+        }
+        // 实现业务层，修改选中的元素的样式
+        function render(){
+            let oli = document.getElementsByClassName("l1");
+            // 将所有的li颜色重置
+            for(let i = 0; i < oli.length; ++i){
+                oli[i].style.backgroundColor= "";
+            }
+            // 对选中ID的省份进行上色
+            for(let i = 0; i < exist.length; ++i){
+                oli[exist[i]].style.backgroundColor = "pink";
+            }
+        }
+        // 预搜索模块的逻辑层
+        function think(){
+            exist = [];
+            for (let i = 0; i < json.length; ++i){
+                let oipts = oipt.value
+                if (oipts){
+
+                    if (json[i].name.indexOf(oipts) !== -1){
+                        exist.push(i);
+                    }
+                }
+
+            }
+        }
+        // 预搜索模块的业务实现
+        function print(){
+            othink.innerHTML = "";
+            for(let i = 0; i < exist.length; ++i){
+                othink.innerHTML += `<li class="l2">${json[exist[i]].name}</li>`;
+            }
+        }
+        
+        function clickLi(){
+            let oli = document.getElementsByClassName("l2");
+            for(let i = 0; i < oli.length; ++i){
+                oli[i].onclick = () => {
+                    oipt.value = oli[i].innerHTML;
+                    change();
+                    render();
+                    // 调用print是在点击之后更新预搜索的业务逻辑
+                    // print();
+                }
+                oli[i].onmouseover = () => {
+                    oli[i].style.backgroundColor = "#ffffff";
+                }
+                oli[i].onmouseout = () => {
+                    oli[i].style.backgroundColor = "";
+                }
+            }
+        }
+        init(json);
+    </script>
+</body>
+</html>

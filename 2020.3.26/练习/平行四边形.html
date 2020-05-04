@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+   
+        // 在控制台输出
+        function rhomboid(x){
+            let str = "";
+            for(let i = 0; i < x; ++i){
+                for( let j = 0; j < (2 * x - 1); ++j){
+                    if( j >= i && j < (x + i)){
+                        str += "*";
+                    }else{
+                        str += " ";
+                    }
+                }
+                str += `\n`;
+            }
+            console.log(str);
+        }
+        rhomboid(5);
+
+        // 在页面输出
+        function rhomboid2(x){
+            let str = "";
+            for(let i = 0; i < x; ++i){
+                for( let j = 0; j < (2 * x - 1); ++j){
+                    if( j >= i && j < (x + i)){
+                        str += "*";
+                    }else{
+                        str += " ";
+                    }
+                }
+                str += `<pre>\n<pre>`;
+            }
+            // console.log(str);
+            document.body.innerHTML = str;
+        }
+        rhomboid2(5);
+    </script>
+</body>
+</html>

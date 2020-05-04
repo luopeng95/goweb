@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //静态属性 一般需要实例提供
+      //动态方法 一般不需要 且会放置在原型上
+      function Person(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+      //原型 其实是一个原型对象 Person构造器 __proto__ 总会指向 Person.protptype
+      Person.prototype = {
+        //constructor 构造器 只是表示实例是从哪个函数中构造的
+        constructor: Person,
+        eat: function () {
+          return this.name + "在吃"
+        },
+        sleep: function () {
+          return this.name + "在睡"
+        }
+      }
+      //每一个实例p1 在初始化的时候 又会自动创建一个属性 __proto__ 该 __proto__ 又会指向该构造器的 __proto__
+      let p1 = new Person("张三", 20)
+      console.log(p1)
+      console.log(Person)
+      console.log(Person.prototype)
+      let p2 = new Person("李四", 30)
+      console.log(p1.name)
+      //由于现在本地没有eat方法 但是他会顺着__proto__ 来寻找上层对象 Person.prototype 而在Person.prototype中确实有一个eat方法 所以其实p2使用的 Person.prototype 的eat方法
+      console.log(p2.eat())
+    </script>
+  </body>
+
+</html>

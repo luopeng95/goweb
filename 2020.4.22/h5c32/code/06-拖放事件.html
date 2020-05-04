@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      li {
+        list-style: none;
+        width: 100px;
+        height: 30px;
+        background-color: pink;
+        margin: 10px;
+      }
+
+      div {
+        width: 100px;
+        height: 100px;
+        background-color: skyblue;
+        margin: 100px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- 默认浏览器所有的DOM节点都不可拖曳 -->
+    <!-- draggable 只是规定了这个元素可拖曳 -->
+    <ul>
+      <li draggable="true">内容1</li>
+      <li draggable="true">内容2</li>
+      <li draggable="true">内容3</li>
+    </ul>
+
+    <div>目标</div>
+    <script>
+      const aLi = document.querySelectorAll("ul li");
+      const oDiv = document.querySelector("div");
+
+      for (let i = 0; i < aLi.length; i++) {
+        //1. 鼠标左键点下 小li拖曳开始事件(瞬间态)
+        aLi[i].addEventListener("dragstart", function () {
+          this.style.backgroundColor = "green"
+        })
+        //2. 左键按下状态移动鼠标 正在拖曳事件(常态)
+        aLi[i].addEventListener("drag", function () {
+          this.style.backgroundColor = "blue"
+        })
+        //3. 松开鼠标左键 拖曳结束事件(瞬间态)
+        aLi[i].addEventListener("dragend", function () {
+          this.style.backgroundColor = "pink"
+        })
+      }
+
+      //要拖曳到某目标中去
+      //4.拖曳对象进入到div中 瞬间态
+      oDiv.addEventListener("dragenter", function () {
+        this.style.backgroundColor = "gold"
+      })
+
+      //5.拖曳对象悬停到div中 常态
+      oDiv.addEventListener("dragover", function () {
+        console.log("ondragover")
+      })
+
+      //5.拖曳对象离开div 瞬间态
+      oDiv.addEventListener("dragleave", function () {
+        this.style.backgroundColor = "skyblue"
+      })
+    </script>
+  </body>
+
+</html>

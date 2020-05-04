@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <title>无标题文档</title>
+  </head>
+
+  <body>
+    <input type="button" value="反选" id="input1" />
+    <div id="div1">
+      <input type="checkbox" />
+      <input type="checkbox" checked />
+      <input type="checkbox" />
+      <input type="checkbox" checked />
+      <input type="checkbox" />
+    </div>
+
+    <script>
+      var oButton = document.getElementById("input1");
+      var oDiv = document.getElementById("div1"); //获取一个元素
+      var aInput = oDiv.getElementsByTagName("input");
+
+      oButton.onclick = function () {
+        for (let i = 0; i < aInput.length; i++) {
+          //查询到每个多选框的 选中状态 选中就是true 不选中false
+          // console.log(aInput[i].checked)
+          aInput[i].checked = !aInput[i].checked //拿到点击之前的这个check的状态 并取反
+          //原来没选中的变成选中的 原来选中的 变成没选中的
+        }
+      }
+    </script>
+  </body>
+
+</html>

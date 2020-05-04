@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //兔子数列
+      //第一个和第二个数 总是1
+      //从第三个数开始 总是前两者之和
+
+      //1 1 2 3 5 8 13 21 34 55...
+      // fn(1) = 1
+      // fn(2) = 1
+      // fn(3) = fn(1) + fn(2)
+      // fn(4) = fn(2) + fn(3)
+      // ...
+      // fn(n) = fn(n - 1) + fn(n - 2)
+      function fn(n) {
+        if (n === 1 || n === 2) return 1
+        return fn(n - 1) + fn(n - 2)
+      }
+      console.log(fn(5)) //5
+      console.log(fn(6)) //8
+      console.log(fn(7)) //13
+      console.log(fn(8)) //21
+    </script>
+  </body>
+
+</html>

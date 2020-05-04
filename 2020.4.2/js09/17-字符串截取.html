@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let str = "abcdefg";
+      //包头不包尾
+      let str2 = str.slice(1, -3);
+      let str3 = str.substring(1, 3);
+      str = "haha"
+      //截取后的字符串 他的长度 永远等于 end - start
+      console.log(str2) //bc
+      console.log(str3) //bc
+    </script>
+  </body>
+
+</html>

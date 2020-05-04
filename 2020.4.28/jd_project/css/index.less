@@ -1,0 +1,64 @@
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+div {
+  &.slide {
+    width: 100%;
+    height: 3rem;
+    overflow: hidden;
+  }
+
+  ul {
+    /* 一屏的宽度 */
+    width: 10rem;
+    height: 3rem;
+    position: relative;
+    // transform: translateX(-100%);
+    transition: all .4s;
+
+    li {
+      width: 10rem;
+      height: 3rem;
+      position: absolute;
+
+      &.pink {
+        background-color: pink;
+      }
+
+      &.yellowgreen {
+        background-color: yellowgreen;
+      }
+
+      &.skyblue {
+        background-color: skyblue;
+      }
+
+      &:nth-child(1) {
+        left: -100%;
+      }
+
+      &:nth-child(2) {
+        left: 0;
+      }
+
+      &:nth-child(3) {
+        left: 100%;
+      }
+
+      &:nth-child(4) {
+        left: 200%;
+      }
+
+      &:nth-child(5) {
+        left: 300%;
+      }
+    }
+  }
+}

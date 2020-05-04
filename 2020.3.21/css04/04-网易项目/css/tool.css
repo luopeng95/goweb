@@ -1,0 +1,32 @@
+/* f的意思是函数 表明一个固定的功能 */
+
+.f-fl{float:left;}  /* 左浮动函数 */
+.f-fr{float:right;}
+.f-cb:after,.f-cbli li:after{display:block;clear:both;content:"";} /*  清浮动函数  */
+.f-mb10{margin-bottom: 10px;}
+.f-mb20{margin-bottom: 20px;}
+.f-mb30{margin-bottom: 30px;}
+.f-mb40{margin-bottom: 40px;}
+.f-mb50{margin-bottom: 50px;}
+.f-mb60{margin-bottom: 60px;}
+.f-mb70{margin-bottom: 70px;}
+.f-dn{display:none;}
+.f-db{display:block;}
+.f-pr{position:relative;}
+.f-oh{overflow:hidden;}
+.f-fs1{font-size:12px;}
+.f-fs2{font-size:14px;}
+.f-fwn{font-weight:normal;}
+.f-fwb{font-weight:bold;}
+.f-tal{text-align:left;}
+.f-tac{text-align:center;}
+.f-tar{text-align:right;}
+.f-vam,.f-vama *{vertical-align:middle;}
+.f-ti2{text-indent:2em;}
+.f-lhn{line-height:normal;}
+.f-tdu,.f-tdu:hover{text-decoration:underline;}
+.f-tdn,.f-tdn:hover{text-decoration:none;}
+.f-csp{cursor:pointer;}
+.f-csd{cursor:default;}
+.f-csh{cursor:help;}
+.f-csm{cursor:move;}

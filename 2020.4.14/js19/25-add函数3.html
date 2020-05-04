@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //1.先执行add(1, 2, 3) => inner同时闭包存储 1,2,3 inner(4, 5)(6, 7)
+      //2.再执行inner(4, 5) => add(1,2,3,4,5)
+      //3.再执行add(1,2,3,4,5) => inner 同时闭包更新为 1,2,3,4,5 inner(6, 7)
+      //4.再执行inner(6, 7) => add(1, 2, 3, 4, 5, 6, 7)
+      //5.再执行add(1, 2, 3, 4, 5, 6, 7) => inner 同时闭包更新为 1, 2, 3, 4, 5, 6, 7 console.log(inner)
+      //6.在页面即将打印的瞬间 他会自动调用toString(),我决定改写toString 对闭包外参数进行叠加 输出结果
+
+      //add(1, 2, 3)(4, 5)(6, 7)
+      //inner(4, 5)(6, 7) 记住了[1,2,3]
+      //1. 调用add([1, 2, 3])
+      //7. 又执行add([1, 2, 3, 4, 5])
+      //13. 再执行add([1, 2, 3, 4, 5, 6, 7])
+      let add = (...outerArgs) => {
+        let inner = (...innerArgs) => add(...outerArgs, ...innerArgs)
+        inner.toString = () => outerArgs.reduce((acc, cur) => acc + cur)
+        return inner
+      }
+      let m = add(1, 2, 3)(4, 5)(6, 7);
+      console.log(m );
+    </script>
+  </body>
+
+</html>

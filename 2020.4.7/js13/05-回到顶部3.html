@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      #div1 {
+        width: 60px;
+        height: 60px;
+        background-color: pink;
+        position: fixed;
+        right: 10px;
+        bottom: 10px;
+      }
+    </style>
+  </head>
+
+  <body style="height: 2000px;">
+    <div id="div1">回到顶部</div>
+    <script>
+      let oDiv = document.getElementById("div1");
+      oDiv.addEventListener("click", e => {
+        //点击他的那一瞬间 他滚动距离
+        let nowScroll = document.documentElement.scrollTop
+        //中立变量
+        let timer = null;
+        //添加一个定时器
+        timer = setInterval(() => {
+          //每次都滚动5分之一的距离
+          document.documentElement.scrollTop -= 10
+          //如果距离为0的时候就停止下来
+          if (!document.documentElement.scrollTop) {
+            clearInterval(timer)
+          }
+        }, 17)
+        // document.documentElement.scrollBy(0, 100)
+      })
+    </script>
+  </body>
+
+</html>

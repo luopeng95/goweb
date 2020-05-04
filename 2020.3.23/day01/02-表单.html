@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 每当点击submit按钮的时候会提交整个表单数据 -->
+  <!-- actionName?name1=value1&name2=value2&name3=value3 -->
+  <form action="03-index.html" method="GET">
+    <div>
+      <label for="username">用户名</label>
+      <input type="text" name="username" id="username">
+    </div>
+    <div>
+      <label for="pwd">密码</label>
+      <input type="pwd" name="pwd" id="pwd">
+    </div>
+    <div>
+      <span>性别:</span>
+      <label for="male">男</label>
+      <input type="radio" name="sex" id="male" value="male">
+      <label for="female">女</label>
+      <input type="radio" name="sex" id="female" value="female">
+    </div>
+    <div>
+      <input type="submit" value="我是一个提交按钮">
+    </div>
+  </form>
+</body>
+</html>

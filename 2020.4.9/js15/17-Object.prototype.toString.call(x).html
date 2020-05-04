@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      // let str = "abc"
+      // let arr = [1, 2, 3]
+      //String.prototype.slice()
+      // console.log(str.slice()) //"abc"
+      //Array.prototype.slice()
+      // console.log(arr.slice()) //[1, 2, 3]
+
+      // Object.prototype.toString() 判断数据类型
+      let str = "北京"
+      let num = 1;
+      let boo = true
+      let nul = null;
+      let und;
+      let obj = {}
+      let arr = [1, 2, 3]
+      let fun = function () {}
+
+      console.log(Object.prototype.toString.call(str)) //"[object String]"
+      console.log(Object.prototype.toString.call(num)) //"[object Number]"
+      console.log(Object.prototype.toString.call(boo)) //"[object Boolean]"
+      console.log(Object.prototype.toString.call(nul)) //"[object Null]"
+      console.log(Object.prototype.toString.call(und)) //"[object Undefined]"
+      console.log(Object.prototype.toString.call(obj)) //"[object Object]"
+      console.log(Object.prototype.toString.call(arr)) //"[object Array]"
+      console.log(Object.prototype.toString.call(fun)) //"[object Function]"
+      // console.log(nul.toString()) 没有Null 构造器
+      // console.log(und.toString()) 没有Undefiend 构造器
+    </script>
+  </body>
+
+</html>

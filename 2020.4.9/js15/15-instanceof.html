@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //表明x实例是否是由X工厂构造的
+      let obj = {}
+      let arr = [1, 2, 3]
+      let fun = function () {};
+
+      function Person(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+
+      function Teacher(name, age, tAge) {
+        this.tAge = tAge;
+        Person.call(this, name, age)
+      }
+      Teacher.prototype = new Person;
+      let t1 = new Teacher("老胡", 30, 10);
+      let p1 = new Person("张三", 20)
+
+      console.log(obj instanceof Object); //true
+      console.log(obj instanceof Array) //false
+
+      console.log(arr instanceof Array); //true
+      console.log(arr instanceof Object) //true arr既是Array构造的 也是Object构造的
+
+      console.log(fun instanceof Function); //true
+      console.log(p1 instanceof Person); //true
+      console.log(t1 instanceof Teacher); //true
+
+      console.log(t1 instanceof Person) //true
+      console.log(t1 instanceof Object) //true
+
+      //描述 instanceof
+      //语法 x instanceof X
+      //返回值 BooLean 如果是真 表示x的原型链上有这个原型对象 否则没有
+      //缺点: 1不能判断基本数据类型
+      //2.不能判断他的最终类型
+    </script>
+  </body>
+
+</html>

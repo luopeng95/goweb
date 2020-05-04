@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div.container {
+      width: 600px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    /* 1. 令两者的内边距无限大,大到一个用户或者内容都不可能到达的地步 */
+    /* 2. 令两者的外边距负无限大,大小和刚刚的内边距一样大 */
+    /* 3. 让这两个标签共同的父元素 overflow: hidden; */
+
+    .left {
+      width: 200px;
+      padding-bottom: 10000px;
+      margin-bottom: -10000px;
+      background-color: pink;
+      float: left;
+
+    }
+
+    .right {
+      width: 400px;
+      padding-bottom: 10000px;
+      margin-bottom: -10000px;
+      background-color: blue;
+      float: left;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 左右两列高度自适应扩展，并且相等； -->
+  <div class="container">
+    <div class="left">
+      2019年8月(10)<br />
+      2019年9月(1)<br />
+      2019年10月(20)<br />
+      2019年11月(16)<br />
+      2019年12月(18)<br />
+      2020年1月(19)<br />
+      2020年2月(7)<br />
+      2020年3月(6)<br />
+    </div>
+    <div class="right">
+      文字文字文字文字文字文字文字文字<br />
+      文字文字文字文字文字文字文字文字<br />
+      文字文字文字文字文字文字文字文字<br />
+      文字文字文字文字文字文字文字文字<br />
+      文字文字文字文字文字文字文字文字<br />
+      文字文字文字文字文字文字文字文字<br />
+      文字文字文字文字文字文字文字文字<br />
+      文字文字文字文字文字文字文字文字<br />
+      文字文字文字文字文字文字文字文字<br />
+      文字文字文字文字文字文字文字文字<br />
+      文字文字文字文字文字文字文字文字<br />
+      文字文字文字文字文字文字文字文字<br />
+      文字文字文字文字文字文字文字文字<br />
+      文字文字文字文字文字文字文字文字<br />
+      文字文字文字文字文字文字文字文字<br />
+      文字文字文字文字文字文字文字文字<br />
+      文字文字文字文字文字文字文字文字<br />
+      文字文字文字文字文字文字文字文字<br />
+      文字文字文字文字文字文字文字文字<br />
+      文字文字文字文字文字文字文字文字<br />
+      文字文字文字文字文字文字文字文字<br />
+      文字文字文字文字文字文字文字文字<br />
+      文字文字文字文字文字文字文字文字<br />
+    </div>
+  </div>
+</body>
+
+</html>

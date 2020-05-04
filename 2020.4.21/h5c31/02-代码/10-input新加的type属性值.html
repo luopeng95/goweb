@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <form action="login.php">
+      <!-- 表示的是邮箱 用来填邮箱的input -->
+      <input type="email" />
+      <br />
+      <!-- 表示的是手机/座机 自动弹出数字键盘 -->
+      <input type="tel">
+      <br />
+      <!-- 表示用来接收url地址 -->
+      <input type="url">
+      <br />
+      <!-- 用来表达一个搜索引擎对应的搜索框 -->
+      <input type="search">
+      <br />
+      <!-- 表示一个拖动范围 -->
+      <input type="range" min="0" max="10" value="2" step="2">
+      <br />
+      <!-- 表达数字 纯数字 移动端的时候 number会导致安卓/苹果系统 直接弹出数字键盘-->
+      <input type="number" min="0" max="100" value="10" step="2">
+      <br />
+      <!-- 取色板 -->
+      <input type="color" id="color">
+      <br />
+      <!-- 日期相关内容 -->
+      <!-- 年月日  -->
+      <input type="date">
+      <br />
+      <!-- 年月日 时分秒 -->
+      <!-- <input type="datetime"> -->
+      <br />
+      <!-- 年月日 时分秒 -->
+      <input type="datetime-local">
+      <br />
+      <!-- 时分秒 -->
+      <input type="time">
+      <br />
+      <!-- 周 -->
+      <input type="week">
+      <!-- 月 -->
+      <input type="month">
+      <input type="submit" value="提交">
+    </form>
+    <script>
+      document.querySelector("#color").addEventListener("change", function () {
+        console.log(this.value)
+      })
+    </script>
+  </body>
+
+</html>

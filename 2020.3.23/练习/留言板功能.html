@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>留言板</title>
+    <style>
+        #main{
+            /* background-color: yellowgreen; */
+            width: 580px;
+            margin: 0 auto;
+            /* text-align: center; */
+        }
+        #message{
+            box-sizing: border-box;
+            width: 580px;
+            height: 100px;
+
+        }
+        h4{
+            line-height: 50px;
+            border-bottom: 2px solid black;
+        }
+        #box{
+            width: 580px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            padding: 25px 10px 0px;
+            margin-bottom: 40px;
+            max-height: 280px;
+            overflow: auto;
+        }
+        button{
+            width: 580px;
+            height: 50px;
+            display: block;
+            /* text-align: center; */
+            margin: 0px auto;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="main">
+            <h4>留言内容:</h4>
+            <div id="box">
+
+            </div>
+            <textarea id="message"></textarea>
+            <button onclick="addMessage()" type="button">留言</button>
+        </div>
+    </div>
+
+    <script>
+        
+        function addMessage(){
+            let t = document.getElementById("message");
+            let ps = +document.getElementsByClassName("pmessage").length;
+            console.log(t.value);
+            let box = document.getElementById("box");
+            let p1 = document.createElement("p");
+            p1.className = "pmessage";
+            let txt = document.createTextNode((ps + 1) + "楼:"+t.value);
+            p1.appendChild(txt);
+            box.appendChild(p1);
+            t.value = "";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      /* 1.::before 和 ::after 如果要用 必须要提供一个content属性 */
+      /* 2. 默认是行内标签 */
+      span::before {
+        display: block;
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+        content: "北京";
+      }
+
+      span::after {
+        display: block;
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+        content: "深圳";
+      }
+    </style>
+  </head>
+
+  <body>
+    <span>
+      上海
+    </span>
+  </body>
+
+</html>

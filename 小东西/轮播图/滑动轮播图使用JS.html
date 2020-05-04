@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            height: 2000px;
+            min-width: 1200px;
+        }
+
+        #banner {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #ul1 {
+            width: calc(100% * 3);
+            display: flex;
+        }
+
+        #ul1>li {
+            list-style: none;
+            max-height: 460px;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        #ul2 {
+            position: absolute;
+            display: flex;
+            top: 90%;
+            left: 45%;
+        }
+
+        #ul2>li {
+            background-color: black;
+            list-style: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            margin-left: 20px;
+        }
+
+        #ul2>.selectLi {
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="banner">
+            <ul id="ul1">
+                <li class="imgLi" data-id="2"><img src="./banner3.jpg"></li>
+                <li class="imgLi" data-id="0"><img src="./banner1.jpg"></li>
+                <li class="imgLi" data-id="1"><img src="./banner2.jpg"></li>
+            </ul>
+            <ul id="ul2">
+                <li data-class="0" class="cicreLi"></li>
+                <li data-class="1" class="cicreLi"></li>
+                <li data-class="2" class="cicreLi"></li>
+            </ul>
+        </div>
+    </div>
+    <script src="./滑动轮播图.js"></script>
+    <script>
+       let oul1 = document.getElementById("ul1");
+       let oul2 = document.getElementById("ul2");
+       new sideBanner(oul1, oul2, "selectLi");
+    </script>
+</body>
+
+</html>

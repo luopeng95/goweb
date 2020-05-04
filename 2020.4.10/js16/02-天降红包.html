@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      div {
+        width: 50px;
+        height: 80px;
+        background-color: pink;
+        position: absolute;
+        /* transform: rotate(16deg); */
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="redBag"></div>
+    <script src="./js/random.js"></script>
+    <script>
+      let oRegBag = document.getElementById("redBag");
+      let iScreenWidth = document.documentElement.clientWidth - 20;
+      let iScreenHeight = document.documentElement.clientHeight;
+      oRegBag.style.left = _random(iScreenWidth) + "px"
+      setInterval(() => {
+        oRegBag.style.top = oRegBag.offsetTop + 10 + "px"
+        if (oRegBag.offsetTop >= iScreenHeight - oRegBag.offsetHeight) {
+          document.body.removeChild(oRegBag)
+        }
+      }, 100)
+    </script>
+  </body>
+
+</html>

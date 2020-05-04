@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      .item {
+        margin: 100px auto;
+        width: 200px;
+        height: 400px;
+        background: pink;
+        transition: all .4s;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, .1);
+      }
+
+      .item:hover .desc {
+        height: 100px;
+      }
+
+      .desc {
+        width: 200px;
+        height: 0;
+        bottom: 0;
+        position: absolute;
+        background-color: orange;
+        transition: all .4s;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="item" class="item">
+      <div id="desc" class="desc">
+        dasd asd asd asdds ads dwe 31
+      </div>
+    </div>
+  </body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //XML 标记语言
+      //JSON(JavaScript Object Notation, JS 对象简谱) 是一种[轻量级]的[数据交换]格式
+      //前端用JS 后端C++ 程序语言中的普通话就是 JSON
+      //前端也认识JSON 后端也认识JSON
+      // JSON -> js对象或数组
+      //[]
+      //{}
+      //{{}}
+      //[{}]
+      //{[]}
+      //[[]]
+
+      // $.ajax({
+      //   url: "xxxx",
+      //   dataType: "text",
+      //   success: function (data) {
+
+      //   },
+      //   error: function (data) {
+
+      //   }
+      // })
+
+      //今天后台发了一个json 但是很遗憾 那个json是字符串
+      //后台发送的数据 一般有两种 一种json对象 还有一种长得像json对象的字符串
+      let str = "[1, 2, 3]" //字符串 跨域
+
+      //有没有字符串和JSON对象交换的方法?
+      // JSON.parse(string) return object //将字符串转换成json
+      // JSON.stringify(object) return string //将json转换成字符串
+
+      let json = JSON.parse(str); //[1, 2, 3]
+      console.log(json)
+
+      let json2 = {
+        "name": "张三",
+        "age": 20
+      }
+      let str2 = JSON.stringify(json2)
+      console.log(str2)
+
+      let str3 = '{"name": "张三","age": 20}';
+      let obj1 = JSON.parse(str3) //{...}
+      let obj2 = JSON.parse(str3) //{...}
+      console.log(obj1 === obj2) //false
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      ul,
+      li {
+        list-style: none;
+      }
+
+      body {
+        overflow-x: hidden;
+      }
+
+      ul {
+        position: fixed;
+        top: 50%;
+        left: 10px;
+        margin-top: -116px;
+      }
+
+      li {
+        padding: 6px;
+        width: 32px;
+        height: 32px;
+        text-align: center;
+        color: #fff;
+        cursor: pointer;
+        margin: 2px;
+        background-color: #666;
+        overflow: hidden;
+        font-size: 12px;
+      }
+
+      .active {
+        background-color: red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <ul class="floors">
+      <li floor="0" class="active">天猫超市</li>
+      <li floor="1">天猫国际</li>
+      <li floor="2">美丽人生</li>
+      <li floor="3">超电酷玩</li>
+      <li floor="4">居家生活</li>
+    </ul>
+    <script>
+      //获取这五个div
+      let json = [{
+        floorTitle: "美丽人生",
+        floorTitleE: "FASHION & BEAUTY",
+        goodsList: [{
+          id: 0,
+          imgsrc: "https://gw.alicdn.com/bao/uploaded/i2/2681737173/O1CN01Nk2RJH22rHYfDpH05_!!0-item_pic.jpg",
+          desc: "锐度男士水乳套装补水保湿护肤品化妆品控油收缩毛孔男士面部护理",
+          price: "￥99"
+        }, {
+          id: 0,
+          imgsrc: "https://gw.alicdn.com/bao/uploaded/i2/2681737173/O1CN01Nk2RJH22rHYfDpH05_!!0-item_pic.jpg",
+          desc: "锐度男士水乳套装补水保湿护肤品化妆品控油收缩毛孔男士面部护理",
+          price: "￥99"
+        }, {
+          id: 0,
+          imgsrc: "https://gw.alicdn.com/bao/uploaded/i2/2681737173/O1CN01Nk2RJH22rHYfDpH05_!!0-item_pic.jpg",
+          desc: "锐度男士水乳套装补水保湿护肤品化妆品控油收缩毛孔男士面部护理",
+          price: "￥99"
+        }, {
+          id: 0,
+          imgsrc: "https://gw.alicdn.com/bao/uploaded/i2/2681737173/O1CN01Nk2RJH22rHYfDpH05_!!0-item_pic.jpg",
+          desc: "锐度男士水乳套装补水保湿护肤品化妆品控油收缩毛孔男士面部护理",
+          price: "￥99"
+        }, {
+          id: 0,
+          imgsrc: "https://gw.alicdn.com/bao/uploaded/i2/2681737173/O1CN01Nk2RJH22rHYfDpH05_!!0-item_pic.jpg",
+          desc: "锐度男士水乳套装补水保湿护肤品化妆品控油收缩毛孔男士面部护理",
+          price: "￥99"
+        }, {
+          id: 0,
+          imgsrc: "https://gw.alicdn.com/bao/uploaded/i2/2681737173/O1CN01Nk2RJH22rHYfDpH05_!!0-item_pic.jpg",
+          desc: "锐度男士水乳套装补水保湿护肤品化妆品控油收缩毛孔男士面部护理",
+          price: "￥99"
+        }, {
+          id: 0,
+          imgsrc: "https://gw.alicdn.com/bao/uploaded/i2/2681737173/O1CN01Nk2RJH22rHYfDpH05_!!0-item_pic.jpg",
+          desc: "锐度男士水乳套装补水保湿护肤品化妆品控油收缩毛孔男士面部护理",
+          price: "￥99"
+        }, {
+          id: 0,
+          imgsrc: "https://gw.alicdn.com/bao/uploaded/i2/2681737173/O1CN01Nk2RJH22rHYfDpH05_!!0-item_pic.jpg",
+          desc: "锐度男士水乳套装补水保湿护肤品化妆品控油收缩毛孔男士面部护理",
+          price: "￥99"
+        }]
+      }]
+      let aDiv = document.querySelectorAll("div");
+      let oUl = document.querySelector("ul")
+      let aLi = document.querySelectorAll("ul li");
+      let divWidth, divHeight
+      //页面打开瞬间会初始化
+      init();
+
+      function init() {
+        let colorBox = ["pink", "orange", 'green', "blue", "purple"]
+        //如何获取一个屏幕的宽高
+        divWidth = document.documentElement.clientWidth || document.body.clientWidth
+        divHeight = document.documentElement.clientHeight || document.body.clientHeight
+        console.log(divWidth)
+        console.log(divHeight)
+        for (let i = 0; i < aDiv.length; i++) {
+          aDiv[i].style.width = divWidth + "px"
+          aDiv[i].style.height = divHeight + "px"
+          aDiv[i].style.backgroundColor = colorBox[i]
+        }
+      }
+
+      window.addEventListener("resize", e => {
+        //每当浏览器大小发生变化的时候 都会再触发init
+        init()
+      })
+
+      //当[滚动]到某个楼层的时候 对应的li变色
+      document.addEventListener("scroll", e => {
+        let iScrollTop = document.documentElement.scrollTop
+        //每次滚动的时候 都会清空所有li的样式
+        for (let i = 0; i < aLi.length; i++) {
+          aLi[i].className = ""
+        }
+        //document.documentElement.scrollTop 滚动的总距离
+        //divHeight 一屏的高度 626
+        aLi[Number.parseInt(document.documentElement.scrollTop / divHeight)].className = "active"
+        //1 屏 626 * 0 - 626 * 1
+        //2 屏 626 * 1 - 626 * 2
+        //3 屏 626 * 2 - 626 * 3
+        //4 屏 626 * 3 - 626 * 4
+        //5 屏 626 * 4 - 626 * 5
+        // if (iScrollTop < divHeight) {
+        //   aLi[0].className = "active"
+        // } else if (iScrollTop < divHeight * 2) {
+        //   aLi[1].className = "active"
+        // } else if (iScrollTop < divHeight * 3) {
+        //   aLi[2].className = "active"
+        // } else if (iScrollTop < divHeight * 4) {
+        //   aLi[3].className = "active"
+        // } else if (iScrollTop === divHeight * 4) {
+        //   aLi[4].className = "active"
+        // }
+        //为什么最后一个不能变红 因为用户最多只能滚4屏幕
+      })
+
+      //当[点击]某个li的时候 跳转到该楼层
+      //0楼 626 * 0
+      //1楼 626 * 1
+      //2楼 626 * 2
+      //3楼 626 * 3
+      //4楼 626 * 4
+      oUl.addEventListener("click", e => {
+        let timer = null;
+        let conut = 10
+        //点击的是其中某个li
+        //0 -> 626
+        // 滚动前的距离
+        let nowScroll = document.documentElement.scrollTop; //0
+        // 滚动后的距离
+        let gotoScroll = e.target.getAttribute("floor") * divHeight; //626
+        // 滚动的总距离
+        let totalScroll = gotoScroll - nowScroll; //626
+        //每次滚动的距离
+        let range = totalScroll / conut //62.6 -> 62
+        //滚动次数
+        let iNow = 0
+        if (e.target.nodeName === "LI") {
+          timer = setInterval(() => {
+            document.documentElement.scrollTop += range
+            iNow++
+            if (iNow === conut) {
+              //滚了10次以后 不论多了还是少了 我都会偷偷摸摸的滚动目的地
+              document.documentElement.scrollTop = gotoScroll
+              clearInterval(timer)
+            }
+          }, 60);
+        }
+      })
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      ul,
+      li {
+        list-style: none;
+      }
+
+      body {
+        background-color: black;
+      }
+
+      .searchbox {
+        position: relative;
+        margin: 50px auto;
+        width: 45px;
+      }
+
+      .search {
+        top: 12px;
+        background-position: -96px -215px;
+      }
+
+      .icon-meidi {
+        display: block;
+        width: 20px;
+        height: 20px;
+        background-color: blue;
+        position: absolute;
+        right: 130px;
+        cursor: pointer;
+        background-image: url(index_sprite.png);
+        background-repeat: no-repeat;
+      }
+
+      .searchbox input {
+        width: 100px;
+        /* 透明度为0 */
+        opacity: 1;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- 变换的题目 做题思路
+     1.做一个开始状态
+     2.做一个结束状态
+     3.做一个transition 过渡
+    -->
+    <li class="searchbox">
+      <input type="text" placeholder="美的热水器">
+      <i class="icon-meidi search"></i>
+    </li>
+  </body>
+
+</html>

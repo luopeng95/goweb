@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <form action="register.action">
+      <input type="text" pattern="\d{4,8}" id="text">
+      <div id="result"></div>
+      <input type="submit" value="提交">
+    </form>
+
+    <script>
+      let oTxt = document.getElementById("text");
+      let oResult = document.getElementById('result')
+      //验证事件invalid 每当你验证该表单的时候 会触发该事件
+      oTxt.addEventListener("invalid", function (e) {
+        // ValidityState 验证对象
+        if (this.validity.patternMismatch) {
+          oResult.innerHTML = "不满足正则"
+        }
+        e.preventDefault();
+      })
+    </script>
+  </body>
+
+</html>

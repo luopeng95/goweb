@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      #div1 {
+        width: 400px;
+        height: 400px;
+        border: 1px solid black;
+        background-color: green;
+      }
+
+      #div2 {
+        width: 200px;
+        height: 200px;
+        border: 1px solid black;
+        background-color: yellow;
+      }
+
+      #div3 {
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+        background-color: blue;
+        position: absolute;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="div1">
+      <div id="div2">
+        <div id="div3"></div>
+      </div>
+    </div>
+    <script>
+      //[不同的]且带有[嵌套关系]的标签的[同种事件] 多个事件穿成串 且[传播方向一致] 就称为这些事件形成了[事件流]
+      //不同标签 且带有window>document>body>div1>div2>div3的嵌套关系的标签,且发生是同种事件(click)且事件传播方向一致(事件冒泡) 满足这三个条件 我们就称为是事件流
+
+      //每个事件其实并不是一个孤立的系统
+      //事件流的传播方式
+      // 事件冒泡(默认的) IE工程师认为 事件流的传递先触发事件源 逐步向上传导到window上
+      // 事件捕获 Chrome/FF工程师认为 事件流的传递应该是先触发window 然后在逐级向下传导到事件源
+      // body>div1>div2>div3
+      // click
+      //事件发生的最小不可分割的单位就是事件源
+      let oDiv1 = document.querySelector("#div1"),
+        oDiv2 = document.querySelector("#div2"),
+        oDiv3 = document.querySelector("#div3");
+      let userCapture = true
+
+      oDiv1.addEventListener("click", function () {
+        debugger
+        this.style.backgroundColor = "pink"
+      }, userCapture)
+      oDiv2.addEventListener("click", function () {
+        debugger
+        this.style.backgroundColor = "pink"
+      }, userCapture)
+      oDiv3.addEventListener("click", function () {
+        debugger
+        this.style.backgroundColor = "pink"
+      }, userCapture)
+      document.body.addEventListener("click", function () {
+        debugger
+        this.style.backgroundColor = "pink"
+      }, userCapture)
+      window.addEventListener("click", function () {
+        debugger
+        console.log("window")
+      }, userCapture)
+    </script>
+  </body>
+
+</html>

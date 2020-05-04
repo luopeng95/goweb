@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        option:hover{
+            background-color: chartreuse;
+        }
+    </style>
+</head>
+<body>
+    <form name="myForm">
+        <input type="text" name="ipt" placeholder="只能看不能改" readonly>
+        <select name="sel" id="s1">
+            <option value="red">红色</option>
+            <option value="yellow">黄色</option>
+            <option value="blue">蓝色</option>
+        </select>
+    </form>
+
+    <script>
+        let s = document.getElementById("s1");
+        console.log(s[0]);
+        // s.onchange = function(){
+        //     s.
+        // }
+    </script>
+</body>
+</html>

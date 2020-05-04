@@ -1,0 +1,91 @@
+/* m的意思的模块 代表某个具象的模块 */
+/* u的意思是元件 代表一个小器件样式 */
+/* g-hd start */
+/* g-hd end */
+/* m-tips start */
+.m-tips {
+  height: 36px;
+  background-color: #F3F3F3;
+  line-height: 36px;
+}
+.m-tips .content {
+  width: 1205px;
+  margin: 0 auto;
+}
+.m-tips a {
+  margin-left: 8px;
+  color: #17A25E;
+}
+.m-tips .f-fr img {
+  margin-right: 6px;
+}
+/* m-tips end */
+/* m-nav start */
+.m-nav {
+  height: 90px;
+  background-color: #fff;
+  line-height: 90px;
+}
+.m-nav .content {
+  width: 1205px;
+  margin: 0 auto;
+}
+.m-nav .content .f-fr ul li {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 28px;
+}
+.m-nav .content .f-fr img{
+  margin-top: 35px;
+}
+/* m-nav end */
+/* g-bd start */
+.g-bd {
+  width: 100%;
+}
+/* g-bd end */
+/* g-ft start */
+/* g-ft end */
+/* tips start */
+/* tips end */
+/* nav start */
+/* nav end */
+/* banner start */
+.m-banner {
+  margin: auto;
+  width: 100%;
+  position: relative;
+}
+/* 默认让所有的图片li隐藏 */
+.m-banner > .images > li {
+  display: none;
+}
+/* 让当前图片展示 */
+.m-banner > .images > .active {
+  display: block;
+}
+.m-banner > .images > li > img{
+  height: 375px;
+}
+/* banner end */
+
+/* dots start */
+.u-dots {
+  position: absolute;
+  /* left: calc(50% - 18px); */
+  left: 50%;
+  margin-left: -36px;
+  bottom: 20px;
+}
+.u-dots .active {
+  background-color: #fff;
+}
+.u-dots li {
+  width: 12px;
+  height: 12px;
+  background-color: #000;
+  /* 圆角矩形 */
+  border-radius: 50%;
+  margin: 0 6px;
+}
+/* dots end */

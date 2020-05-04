@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //事件
+      //分为两种
+      //普通事件onxxx 绑定事件addEvnetlistener(chrome)/attachEvent(IE)
+      // addEvnetlistener
+      // attachEvent
+
+      //事件移除
+      //removeEvent/detachEvent
+
+      //typescript
+      // addEventListener(type: string, callback: function, useCapture: boolean)
+      //type 事件的类型
+      //callback 回调函数
+      //useCapture 事件传播的方式 默认为false 事件冒泡
+      // addEventListener(type, callback, useCapture)
+
+      // attachEvent(ontype:string, callback:function)
+      //ontype 事件的类型 带on
+      //callback 回调函数
+      //useCapture 没有第三个参数 因为IE只支持事件冒泡
+      // attachEvent(ontype, callback)
+
+      // if (浏览器的类型是chrome的) {
+      //   addEventListener(type, callback, useCapture)
+      // } else if (浏览器的类型是IE的) {
+      //   attachEvent(ontype, callback)
+      // }
+    </script>
+  </body>
+
+</html>

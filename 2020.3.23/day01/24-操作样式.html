@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="box" class="div1" style="width: 100px;height: 100px;background-color: pink;"></div>
+  <script>
+    //1. 选择元素
+    let oBox = document.getElementById("box");
+
+    //2. 操作样式
+    //getter
+    //.操作符 表示的是访问子属性或子对象
+    console.log(oBox.id)    //拿到ID
+    console.log(oBox.className)     //拿到类名
+    console.log(oBox.style)     //"width: 100px;height: 100px;background-color: pink;"
+    console.log(oBox.style.height)    //"100px"
+    console.log(oBox.style.width)    //"100px"
+    console.log(oBox.style.backgroundColor)    //"pink"
+
+    //setter
+    oBox.style.backgroundColor = "skyblue"
+    oBox.style.width = "200px"
+    oBox.style.height = "300px"
+  </script>
+</body>
+</html>

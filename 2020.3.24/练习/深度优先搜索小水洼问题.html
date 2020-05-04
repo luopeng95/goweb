@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 400px;
+            height: 400px;
+            background-color: cyan;
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+
+    </div>
+    <script>
+        //这一片地面上 有多少个水洼 一个W 周围有另外一个W 就被视为是一片水域
+        //3
+        //二叉树的深度遍历(dfs) (广度遍历)
+        //这个地图怎么生成?
+        let arr1 = [
+          ["W", "*", "*", "*", "*", "*", "W", "*", "W", "*"],
+          ["W", "W", "*", "*", "*", "*", "W", "W", "W", "*"],
+          ["*", "*", "W", "W", "*", "*", "W", "*", "W", "*"],
+          ["*", "*", "*", "*", "*", "*", "W", "*", "W", "*"],
+          ["*", "W", "*", "*", "*", "*", "W", "*", "W", "*"],
+          ["W", "*", "W", "*", "*", "*", "W", "*", "W", "*"],
+          ["*", "W", "*", "*", "*", "*", "W", "W", "W", "*"],
+          ["W", "*", "W", "*", "*", "*", "W", "*", "W", "*"],
+          ["*", "*", "*", "*", "*", "*", "W", "*", "W", "*"],
+          ["*", "*", "*", "*", "*", "*", "W", "*", "W", "*"],
+        ]
+
+        // 再研究一下生成地图的方式，使用函数来创建map地图
+
+        function createMap(x, y){
+            // x代表数组的长度，y代表数组中元素的长度
+            let arr = []
+            for( let i = 0; i < x; i++){
+                arr[i] = [];
+                for(let j = 0; j < y; j++){
+                    let m = Math.random()*5
+                    let n = Math.floor(m);
+                    if(n === 4){
+                        arr[i].push("W");
+                    }else{
+                        arr[i].push("*");
+                    }
+                }
+            }
+            return arr;
+        }
+
+        // 需要定义两个递归函数，一个用来正常循环数组中的每一个数，另一个用来做搜索时的递归
+        // console.log(arr);
+
+        function countPuddle(arr){
+            let count = 0;//用来统计水域的数目
+            //双层循环来循环数组中所有的元素
+            for (let i = 0; i < arr.length; i++){
+                for(let j = 0; j <arr[0].length; j++){
+                    // 如果被循环到的这个数是水洼“w”，那么久执行深度递归函数
+                    if (arr[i][j] === "W"){
+                        dfsGetNum(arr, i, j);
+                        count += 1
+                    }
+                }
+            }
+            return count;
+        }
+
+        // 这个函数做周围八个元素的遍历和将该元素重置
+        function dfsGetNum(arr, i, j){
+            arr[i][j] = "*";
+            // 接下来再用嵌套for循环来循环周围的八个点，要注意不能超出上下左右边界
+            for(let k = -1; k < 2; k++){
+                for(let l = -1; l < 2; l++){
+                    if(k === 0 && l === 0){
+                        // 首先排除原点，也就是在X轴和Y轴方向上都没移动的情况
+                        continue;
+                    }
+                    // 再判断X轴和Y轴都没有超出上下边界
+                    // 上边界：也就当i=0也就是在第一行的时候会超出上边界，那么令 K+i >= 0
+                    // 下边界 k+i < arr.length
+                    // 左边界：l + j >= 0
+                    // 有边界： l + j < arr[0].length
+                    if(k + i >= 0 && k + i < arr.length && l + j >= 0 && l + j < arr[0].length){
+                        // 上面的判断范围，下面的判断是不是水洼
+                        if (arr[i + k][j + l] === "W"){
+                            dfsGetNum(arr, i+k, j+l);
+                        }
+                    }
+                }
+            }
+        }
+
+        // console.log(countPuddle(arr1));
+
+        
+        
+        let ary = createMap(10, 10);
+        let n = ary.slice(0)
+        console.log(ary);
+        setTimeout("console.log(countPuddle(ary))", 5000);
+      </script>
+</body>
+</html>

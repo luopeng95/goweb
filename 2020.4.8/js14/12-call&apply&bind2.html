@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="div1">1</div>
+    <div id="div2">2</div>
+    <script>
+      let oDiv1 = document.querySelector("#div1")
+      let oDiv2 = document.querySelector("#div2")
+
+      oDiv1.addEventListener("click", function () {
+        change(oDiv1)
+      })
+      oDiv2.addEventListener("click", function () {
+        change(oDiv2)
+      })
+
+      function change(ele) {
+        ele.style.backgroundColor = "pink"
+      }
+    </script>
+  </body>
+
+</html>

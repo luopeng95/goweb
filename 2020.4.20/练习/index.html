@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="message">
+
+    </div>
+    <script>
+        let oDiv =  document.getElementById("message");
+        let reg = /username=([\w]+)/;
+        oDiv.innerHTML = document.cookie.match(reg)[1] + "欢迎您";
+        console.log(document.cookie);
+    </script>
+</body>
+</html>

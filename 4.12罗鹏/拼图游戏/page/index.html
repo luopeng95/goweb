@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拼图游戏</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <script src="../js/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <div id="container">
+        <div id="main" >
+
+        </div>
+        <div id="fun">
+            <span>计时：<span id="timer"></span></span>
+            <span>步数: <span id="step"></span></span>
+            <span><select name="leave" id="leave">
+                <option value="15">简单模式</option>
+                <option value="24">一般模式</option>
+                <option value="99">困难模式</option>
+            </select></span>
+            <span id="lookArtWork">查看原图</span>
+        </div>
+        <div id="artWork">
+            
+        </div>
+    </div>
+    <script src="../js/index.js"></script>
+    <script>
+        let imgArr = ["../image/image.png", "../image/image1.jpg", "../image/image2.jpg", "../image/image3.jpg", "../image/image4.jpg"];
+        let parent = $("#main");
+        let puzz1 = new Puzz($("#leave").val(), imgArr[Math.floor(Math.random()* imgArr.length)], parent);
+        
+        $("#leave").on("change", (e) => {
+            parent.html("");
+            puzz1.clearTimer();
+            puzz1 = new Puzz($("#leave").val(), imgArr[Math.floor(Math.random()*imgArr.length)], parent);
+            $("#artWork").removeClass("dis");
+        })
+
+        $("#lookArtWork").on("click", (e) => {
+            $("#artWork").html(`<img src=${puzz1.imgUrl}>`);
+            $("#artWork").toggleClass("dis");
+        })
+        
+    </script>
+</body>
+</html>

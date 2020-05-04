@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //其实let本质上和var还是很相似的 虽然let没有变量声明提升机制 但是他有一个类似的机制,作用域的变量检查机制 在每个作用域初始化的时候 虽然let是没有声明提升,但是会检查每个let定义的变量 有没有出现提前使用的情况
+      function show(a) {
+        console.log(a) //100
+        let a = 200;
+        console.log(a) //200
+      }
+      show(100)
+    </script>
+  </body>
+
+</html>

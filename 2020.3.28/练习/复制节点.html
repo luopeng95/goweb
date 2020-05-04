@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        <select name="ss" id="s1">
+            <option value="q">q</option>
+            <option value="qw">qw</option>
+            <option value="qwe">qwe</option>
+        </select>
+        <button type="button" onclick="onClick(false)">简单复制</button>
+        <button type="button" onclick="onClick(true)">深度复制</button>
+        <button type="button" onclick="qaz()">深度复制</button>
+    </div>
+
+    <script>
+        function onClick(deep){
+            console.log("开始");
+            let oe = document.querySelector("#s1").cloneNode(deep);
+            console.log(oe);
+            let odiv = document.getElementById("container");
+            odiv.appendChild(oe);
+            // odiv.innerHTML += `<pre>${oe}</pre>`;
+        }
+        function qaz(){
+            let oopt = document.querySelector("#s1").options
+            oopt[2] = null;
+        }
+    </script>
+</body>
+</html>

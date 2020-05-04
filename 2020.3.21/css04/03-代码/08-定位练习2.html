@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    /* 浮动 和 定位 都会脱离文档流
+    但是 定位可以有N个层
+    浮动 只有一个单独的浮动层 */
+    div {
+      width: 320px;
+      height: 320px;
+      border: 5px solid pink;
+      /* 子绝父相 */
+      position: relative;
+    }
+
+    a {
+      margin: 10px;
+      display: block;
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      position: absolute;
+      text-align: center;
+      line-height: 100px;
+      color: #fff;
+    }
+
+    a:hover {
+      background-color: blue;
+      color: yellow;
+      font-weight: 700;
+    }
+
+    .a1 {
+      left: 0;
+      top: 0;
+    }
+
+    .a2 {
+      right: 0;
+      top: 0;
+    }
+
+    .a3 {
+      left: 0;
+      bottom: 0;
+    }
+
+    .a4 {
+      right: 0;
+      bottom: 0;
+    }
+
+    .a5 {
+      left: 100px;
+      top: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <a class="a1">链接</a>
+    <a class="a2">链接</a>
+    <a class="a3">链接</a>
+    <a class="a4">链接</a>
+    <a class="a5">链接</a>
+  </div>
+</body>
+
+</html>

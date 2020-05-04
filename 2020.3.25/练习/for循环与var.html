@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // for(var i = 0; i < 10; i++ ){
+        //     setTimeout(function(){
+        //         console.log(i);
+        //     }, 0)
+        // }
+        let a = 11;
+        // function show(){
+        //     let a = 20;
+        //     console.log(a);
+        // }
+        // console.log(show());
+
+        console.log(a);
+        function outer(){
+            console.log(a);
+            a++;
+            function inner(){
+                console.log(a)
+            }
+            inner();
+        }
+        a++;
+        outer();
+    </script>
+</body>
+</html>

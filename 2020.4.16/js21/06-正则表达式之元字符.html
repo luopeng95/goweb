@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //perl 80年代
+      //元字符 . + ? [] & ^
+      let str = "ace"
+      let substr1 = "ace"
+      let substr2 = "abd"
+
+      //不要匹配b 我要匹配b或c
+      //| 正则的或
+      let reg = /b|c/
+      console.log(reg.test(str)) //true
+
+      //[] 单字符
+      let reg2 = /[b|c]/
+      console.log(reg2.test(str))
+
+      let reg3 = /bc/ //我要匹配一个包含bc的字符串
+      let reg4 = /[bc]/ //匹配b或c
+      let reg5 = /[ab]/ //匹配a或b
+      console.log(reg3.test(str))
+      console.log(reg4.test(str))
+      console.log(reg4.exec(str))
+      console.log(reg5.exec(str))
+    </script>
+  </body>
+
+</html>

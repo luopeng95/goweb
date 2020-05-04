@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      .div1 {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+        /* translate这个属性 不会改变文档流的情况 不会影响到其他的DOM元素 */
+        transform: translate(100px, 100px);
+      }
+
+      div:nth-of-type(2) {
+        width: 100px;
+        height: 100px;
+        background-color: skyblue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="div1" class="div1"></div>
+    <div id="div2" class="div2"></div>
+  </body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <video controls autoplay id="video">
+      <source src="media/Intermission-Walk-in_512kb.mp4">
+    </video>
+    <script>
+      let video = document.querySelector("#video")
+      let vWidth;
+      let vHeight;
+      video.addEventListener("canplay", function () {
+        vWidth = video.videoWidth;
+        vHeight = video.videoHeight;
+        document.body.innerHTML += `<canvas id="canvas" width="${vWidth}" height="${vHeight}"></canvas>`
+
+        let canvas = document.querySelector("#canvas")
+        //拿到2d画笔
+        let context = canvas.getContext("2d");
+
+        setInterval(() => {
+          //每次拿到当前的视频元素
+          video = document.querySelector("#video")
+          //拿到视频的宽度和高度
+          context.drawImage(video, 0, 0);
+        }, 30);
+      })
+    </script>
+  </body>
+
+</html>

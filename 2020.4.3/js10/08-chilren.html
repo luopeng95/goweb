@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <ul id="container">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <div>4</div>
+      <div>5</div>
+      <div>6</div>
+    </ul>
+    <script>
+      let oUl = document.getElementById("container")
+      //选中所有的子元素
+      let aChildren = oUl.children;
+      for (let i = 0; i < aChildren.length; i++) {
+        aChildren[i].style.backgroundColor = "pink"
+      }
+    </script>
+  </body>
+
+</html>

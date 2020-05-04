@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <button id="btn">下一个图片</button>
+    <img id="imgs" src="./img/1.jpg">
+    <script>
+      let oImg = document.querySelector("#imgs");
+      let oBtn = document.querySelector("#btn");
+      let imgArr = ["./img/1.jpg", "./img/2.jpg", "./img/3.jpg", "./img/4.jpg"]
+      let iNow = 0;
+
+      //通过hash值的变化 来切换图片
+      oBtn.addEventListener("click", function () {
+        // window.location.hash 不光可以做setter还可以做getter
+        window.location.hash = ++iNow;
+        console.log(location) //网络地址相关的属性 他和URL地址栏密切挂钩
+        //他能够获取到整个地址 也能获取 / # ? 端口 协议
+        oImg.src = imgArr[window.location.hash.substring(1) % imgArr.length]
+      })
+    </script>
+  </body>
+
+</html>

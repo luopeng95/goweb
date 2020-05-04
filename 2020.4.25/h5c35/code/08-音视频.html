@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <video id="a1" src="./media/Intermission-Walk-in_512kb.mp4"></video>
+    <div id="div1">
+      视频1
+      <!-- ./media/Intermission-Walk-in_512kb.mp4 -->
+    </div>
+    <div id="div2">
+      视频2
+      <!-- ./johann_sebastian_bach_air.mp3 -->
+    </div>
+    <input id="play" type="button" value="播放">
+    <input id="pause" type="button" value="暂停">
+    <script>
+      let a1 = document.querySelector("#a1");
+      let playbtn = document.querySelector("#play")
+      let pausebtn = document.querySelector("#pause")
+      let div1 = document.querySelector("#div1")
+      let div2 = document.querySelector("#div2")
+      playbtn.addEventListener("click", function () {
+        a1.play()
+      })
+      pausebtn.addEventListener("click", function () {
+        a1.pause()
+      })
+      div1.addEventListener("click", function () {
+        //切换一个新视频地址
+        a1.src = "./media/Intermission-Walk-in_512kb.mp4"
+      })
+      div2.addEventListener("click", function () {
+        //切换一个新视频地址
+        a1.src = "./media/johann_sebastian_bach_air.mp3"
+      })
+    </script>
+  </body>
+
+</html>

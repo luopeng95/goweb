@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <ul id="container">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+    </ul>
+
+    <script>
+      // 红色 蓝色 黄色 绿色
+      let oUl = document.getElementById("container");
+      // let aLi = oUl.children;
+
+      //获取第一个子元素
+      let first = oUl.firstElementChild;
+      first.style.backgroundColor = "pink"
+
+      //获取最后一个子元素
+      let last = oUl.lastElementChild;
+      last.style.backgroundColor = "green"
+
+      //获取第二个子元素
+      let second = first.nextElementSibling;
+      second.style.backgroundColor = "blue"
+      // let second = last.previousElementSibling.previousElementSibling;
+
+      let third = last.previousElementSibling;
+      third.style.backgroundColor = "yellow"
+    </script>
+  </body>
+
+</html>

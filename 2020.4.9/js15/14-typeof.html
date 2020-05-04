@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //1.typeof x
+      let str = "北京"
+      let num = 1;
+      let boo = true
+      let nul = null;
+      let und;
+      let obj = {}
+      let arr = [1, 2, 3]
+      let fun = function () {}
+
+      console.log(typeof str) //string
+      console.log(typeof num) //number
+      console.log(typeof boo) //boolean
+      console.log(typeof nul) //object (有问题)
+      console.log(typeof und) //undefined
+      console.log(typeof obj) //object
+      console.log(typeof arr) //object (有问题)
+      console.log(typeof fun) //function
+
+      // console.log(typeof typeof typeof [])
+      //描述 typeof
+      //语法 typeof x
+      //返回值 是对应的数据类型的名字的字符串
+      //缺点: 1. 不能判断null类型
+      //2. 不能判断Array
+      //3. 更不能判断自定义类型
+      //一般情况下 typeof用来做一些基本数据类型的判断 且 不能判断null
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <!-- 整个页面容器 -->
+    <div id="app">
+      <!-- 上边栏/左边栏区 -->
+      <ul>
+        <li><a href="#/index">首页</a></li>
+        <li><a href="#/about">关于</a></li>
+        <li><a href="#/tips">帮助</a></li>
+      </ul>
+    </div>
+    <div id="content">
+      <!-- 真正的内容区 -->
+    </div>
+    <script>
+      let aLink = document.querySelectorAll("#app a");
+
+      //组件模板 这个子路由 目前可以放置三种组件
+      let template = {
+        index: "<h3>我是首页</h3>",
+        about: "<h3>我是关于页</h3>",
+        tips: "<h3>我是帮助页</h3>"
+      }
+      let content = document.querySelector("#content");
+
+      // for (let i = 0; i < aLink.length; i++) {
+      //   aLink.addEventListener("click")
+      // }
+      window.addEventListener("hashchange", function () {
+        //子路由准备路由到哪个地方
+        let suburl = window.location.hash.slice(2); //index about tips
+
+        //模拟一个路由 (通过一个中介 来引导用户跳转到另外一个页面 同时保留该window对象)
+        switch (suburl) {
+          case "index":
+            //引导到首页
+            content.innerHTML = template.index
+            break;
+          case "about":
+            //引导到关于页
+            content.innerHTML = template.about
+            break;
+          case "tips":
+            //引导到帮助页
+            content.innerHTML = template.tips
+            break;
+        }
+      })
+
+      content.innerHTML = template.index
+    </script>
+  </body>
+
+</html>

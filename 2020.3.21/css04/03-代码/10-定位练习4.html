@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    /* 浮动 和 定位 都会脱离文档流
+    但是 定位可以有N个层
+    浮动 只有一个单独的浮动层 */
+    :root {
+      --box-size: 150px;
+    }
+
+    div {
+      width: 580px;
+      height: 580px;
+      border: 5px solid pink;
+      /* 子绝父相 */
+      position: relative;
+    }
+
+    a {
+      display: block;
+      width: var(--box-size);
+      height: var(--box-size);
+      background-color: pink;
+      position: absolute;
+      text-align: center;
+      line-height: var(--box-size);
+      color: #fff;
+    }
+
+    a:hover {
+      background-color: blue;
+      color: yellow;
+      font-weight: 700;
+      cursor: url(img/b1.png) 10 10, pointer;
+    }
+
+    .a1 {
+      left: 10px;
+      top: 10px;
+    }
+
+    .a2 {
+      right: 10px;
+      top: 10px;
+    }
+
+    .a3 {
+      left: 10px;
+      bottom: 10px;
+    }
+
+    .a4 {
+      right: 10px;
+      bottom: 10px;
+    }
+
+    .a5 {
+      left: calc(50% - var(--box-size) / 2);
+      top: calc(50% - var(--box-size) / 2);
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <a class="a1">链接</a>
+    <a class="a2">链接</a>
+    <a class="a3">链接</a>
+    <a class="a4">链接</a>
+    <a class="a5">链接</a>
+  </div>
+</body>
+
+</html>

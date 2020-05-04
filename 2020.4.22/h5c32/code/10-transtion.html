@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      #div1 {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        /* 如果那个标签想要出现慢慢变化的效果的时候 就给他添加一个transition属性 */
+        /* 过渡往往只能表现从A到B  */
+        /* 动画 会A到B到C... A到B到A  */
+        /* 由于你监听的属性是全部的，所以既监听width 又监听background-color */
+        /* 也可以监听特定的属性 输入属性名就好了 */
+        transition-property: all;
+        /* 过渡持续的时间长度 */
+        transition-duration: 3s;
+        /* 速度曲线 */
+        transition-timing-function: ease-out;
+        /* 过渡的一个延迟时间 在多少ms 或者多少 s之后 才会执行过渡效果*/
+        /* transition-delay: 2s; */
+      }
+
+      /* 一般情况下 过渡属性 和:hover|:target挂钩  */
+      /* 如果 :target 来实现一个选项卡 */
+      #div1:hover {
+        width: 300px;
+        background-color: blue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="div1"></div>
+  </body>
+
+</html>

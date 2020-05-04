@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <input type="checkbox">
+  <input type="checkbox">
+  <input type="checkbox">
+  <input type="checkbox">
+  <input type="checkbox">
+  <button id="selectAll">全选</button>
+  <script>
+    //1. 选择元素
+      //触发器
+      let oBtn = document.getElementById("selectAll");
+      //渲染器
+      let aInput = document.getElementsByTagName("input");
+    //2. 绑定事件
+    oBtn.onclick = function() {
+      //改变渲染器
+      aInput[0].checked = true;
+      aInput[1].checked = true;
+      aInput[2].checked = true;
+      aInput[3].checked = true;
+      aInput[4].checked = true;
+    }
+  </script>
+</body>
+</html>

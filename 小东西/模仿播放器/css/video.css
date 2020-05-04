@@ -1,0 +1,138 @@
+/* 三个功能区的设置 */
+#lp-V-top{
+    /* background-color: aqua; */
+    height: 42px;
+}
+#lp-V-middle{
+    padding: 0 8px;
+    box-sizing: border-box;
+    height: calc(100% - 86px);
+    position: relative;
+}
+#lp-V-bottom{
+    /* background-color: blueviolet; */
+    padding: 0 15px;
+    height: 44px;
+    box-sizing: border-box;
+}
+#lp-video{
+    width: 100%;
+}
+/* 两个图标 */
+.lp-bilibili{
+    position: absolute;
+    font-size: 40px;
+    color: #f7eaea;
+    right: 20px;
+    top:20px;
+}
+.lp-line{
+    position: absolute;
+    font-size: 70px;
+    color: #f7eaea;
+    right: 30px;
+    bottom: 0px;
+}
+
+/* 功能区设置 */
+#lp-function-zone{
+    /* background-color: yellow; */
+    position: relative;
+    width: 100%;
+    height:calc(100% - 12px);
+    display: flex;
+}
+#lp-progress{
+    transform: scale(1, 0.2);
+    background-color: gray;
+    height: 12px;
+    transition: all .4s;
+    border-radius: 5px;
+    position: relative;
+}
+#lp-progress:hover{
+    transform: scale(1, 0.5);
+}
+
+#lp-progress-icon{
+    position: absolute;
+    color: pink;
+    font-size: 20px;
+    right: -15px;
+    top: -5px;
+}
+.lp-zone-li{
+    /* background-color: yellowgreen; */
+    flex: 0 0 46px;
+}
+.lp-zone-li-t{
+    line-height: 32px;
+    /* background-color: aqua; */
+    flex: 1 1 0;
+    font-size: 18px;
+    color: white;
+}
+.lp-bofang{
+    font-size: 30px;
+    color: white;
+}
+#lp-progress-div{
+    position: relative;
+    background-color: white;
+    height: 100%;
+    width: 0;
+}
+#lp-volice{
+    color: white;
+    line-height: 32px;
+    font-size: 26px;
+    position: relative;
+}
+#lp-volice>div{
+    background-color:rgba(0, 0, 0, 0.6);
+    display: block;
+    content: "";
+    width: 30px;
+    height: 100px;
+    position: absolute;
+    top: -120px;
+    display: none;
+}
+#lp-volume-size{
+    display: block;
+    /* vertical-align: top; */
+    font-size: 16px;
+    /* padding: 0 2px; */
+    height: 10px;
+    text-align: center;
+}
+#lp-volume-div{
+    background-color: white;
+    width: 100%;
+    height: 65px;
+    transform: scale(0.2, 0.9);
+    position: relative;
+    top: 20px;
+    /* padding-top: 30px; */
+}
+#lp-volume-progress{
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    height: 50px;
+    background-color: skyblue;
+}
+.lp-vol{
+    display: inline-block;
+    background-color: yellow;
+    position: absolute;
+    top: -5px;
+    width: 80px;
+    height: 10px;
+    left: -25px;
+}
+.lp-fullScreen{
+    color: white;
+    font-size: 24px;
+    line-height: 32px;
+}

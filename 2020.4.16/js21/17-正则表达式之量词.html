@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //如何捕获到连续n位的数字
+      let str = "1 23 456 7890"
+
+      // {} 范围 重复范围
+      // {n} 前一个语法出现n次 就会被匹配或捕获
+      // {n,} 前一个语法至少出现n次
+      // {n,m} 前一个语法至少出现n次且至多出现m次
+
+      // + 前一个语法出现至少1次 等价于{1,} 有多少
+      // ? 前一个语法出现至少0次 至多1次 等价于 {0,1} 有没有
+      // * 前一个语法出现至少0次 至多正无穷次 等价于 {0,}
+
+      let reg = /\d{2}/g // 匹配两个连续的数字
+      let reg2 = /\d{2,}/g //匹配至少两个连续的数字
+      let reg3 = /\d{1,2}/g //匹配一个或者两个连续的数字
+      let reg4 = /\d+/g //匹配至少一个数字
+      // let reg5 = /\d{1,}/g //匹配至少一个数字
+      console.log(str.match(reg))
+      console.log(str.match(reg2)) //["23", "456", "7890"]
+      console.log(str.match(reg3)) //[1, 23, 45, 6, 78, 90]
+      console.log(str.match(reg4)) //[1, 23, 456, 7890]
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      // [] 单字符
+      // ()
+      let reg = /^1[23]4$/
+      //以1开头 以4结尾 中间总会有一个字符是2或者3
+
+      console.log(reg.test("12")) //
+      console.log(reg.test("34")) //
+      console.log(reg.test("123")) //
+      console.log(reg.test("124")) //true
+      console.log(reg.test("234")) //
+      console.log(reg.test("1234")) //
+    </script>
+  </body>
+
+</html>

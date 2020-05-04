@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      function Person(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+      Person.prototype.constructor = Person
+      Person.prototype.eat = function () {
+        return this.name + "在吃"
+      }
+      Person.prototype.speak = function () {
+        return "ayayayayayaya"
+      }
+
+      function Chinese(name, age) {
+        Person.call(this, name, age)
+      }
+      Chinese.prototype = new Person
+      Chinese.prototype.constructor = Chinese
+      Chinese.prototype.speak = function () {
+        return "你好,世界!"
+      }
+
+      function American(name, age) {
+        Person.call(this, name, age)
+      }
+      American.prototype = new Person
+      American.prototype.constructor = American
+      American.prototype.speak = function () {
+        return "hello,world!"
+      }
+
+      //不同的类的实例 在同种方法或属性下表现出不同的特征 这个过程就叫多态
+      let c1 = new Chinese("李雷", 20)
+      let a1 = new American("Lucy", 25)
+      let p1 = new Person("人猿泰山", 10)
+      console.log(c1.speak()) //你好,世界
+      console.log(a1.speak()) //hello,world
+      console.log(p1.speak()) //ayayayayayayaya
+      console.log(Person.prototype.speak.call(c1));
+      console.log(Object.prototype.toString.call(c1))
+      console.log(Object.prototype.toString.call(a1))
+      console.log(Object.prototype.toString.call(p1))
+    </script>
+  </body>
+
+</html>

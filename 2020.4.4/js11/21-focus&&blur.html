@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <script>
+      let aInput = document.getElementsByTagName("input");
+
+      for (let i = 0; i < aInput.length; i++) {
+        //绑定一个聚焦事件
+        aInput[i].addEventListener("focus", function () {
+          this.style.backgroundColor = "pink"
+        })
+        aInput[i].addEventListener("blur", function () {
+          this.style.backgroundColor = ""
+        })
+      }
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      li {
+        list-style: none;
+        width: 100px;
+        height: 30px;
+        background-color: pink;
+        margin: 10px;
+      }
+
+      div {
+        width: 100px;
+        height: 100px;
+        background-color: skyblue;
+        position: absolute;
+        top: 200px;
+        left: 200px;
+        /* transform: translate(100px, 100px); */
+      }
+
+      img {
+        width: 50px;
+        height: 50px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- 默认浏览器所有的DOM节点都不可拖曳 -->
+    <!-- draggable 只是规定了这个元素可拖曳 -->
+    <img src="./images/car.jpg" alt="">
+    <ul>
+      <li draggable="true">内容1</li>
+      <li draggable="true">内容2</li>
+      <li draggable="true">内容3</li>
+    </ul>
+    <div>目标</div>
+    <!-- 拖拽物  -->
+    <!-- dragstart 开始拖拽 -->
+    <!-- drag 正在拖拽 -->
+    <!-- dragend 结束拖拽 -->
+
+    <!-- 目标物 -->
+    <!-- dragenter 开始进入 -->
+    <!-- dragover 正在悬停 -->
+    <!-- dragleave 开始离开 -->
+    <script>
+      const oUl = document.querySelector("ul")
+      const aLi = document.querySelectorAll("ul li");
+      const oDiv = document.querySelector("div");
+      const oImg = document.querySelector("img")
+      let removeLi;
+
+      for (let i = 0; i < aLi.length; i++) {
+        //1. 鼠标左键点下 小li拖曳开始事件(瞬间态)
+        aLi[i].addEventListener("dragstart", function (e) {
+          this.style.backgroundColor = "green"
+          //在开始拖曳的时候 可以设置写内容
+          console.log(e)
+          console.log(e.dataTransfer)
+          e.dataTransfer.setDragImage(oImg, 25, 25)
+          removeLi = this;
+        })
+        //2. 左键按下状态移动鼠标 正在拖曳事件(常态)
+        aLi[i].addEventListener("drag", function (e) {
+          this.style.backgroundColor = "blue"
+        })
+        //3. 松开鼠标左键 拖曳结束事件(瞬间态)
+        aLi[i].addEventListener("dragend", function (e) {
+          this.style.backgroundColor = "pink"
+        })
+      }
+
+      //要拖曳到某目标中去
+      //4.拖曳对象进入到div中 瞬间态
+      oDiv.addEventListener("dragenter", function (e) {
+        this.style.backgroundColor = "gold"
+      })
+
+      //5.拖曳对象悬停到div中 常态
+      oDiv.addEventListener("dragover", function (e) {
+        e.dataTransfer.dropEffect = "link"
+        //默认不给放 但是如果悬停到他的上方 如果你阻止默认事件触发的话 那么我就可以丢到这个位置
+        e.preventDefault()
+      })
+
+      //6.拖曳对象离开div 瞬间态
+      oDiv.addEventListener("dragleave", function (e) {
+        this.style.backgroundColor = "skyblue"
+      })
+
+      //7. 丢弃事件 当你触发丢弃的时候才是真正的删除
+      oDiv.addEventListener("drop", function (e) {
+        //前提 必须是dragover e.preventDefault 就可以使用一个drop
+        oUl.removeChild(removeLi)
+        e.dataTransfer.setDragImage(oImg, 25, 25)
+        console.log("你丢弃了")
+      })
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      .tab div {
+        width: 200px;
+        height: 200px;
+        border: 1px solid black;
+        display: none;
+      }
+
+      .tab .clicked {
+        background-color: pink;
+      }
+
+      .tab .active {
+        display: block;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="tab" class="tab">
+      <!-- 触发器 -->
+      <!-- 当前默认被点击的是第一个按钮 -->
+      <input class="clicked" type="button" value="0">
+      <input type="button" value="1">
+      <input type="button" value="2">
+      <!-- 渲染区 -->
+      <!-- 表示当前被点击的按钮对应的div的展示 -->
+      <div class="active">000000000000000000</div>
+      <div>111111111111111111</div>
+      <div>222222222222222222</div>
+    </div>
+    <script>
+      //const 不能变 内存地址不能变
+      const oTab = document.getElementById("tab")
+      //触发器
+      const aInput = oTab.getElementsByTagName("input")
+      //渲染区
+      const aDiv = oTab.getElementsByTagName("div")
+
+      //2 绑定事件
+      //A. 中立属性 来关联这两者的关系
+      for (var i = 0; i < aInput.length; i++) {
+        //初始化的时候 为每个按钮添加一个index属性
+        //为每个按钮绑定一个属性 那个属性记录下当时的那个i
+        aInput[i].index = i;
+        aInput[i].onclick = function () {
+          //3. 渲染
+          //1.让原来的按钮变白 -> 让所有的按钮先变白
+          //2.让原来的按钮对应的div隐藏 -> 所有的div隐藏
+          for (let j = 0; j < aInput.length; j++) {
+            aInput[j].className = ""
+            aDiv[j].className = ""
+          }
+          //3.让现在的按钮变红
+          //this 谁调用就指向谁
+          this.className = "clicked"
+          //4.让现在的按钮对应的div显示
+          //因为我们知道按钮的下标 暗示着就是 div的对应下标 所以也可以直接用按钮的下标
+          aDiv[this.index].className = "active"
+        }
+      }
+      debugger
+    </script>
+  </body>
+
+</html>

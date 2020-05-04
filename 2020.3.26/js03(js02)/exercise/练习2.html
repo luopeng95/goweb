@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+	*{margin:0; padding:0;}
+	li{list-style:none;width:50px; height:50px; background:url(img/1.png) no-repeat; left:0; top:0; position:absolute;}
+</style>
+
+</head>
+
+<body>
+	<ul id="ul1">
+
+    </ul>
+    
+<script>
+	var oUl=document.getElementById('ul1');
+
+/*	for(var i=0; i<50;i++)
+	{
+		var j = i%10;				//left
+		var k = Math.floor(i/10);	//top  
+				
+		oUl.innerHTML += '<li style="left:'+(j*55)+'px;  top:'+(k*55)+'px;"></li>';
+	}*/
+	
+	for(var i=0; i<5;i++)
+	{
+		for(var j=0; j<10; j++)
+		{
+			 oUl.innerHTML += '<li style="left:'+(j*51)+'px;  top:'+(i*51)+'px; background-position:'+(-j*50)+'px '+(-i*50)+'px"></li>';
+		}			
+		 
+	}
+	
+	
+	
+</script>
+
+</body>
+</html>

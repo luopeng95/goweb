@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //3. 混合继承
+      //使用call来继承静态属性
+      //使用原型链来继承动态方法
+      function Person(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+      // Person.prototype = new Object();
+      Person.prototype.eat = function () {
+        return "人在吃"
+      }
+
+      function Teacher(name, age, tAge) {
+        this.tAge = tAge;
+        this.eat = function () {
+          return this.name + "在吃"
+        }
+        Person.call(this, name, age)
+      }
+      //让老师的原型 也变成学生的原型
+      // Teacher.prototype = Person.prototype
+      Teacher.prototype = new Person;
+      Teacher.prototype.eat = function () {
+        return "老师在吃"
+      }
+      //构建一个t1
+      //t1.__proto__ = Teacher.prototype.__proto__ = Person.prototype.__proto__
+      // t1 -> Teacher.prototype -> Person.prototype -> Object.prototype -> null
+      //就近原则 如果t1本地有 否则查找 Teacher.prototype ...
+      let t1 = new Teacher("老胡", 30, 10);
+      console.log(t1)
+      console.log(t1.eat()) //老胡在吃
+    </script>
+  </body>
+
+</html>

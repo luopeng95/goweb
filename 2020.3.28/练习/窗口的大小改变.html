@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="点击打开新窗口" onclick="newOpen()">
+
+
+    <script>
+        let newOpen = () => {
+            winHeight = 100;
+            winWidth = 100;
+            xDistance = 5;
+            yDistance = 5;
+            win1 = window.open("", "win1", "left = 500, scrollbars='no'");
+            win1.moveTo(0, 0);
+            win1.resizeTo(winWidth, winHeight);
+            resizeL();
+        }
+
+        let resizeL = () =>{
+            // 判断高度和宽度是否达到屏幕上限
+            console.log("开始执行");
+            if (winHeight >= window.screen.availHeight - 3){
+                yDistance = 0;
+            }
+            if( winWidth >= window.screen.availWidth - 3){
+                xDistance = 0;
+            }
+            if( xDistance === 0 && yDistance === 0){
+                win1.resizeTo(500, 500);
+                win1.moveTo((window.screen.availWidth - 500)/2, (window.screen.availHeight - 500)/2);
+                return;
+            }
+            win1.resizeBy(xDistance, yDistance);
+            winHeight += yDistance;
+            winWidth += xDistance;
+            setTimeout("resizeL()", 50);
+            console.log("结束一次");
+        }
+    </script>
+</body>
+</html>

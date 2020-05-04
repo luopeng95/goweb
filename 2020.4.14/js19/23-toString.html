@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let show = () => {
+        return "我是一个函数"
+      }
+
+      Function.prototype.toString = function () {
+        console.log("toString被调用")
+      }
+
+      Function.prototype.valueOf = function () {
+        console.log("valueOf被调用")
+      }
+      //在打印这个结果 或者 改变结果的时候 都会调用 valueOf() 或者 toString()
+
+      // console.log("北京" + "上海") //赋值的过程中 会触发 "北京上海".valueOf()
+    </script>
+  </body>
+
+</html>

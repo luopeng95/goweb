@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //  function readJSON(file, callback) {  
+        //     let ajax = new XMLHttpRequest();  
+        //     ajax.overrideMimeType("application/json");
+        //     ajax.open("GET", file, false);
+        //     let response = ajax.getResponseHeader("Content-Type");
+        //     ajax.onreadystatechange = function() {  
+        //         if (ajax.readyState === 4 && ajax.status == "200") {
+        //             callback(ajax.responseText);
+        //         }  
+        //     }  
+        //     ajax.send(null);
+        // }
+        
+        let address = ["./provinces.json","./cities.json","./areas.json","./streets.json"];
+
+        // 封装一个函数，输入本地的json列表的名字，输出一个数组；
+        function getJson(addList){
+            let json = [];
+            for(let i = 0; i < addList.length; ++i){
+                let ajax = new XMLHttpRequest();
+                ajax.overrideMimeType("application/json");
+                ajax.open("GET", addList[i], true);
+                ajax.onreadystatechange = function () {
+                    if (ajax.readyState === 4 && ajax.status == "200") {
+                        json.push(JSON.parse(ajax.responseText));
+                    }
+                }
+                ajax.send();
+            }
+        
+            return json;
+        }
+        // 将得到的地区数据按照顺序放在json这个数组里面了
+        let json = getJson(address);
+        console.log(json);
+    </script>
+</body>
+</html>

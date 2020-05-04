@@ -1,0 +1,489 @@
+/* container start */
+    #container{
+        /* background-color: yellowgreen; */
+        min-width: 320px;
+        position: relative;
+    }
+/* container end */
+
+/* lp-search-d1 start */
+    .lp-search-d1{
+        background-color: rgba(0, 0, 0, 0);
+        width: 100%;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        position: fixed;
+        z-index: 100;
+        top: 0px;
+        left: 0px;
+    }
+
+    .search-index-box{
+        background-color: #ececed;
+        height: 28px;
+        margin-left: 15px;
+        padding-left: 15px;
+        border-radius: 16px;
+        line-height: 28px;
+        flex: 1 1 0;
+        position: relative;
+    }
+    .search-index-box>span{
+        padding-left: 25px;
+        font-size: 0.94rem;
+    }
+    .search-index-box::before{
+        content: "";
+        display: block;
+        position: absolute;
+        /* left: 0px; */
+        top: 7px;
+        width: 15px;
+        height: 15px;
+        background-image: url(../image/iconSpirit/home-sprite.png);
+        background-size: 21px auto;
+        background-position: 0 0 ;
+    }
+
+    .search-index-my{
+        height: 44px;
+        flex: 0 0 51px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+    }
+    .search-index-my>div{
+        width: 21px;
+        height: 21px;
+        margin: 4px 0;
+        background-image: url(../image/iconSpirit/home-sprite.png);
+        background-size: 21px auto;
+        background-position: 0 -78px ;
+    }
+/* lp-search-d1 end */
+
+/* bigPicture start */
+    .bigPicture{
+        width: 100%;
+    }
+    
+    #adimage{
+        width: 100%;
+    }
+/* bigPicture end */
+
+/* lp-local-nav start */
+    .lp-local-nav{
+        background-color: white;
+        /* width: ; */
+        height: 64px;
+        margin: -52px 12px 10px;
+        border-radius: 10px;
+        display: flex;
+        position: relative;
+        z-index: 10;
+    }
+    .lp-local-nav>a{
+        display: flex;
+        flex: 1 1 0;
+        flex-direction: column;
+        align-items: center;
+        padding: 4px 6px;
+    }
+    .lp-loacl-icon{
+        width: 40px;
+        height: 40px;
+        background-image: url(../image/iconSpirit/home-sprite2.png);
+        background-size: 40px auto;
+    }
+    .lp-loacl-icon:nth-child(1){
+        background-position: 0 0 ;
+        margin-bottom: 4px;
+    }
+    .lp-local-nav>a:nth-child(2)>.lp-loacl-icon{
+        background-position: 0 -40px ;
+        margin-bottom: 4px;
+    }
+    .lp-local-nav>a:nth-child(3)>.lp-loacl-icon{
+        background-position: 0 -80px ;
+        margin-bottom: 4px;
+    }
+    .lp-local-nav>a:nth-child(4)>.lp-loacl-icon{
+        background-position: 0 -120px ;
+        margin-bottom: 4px;
+    }
+    .lp-local-nav>a:nth-child(5)>.lp-loacl-icon{
+        background-position: 0 -160px ;
+        margin-bottom: 4px;
+    }
+/* lp-local-nav end */
+
+/* lp-grid-nav start */
+    .lp-grid-nav{
+        background-color: skyblue;
+        height: 198px;
+        margin: 0 12px;
+        border-radius: 10px;
+        display: grid;
+        grid-template-rows: repeat(3,33.33%);
+        grid-template-columns: 31% 23% 23% 23%;
+        /* background-image: linear-gradient(to right, #FF4D48, #FF9344); */
+    }
+    .lp-grid-nav>li{
+        box-sizing: border-box;
+        /* background-color: violet; */
+        border: 1px solid white;
+        line-height: 65px;
+    }
+    .lp-grid-nav>li:nth-child(3){
+        grid-column-start: 3;
+        grid-column-end: 5;
+    }
+    .lp-grid-nav>li:nth-child(1){
+        background-image: url(../image/grid-nav-items-hotel@v7.15.png);
+        background-size: 73px auto;
+        background-repeat: no-repeat;
+        background-position: 34px 32px;
+        padding-left: 10px;
+    }
+    .lp-grid-nav>li:nth-child(2){
+        background-image: url(../image/grid-nav-items-minsu@v7.15.png);
+        background-size: 37px auto;
+        background-repeat: no-repeat;
+        background-position: 0px 44px;
+        text-align: center;
+    }
+    .lp-grid-nav>li:nth-child(3){
+        background-image: url(../image/grid-nav-items-jhj@v7.15.png);
+        background-size: auto 32px;
+        background-repeat: no-repeat;
+        background-position: 73px 32px;
+        text-align: center;
+    }
+    .lp-grid-nav>li:nth-child(4){
+        background-image: url(../image/grid-nav-items-flight@v7.15.png);
+        background-size: auto 34px;
+        background-repeat: no-repeat;
+        background-position: 28px 30px;
+        padding-left: 10px;
+    }
+    .lp-grid-nav>li:nth-child(5){
+        background-image: url(../image/grid-nav-items-train.png);
+        background-size: 34px auto;
+        background-repeat: no-repeat;
+        background-position: 0px 39px;
+        text-align: center;
+    }
+    .lp-grid-nav>li:nth-child(6){
+        text-align: center;
+    }
+    .lp-grid-nav>li:nth-child(7),.lp-grid-nav>li:nth-child(9),.lp-grid-nav>li:nth-child(10),.lp-grid-nav>li:nth-child(11){
+        text-align: center;
+    }
+    .lp-grid-nav>li:nth-child(8){
+        background-image: url(../image/grid-nav-items-travel@v7.15.png);
+        background-size: auto 47px;
+        background-repeat: no-repeat;
+        background-position: 13px 16px;
+        padding-left: 10px;
+    }
+/* lp-grid-nav end */
+
+/* lp-grid-subnav start */
+    .lp-grid-subnav{
+        background-color: white;
+        display: grid;
+        margin: 0px 12px 0px;
+        height: 110px;
+        grid-template-columns: repeat(5, 20%);
+        grid-template-rows: 50% 50%;
+    }
+    .lp-grid-subnav>li{
+        text-align: center;
+    }
+    .lp-grid-subnav>li>a{
+        /* margin-left: 10px; */
+    }
+    .lp-grid-subnav>li:nth-child(1)>a::before{
+        content: "";
+        display: block;
+        width: 28px;
+        height: 28px;
+        margin: 10px 0px 4px 0;
+        background-image: url(../image/iconSpirit/spirit1.png);
+        background-size: 28px auto;
+        background-repeat: no-repeat;
+        background-position: 0px 0px;
+        transform: translateX(20px);
+    }
+    .lp-grid-subnav>li:nth-child(2)>a::before{
+        content: "";
+        display: block;
+        width: 28px;
+        height: 28px;
+        margin: 10px 0px 4px 0;
+        background-image: url(../image/iconSpirit/spirit1.png);
+        background-size: 28px auto;
+        background-repeat: no-repeat;
+        background-position: 0px -28px;
+        transform: translateX(20px);
+    }
+    .lp-grid-subnav>li:nth-child(3)>a::before{
+        content: "";
+        display: block;
+        width: 28px;
+        height: 28px;
+        margin: 10px 0px 4px 0;
+        background-image: url(../image/iconSpirit/spirit1.png);
+        background-size: 28px auto;
+        background-repeat: no-repeat;
+        background-position: 0px -56px;
+        transform: translateX(20px);
+    }
+    .lp-grid-subnav>li:nth-child(4)>a::before{
+        content: "";
+        display: block;
+        width: 28px;
+        height: 28px;
+        margin: 10px 0px 4px 0;
+        background-image: url(../image/iconSpirit/spirit1.png);
+        background-size: 28px auto;
+        background-repeat: no-repeat;
+        background-position: 0px -84px;
+        transform: translateX(20px);
+    }
+    .lp-grid-subnav>li:nth-child(5)>a::before{
+        content: "";
+        display: block;
+        width: 28px;
+        height: 28px;
+        margin: 10px 0px 4px 0;
+        background-image: url(../image/iconSpirit/spirit1.png);
+        background-size: 28px auto;
+        background-repeat: no-repeat;
+        background-position: 0px -112px;
+        transform: translateX(20px);
+    }
+    .lp-grid-subnav>li:nth-child(6)>a::before{
+        content: "";
+        display: block;
+        width: 28px;
+        height: 28px;
+        margin: 10px 0px 4px 0;
+        background-image: url(../image/iconSpirit/spirit1.png);
+        background-size: 28px auto;
+        background-repeat: no-repeat;
+        background-position: 0px -140px;
+        transform: translateX(20px);
+    }
+    .lp-grid-subnav>li:nth-child(7)>a::before{
+        content: "";
+        display: block;
+        width: 28px;
+        height: 28px;
+        margin: 10px 0px 4px 0;
+        background-image: url(../image/iconSpirit/spirit1.png);
+        background-size: 28px auto;
+        background-repeat: no-repeat;
+        background-position: 0px -168px;
+        transform: translateX(20px);
+    }
+    .lp-grid-subnav>li:nth-child(8)>a::before{
+        content: "";
+        display: block;
+        width: 28px;
+        height: 28px;
+        margin: 10px 0px 4px 0;
+        background-image: url(../image/iconSpirit/spirit1.png);
+        background-size: 28px auto;
+        background-repeat: no-repeat;
+        background-position: 0px -196px;
+        transform: translateX(20px);
+    }
+    .lp-grid-subnav>li:nth-child(9)>a::before{
+        content: "";
+        display: block;
+        width: 28px;
+        height: 28px;
+        margin: 10px 0px 4px 0;
+        background-image: url(../image/iconSpirit/spirit1.png);
+        background-size: 28px auto;
+        background-repeat: no-repeat;
+        background-position: 0px -224px;
+        transform: translateX(20px);
+    }
+    .lp-grid-subnav>li:nth-child(10)>a::before{
+        content: "";
+        display: block;
+        width: 28px;
+        height: 28px;
+        margin: 10px 0px 4px 0;
+        background-image: url(../image/iconSpirit/spirit1.png);
+        background-size: 28px auto;
+        background-repeat: no-repeat;
+        background-position: 0px -252px;
+        transform: translateX(20px);
+    }
+    
+/* lp-grid-subnav end */
+
+/* lp-sales-huodong start */
+    .lp-sales-huodong{
+        /* background-color: dodgerblue; */
+        height: 370px;
+    }
+    .sales-d1{
+        width: 100%;
+        height: 44px;
+        border-top: 1px solid gray;border-bottom: 1px solid gray;
+        margin-top: 10px;
+        position: relative;
+    }
+    .sales-d1>span{
+        background-color: gold;
+        display: inline-block;
+        position: absolute;
+    }
+    .sales-d1>span:nth-child(1){
+        width: 79px;
+        height: 15px;
+        top: 15px;
+        left: 10px;
+        border-radius: 4px;
+        background-image: url(../image/nav/un_home_text.png);
+        background-size: 79px auto;
+        background-repeat: no-repeat;
+        background-position: 0 -20px;
+    }
+    .sales-d1>span:nth-child(2){
+        width: 36px;
+        height: 15px;
+        top: 15px;
+        left: 100px;
+        border-radius: 2px;
+        background-image: url(../image/icon-gg@2x.png);
+        background-size: 36px auto;
+        background-repeat: no-repeat;
+        background-position: 0 0px;
+    }
+    .sales-d1>span:nth-child(3){
+        width: 105px;
+        height: 20px;
+        top: 15px;
+        right: 10px;
+        color: white;
+        font-weight: bold;
+        font-size: .75rem;
+        background-color: #ff6cc9;
+        border-radius: 10px;
+        text-align: center;
+        line-height: 20px;
+    }
+    .sales-ul{
+        width: 100%;
+        height: 296px;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 46% 27% 27%;
+    }
+    .sales-ul>li{
+        font-size: 0px;
+    }
+    .sales-ul>li:nth-child(1)>a{
+        width: 100%;
+        height: 100%;
+        display: inline-block;
+        background-image: url(../image/nav/zg0b1e000001fl6piB510.jpg);
+        background-size: auto 131px;
+        background-position: 0 0;
+    }
+    .sales-ul>li:nth-child(2)>a{
+        width: 100%;
+        height: 100%;
+        display: inline-block;
+        background-image: url(../image/nav/zg021d000001ewosdDBC9.jpg);
+        background-size: auto 131px;
+        background-position: 0 0;
+    }
+    .sales-ul>li:nth-child(3)>a{
+        width: 100%;
+        height: 100%;
+        display: inline-block;
+        font-size: 0px;
+        background-image: url(../image/nav/zg091e000001f5gizE76D.png);
+        background-size: 100% auto;
+        background-repeat: no-repeat;
+        background-position: 0 0;
+    }
+    .sales-ul>li:nth-child(4)>a{
+        width: 100%;
+        height: 100%;
+        display: inline-block;
+        font-size: 0px;
+        background-image: url(../image/nav/zg081e000001f380z88EC.jpg);
+        background-size: 100% auto;
+        background-repeat: no-repeat;
+        background-position: 0 0;
+    }
+    .sales-ul>li:nth-child(5)>a{
+        width: 100%;
+        height: 100%;
+        display: inline-block;
+        background-image: url(../image/nav/zg0c1e000001f5qmo6F34.jpg);
+        background-size: 100% auto;
+        background-repeat: no-repeat;
+        background-position: 0 0;
+    }
+    .sales-ul>li:nth-child(6)>a{
+        width: 100%;
+        height: 100%;
+        display: inline-block;
+        background-image: url(../image/nav/zg0l1e000001f39i95E78.jpg);
+        background-size: 100% auto;
+        background-repeat: no-repeat;
+        background-position: 0 0;
+    }
+/* lp-sales-huodong end */
+
+/* lp-tool start */
+    .lp-tool{
+        background-color: white;
+        height: 62px;
+        display: flex;
+    }
+    .lp-tool-div{
+        /* display: flex; */
+        flex: 1 1 0;
+        text-align: center;
+    }
+    .lp-tool-div-icon{
+        width: 20px;
+        height: 20px;
+        margin: 12px auto 10px;
+        background-size: 100% auto;
+    }
+    .lp-tool>div:nth-child(1)>div{
+        background-image: url(../image/电\ 话.png);
+    }
+    .lp-tool>div:nth-child(2)>div{
+        background-image: url(../image/下载.png);
+    }
+    .lp-tool>div:nth-child(3)>div{
+        background-image: url(../image/我\ 的.png);
+    }
+    /* lp-tool end */
+
+    /* footer start */
+    .p1{
+        text-align: center;
+        font-size: 12px;
+        padding: 10px 0;
+    }
+    .p2{
+        text-align: center;
+        font-size: 12px;
+        /* padding: 10px 0; */
+    }
+    /* footer end */

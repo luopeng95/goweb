@@ -1,0 +1,47 @@
+ * {
+   padding: 0;
+   margin: 0
+ }
+
+ ul {
+   list-style: none;
+ }
+
+ .tab {
+   margin: 100px auto;
+   width: 300px;
+ }
+
+ .tab .tab_title {
+   width: 300px;
+   overflow: hidden;
+ }
+
+ .tab .tab_title li {
+   background-color: gray;
+   color: white;
+   width: 100px;
+   text-align: center;
+   padding: 5px;
+   box-sizing: border-box;
+   cursor: pointer;
+   float: left;
+ }
+
+ .tab .tab_title .clicked {
+   background-color: red;
+ }
+
+ .tab .tab_content li {
+   border: 3px solid yellowgreen;
+   width: 300px;
+   height: 200px;
+   padding: 20px;
+   box-sizing: border-box;
+   background-color: pink;
+   display: none;
+ }
+
+ .tab .tab_content .active {
+   display: block;
+ }

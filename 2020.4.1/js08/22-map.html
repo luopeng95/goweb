@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //6. map
+      let arr = ["曾邦军", "达小碌", "付珍"];
+      // var new_array = arr.map(callback:function(currentValue[, index[, array]]) {
+      // // Return element for new_array
+      // }[, thisArg])
+      let result = arr.map(e => {
+        return e + "真帅"
+      })
+      console.log(result)
+
+      let arr2 = [1, 2, 3, 4]
+      let newArr = arr2.map(e => e * e)
+      console.log(newArr)
+      //[1, 4, 9, 16]
+    </script>
+  </body>
+
+</html>

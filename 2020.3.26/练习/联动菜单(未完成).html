@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" name="myForm">
+
+        <select name="s1" id="s1" onchange="change(this.id)" class="">
+            <option selected>广东</option>
+            <option>江西</option>
+            <option>广西</option>
+        </select>
+    
+        <select name="s2" id="s2" onchange="change(this.id)">
+            <option>深圳</option>
+            <option>揭阳</option>
+        </select>
+
+        <select name="s3" id="s3">
+            <option>罗湖</option>
+            <option>宝安</option>
+        </select>
+    </form>
+    <script>
+        // 省级数组
+        let province = ["广东","江西","广西"];
+
+        // 市级
+        let citys = ["深圳","揭阳","赣州","九江","桂林","柳州"];
+        let city1 = ["深圳","揭阳"];
+        let city2 = ["赣州","九江"];
+        let city3 = ["桂林","柳州"];
+
+        // 县级
+        let country1 = ["罗湖","宝安"];
+        let country2 = ["西湖","榕城"];
+        let country3 = ["石城","瑞金"];
+        let country4 = ["修水","星子"];
+        let country5 = ["灵川","平乐"];
+        let country6 = ["柳城","柳江"];
+
+        // 省级对应市级
+        province["广东"] = city1;
+        province["江西"] = city2;
+        province["广西"] = city3;
+
+        // 市级对应县级
+        city1["深圳"] = country1;
+        city1["揭阳"] = country2;
+        city2["赣州"] = country3;
+        city2["九江"] = country4;
+        city3["桂林"] = country5;
+        city3["柳州"] = country6;
+
+
+        function removeList(rLists){
+            // rLists传入的是 select 元素
+            // for( let i = 0; i < rLists.options.length ; i++){
+                // rLists.options[i] = null;
+                // rLists.remove(i);
+                // console.log(rLists);
+            // }
+            rLists.innerHTML = null;
+        }
+
+        function change(oid){
+            // 获取最新的s1的值
+            let oidd = window.event.target.id
+            console.log(this.id);
+            if(oid === "s1"){
+                let otxt = document.myForm.s1.value;
+                console.log(this.value);
+
+                let os2 = document.myForm.s2
+                removeList(os2)
+                for(let i = 1; i < province[this.value]; ++i){
+                    os2.innerHTML += `<option>${province[this.value][i]}</option>`
+                }
+                return change("s2")
+            }else if(oid === "s2"){
+                let otxt = document.myForm.s2.value;
+                console.log(this.value);
+
+                let os2 = document.myForm.s3
+                removeList(os2)
+                for(let i = 1; i < citys[this.value]; ++i){
+                    os2.innerHTML += `<option>${citys[this.value][i]}</option>`
+                }
+            }
+        }
+            // console.log(otxt);
+            // let os2 = document.myForm.s2
+            // 删除s2原先的值
+            // removeList(os2);
+            // console.log(os2);
+            // debugger;
+            // 给s2赋予最新的值
+            // 用otxt确认要赋予哪些值和长度
+        //     let ovalue = arr[otxt]
+        //     for (let i = 0; i < ovalue.length; i++){
+        //         os2.innerHTML += `<option>${arr[otxt][i]}</option>`;
+        //         // os2.options[i] = new Option(arr[otxt][i],arr[otxt][i]);
+        //     }
+        // }
+        // console.log(arr);
+    </script>
+</body>
+</html>

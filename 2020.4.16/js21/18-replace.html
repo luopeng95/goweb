@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      // String.prototype.replace(regexp: regexp | substr: string, newstring: string | newfunction: function)
+      // regexp: 要捕获的正则表达式
+      // substr: 要捕获子串
+      // newstring: 捕获到的子串或者正则 用 该子串来替代
+      // newfunction: 对捕获到的子串 用回调函数来改变 return
+
+      let str = "abcddcba";
+      console.log(str.replace("b", "*")) //a*cddcba
+      //字符串 无论如何怎么操作和匹配 他总是懒汉模式
+      console.log(str.replace(/b/, "*")) //a*cddcba
+      //正则表达式 默认也是懒汉模式 除非加入g标识符 才能变成饿汉模式
+      console.log(str.replace(/b/g, "*")) //a*cddc*a
+
+      let str2 = "1,2,3,4";
+      let str3 = "杨宇航,付珍,曾邦军,穆罕默德·本·阿卜杜拉·本·阿卜杜勒·穆塔利·本·哈希姆"
+      let reg = /\d+/g
+      let reg2 = /[\u4e00-\u9fa5·]+/g
+      console.log(str2.replace(reg, (e) => e * e))
+      console.log(str3.replace(reg2, (e) => e + "真帅"))
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //全局变量 永远不会销毁 局部变量 在return或者大括号之后 总会被销毁
+      //f_outer堆内存 f_add 永远不会被销毁
+
+      //4. 由于outter函数开启的这一次作用域的局部函数 inner没有被销毁 为了保证inner函数的存在,所inner的宿主 也就是这一次的outer作用域 也永远存在
+      function outer() {
+        //5. 由于outer作用域永远存在 所以a作为一个局部变量 也不会被销毁 得到了永生(也就是全局变量的效果)
+        let a = 1;
+
+        function inner() {
+          console.log(a)
+          a = a + 1
+        }
+        //3. 由于inner函数(0x222)被全局变量所引用 所以装着inner函数的宿主outer函数的那次作用域也永远存在不会被销毁
+        return inner
+      }
+
+      //1.因为add是全局变量 所以add永远存在
+      //2. 因为add永远存在 所以add接收的返回值也就是inner 也永远存在
+      let add = outer(); //inner
+
+      //6.所以每次调用add函数 就相当于是调用inner函数 且使用的a 永永远远是同一个a
+      add() //inner() 1
+      add() //2
+      add() //3
+
+      // add -> inner -> outer作用域 -> a永远不会被重新初始化
+    </script>
+  </body>
+
+</html>

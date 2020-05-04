@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //NaN 在任何时候 都不等于另外一个NaN
+      console.log(NaN === NaN)
+
+      // console.log(null === null)
+      // console.log(null == null)
+      // console.log(undefined === undefined)
+      // console.log(undefined == undefined)
+      // console.log({} === {})
+      // console.log({} == {})
+      // console.log([] === [])
+      // console.log([] == [])
+
+      let num1 = 100;
+      let num2 = NaN;
+      let str1 = "北京";
+
+      console.log(Number.isNaN(num1)) //false
+      console.log(Number.isNaN(num2)) //true
+      console.log(Number.isNaN(str1)) //false
+    </script>
+  </body>
+
+</html>

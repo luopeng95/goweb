@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            #canvas {
+                background-color: yellow;
+            }
+        </style>
+    </head>
+
+    <body>
+        <canvas id="canvas" width="400" height="400">
+            不支持canvas的浏览器
+        </canvas>
+        <input id="color" type="color">
+        <script>
+            let canvas = document.querySelector("#canvas")
+            let context = canvas.getContext("2d");
+            let color = document.querySelector("#color")
+
+            canvas.addEventListener("mousedown", function (e) {
+                if (e.button === 0) {
+                    context.strokeStyle = color.value;
+                    context.beginPath();
+                    //鼠标左键按下就画图
+                    canvas.addEventListener("mousemove", draw)
+                    //鼠标左键抬起就不会画图 由于在外面送开鼠标左键的时候监听不到 所以画画方法就不会被清除
+                    window.addEventListener("mouseup", function (e) {
+                        canvas.removeEventListener("mousemove", draw)
+                    })
+                } else if (e.button === 2) {
+                    //鼠标右键按下就橡皮擦
+                    canvas.addEventListener("mousemove", clear)
+                    //鼠标右键抬起时不会橡皮擦
+                    window.addEventListener("mouseup", function (e) {
+                        canvas.removeEventListener("mousemove", clear)
+                    })
+                    //由于在外面送开鼠标右键的时候监听不到 所以画画方法就不会被清除
+                    canvas.addEventListener("contextmenu", function (e) {
+                        e.preventDefault();
+                    })
+                }
+            })
+
+            function draw(e) {
+                //绘制线条
+                context.lineTo(e.x - canvas.offsetLeft, e.y - canvas.offsetTop);
+                context.stroke();
+            }
+
+            function clear(e) {
+                context.clearRect(e.x - canvas.offsetLeft, e.y - canvas.offsetTop, 10, 10);
+            }
+        </script>
+    </body>
+
+</html>

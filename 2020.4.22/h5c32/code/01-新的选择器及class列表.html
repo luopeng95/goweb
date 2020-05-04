@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      .box5 {
+        background-color: red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="div1" class="box1 box2 box3">123</div>
+    <button id="btn">按钮</button>
+    <script>
+      // document.getElementById Elment
+      // document.getElementsByClassName  HTMLCollection live(活的)
+      // document.getElementsByTagName HTMLCollection
+      // //HTML5 新增的选择元素的语法
+      // document.querySelector Element
+      // document.querySelectorAll NodeList 永远不变
+
+      // classList
+      // length / value
+      // add() renmove() toggle()
+      let oDiv = document.querySelector("#div1")
+      let oBtn = document.querySelector("#btn")
+
+      console.log(oDiv.id)
+      console.log(oDiv.className) //"box1 box2 box3"
+      console.log(oDiv.classList)
+
+      //往oDiv追加一个类名叫box4
+      oDiv.classList.add("box4")
+
+      //往oDiv删除一个类名叫box2
+      oDiv.classList.remove("box2")
+
+      console.log(oDiv.classList) //box1 box3 box4
+
+      oBtn.addEventListener("click", function () {
+        //如果没有这个类名就追加一个 如果有 就删除掉
+        oDiv.classList.toggle("box5")
+      })
+    </script>
+  </body>
+
+</html>

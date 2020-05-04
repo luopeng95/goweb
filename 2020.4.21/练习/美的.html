@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./reset.css">
+    <style>
+        header{
+            background-color: #0092d8;
+            height: 44px;
+            min-width: 1200px;
+        }
+        nav{
+            /* background-color: yellowgreen; */
+            width: 95%;
+            height: 100%;
+            margin: 0 auto;
+            display: flex;
+            position: relative;
+        }
+        nav>div:last-of-type{
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+        nav ul{
+            display: flex;
+            line-height: 44px;
+        }
+        .nav-li1{
+            width: 150px;
+            background-image: url("./index_service_sprite@2x.png");
+            background-position: -188px -18px;
+            background-repeat: no-repeat;
+        }
+        li{
+            margin-right: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        li>a{
+            color: #a3c3e6;
+
+        }
+        li>a:hover{
+            color: white;
+        }
+        .nav-span{
+            /* background-color: violet; */
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            /* margin-right: 40px; */
+            cursor: pointer;
+        }
+        .sp1{
+            /* background-color: violet; */
+            background-image: url("./index_sprite.png");
+            background-repeat: no-repeat;
+            background-position: -96px -214px;
+            position: relative;
+            top:6px;
+            left: 2px;
+        }
+        .sp2{
+            background-image: url("./index_sprite.png");
+            background-repeat: no-repeat;
+            background-position: -120px -214px;
+            position: relative;
+            top: 6px;
+        }
+        .sp3{
+            background-image: url("./index_sprite.png");
+            background-repeat: no-repeat;
+            background-position: -148px -214px;
+            position: relative;
+            top: 6px;
+        }
+        .sp4{
+            background-image: url("./index_sprite.png");
+            background-repeat: no-repeat;
+            background-position: -35px -214px;
+            margin-right: 0;
+            position: relative;
+            top: 2px;
+        }
+        .nav-sp{
+            color: white;
+            vertical-align: super;
+            position: relative;
+            top: 2px;
+        }
+        input{
+            width: 150px;
+            height: 20px;
+            border: none;
+            position: relative;
+            top: 2px;
+        }
+        li>div{
+            width: 180px;
+            height: 44px;
+            position: absolute;
+            left: 158px;
+            transition: all .4s;
+        }
+        li>div:hover{
+            background-color: white;
+            left: 0px;
+        }
+        li>div:hover .sp1{
+            background-position: -65px -214px;
+        }
+        #oli1{
+            line-height: 44px;
+            width: 180px;
+            height: 44px;
+            white-space: nowrap;
+        }
+        .news{
+            text-align: center;
+            padding: 8px;
+            color: white;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <header>
+            <nav>
+                <div>
+                    <ul>
+                        <li class="nav-li1"></li>
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#">商家入驻</a></li>
+                        <li><a href="#">企业采购</a></li>
+                        <li><a href="#">全屋家电套购</a></li>
+                        <li><a href="#">会员福利社</a></li>
+                        <li><a href="#">美的分期</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li id="oli1">
+                            <div>
+                                <span class="nav-span sp1"></span>
+                                <input type="text" placeholder="美的热水器">
+                            </div>
+                        </li>
+                        <li>
+                            <span class="nav-span sp2"></span>
+                        </li>
+                        <li>
+                            <span class="nav-span sp3"></span>
+                        </li>
+                        <li>
+                            <span class="nav-span sp4"></span>
+                            <span class="nav-sp">登录</span>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div class="news">【通知】1、美的商城为美的集团官方渠道，请勿相信任何刷单信息。2、新疆部分区域无法快递正常发货，恢复时间待定。3、 因美的会员体系改版，10月26-29日期间美的积分将处于冻结状态。届时您将无法获得和消耗积分，感谢理解！</div>
+    </div>
+</body>
+</html>

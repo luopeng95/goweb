@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //对数组的元素 进行排序(原地(原址)排序)
+      //字符串排序是完全没有问题的
+      let arr = ["apple", "cherry", "AAA", "zzz", "banana", 1, 2, 3]
+      let newArr = arr.sort(); //1, 2, 3, AAA, apple, banana, cherry, zzz
+      console.log(newArr);
+
+      //数字排序的时候 由于ASCII的机制 所以排序有问题
+      //arr.sort([compareFunction: function])
+      //cb 回调函数
+      let arr2 = [1, 11, 2, 22];
+      //"1"
+      //"11"
+      //"2 "
+      //"22"
+      console.log(arr2.sort(function (prev, now) {
+        if (prev < now) {
+          return -1
+        }
+      })); //1, 11,2, 22
+    </script>
+  </body>
+
+</html>

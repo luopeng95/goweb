@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      // var a = 1;
+      // let b = 2;
+      // const c = 3;
+      // d = 4;
+
+      //var 如果是一个全局变量的话 他会触发一个映射机制 同时绑定在window上
+      //let 从来都不会
+      // var a = 1;
+      // console.log(a)
+      // console.log(window.a) //1
+
+      // var show = function () {
+      //   return 123
+      // }
+      // console.log(show) //函数体的字符串
+      // console.log(show()) //123
+      // console.log(window.show()) //123
+
+      let a = 456
+      window.a = 123
+      console.log(a)
+      // function show() {
+      //   //一个变量 凡是没var或者let 的话 他就总一个全局变量
+      //   //变量的映射(Map)机制
+      //   var a = (b = 1)
+      // }
+      // show()
+      // // console.log(a) //1
+      // console.log(b) //1
+    </script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //^ 行首的意思
+      //$ 行尾的意思
+
+      let str = "book";
+      let reg = /o/; //验证有没有o
+      let reg2 = /^o/; //验证该字符串的行首 是不是o
+      let reg3 = /o$/; //验证该字符串的行尾 是不是o
+      let reg4 = /^bo/; //验证该字符串的行尾 是不是o
+      let reg5 = /ok$/; //验证该字符串的行尾 是不是o
+
+      console.log(reg.test(str)) //t
+      console.log(reg2.test(str)) //f
+      console.log(reg3.test(str)) //f
+      console.log(reg4.test(str)) //t
+      console.log(reg5.test(str)) //t
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let a = 5 && 6 //6
+      let b = 5 || 6 //5 这里构成了逻辑门或的短路 不会执行 后面的6 所以a的结果 直接是5
+      //所谓的短路是 逻辑门与 和逻辑门或的概念 如果 在&&看到有个条件是false的时候 / 在 || 看到有个条件是true 的时候就不会执行后面的代码了
+      console.log(a) //6
+      console.log(b) //5
+      let c = 1 ? 2 : 3 ? 4 : 5 ? 6 : 7 //2
+      let d = 0 ? 2 : 3 ? 4 : 5 ? 6 : 7 //4
+      console.log(c)
+      console.log(d)
+    </script>
+  </body>
+
+</html>

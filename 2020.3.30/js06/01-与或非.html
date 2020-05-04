@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //与或非
+      // 与 && AND
+      // 或 || OR
+      // 非 ! NOR
+
+      //引子
+      //如何实现10<a<20
+      //if else for while switch
+      // let a = 15
+      // if (a > 10) {
+      //   if (a < 20) {
+      //     console.log("10到20之间的数字")
+      //   }
+      // }
+      //前者为真 后者也为真的时候 才能进入到逻辑语块中 取交集
+      let a = 30;
+      if (a > 10 && a < 20) {
+        console.log("10到20之间的数字")
+      }
+      //或 取并集
+      //前者为真 或者 后者为真的时候 就会进入到该语段
+      if (!(a <= 10 || a >= 20)) {
+        // console.log("小于等于10 或者 大于等于20 的数字")
+        console.log("10到20之间的数字")
+      }
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../font_1781133_o97k436ao1/iconfont.css">
+    <link rel="stylesheet" href="../css/video.css">
+    <style>
+        #ts{
+            height: 100px;
+        }
+        #container{
+            margin: 0 auto;
+            max-width: 1337px;
+            min-width: 960px;
+            background-color: cadetblue;
+            display: flex;
+        }
+        #rightDiv{
+            /* background-color: coral; */
+            flex: 0 0 320px;
+        }
+        #videoDiv{
+            background-color: black;
+            flex: 1 1 0;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div id="ts"></div>
+    <div id="container">
+        <div id="videoDiv"></div>
+        <div id="rightDiv"></div>
+    </div>
+    <script src="../js/video.js"></script>
+    <script>
+        let oDiv = document.getElementById("videoDiv");
+        let oVide = new VideoFunction(oDiv);
+    </script>
+</body>
+</html>

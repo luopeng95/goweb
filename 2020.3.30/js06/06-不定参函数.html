@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //引子
+      //求和公式
+      //a + b
+      function sum() {
+
+      }
+      sum(1, 2) //3
+      sum(3, 6, 9) //18
+      sum(2, 3, 4, 5) //14
+
+      //学生信息表
+      //在校生 毕业生
+      //姓名
+      //年龄
+      //专业
+      //毕业年限
+      // let show = (name, age, job, year = 0) => {
+      //   // console.log(`该生的姓名是${name}`)
+      //   // console.log(`该生的年龄是${age}`)
+      //   // console.log(`该生的专业是${job}`)
+      //   // console.log(`该生的毕业年限是${year}`)
+      // }
+
+      function show(name, age, job, year = 0) {
+        console.log(arguments)
+      }
+      //当实参数量少于形参的时候 默认值为 undefined
+      show("张三", 20, "信息工程")
+      show("李四", 30, "法学", 8)
+      show()
+    </script>
+  </body>
+
+</html>

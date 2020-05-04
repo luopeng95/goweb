@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="div1">1</div>
+    <script>
+      //既要适配标准浏览器,又要适配IE非标准浏览器
+      //在标准浏览器中 只支持addEventListener() 意味着在浏览器中 没有一个方法attachEvnet
+      // 在非标准浏览器中 只支持attachEvent() 意味着在浏览器中 没有一个方法叫addEventListener
+
+      var oDiv = document.getElementById("div1");
+      if (oDiv.addEventListener) {
+        oDiv.addEventListener("click", function () {
+          oDiv.style.backgroundColor = "pink"
+        }, true)
+      } else if (oDiv.attachEvent) {
+        oDiv.attachEvent("onclick", function () {
+          oDiv.style.backgroundColor = "pink"
+        })
+      }
+    </script>
+  </body>
+
+</html>

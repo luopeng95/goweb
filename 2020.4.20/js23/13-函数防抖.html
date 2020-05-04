@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <input id="debounce" type="text">
+    <script>
+      // 函数防抖 一个事件触发后 如果多次该事件 不会允许他再次触发
+      // 函数防抖 一个事件触发后 会设置一个定时器 若在指定时间内(300-500)这个事情没有再次发生,那么就执行这个函数
+      // 为了防止 用户或脚本 一直触发事件 -> 一直ajax请求后台 -> 服务器负载过重
+
+      //1. 选择元素
+      let oDebounce = document.getElementById("debounce");
+
+      //4. 设置一个定时器变量 用来存储防抖函数的情况 但是这个timer必须是一个全局变量 timer就是一个稳定且纯净的定时器
+      let timer = null;
+      //2. 绑定事件
+      oDebounce.addEventListener("input", debounce)
+
+      //3. 有名函数
+      function debounce() {
+        //5. 如果函数再次触发的时候 我应该清除掉该定时器
+        clearTimeout(timer)
+        //6. 在防抖函数中设置一个定时器
+        timer = setTimeout(() => {
+          console.log(oDebounce.value)
+        }, 300);
+      }
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            height: 2000px;
+        }
+        #container {
+            /* overflow: hidden; */
+        }
+
+        #banner {
+            /* background-color: turquoise; */
+            width: 100%;
+            position: relative;
+            /* height: 460px; */
+            overflow: hidden;
+        }
+
+        #ul1 {
+            width: calc(100% * 3);
+            display: flex;
+            /* position: relative; */
+        }
+
+        #ul1>li {
+            /* width: 100%; */
+            list-style: none;
+            /* flex: 0 0 100%/3; */
+            max-height: 460px;
+            /* transition: margin-left .5s; */
+        }
+
+        #ul1>li:nth-child(1) {
+            /* margin-left: -500px; */
+            /* background-color: chartreuse; */
+        }
+
+        img {
+            width: 100%;
+        }
+
+        #ul2 {
+            position: absolute;
+            display: flex;
+            top: 90%;
+            left: 45%;
+        }
+
+        #ul2>li {
+            background-color: black;
+            list-style: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            margin-left: 20px;
+        }
+
+        #ul2>.selectLi {
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="banner">
+            <ul id="ul1">
+                <li class="imgLi" data-id="2"><img src="./banner3.jpg"></li>
+                <li class="imgLi" data-id="0"><img src="./banner1.jpg"></li>
+                <li class="imgLi" data-id="1"><img src="./banner2.jpg"></li>
+            </ul>
+            <ul id="ul2">
+                <li data-class="0" class="cicreLi"></li>
+                <li data-class="1" class="cicreLi"></li>
+                <li data-class="2" class="cicreLi"></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        let oul1 = document.getElementById("ul1");
+        let oul2 = document.getElementById("ul2");
+        let iNow = 0;
+        let olis = document.getElementsByClassName("imgLi");
+        let olis2 = document.getElementsByClassName("cicreLi");
+        let oBodyMaxWidth = window.screen.availWidth - 17;
+        // console.log(oBodyMaxWidth);
+        let timer1;
+        let timer2;
+
+        function init() {
+            let oWidth = window.innerWidth;
+            console.log(oWidth);
+            for (let i = 0; i < olis.length; ++i) {
+                olis[i].style.width = oWidth + "px";
+            }
+            olis[0].style.marginLeft = -olis[0].clientWidth + "px";
+        }
+        function changeMargin(type, count = 1) {
+            let oWidth = olis[0].clientWidth;
+            let move = oWidth / 50;
+            let defaultCount = 1;
+            timer1 = setInterval(() => {
+                // debugger;
+                let marginLeft = parseInt(getComputedStyle(olis[0]).marginLeft);
+                // console.log(parseInt(marginLeft));
+                if (marginLeft >= 0 || marginLeft <= -2 * oWidth) {
+                    // olis[0].style.marginLeft = marginLeft >= 0 ? 0 : -2 * oWidth + "px"
+                    clearInterval(timer1);
+                    changeEle();
+                    draw()
+                    if(count - defaultCount > 0){
+                        return changeMargin(type, --count)
+                    }else{
+                        return null;
+                    }
+                } else {
+                    switch (type) {
+                        case "left":
+                            if (marginLeft - move < -2 * oWidth) {
+                                olis[0].style.marginLeft = -2 * oWidth + "px";
+                            } else {
+                                olis[0].style.marginLeft = marginLeft - move + "px";
+                            }
+                            break;
+                        case "right":
+                            if (marginLeft + move > 0) {
+                                olis[0].style.marginLeft = 0;
+                            } else {
+                                olis[0].style.marginLeft = marginLeft + move + "px";
+                            }
+                            break;
+                    }
+                }
+            }, 17)
+        }
+
+        function changeEle() {
+            let marginLeft = parseInt(getComputedStyle(olis[0]).marginLeft);
+            if (marginLeft === 0) {
+                olis[0].style.marginLeft = 0;
+                oul1.insertBefore(olis[olis.length - 1], olis[0]);
+                olis[0].style.marginLeft = -olis[0].clientWidth + "px";
+                iNow = +olis[1].getAttribute("data-id");
+                console.log(iNow);
+            } else {
+                olis[0].style.marginLeft = 0;
+                oul1.appendChild(olis[0]);
+                olis[0].style.marginLeft = -olis[0].clientWidth + "px";
+                iNow = +olis[1].getAttribute("data-id");
+            }
+        }
+
+        function draw() {
+            for (let i = 0; i < olis2.length; ++i) {
+                if (i === iNow) {
+                    olis2[i].classList.add("selectLi");
+                } else {
+                    olis2[i].classList.remove("selectLi");
+                }
+            }
+        }
+
+        oul2.addEventListener("click", (e) => {
+            let num = +e.target.getAttribute("data-class");
+            let abs = Math.abs(num - iNow);
+            if(num > iNow){
+                clearInterval(timer1);
+                clearInterval(timer2);
+                // for(let i = 0; i < abs; ++i){
+                    changeMargin("left", abs);
+                // }
+                // timer2 = setInterval(() => {
+                // console.log("点击之后的定时器开始工作");
+                // changeMargin("left");
+                // }, 3000)
+            }else if(num < iNow){
+                clearInterval(timer1);
+                clearInterval(timer2);
+                // for(let i = 0; i < abs; ++i){
+                    changeMargin("right", abs);
+                // }
+                // timer2 = setInterval(() => {
+                // console.log("点击之后的定时器开始工作");
+                // changeMargin("left");
+                // }, 3000)
+            }
+        })
+
+
+        oul1.addEventListener("mouseover", () => {
+            console.log("鼠标移入事件");
+            clearInterval(timer2);
+        })
+        oul1.addEventListener("mouseout", () => {
+            console.log("鼠标离开");
+            timer2 = setInterval(() => {
+                    changeMargin("left");
+                }, 3000)
+        })
+        window.addEventListener("resize", () => {
+            init();
+            // oul2.style.left = 
+            console.log("窗口改变事件");
+            clearInterval(timer1);
+            clearInterval(timer2);
+            timer2 = setInterval(() => {
+                changeMargin("left");
+            }, 3000)
+        })
+        window.addEventListener("visibilitychange", () => {
+            if (document["hidden"]) {
+                console.log("丢失焦点")
+                clearInterval(timer2);
+            } else {
+                console.log("获得焦点")
+                timer2 = setInterval(() => {
+                    changeMargin("left");
+                }, 3000)
+            }
+        })
+
+        timer2 = setInterval(() => {
+            console.log("初始化定时器开始工作");
+            changeMargin("left");
+        }, 3000)
+        init();
+        draw()
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <!-- 广告区域 -->
+    <div id="container">
+      <!-- 前端课程广告
+      UI课程广告
+      JAVA课程广告 -->
+    </div>
+    <script>
+      //我要求做一个广告区域
+      //因为三种广告完全不一样 所以要求必须用三种不同的类来实现这个广告区域 需求很复杂/区别很大
+      //介绍前端的广告(学前端,找老胡),背景颜色天蓝色.[会有个视频audio]
+      //介绍UI的广告(喜欢画画就来学UI吧),背景颜色粉色,文字颜色棕色.[会有轮播图]
+      //介绍JAVA的广告(一起来学JAVA吧),背景颜色绿色,文字颜色黄色[会有pre代码标签]
+      class JavaScript {
+        init(context) {
+          let newDiv = document.createElement("div")
+          newDiv.style.backgroundColor = "skyblue"
+          newDiv.innerText = context;
+          return newDiv
+        }
+      }
+      class UI {
+        init(context) {
+          let newDiv = document.createElement("div")
+          newDiv.style.backgroundColor = "pink"
+          newDiv.style.color = "brown"
+          newDiv.innerText = context;
+          return newDiv
+        }
+      }
+      class JAVA {
+        init(context) {
+          let newDiv = document.createElement("div")
+          newDiv.style.backgroundColor = "green"
+          newDiv.style.color = "yellow"
+          newDiv.innerText = context;
+          return newDiv
+        }
+      }
+
+      let oParent = document.getElementById("container")
+      let jsFactory = new JavaScript(); //初始化一个js广告的工厂
+      let uiFactory = new UI(); //初始化一个ui广告的工厂
+      let javaFactory = new JAVA(); //初始化一个java广告的工厂
+
+      let adJs1 = jsFactory.init("学前端,找老胡") //一个js广告dom被生产了
+      let adJs2 = jsFactory.init("学前端,找老李") //一个js广告dom被生产了
+      let adJs3 = jsFactory.init("学前端,找老张") //一个js广告dom被生产了
+      let adJs4 = javaFactory.init("java1") //一个js广告dom被生产了
+      let adJs5 = javaFactory.init("java2") //一个js广告dom被生产了
+
+      oParent.appendChild(adJs1) //拼接一个js广告
+      oParent.appendChild(adJs2) //拼接一个UI广告
+      oParent.appendChild(adJs3) //拼接一个JAVA广告
+      oParent.appendChild(adJs4) //拼接一个JAVA广告
+      oParent.appendChild(adJs5) //拼接一个JAVA广告
+    </script>
+  </body>
+
+</html>

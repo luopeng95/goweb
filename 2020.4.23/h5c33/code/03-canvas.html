@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      body {
+        background-color: #000;
+      }
+
+      #canvas {
+        background-color: #fff;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- canvas 画布 -->
+    <canvas id="canvas" width="400" height="400">
+      <!-- 一般情况下 html5的标签 某些浏览器是不支持的 如果不支持 就在标签直接写不支持的内容 -->
+      不支持canvas的浏览器
+    </canvas>
+    <script>
+      let oCanvas = document.querySelector("#canvas")
+      //为canvas设定一个绘制环境 (是画笔)
+      let oGC = oCanvas.getContext("2d");
+      console.log(oCanvas.clientWidth) //400
+
+      //将画笔的颜色染成蓝色
+      oGC.fillStyle = "#0000ff";
+      oGC.fillRect(150.5, 150.5, 99, 99)
+      //将画笔的颜色染成蓝色
+      oGC.fillStyle = "red";
+      oGC.fillRect(250, 250, 99, 99)
+      // oGC.strokeRect(50.5, 50.5, 100, 200)
+    </script>
+  </body>
+
+</html>

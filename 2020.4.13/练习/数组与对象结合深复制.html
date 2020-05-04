@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 假设传入的要么是数组要么是对象
+        let copyDeep = obj => {
+            let obj1 = Array.isArray(obj) ? [] : {};
+            // 考虑到可能是对象可能是数组，只能用for..in遍历,或者分开写方法
+            for(let i in obj){
+                if(typeof obj[i] === "object"){
+                    obj1[i] = copyDeep(obj[i]);
+                }else{
+                    obj1[i] = obj[i];
+                }
+            }
+            return obj1;
+        }
+        let n = [{"name":"张三"},[1,2,[3,4,5,{"name":"李四"}]]];
+        let obj1 = copyDeep(n);
+        n[1][2][3]["name"] = "王五";
+        console.log(n);
+        console.log(obj1);
+
+        let m = {"constructor":[{"name":"张三"},[1,2,[3,4,5,{"name":"李四"}]]]}
+        let obj2 = copyDeep(m);
+        m["constructor"][1][2][3]["name"] = "王二麻子";
+        console.log(m);
+        console.log(obj2);
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //要求对两个数字进行排序 小的在前面 大的在后面
+      let a = 10;
+      let b = 20;
+      if (a > b) {
+        //交换两个变量的位置
+        // temp = a;
+        // a = b;
+        // b = temp;
+        [a, b] = [b, a]
+      }
+      console.log(a, b)
+    </script>
+  </body>
+
+</html>

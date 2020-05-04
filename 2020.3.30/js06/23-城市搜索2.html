@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <input type="text" id="search">
+    <input type="button" id="btn" value="搜索">
+    <ul id="citylist">
+      <li>北京</li>
+      <li>上海</li>
+      <li>广州</li>
+      <li>深圳</li>
+    </ul>
+    <div id="result">
+      <!-- 恭喜您,搜索成功了耶 -->
+      <!-- 对不起,没有该城市 -->
+    </div>
+    <script>
+      //1. 选择元素
+      const oSearch = document.getElementById("search");
+      const oBtn = document.getElementById("btn");
+      const oCityList = document.getElementById("citylist");
+      const aCitys = oCityList.getElementsByTagName("li");
+      const oResult = document.getElementById("result")
+      //用来表示 是否有一个城市 匹配 true代表没匹配中 false 代表匹配到了
+      let flag = true;
+      //2.绑定事件
+      oBtn.onclick = function () {
+        for (let i = 0; i < aCitys.length; i++) {
+          aCitys[i].style.backgroundColor = ""
+        }
+        //获取文本框的内容
+        for (let i = 0; i < aCitys.length; i++) {
+          //意味着城市被搜索到了
+          if (oSearch.value === aCitys[i].innerHTML) {
+            //3.渲染
+            aCitys[i].style.backgroundColor = "pink"
+            oResult.style.color = "green"
+            oResult.innerHTML = "恭喜您,搜索成功了耶"
+            //当其中有一个城市匹配到了的话 那么就将这个标识符修正为false
+            flag = false
+          }
+        }
+        if (flag) {
+          oResult.style.color = "red"
+          oResult.innerHTML = "对不起,没有该城市"
+        }
+      }
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="div1">1</div>
+    <script>
+      let oDiv1 = document.getElementById("div1");
+      let show = function () {
+        console.log(this)
+      }
+      //如果bind函数 第一个参数 是undefined的话 就代表指向window
+      //bind的返回值 总是 这个函数的深复制
+      let show2 = show.bind(oDiv1); //function () {return 123}
+      let show3 = function () {
+        return this
+      }.bind(oDiv1)
+      oDiv1.addEventListener("click", show2)
+    </script>
+  </body>
+
+</html>

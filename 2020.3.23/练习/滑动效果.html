@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #main{
+            width: 1200px;
+            height: 400px;
+            margin: 0 auto;
+            display: flex;
+            overflow: hidden;
+        }
+        img{
+            /* flex: 1 1 300px; */
+            width: 300px;
+        }
+        @-webkit-keyframes lun {
+            from {
+                margin-left: 0px;
+            }
+            to {
+                margin-left: -700px;
+            }
+        }
+        #ll{
+            animation: lun 3s linear alternate infinite;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="main">
+            <div id="ll">
+            <img src="./imgs/book1.png" alt="">
+            <img src="./imgs/book2.png" alt="">
+            <img src="./imgs/book1.png" alt="">
+            <img src="./imgs/book2.png" alt="">
+            <img src="./imgs/book1.png" alt="">
+            <img src="./imgs/book2.png" alt="">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

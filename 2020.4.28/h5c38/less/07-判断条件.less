@@ -1,0 +1,51 @@
+// = > < >= <=
+.size (@a) when (@a < 20) {
+  color: red;
+}
+
+.size(@a) when (@a >=20) {
+  color: blue;
+}
+
+.box1 {
+  .size(10)
+}
+
+.box2 {
+  .size(30)
+}
+
+.truebox (@b) when (@b =true) {
+  font-size: 22px;
+}
+
+.box3 {
+  /* less只支持 true */
+  .truebox(1)
+}
+
+/* 与 and 或 , 非 not */
+.size2 (@a, @b) when (@a < 20) and (@b > 5em) {
+  color: red;
+}
+
+.box4 {
+  .size2(10, 10em)
+}
+
+.size3 (@a, @b) when (@a < 20),
+(@b > 5em) {
+  color: red;
+}
+
+.box5 {
+  .size3(30, 10em)
+}
+
+.size4 (@a) when not (@a < 20) {
+  color: red;
+}
+
+.box6 {
+  .size4(30)
+}

@@ -1,0 +1,29 @@
+/* 将10em的单位转换成 10px*/
+/* 将10转换成 10em*/
+.li:nth-child(1) {
+  background-color: "pink";
+}
+.li:nth-child(2) {
+  background-color: "yellow";
+}
+.li:nth-child(3) {
+  background-color: "blue";
+}
+.li:nth-child(4) {
+  background-color: "pink";
+}
+.li:nth-child(5) {
+  background-color: "yellow";
+}
+.li:nth-child(6) {
+  background-color: "blue";
+}
+.li:nth-child(7) {
+  background-color: "pink";
+}
+.li:nth-child(8) {
+  background-color: "yellow";
+}
+.li:nth-child(9) {
+  background-color: "blue";
+}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      // "online"
+      // "offline"
+      window.addEventListener("online", function () {
+        console.log("网络连接成功")
+      })
+      window.addEventListener("offline", function () {
+        console.log("网络连接失败")
+      })
+    </script>
+  </body>
+
+</html>

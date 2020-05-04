@@ -1,0 +1,30 @@
+//convert
+//将数字从一个单位转换成 另一个单位
+/* 将10em的单位转换成 10px*/
+@size: convert(10em, px);
+
+/* 将10转换成 10em*/
+@size2: convert(10, em);
+
+//声明一个List
+@colorBox: "pink", "yellow", "blue", "pink", "yellow", "blue", "pink", "yellow", "blue";
+
+//声明fn
+.colorFlag(@max, @i: 1) when (@i <=@max) {
+  .li:nth-child(@{i}) {
+    background-color: extract(@colorBox, @i);
+  }
+
+  // .li:nth-child(@{i}) {
+  //   background-color: extract(@colorBox, 2);
+  // }
+
+  // .li:nth-child(@{i} + 2) {
+  //   background-color: extract(@colorBox, 3);
+  // }
+
+  .colorFlag(@max, @i + 1)
+}
+
+//调用fn函数
+.colorFlag(9);

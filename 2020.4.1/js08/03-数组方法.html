@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //栈方法 - 数组末尾
+      //特别注意! 这四个方法 都会改变源数据
+      //Array.prototype.push()
+      //Array.prototype.pop()
+      //队列方法
+      //插队方法
+      //Array.prototype.unshift()
+      //离队方法
+      //Array.prototype.shift()
+      let arr = ["北京", "上海", "深圳"]
+      //item1, item2, item3, item4
+      //添加的两个方法 返回值: number 表达的是新数组的长度
+      //push 在数组的末尾添加若干个元素
+      console.log(arr.push("广州")) //4
+      console.log(arr) //["北京", "上海", "深圳", "广州"]
+
+      //pop 在数组的末尾删除 一个 元素
+      //删除的两个方法 返回值: any 表达的是该数组删除的那个元素
+      console.log(arr.pop()) //"广州"
+      console.log(arr) //["北京", "上海", "深圳"]
+
+      // unshift 在数组的头部添加若干个元素
+      console.log(arr.unshift("广州")) //4
+      console.log(arr) //["广州", "北京", "上海", "深圳"]
+
+      //shift 在数组的头部删除 一个 元素
+      console.log(arr.shift()) //"广州"
+      console.log(arr) //["北京", "上海", "深圳"]
+    </script>
+  </body>
+
+</html>

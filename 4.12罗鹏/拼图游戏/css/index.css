@@ -1,0 +1,50 @@
+#container{
+    text-align: center;
+}
+#main{
+    /* background-color: aqua; */
+    width: 500px;
+    height: 500px;
+    border: 5px solid gray;
+    margin: 0 auto;
+    position: relative;
+}
+
+#fun{
+    margin-top: 10px;
+    background-color: greenyellow;
+    width: 500px;
+    margin: 0 auto;
+    display: flex;
+    height: 30px;
+    line-height: 30px;
+}
+#fun>span{
+    /* padding: 5px; */
+    flex: 1 1 0;
+}
+.puzzLi{
+    position: absolute;
+    box-sizing: border-box;
+    border: 1px solid white;
+}
+#artWork{
+    background-color: aqua;
+    width: 250px;
+    height: 200px;
+    /* border: 5px solid gray; */
+    margin: 0 auto;
+    position: relative;
+    display: none;
+}
+#artWork.dis{
+    display: block;
+}
+#artWork.dis>img{
+    width: 250px;
+    height: 250px;
+}
+#lookArtWork{
+    font-weight: bolder;
+    cursor: pointer;
+}

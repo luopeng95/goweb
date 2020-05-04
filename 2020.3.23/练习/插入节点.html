@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>插入节点</title>
+    <style>
+        #main{
+            margin:auto;
+            text-align: center;
+            font-size: 20px;
+            width: 300px;
+            height: 180px;
+        }
+        .title{
+            line-height: 35px;
+            letter-spacing: 5px;
+        }
+        .verse{
+            font-size: 0.8em;
+            line-height: 30px;
+            letter-spacing: 5px;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div class="title">春晓</div>
+        <div class="verse">春眠不觉晓,</div>
+        <div class="verse">处处闻啼鸟.</div>
+        <div class="verse" id="ins">花落知多少.</div>
+    </div>
+
+    <form name="myForm">
+        请输入要补全的诗句：<input type="text" name="last">
+        <button onclick="insNode('ins','last')" type="button">添加</button>
+    </form>
+    <script>
+        function createNode(str){
+            let nodeE = document.createElement("div");
+            nodeE.className = "verse";
+            let nodeT = document.createTextNode(str);
+            nodeE.appendChild(nodeT);
+            return nodeE;
+        }
+
+        function insNode(id,name){
+            let insnode = document.getElementById(id);
+            let str = document.myForm.last.value;
+            if (str == ""){
+                alert ("不能为空");
+                document.myForm.last.focus();
+            }else{
+                let nodeE = createNode(str);
+                if (insnode.parentNode){
+                    insnode.parentNode.insertBefore(nodeE,insnode);
+                }
+            }
+            
+        }
+    </script>
+</body>
+</html>

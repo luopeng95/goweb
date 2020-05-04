@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      html {
+        font-size: 20px;
+        /* 320px*/
+      }
+
+      /* 1rem 都是20px */
+      @media only screen and (min-width: 400px) {
+        html {
+          font-size: 21.33px !important;
+        }
+      }
+
+      @media only screen and (min-width: 414px) {
+        html {
+          font-size: 22.08px !important;
+        }
+      }
+
+      @media only screen and (min-width: 480px) {
+        html {
+          font-size: 25.6px !important;
+        }
+      }
+
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      div {
+        margin: auto;
+        width: 16rem;
+        height: 100px;
+        background-color: pink;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div></div>
+  </body>
+
+</html>

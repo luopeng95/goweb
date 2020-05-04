@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      body {
+        background-color: #000;
+      }
+
+      #canvas {
+        background-color: #fff;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- canvas 画布 -->
+    <canvas id="canvas" width="400" height="400">
+      <!-- 一般情况下 html5的标签 某些浏览器是不支持的 如果不支持 就在标签直接写不支持的内容 -->
+      不支持canvas的浏览器
+    </canvas>
+    <script>
+      let oCanvas = document.querySelector("#canvas")
+      //为canvas设定一个绘制环境 (是画笔)
+      let oGC = oCanvas.getContext("2d");
+
+      //将路径对象初始化
+      oGC.beginPath()
+      ////将这个路径点移动100, 100
+      oGC.moveTo(100, 100)
+      //将这个路径点移动200, 200
+      oGC.moveTo(200, 200)
+      //将这个路径点移动300, 200
+      oGC.lineTo(300, 200)
+      //关闭路径,形成一道回环
+      // oGC.lineTo(100, 100)
+      // oGC.closePath()
+
+      //根据每个路径来创建一个细线 根据所有的坐标点 创建一个空心内容
+      oGC.stroke()
+      //根据所有的坐标点 创建一个实心内容
+      // oGC.fill()
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      .div1 {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+        /* transform: translate(100px, 100px); */
+        /* 等价于 */
+        /* 相当于往下和往右移动100个像素 */
+        /* transform: translateX(100px) translateY(100px); */
+        transition: all .6s;
+      }
+
+      .div1:hover {
+        transform: translateY(-2px);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="div1" class="div1"></div>
+  </body>
+
+</html>

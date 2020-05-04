@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      .mask {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-color: rgb(0, 0, 0, .3);
+        left: 0;
+        top: 0;
+        display: none;
+      }
+
+      .popup {
+        width: 400px;
+        height: 200px;
+        box-sizing: border-box;
+        border: 10px solid yellow;
+        background-color: #fff;
+        position: absolute;
+        margin: auto;
+        /* 1. 将左上角那个点 作为页面的中心 */
+        top: calc(50% - 100px);
+        left: calc(50% - 200px);
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <button id="btn">弹窗</button>
+    文字文字文字文字文字文字文字文字<br />
+    文字文字文字文字文字文字文字文字<br />
+    文字文字文字文字文字文字文字文字<br />
+    文字文字文字文字文字文字文字文字<br />
+    文字文字文字文字文字文字文字文字<br />
+    文字文字文字文字文字文字文字文字<br />
+    文字文字文字文字文字文字文字文字<br />
+    <!-- 遮罩层 让遮罩能够占满整个屏幕 同时覆盖在文档流的上方 -->
+    <div id="mask" class="mask"></div>
+    <!-- 弹出层 -->
+    <div id="popup" class="popup"></div>
+    <script>
+      let oBtn = document.getElementById("btn");
+      let oMask = document.getElementById("mask")
+      let oPopup = document.getElementById("popup")
+      oBtn.addEventListener("click", () => {
+        oMask.style.display = "block"
+        oPopup.style.display = "block"
+      })
+    </script>
+  </body>
+
+</html>

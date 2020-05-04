@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      div {
+        height: 700px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div style="background-color: skyblue;"></div>
+    <div style="background-color: pink;"></div>
+    <div style="background-color: orange;"></div>
+    <div style="background-color: yellowgreen;"></div>
+    <script>
+      //拿到当时的top本地存储
+      let beforeTop = localStorage.getItem("top") || 0;
+      console.log(beforeTop)
+      console.log(localStorage)
+      //跳转到那个存储的位置
+      document.documentElement.scrollTop = beforeTop;
+
+      window.addEventListener("scroll", function () {
+        //记录他的滚动距离
+        let top = document.documentElement.scrollTop;
+        localStorage.setItem("top", top)
+      })
+    </script>
+  </body>
+
+</html>

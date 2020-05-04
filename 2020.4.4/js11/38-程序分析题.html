@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let n = [10, 20];
+      let m = n;
+      let x = m;
+      m[0] = 100;
+      x = [30, 40];
+      x[0] = 200;
+      m = x;
+      m[1] = 300;
+      n[2] = 400;
+      console.log(n);
+      console.log(m);
+      console.log(x);
+    </script>
+  </body>
+
+</html>

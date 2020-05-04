@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //前置自增运算符 ++a 先自增,再赋值(打印)
+    //后置自增运算符 a++ 先赋值(打印),再自增
+    let a = 1;      //定义一个变量a 值为1
+    let b = a++;    //定义一个变量b 值为当时a的值1 所以b 也是1 然后a再自增 a的值为2
+    let c = ++a;    //a先自增 a的值为3 定义一个变量c 然后赋值当时的a的值3 所以c也是3
+    let d = ++a;    //a先自增 a的值为4 定义一个变量d 然后赋值当时的a的值4 所以d也是4
+    let e = a++;    //定义一个变量e 值为当时a的值4 所以e 也是4 然后a再自增 所以a最终结果是5
+    console.log(a, b, c, d, e);   //5, 1, 3, 4, 4
+
+    let i = 0;
+    console.log(++i)    //1
+    console.log(i++)    //1
+    console.log(i++)    //2
+    console.log(++i)    //4
+    console.log(i)      //4
+  </script>
+</body>
+</html>

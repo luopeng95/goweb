@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="排序" id="ipt">
+    <ul id="container">
+        <li>2</li>
+        <li>1</li>
+        <li>3</li>
+        <li>5</li>
+        <li>4</li>
+    </ul>
+    <script>
+        let obt = document.getElementById("ipt");
+        let oul = document.getElementById("container");
+        let oli = document.getElementsByTagName("li");
+        let val = [];
+        console.log([...oli]);
+        for(let i = 0; i < oli.length; ++i){
+            val[i] = oli[i].innerHTML;
+        }
+        val.sort((a, b) => a - b);
+        // console.log(val)
+
+        obt.onclick = () => {
+            for(let i = 0; i < oli.length; ++i){
+                oli[i].innerHTML = val[i];
+            }
+        }
+        let m = [...oli];
+        m.sort((a, b) => a.innerHTML - b.innerHTML);
+        console.log(m);
+    </script>
+</body>
+</html>

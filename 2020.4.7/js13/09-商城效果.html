@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      ul,
+      li {
+        list-style: none;
+      }
+
+      ul {
+        position: fixed;
+        top: 50%;
+        left: 10px;
+        margin-top: -116px;
+      }
+
+      li {
+        padding: 6px;
+        width: 32px;
+        height: 32px;
+        text-align: center;
+        color: #fff;
+        cursor: pointer;
+        margin: 2px;
+        background-color: #666;
+        overflow: hidden;
+        font-size: 12px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <ul>
+      <li>天猫超市</li>
+      <li>天猫国际</li>
+      <li>美丽人生</li>
+      <li>超电酷玩</li>
+      <li>居家生活</li>
+    </ul>
+    <script>
+      //获取这五个div
+      let aDiv = document.querySelectorAll("div")
+      let colorBox = ["pink", "orange", 'green', "blue", "purple"]
+      //如何获取一个屏幕的宽高
+      let divWidth = document.documentElement.clientWidth || document.body.clientWidth
+      let divHeight = document.documentElement.clientHeight || document.body.clientHeight
+      console.log(divWidth)
+      console.log(divHeight)
+      for (let i = 0; i < aDiv.length; i++) {
+        aDiv[i].style.width = divWidth + "px"
+        aDiv[i].style.height = divHeight + "px"
+        aDiv[i].style.backgroundColor = colorBox[i]
+      }
+
+      //当[滚动]到某个楼层的时候 对应的li变色
+      //当[点击]某个li的时候 跳转到该楼层
+    </script>
+  </body>
+
+</html>

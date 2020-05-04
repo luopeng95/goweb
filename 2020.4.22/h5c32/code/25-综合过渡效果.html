@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      .div1 {
+        width: 100px;
+        height: 100px;
+        margin: 100px;
+        background-color: pink;
+        transition: all .6s;
+      }
+
+      .div1:hover {
+        /* transform: rotate(360deg) translate(100px, 150px); */
+        /* 如果 位移 和 其他的方法组合在一起 那么建议先写位移 再写其他的 这样的话不会影响到位移过程 */
+        transform: translate(100px, 150px) rotate(360deg) scale(2);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="div1">123</div>
+  </body>
+
+</html>

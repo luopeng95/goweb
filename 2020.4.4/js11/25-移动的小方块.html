@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      div {
+        width: 50px;
+        height: 50px;
+        background-color: pink;
+        position: absolute;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="div1"></div>
+    <script>
+      let oDiv = document.querySelector("#div1")
+      //触发器应该是整个页面
+      //渲染器 应该是那个div
+      //每个事件函数的参数 都不由你来主宰 而是浏览器会提供一个事件参数 这个参数和你的事件息息相关
+      document.addEventListener("mousemove", function (e) {
+        var e = e || window.event //兼容代码 e来支持标准浏览器 window.event 用来兼容IE低版本浏览器
+        oDiv.style.left = e.x + "px"
+        oDiv.style.top = e.y + "px"
+      })
+    </script>
+  </body>
+
+</html>

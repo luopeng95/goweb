@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body style="height: 2000px">
+    <button id="btn">弹窗</button>
+    <script>
+      let oBtn = document.getElementById("btn");
+      oBtn.addEventListener("click", () => {
+        popup(200, 200, "10px solid pink", "skyblue", true, true)
+      })
+
+      function popup(height, width, border, backgroundColor, havemask, dragable) {
+        //能够获取视窗(浏览器)的宽度和高度
+        let iFullScreenWidth = document.documentElement.clientWidth || document.body.clientWidth
+        let iFullScreenHeight = document.documentElement.clientHeight || document.body.clientHeight
+        //弹出框初始化
+        let oPopup = document.createElement("div");
+        let oMask;
+        oPopup.style.position = `fixed`
+        oPopup.style.width = `${width}px`
+        oPopup.style.height = `${height}px`
+        oPopup.style.border = border
+        oPopup.style.boxSizing = "border-box"
+        oPopup.style.backgroundColor = `${backgroundColor}`
+        oPopup.style.left = `${(iFullScreenWidth - width) / 2}px`
+        oPopup.style.top = `${(iFullScreenHeight - height) / 2}px`
+        //判断是否有遮罩参数
+        if (havemask) {
+          //如果有就显示遮罩
+          oMask = document.createElement("div");
+          oMask.style.position = `fixed`
+          oMask.style.width = `100%`
+          oMask.style.height = `100%`
+          oMask.style.left = 0
+          oMask.style.top = 0
+          oMask.style.backgroundColor = "rgba(0, 0, 0, .3)"
+        }
+
+        //绑定拖曳事件
+        if (dragable) {
+          //drag
+          oPopup.onmousedown = function (e) {
+            e.preventDefault();
+            const iMouseX = e.x - this.offsetLeft;
+            const iMouseY = e.y - this.offsetTop;
+            document.onmousemove = function (e) {
+              //才叫拖曳事件
+              oPopup.style.left = e.x - iMouseX + "px"
+              oPopup.style.top = e.y - iMouseY + "px"
+            }
+            oPopup.onmouseup = function () {
+              //当松开鼠标的时候 需要解除这两个事件
+              document.onmousemove = null;
+            }
+          }
+        }
+
+        //拼接元素
+        document.body.appendChild(oMask)
+        document.body.appendChild(oPopup)
+      }
+    </script>
+  </body>
+
+</html>

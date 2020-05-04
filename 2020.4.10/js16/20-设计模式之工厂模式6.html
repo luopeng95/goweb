@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <!-- 广告区域 -->
+    <div id="container">
+      <!-- 前端课程广告
+      UI课程广告
+      JAVA课程广告 -->
+    </div>
+    <script src="./ad/js/ad.js"></script>
+    <script>
+      let oParent = document.getElementById("container")
+      new adFactory(oParent, [{
+        context: "学前端,找老胡",
+        type: "JavaScript"
+      }, {
+        context: "喜欢画画就来学UI吧",
+        type: "UI"
+      }, {
+        context: "一起来学JAVA吧",
+        type: "JAVA"
+      }, {
+        context: "一起来学PHP吧",
+        type: "UI"
+      }, ])
+    </script>
+  </body>
+
+</html>

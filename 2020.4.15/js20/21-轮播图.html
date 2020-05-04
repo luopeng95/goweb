@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      img {
+        width: 200px;
+        height: 300px;
+        position: absolute;
+      }
+
+      #show {
+        width: 200px;
+        height: 300px;
+        margin: auto;
+        border: 10px solid blue;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .now {
+        top: 0;
+        left: 0;
+      }
+
+      .next {
+        top: 0;
+        left: 200px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- 是一个舞台 用来展示上场的图片 -->
+    <div id="show">
+      <img class="now" src="img/1-1.jpg" alt=""><img class="next" src="img/1-2.jpg" alt="">
+    </div>
+  </body>
+
+</html>

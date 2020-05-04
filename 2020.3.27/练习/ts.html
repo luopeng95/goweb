@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body value="bnm">
+    <!-- <button onclick="abc(window.event.target.value)" value="tyu" name="name">123456</button> -->
+    <select name="s1" id="s1">
+        <option value="q">q</option>
+        <option value="a">a</option>
+        <option value="z">z</option>
+    </select>
+
+    <script src="jquery-3.4.1.min.js">
+        // function abc(eme){
+        //     // let eme = ;
+        //     console.log(eme);
+        // }
+
+        // let num = 1;
+        // let obj = {
+        //     name : "张三",
+        // }
+        // let num2 = num;
+        // let obj1 = obj;
+
+        // obj.name = "李四";
+        // num = 2;
+        // console.log(num2);
+        // console.log(obj1)
+        // console.log([1] == [1]);
+    </script>
+    <script>
+        window.addEventListener("click", ()=>{
+            document.getElementById("s1").value = "a";
+        })
+
+
+        // var ipAddress = null;
+        // $(document).ready(function () {
+        //     $.ajax({
+        //         url: 'provinces.json',
+        //         async: false,
+        //         success: function (data) {
+        //             ipAddress = data.name;
+        //             console.log(ipAddress);
+        //         }
+        //     });
+        // });
+
+
+
+        // function readJSON(file, callback) {
+        //     let n;  
+        //     let ajax = new XMLHttpRequest();
+        //     // function  
+        //     ajax.overrideMimeType("application/json");  
+        //     ajax.open("GET", file, false);  
+        //     ajax.onreadystatechange = function() {  
+        //         if (ajax.readyState === 4 && ajax.status == "200") {
+        //             function re(res){
+        //                 let data = JSON.parse(res);
+        //                 console.log(data)
+        //                 return data;
+        //             }
+        //             n = re(ajax.responseText)
+        //             console.log(n)
+        //             // n = callback(ajax.responseText);
+        //         }  
+        //     }  
+        //     ajax.send(null);
+        //     return n;  
+        // }
+        
+        // let json = [];
+        // console.log(readJSON("./provinces.json", function(res){  
+        //     return JSON.parse(res);  
+        //     // console.log(toString.call(JSON.parse(res)));
+        //     // console.log(data);
+        // }))
+        // // console.log(n)
+        // // json[0] = Array(n);
+        // // console.log(json[0]);
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      // [] 单字符
+      // () 提高优先级
+      let reg = /^1(2|3)4$/
+      //以12开头
+      //以1开头 且中间有2或3 以4结尾
+      //以34结尾
+
+      console.log(reg.test("12")) //t
+      console.log(reg.test("34")) //t
+      console.log(reg.test("123")) //t
+      console.log(reg.test("124")) //t
+      console.log(reg.test("234")) //t
+      console.log(reg.test("1234")) //t
+    </script>
+  </body>
+
+</html>

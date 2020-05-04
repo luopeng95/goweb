@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let arr = [1, [2, [3, 3], 2], 1]
+      // let arr2 = arr
+
+      //一层深复制
+      // let arr2 = arr.slice();
+      // let arr2 = [...arr]
+      // let arr2 = arr.concat([])
+
+      //递归深复制
+      function deepClone(arr) {
+        let newArr = [];
+        //遍历
+        for (let i = 0; i < arr.length; i++) {
+          //判断每个元素是不是数组
+          if (Object.prototype.toString.call(arr[i]) === "[object Array]") {
+            //如果是数组就递归调用deepClone
+            newArr.push(deepClone(arr[i]))
+          } else {
+            //如果是元素直接push
+            newArr.push(arr[i])
+          }
+        }
+        return newArr
+      }
+      let arr2 = deepClone(arr)
+      console.log(arr2 === arr)
+      arr[1][1][1] = 100
+      console.log(arr)
+      console.log(arr2)
+      // console.log(arr2 === arr)
+    </script>
+  </body>
+
+</html>

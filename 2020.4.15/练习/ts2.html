@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select name="sel" id="sel">
+        <option value="q" id="qwe">q</option>
+        <option value="a">a</option>
+        <option value="z">z</option>
+        <option value="x">x</option>
+    </select>
+
+    <script>
+        let osel = document.getElementById("sel");
+        osel.addEventListener("change", (e) => {
+            console.log(e);
+        })
+        // 触发自定义的事件
+            // osel.value = "x";
+            let event = new UIEvent('change');
+            osel.dispatchEvent(event);
+            
+        // let spt = document.getElementById("qwe");
+        // spt.innerHTML = "4564";
+    </script>
+</body>
+</html>

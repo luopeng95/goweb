@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #d1{
+            background-color: chartreuse;
+            margin: 0 auto;
+            width: 400px;
+            line-height: 200px;
+            height: 400px;
+        }
+        #p1{
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body>
+    <div id="d1">
+        <input type="text" id="ipt1">
+    </div>
+
+    <script>
+        let ipt1 = document.getElementById("ipt1");
+        ipt1.onfocus = function (){
+            this.style.backgroundColor = "red";
+        }
+        ipt1.onblur = function (){
+            this.style.backgroundColor = "white";
+        }
+    </script>
+</body>
+</html>

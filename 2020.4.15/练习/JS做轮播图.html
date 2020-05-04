@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS做轮播图</title>
+    <style>
+         *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            position: relative;
+            min-width: 1200px;
+            overflow: hidden;
+
+        }
+        img{
+            width: 100%;
+        }
+        input{
+            display: none;
+        }
+        label{
+            width: 20px;
+            height: 20px;
+            background-color: black;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 20px;
+            z-index: 10;
+            cursor: default;
+        }
+        div label:nth-child(2){
+            left: calc(50% - 40px);
+        }
+        div label:nth-child(4){
+            left: calc(50%);
+        }
+        div form label:nth-child(6){
+            left: calc(50% + 40px);
+        }
+        input[id^="radio"]:checked+label{
+            background-color: white;
+        }       
+    </style>
+</head>
+<body  onload="bannerChange()">
+    <!--  onload="bannerChange()" -->
+    <div>
+        <form name="myForm">
+            <input type="radio" id="radio1" name="ipt" value="0" checked onclick="clickIpt1()">
+            <label for="radio1" name="lab" value="0"></label>
+            <input type="radio" id="radio2" name="ipt" value="1" onclick="clickIpt1()">
+            <label for="radio2" name="lab" value="1"></label>
+            <input type="radio" id="radio3" name="ipt" value="2" onclick="clickIpt1()">
+            <label for="radio3" name="lab" value="2"></label>
+            <img src="./banner1.jpg" alt="">            
+        </form>
+    </div>
+
+    <script>
+        function bannerChange(){
+            let n = document.myForm.ipt.value;
+            let b = document.images[0]
+            // console.log("lunbo"+n);
+            // console.log(b);
+            switch(n){
+                case "0":
+                    b.src = "./banner2.jpg";
+                    document.getElementById("radio2").checked = true;
+                    break;
+                case "1":
+                    b.src = "./banner3.jpg";
+                    document.getElementById("radio3").checked = true;
+                    break;
+                case "2":
+                    b.src = "./banner1.jpg";
+                    document.getElementById("radio1").checked = true;
+                    break;                    
+            }
+            setTimeout("bannerChange()", 1000);
+        }
+        function clickIpt1(){
+            let n = document.myForm.ipt.value;
+            let b = document.images[0]
+            console.log(n);
+            
+            switch(n){
+                case "0":
+                    b.src = "./imgs/banner1.jpg";
+                    document.getElementById("radio1").checked = true;
+                    break;
+                case "1":
+                    b.src = "./imgs/banner2.jpg";
+                    document.getElementById("radio2").checked = true;
+                    break;
+                case "2":
+                    b.src = "./imgs/banner3.jpg";
+                    document.getElementById("radio3").checked = true;
+                    break;                    
+            }
+        }
+        // function clickIpt2(){
+        //     let b = document.images[0]
+        //     b.src = "./imgs/banner2.jpg";
+        //     let n = document.myForm.ipt.value;
+        //     console.log(n);
+        // }
+        // function clickIpt3(){
+        //     let b = document.images[0]
+        //     b.src = "./imgs/banner3.jpg";
+        //     let n = document.myForm.ipt.value;
+        //     console.log(n);
+        // }
+    </script>
+</body>
+</html>

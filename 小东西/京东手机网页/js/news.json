@@ -1,0 +1,22 @@
+[
+    {
+        "id":0,
+        "class":"最新",
+        "content":"JavaScript（简称“JS”） 是一种具有函数优先的轻量级，解释型或即时编译型的编程语言。"
+    },
+    {
+        "id":1,
+        "class":"HOT",
+        "content":"虽然它是作为开发Web页面的脚本语言而出名的，但是它也被用到了很多非浏览器环境中，JavaScript 基于原型编程、多范式的动态脚本语言，并且支持面向对象、命令式和声明式（如函数式编程）风格。"
+    },
+    {
+        "id":2,
+        "class":"推荐",
+        "content":"JavaScript在1995年由Netscape公司的Brendan Eich，在网景导航者浏览器上首次设计实现而成。"
+    },
+    {
+        "id":3,
+        "class":"热门",
+        "content":"因为Netscape与Sun合作，Netscape管理层希望它外观看起来像Java，因此取名为JavaScript。"
+    }
+]

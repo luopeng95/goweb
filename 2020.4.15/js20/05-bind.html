@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //Function.prototype.call()
+      //Function.prototype.apply()
+      //Function.prototype.bind()
+
+      let fn = function () {
+        return this
+      }
+      let obj = {
+        fn: fn,
+      }
+      obj.fn2 = fn.bind(obj) //返回值是一个长得一模一样的 但是内存地址不一样的原函数 同时可以规定他的this指向
+
+      console.log(obj.fn()) //obj
+      console.log(obj.fn2())
+      // let fn2 = fn.bind() //函数的深复制
+    </script>
+  </body>
+
+</html>

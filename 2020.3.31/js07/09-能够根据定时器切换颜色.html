@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <button id="start">开始</button>
+    <button id="stop">暂停</button>
+    <script>
+      let colobox = ["pink", "yellow", "blue", "green"]
+      let iNow = 0 //中立变量表示是什么颜色的下标
+      let timer; //中立变量 用来存储定时器id
+      let oStart = document.getElementById("start")
+      let oStop = document.getElementById("stop")
+      oStart.onclick = function () {
+        //每当重新点击定时器的时候 先要清除上一个业务相同的定时器
+        clearInterval(timer)
+        timer = setInterval(() => {
+          document.body.style.backgroundColor = colobox[iNow++ % colobox.length]
+        }, 1000);
+      }
+      oStop.onclick = function () {
+        clearInterval(timer)
+      }
+    </script>
+  </body>
+
+</html>

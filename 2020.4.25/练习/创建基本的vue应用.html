@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="opo">
+			{{ name }} {{ age }}
+			<div class="ddd">
+				{{ message }}
+			</div>
+		</div>
+		<script src="./vue.js"></script>
+		<script>
+			let vue1 = new Vue({
+				el : "div .ddd",
+				data : {
+					message : "<li>这是第一个Vue应用</li>"
+				}
+			})
+			let vue2 = new Vue({
+				el : "#opo",
+				data : {
+					name : "ceshi",
+					age : 20
+				}
+			})
+		</script>
+	</body>
+</html>

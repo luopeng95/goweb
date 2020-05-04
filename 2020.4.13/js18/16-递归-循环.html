@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //什么是递归? 递归是循环的另一种表现
+
+      //递归总是函数体
+      //1. 自己调用自己 无限死循环
+      //2. 必须设定一个终止条件
+
+      //阶乘
+      //5! = 5*4*3*2*1
+      //4! = 4*3*2*1
+      //3! = 3*2*1
+      //2! = 2*1
+      //1! = 1
+
+      function show(n) {
+        let result = 1;
+        for (let i = n; i >= 1; i--) {
+          result *= i
+        }
+        return result;
+      }
+      console.log(show(5)) //120
+      console.log(show(6)) //720
+      console.log(show(4)) //24
+    </script>
+  </body>
+
+</html>

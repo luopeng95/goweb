@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="div1">1</div>
+    <div id="div2">2</div>
+    <script>
+      let oDiv1 = document.querySelector("#div1")
+      let oDiv2 = document.querySelector("#div2")
+
+      let change = function (color) {
+        this.style.backgroundColor = color
+      }
+
+      oDiv1.addEventListener("click", function () {
+        //现在change函数是指向window的,那么现在我想要将这个函数在oDiv1的时候让他指向oDiv1
+        //这三个函数 第一个参数 永远是thisArg 表示 这次这个函数的this指向被临时修正为指向这个thisArg属性
+        // change("pink") //函数的调用
+        // 普通的函数调用 永远 call方法调用少一个参数
+        change.call(this, "pink") //this指向被改变的函数的调用
+      })
+      oDiv2.addEventListener("click", function () {
+        change.call(this, "skyblue")
+      })
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      .news {
+        border: 1px solid black;
+        width: 200px;
+        min-height: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <input type="button" value="开始" id="start">
+    <input type="button" value="暂停" id="pause">
+    <input type="button" value="回退" id="back">
+    <p class="news" id="news"></p>
+    <script>
+      let str =
+        "本报北京4月1日电 近日，一些外国政党政要致电致函中共中央对外联络部，赞赏中国共产党广泛同各方分享抗击新冠肺炎疫情的经验做法，认为中国在成功遏制疫情扩散的同时，积极向其他国家提供力所能及的支持和帮助，充分体现了同舟共济、守望相助的人类命运共同体精神。"
+      //1 选择元素
+      let oNews = document.getElementById("news");
+      let oStart = document.getElementById("start");
+      let oPause = document.getElementById("pause");
+      let oBack = document.getElementById("back");
+
+      //中立变量存储定时器的id
+      let timer = null;
+      //要保证 定时器的 纯净性和唯一性
+      //2 绑定事件
+      let iNow = 0;
+      oStart.onclick = function () {
+        //每当点击的时候 都先清除原来的定时器 然后在装上一个崭新的定时器
+        clearInterval(timer)
+        timer = setInterval(() => {
+          //每次都新增一个字符
+          //本
+          //本+报
+          //本报+北
+          //我 0,1
+          //我要 0,2
+          //我要你 0,3
+          //我要你的 0,4
+          //我要你的爱0,5
+          oNews.innerHTML = str.substring(0, iNow++)
+          if (iNow > str.length) {
+            clearInterval(timer)
+          }
+        }, 60);
+      }
+
+      oPause.onclick = function () {
+        clearInterval(timer)
+      }
+      oBack.onclick = function () {
+        //每当点击的时候 都先清除原来的定时器 然后在装上一个崭新的定时器
+        clearInterval(timer)
+        timer = setInterval(() => {
+          //我要你的爱 0,5
+          //我要你的 0,4
+          //我要你 0,3
+          //我要 0,2
+          //我 0,1
+          oNews.innerHTML = str.substring(0, iNow--)
+          if (iNow < 0) {
+            clearInterval(timer)
+          }
+        }, 60);
+      }
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            position: relative;
+            min-width: 1200px;
+            overflow: hidden;
+
+        }
+        img{
+            width: 100%;
+        }
+        ul{
+            width: calc(100% * 3);
+            list-style: none;
+            display: flex;
+            overflow: hidden;
+            position: relative;
+        }
+        li{
+            flex: 1 1 100%;
+            list-style: none;
+        }
+        input{
+            display: none;
+        }
+        label{
+            width: 20px;
+            height: 20px;
+            background-color: black;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 20px;
+            z-index: 10;
+            cursor: default;
+        }
+        div label:nth-child(2){
+            left: calc(50% - 40px);
+        }
+        div label:nth-child(4){
+            left: calc(50%);
+        }
+        div label:nth-child(6){
+            left: calc(50% + 40px);
+        }
+        #radio1:checked~ul{
+            margin-left: 0px;
+        }
+        #radio2:checked~ul{
+            margin-left: -100%;
+        }
+        #radio3:checked~ul{
+            margin-left: -200%;
+        }
+        input[id^="radio"]:checked+label{
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="radio" id="radio1" name="ipt" checked>
+        <label for="radio1"></label>
+        <input type="radio" id="radio2" name="ipt">
+        <label for="radio2"></label>
+        <input type="radio" id="radio3" name="ipt">
+        <label for="radio3"></label>
+        <ul>
+            <li><img src="./imgs/banner1.jpg" alt=""></li>
+            <li><img src="./imgs/banner2.jpg" alt=""></li>
+            <li><img src="./imgs/banner3.jpg" alt=""></li>
+        </ul>
+
+    </div>
+</body>
+</html>

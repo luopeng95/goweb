@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div::after{
+            display: block;
+            background-color: pink;
+            width: 400px;
+            content: "";
+            height: 200px;
+            position: absolute;
+            top:100px;
+        }
+        div::before{
+            display: block;
+            content: "";
+            background-color: pink;
+            width: 200px;
+            height: 400px;
+            position: absolute;
+            left:100px;
+        }
+        div{
+            position: relative;
+            /* background-color: powderblue; */
+            /* height: 600px; */
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

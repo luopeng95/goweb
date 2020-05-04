@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <input type="text" id="search">
+    <input type="button" id="btn" value="搜索">
+    <ul id="citylist">
+      <li>北京</li>
+      <li>上海</li>
+      <li>广州</li>
+      <li>深圳</li>
+    </ul>
+    <div id="result">
+      <!-- 恭喜您,搜索成功了耶 -->
+      <!-- 对不起 没有该城市 -->
+    </div>
+    <script>
+      //1. 选择元素
+      const oSearch = document.getElementById("search");
+      const oBtn = document.getElementById("btn");
+      const oCityList = document.getElementById("citylist");
+      const aCitys = oCityList.getElementsByTagName("li");
+
+      //2.绑定事件
+      oBtn.onclick = function () {
+        for (let i = 0; i < aCitys.length; i++) {
+          aCitys[i].style.backgroundColor = ""
+        }
+        //获取文本框的内容
+        console.log(oSearch.value)
+        for (let i = 0; i < aCitys.length; i++) {
+          console.log(aCitys[i].innerHTML)
+          //意味着城市被搜索到了
+          if (oSearch.value === aCitys[i].innerHTML) {
+            //3.渲染
+            aCitys[i].style.backgroundColor = "pink"
+          }
+        }
+      }
+    </script>
+  </body>
+
+</html>

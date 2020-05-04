@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      div {
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+        overflow: auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="div1">
+      文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本
+    </div>
+    <input type="checkbox" id="check1" disabled> 我已阅读并同意该协议
+    <script>
+      //滚动条 不是页面的专属 每个元素 都可以有滚动条
+      let oDiv = document.getElementById("div1");
+      let oCheck = document.getElementById("check1");
+
+      oDiv.addEventListener("scroll", e => {
+        if (oDiv.scrollHeight - oDiv.scrollTop === oDiv.clientHeight) {
+          oCheck.disabled = false;
+        }
+      })
+    </script>
+  </body>
+
+</html>

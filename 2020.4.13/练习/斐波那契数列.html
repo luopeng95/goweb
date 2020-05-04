@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 输入一个数字，输出比它小的斐波那契数列,假设数字为整数
+        let fibonacci = n => {
+            if(n < 2) return null;
+            if(n === 2) return [1, 1];
+            let num = [1, 1, 2];
+            let num1 = 1;
+            let num2 = 2;
+            
+            let fibo = () => {
+                if(num1 + num2 >= n){
+                    return null;
+                }else{
+                    num.push(num1 + num2);
+                    [num1, num2] = [num2, num1 + num2];
+                    return fibo();
+                }
+            }
+            fibo();
+            return num;
+        }
+        console.log(fibonacci(3));
+    </script>
+</body>
+</html>

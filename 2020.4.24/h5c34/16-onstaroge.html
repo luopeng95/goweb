@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <input type="checkbox" value="梨子">梨子
+    <input type="checkbox" value="苹果">苹果
+    <input type="checkbox" value="香蕉">香蕉
+    <input type="checkbox" value="桃子">桃子
+    <input type="checkbox" value="西瓜">西瓜
+
+    <script>
+      let aInput = document.querySelectorAll("input");
+      //初始化
+
+      //当本地存储发生变化的时候 会触发该方法
+      window.addEventListener("storage", function () {
+        for (let i = 0; i < aInput.length; i++) {
+          let selectFruit = localStorage.getItem("select")
+          let unselectFruit = localStorage.getItem("unselect")
+          if (selectFruit === aInput[i].value) {
+            aInput[i].checked = true
+          }
+          if (unselectFruit === aInput[i].value) {
+            aInput[i].checked = false
+          }
+        }
+      })
+
+      for (let i = 0; i < aInput.length; i++) {
+        aInput[i].addEventListener("click", function () {
+          //如果选中了 就放到本地存储中
+          if (this.checked) {
+            localStorage.setItem("select", this.value)
+          } else {
+            //没选中 也要存到本地存储
+            localStorage.setItem("unselect", this.value)
+          }
+        })
+      }
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      function fun(n, i) {
+        console.log(i)
+        return {
+          fun: function (m) {
+            return fun(m, n)
+          }
+        }
+      }
+
+      let a = fun(0) //undefined
+      a.fun(1) //0
+      a.fun(2) //0
+      a.fun(3) //0
+
+      let b = fun(0) //undefined
+        .fun(1) //0
+        .fun(2) //1
+        .fun(3) //2
+
+      let c = fun(0).fun(1) //undefined 0
+      c.fun(2) //1
+      c.fun(3) //1
+    </script>
+  </body>
+
+</html>

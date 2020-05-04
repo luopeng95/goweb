@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <!-- 请输入文本内容 -->
+    <input type="text" id="txt">
+    <!-- 触发器 -->
+    <input type="button" value="留言" id="btn">
+    <!-- 渲染区 -->
+    <ul id="result">
+      <!-- <li>1111</li> -->
+    </ul>
+    <script>
+      let [oTxt, oBtn, oResult] = [document.getElementById("txt"),
+        document.getElementById("btn"),
+        document.getElementById("result"),
+      ]
+      let arr = []
+
+      //2.绑定事件
+      oBtn.onclick = function () {
+        //在数据层 中 增加一条新数据
+        arr.push(oTxt.value)
+        //这个方法用来重绘整个页面
+        init(arr, oResult)
+      }
+
+      function init(value, parent) {
+        //先清空所有的旧内容
+        parent.innerHTML = ""
+        //在执行for循环去绘制新内容
+        arr.forEach((e, i) => {
+          let newEle = appendEle(parent, "li", `第${i+1}楼: ${e}`)
+          newEle.onclick = () => {
+            arr.splice(i, 1)
+            //因为数据发生了变动 所以也需要重绘页面
+            init(arr, oResult)
+          }
+        })
+      }
+
+      function appendEle(parent, eleName, value) {
+        //1 生产一个li标签
+        let newLi = document.createElement(eleName)
+        //2. 生产一个文本节点
+        let newTxt = document.createTextNode(value);
+        //3. 拼接
+        parent.appendChild(newLi)
+        newLi.appendChild(newTxt)
+        return newLi
+      }
+    </script>
+  </body>
+
+</html>

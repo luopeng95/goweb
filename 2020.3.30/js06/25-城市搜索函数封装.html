@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <input type="text" id="search">
+    <input type="button" id="btn" value="搜索">
+    <ul id="citylist">
+      <li>北京</li>
+      <li>上海</li>
+      <li>广州</li>
+      <li>深圳</li>
+    </ul>
+    <div id="result">
+      <!-- 恭喜您,搜索成功了耶 -->
+      <!-- 对不起,没有该城市 -->
+    </div>
+    <script>
+      const oSearch = document.getElementById("search");
+      const oBtn = document.getElementById("btn");
+      const oCityList = document.getElementById("citylist");
+      const aCitys = oCityList.getElementsByTagName("li");
+      const oResult = document.getElementById("result");
+
+      oBtn.onclick = function () {
+        //重置
+        reset()
+        //匹配
+        let successLi = compare(oSearch.value)
+        // 渲染
+        change(successLi)
+      }
+
+      //重置页面所有的渲染效果
+      function reset() {
+        for (let i = 0; i < aCitys.length; i++) {
+          aCitys[i].style.backgroundColor = ""
+        }
+      }
+
+
+      function compare(target) {
+        for (let i = 0; i < aCitys.length; i++) {
+          if (oSearch.value === aCitys[i].innerHTML) {
+            //当 搜索框中的文本 等于 li中文本的时候 将这个li标签返回出去
+            return aCitys[i]
+          }
+        }
+      }
+
+      function change(li) {
+        if (li) {
+          li.style.backgroundColor = "pink"
+          oResult.style.color = "green"
+          oResult.innerHTML = "恭喜您,搜索成功了耶"
+        } else {
+          oResult.style.color = "red"
+          oResult.innerHTML = "对不起,没有该城市"
+        }
+      }
+    </script>
+  </body>
+
+</html>

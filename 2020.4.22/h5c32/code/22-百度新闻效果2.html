@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      .container {
+        width: 50px;
+        height: 80px;
+        background-color: skyblue;
+        margin: 50px auto;
+      }
+
+      .container {
+        overflow: hidden;
+      }
+
+      .container:hover .box {
+        transform: rotate(0deg);
+      }
+
+      .box {
+        width: 50px;
+        height: 80px;
+        transition: all .4s;
+        background-color: pink;
+        transform: rotate(180deg);
+        /* 旋转的轴心点 可以是百分比 也可以是像素 还可以是方位词 */
+        transform-origin: -100% 50%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="box"></div>
+    </div>
+  </body>
+
+</html>

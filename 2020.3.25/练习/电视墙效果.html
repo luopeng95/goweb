@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      list-style: none;
+      width: 50px;
+      height: 50px;
+      /* background-color: pink; */
+      /* 浮动脱离文档流,提升层级半级 浮动层有且仅有一层*/
+      /* 定位脱离文档流,提升层级至少一级 定位层理论上有n层 */
+      position: absolute;
+    }
+    ul{
+      /* display: inline-block; */
+      /* float: left; */
+      background-color: cyan;
+      
+    }
+  </style>
+</head>
+
+<body>
+  <ul id="container"></ul>
+  <script>
+    let oUl = document.getElementById("container");
+    let em = 52;
+    for (let i = 0; i < 20; i++) { //行数
+      //外层循环循环一次 内层循环循环一轮 i=0 j=0,1,2
+      for (let j = 0; j < 30; j++) { //列数
+        oUl.innerHTML += `<li style="left:${j * em}px;top:${i * em}px;background-image: url('./0.jpg');background-position: ${-j * 50}px ${-i * 50}px;"></li>`
+      }
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //1for
+      //2while/dowhile
+      //3forEach
+      //4map
+      //5Array.from
+      //6for...in 遍历对象
+      //for...of 
+
+      let arr = ["北京", "上海", "深圳"]
+      for (let key of arr.keys()) {
+        console.log(key)
+      }
+      for (let aaa of arr.values()) {
+        console.log(aaa)
+      }
+      let temp = []
+      for (let [key, value] of arr.entries()) {
+        temp.push(key)
+        temp.push(value)
+      }
+      console.log(temp)
+    </script>
+  </body>
+
+</html>

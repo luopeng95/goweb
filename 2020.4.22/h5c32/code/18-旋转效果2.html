@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      div {
+        width: 200px;
+        height: 200px;
+        border: 3px solid black;
+        border-radius: 50%;
+        float: left;
+        transition: all .6s;
+      }
+
+      /* div:hover {
+        transform: rotate(180deg);
+         transform: rotate(.5turn);
+      } */
+
+      div:nth-of-type(1) {
+        background-image: url("./images/black1.jpg");
+      }
+
+      div:nth-of-type(2) {
+        background-image: url("./images/black2.jpg");
+      }
+
+      div:nth-of-type(3) {
+        background-image: url("./images/black3.jpg");
+      }
+
+      div:nth-of-type(4) {
+        background-image: url("./images/black4.jpg");
+      }
+    </style>
+  </head>
+
+  <body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+
+    <script>
+      let aDiv = document.querySelectorAll("div");
+
+      for (let i = 0; i < aDiv.length; i++) {
+        //初始化图片的旋转度数是0度
+        aDiv[i].style.transform = "rotate(0deg)"
+        aDiv[i].addEventListener("mouseenter", function () {
+          //截取字符串 拿到他转了多少度
+          // let reg = /\((\w+)\)/
+          // console.log(this.style.transform.substring(this.style.transform.indexOf("(") + 1,
+          //   this.style.transform.indexOf(")")))
+          let substr = this.style.transform.slice(7, -1) //0deg
+          let deg = Number.parseInt(substr) //0
+          deg += 180 //180
+          this.style.transform = `rotate(${deg}deg)`
+        })
+        aDiv[i].addEventListener("mouseleave", function () {
+          let substr = this.style.transform.slice(7, -1)
+          let deg = Number.parseInt(substr)
+          deg += 180
+          this.style.transform = `rotate(${deg}deg)`
+        })
+      }
+    </script>
+  </body>
+
+</html>

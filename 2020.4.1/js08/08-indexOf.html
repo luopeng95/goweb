@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //查询某个元素在满足条件的 第一个元素的下标 是多少 如果没有查找就返回-1
+      let arr = ["h", "e", "l", "l", "o"];
+      console.log(arr.indexOf("o")) //4
+      console.log(arr.indexOf("z")) //-1
+      console.log(arr.indexOf("l")) //2 非贪婪模式/懒汉模式
+      console.log(arr.lastIndexOf("o")) //4
+      console.log(arr.lastIndexOf("z")) //-1
+      console.log(arr.lastIndexOf("l")) //3 非贪婪模式/懒汉模式
+      console.log(arr.indexOf("l", 2)) //2从下标为2的位置开始查询"l" 如果没有第二个参数 那就是从最开头的位置进行查询
+      let arr2 = ["h", "e", "l", "l", "o", "w", "o", "r", "l", "d"];
+      console.log(arr2.indexOf("l", 5)) //8
+      //在不影响源数组的情况,如何查到一个数组所有的l的下标?
+
+      // let arr = ["h", "e", "l", "l", "o", "w", "o", "r", "l", "d"];
+      // let target = "l"
+
+      // function searchData(arr, target) {
+      //   return result //[2, 3, 9]
+      // }
+      // console.log(searchData(arr, target)); //[2, 3, 9]
+      // //提示 while 最好  for 也行
+    </script>
+  </body>
+
+</html>

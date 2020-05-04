@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <input type="button" value="排序" id="btn">
+    <ul id="container">
+      <li>3</li>
+      <li>1</li>
+      <li>2</li>
+      <li>5</li>
+      <li>4</li>
+    </ul>
+    <script>
+      let oBtn = document.getElementById("btn");
+      let oUl = document.getElementById("container");
+      let aLi = oUl.children;
+
+      oBtn.onclick = () => {
+        //将该类数组 转换 数组对象
+        //new Array ... Array.from
+        //aLi HTMLCollection(5)[<li>3</li>, <li>1</li>, <li>2</li>, <li>5</li>, <li>4</li>]
+        let newArr = [...aLi]; //Array(5)[<li>3</li>, <li>1</li>, <li>2</li>, <li>5</li>, <li>4</li>]
+        //虽然排序的内容是整个这五个标签 但是排序依据是标签中的内容 xxx.innerHTML
+        let newArr2 = newArr.sort((a, b) => a.innerHTML - b.innerHTML);
+        //Array(5)[<li>1</li>, <li>2</li>, <li>3</li>, <li>4</li>, <li>5</li>]
+        //依次对数组中的所有节点做剪切操作, 节点形成一个队列 先进先出
+        for (let i = 0; i < newArr2.length; i++) {
+          oUl.appendChild(newArr[i])
+        }
+      }
+    </script>
+  </body>
+
+</html>

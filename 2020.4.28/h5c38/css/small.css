@@ -1,0 +1,12 @@
+  p {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+  }
+
+  .container {
+    border: 1px solid black;
+    font-size: 20px;
+    column-count: 2;
+    column-gap: 50px;
+    column-rule: 10px dotted red;
+  }

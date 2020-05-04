@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <!-- 首页 -->
+    <button id="btn1">index</button>
+    <!-- 关于 -->
+    <button id="btn2">about</button>
+    <!-- 帮助 -->
+    <button id="btn3">tips</button>
+    <iframe src="index.html" frameborder="0" width="400" height="400"></iframe>
+    <script>
+      //iframe 你可以理解为 是一个页面里面可以嵌套多个子页面
+      let oBtn1 = document.querySelector("#btn1")
+      let oBtn2 = document.querySelector("#btn2")
+      let oBtn3 = document.querySelector("#btn3")
+
+      oBtn1.addEventListener("click", function () {
+        frames[0].location = "index.html"
+      })
+      oBtn2.addEventListener("click", function () {
+        frames[0].location = "about.html"
+      })
+      oBtn3.addEventListener("click", function () {
+        frames[0].location = "tips.html"
+      })
+      // oBtn1.addEventListener("click", function () {
+      //   location.href = "index.html"
+      // })
+      // oBtn2.addEventListener("click", function () {
+      //   location.href = "about.html"
+      // })
+      // oBtn3.addEventListener("click", function () {
+      //   location.href = "tips.html"
+      // })
+
+      //路由 真路由 只有一个页面 SPA single pagation application 单页面应用
+    </script>
+  </body>
+
+</html>

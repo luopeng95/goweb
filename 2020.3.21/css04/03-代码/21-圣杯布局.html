@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .center {
+      height: 1000px;
+      background-color: blue;
+      margin: 0 200px;
+    }
+
+    .left {
+      width: 200px;
+      height: 1000px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: pink;
+    }
+
+    .right {
+      width: 200px;
+      height: 1000px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: green;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 1. 左右宽度固定，
+  2. 中间宽度自适应伸缩；
+  3. 并且中间先加载 -->
+  <div class="center">center</div>
+  <div class="left">left</div>
+  <div class="right">right</div>
+</body>
+
+</html>

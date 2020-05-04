@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //A. 数组查找
+      //1. ["A", "B", "B", "B", "D", "C", "D", "B"]
+      //1.2 查询有多少个 char 有就返回个数 Number 没有就返回 0
+      //传统
+      //filter
+      //indexOf
+      let arr = ["A", "B", "B", "B", "D", "C", "D", "B"]
+      let fn1 = function (arr, char) {
+        //出现的次数
+        let count = 0;
+        //第一个B的位置
+        let index = arr.indexOf(char) //1
+        if (index === -1) {
+          return count
+        }
+        //最后一个B的位置
+        // let lastIndex = arr.lastIndexOf(char) //7
+        //这里的判断条件改成 index !== -1 也是可以解决的
+        //如果 === -1 说明已经查找不到内容了
+        while (index !== arr.lastIndexOf(char)) {
+          count++
+          arr.splice(arr.lastIndexOf(char), 1)
+        }
+        return ++count
+      }
+      console.log(fn1(arr, "B"))
+      console.log(fn1(arr, "E"))
+    </script>
+  </body>
+
+</html>

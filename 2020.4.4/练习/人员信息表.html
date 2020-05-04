@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1592100_geuu5a89sp5.css">
+    <style>
+        #table{
+            /* background-color: grey; */
+            /* height: 500px;
+            width: 500px; */
+            margin: 0 auto;
+            border-collapse: collapse;
+            border: 2px solid black;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        tr{
+            box-sizing: border-box;
+        }
+        td{
+            text-align: center;
+            width: 100px;
+            border: 1px solid gray;
+            height: 30px;
+            box-sizing: border-box;
+            padding: 0;
+            position: relative;
+        }
+        #table input{
+            width: 100px;
+            border: none;
+            outline: none;
+            height: 30px;
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .iconfont{
+            position: absolute;
+            right: 0;
+        }
+        .icon-top-s{
+            top: 0px;
+        }
+        .icon-bottom{
+            bottom: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+
+    </div>
+    <script src="./弹出框.js"></script>
+    <script>
+        // var deleteActive;
+        let json = [{name:"张三",age:20,sale:10000},{name:"李四",age:25,sale:12000}];
+        let header = ["姓名","年龄","工资","操作"];
+        let data = ["name", "age", "sale"];
+        let odiv = document.querySelector("#container");
+        // 表格初始化代码
+        let initInformation = () => {
+            // 初始化表格头和添加信息的区域出来
+            let otable = addHeader();
+            let otr = inputArea(otable);
+            initArray(otable, otr);
+            let oadd = document.querySelector("#add");
+            // console.log(oadd);
+            oadd.addEventListener("click", function(){
+                let dataArray = add();
+                if(isNaN(dataArray[1] ) || isNaN(dataArray[2])){
+                    initPop(150, 300, "black", "pink", "true", "true", "alert", "年龄和工资要输入数字");
+                }else{
+                    if(dataArray[0] === "" || dataArray[1] === "" || dataArray[2] === ""){
+                        initPop(150, 300, "black", "pink", "true", "true", "alert", "信息不完整");
+                    }else{
+                        change("add",dataArray);
+                        initArray(otable, otr);
+                        empty(otr);
+                    }
+                }
+            })
+        }
+
+        // 业务代码：添加表格头
+        let addHeader = () => {
+        let otable = document.createElement('table');
+        otable.id = "table";
+        let otr = document.createElement('tr');
+        
+        for(let i = 0; i < 4; ++i){
+            let otd = document.createElement('td');
+            let otxt = document.createTextNode(header[i]);
+            otd.appendChild(otxt);
+            otr.appendChild(otd);
+            // console.log(otd.innerHTML);
+            if(i < 3){
+                let icon = document.createElement('span');
+                icon.setAttribute("class", "iconfont icon-top-s");
+                otd.appendChild(icon);
+                let icon1 = document.createElement('span');
+                icon1.setAttribute ("class","iconfont icon-bottom");
+                otd.appendChild(icon1);
+                console.log(icon1.getAttribute("class"));
+            }
+            otd.addEventListener("click", function(event){
+                let e = event || window.event;
+                if(e.target.nodeName === "SPAN"){
+                    rank(i, e.target.className);
+                    let otr1 = document.getElementById("addOtr");
+                    console.log(json);
+                    initArray(otable, otr1);
+                }
+            })
+        }
+        otable.appendChild(otr);
+        odiv.appendChild(otable);
+        return otable;
+        }
+
+        // 业务代码：添加输入区域的信息
+        let inputArea = (otable) => {
+            let otr = document.createElement('tr');
+            otr.id = "addOtr";
+            for(i = 0; i < 3; ++i){
+                let otd = document.createElement('td');
+                let oipt = document.createElement('input');
+                oipt.id = `input${i}`;
+                otd.appendChild(oipt);
+                otr.appendChild(otd);
+            }
+            let otd = document.createElement('td');
+            let obut = document.createElement("input");
+            obut.type = "button"
+            obut.value = "添加信息";
+            obut.id = "add";
+            otd.appendChild(obut);
+            otr.appendChild(otd);
+            otable.appendChild(otr);
+            return otr;
+        }
+
+        // 业务代码：生成最后一个td的函数，包含修改和删除按钮
+        let addTd = () => {
+            let otd = document.createElement('td');
+            // otd.style.display = "flex";
+            let obut = document.createElement("input");
+            obut.type = "button";
+            obut.value = "修改";
+            obut.style.width = "50px";
+            // obut.style.border = "1px solid black";
+            obut.style.marginRight = "-1px";
+            obut.addEventListener('click', function(){
+                initPop(250, 300, "black", "white", "true", "true", "prompt");
+            })
+
+            let obut1 = document.createElement("input");
+            obut1.className = "delete";
+            obut1.type = "button";
+            obut1.value = "删除";
+            obut1.style.width = "50px";
+            obut1.style.borderLeft = "1px solid black";
+            otd.appendChild(obut);
+            otd.appendChild(obut1);
+
+            obut1.addEventListener('click', function(){
+                initPop(150, 300, "black", "pink", "true", "true", "confirm", "是否删除：");
+            })
+            return otd;
+        }
+
+        // 业务代码：初始化数组中已有的信息
+        let initArray = (otable, otr1) => {
+            let ttr = document.querySelectorAll("#table>tr");
+            for(let t = 1; t < ttr.length - 1; ++t){
+                otable.removeChild(ttr[t]);
+            }
+            for (let i = 0; i < json.length; ++i){
+                let otr = document.createElement("tr");
+                otr.setAttribute('data-id', `${i}`);
+                otr.addEventListener("click", function(evevnt){
+                    // console.log("otr点击");
+                    let e = event || window.event;
+                    if(e.target.value === "删除"){
+                        emptyBut(e, otable, otr, otr1);
+                    }else if (e.target.value === "修改"){
+                        emptyBut2(e, otable, otr, otr1);
+                    }
+                })
+                for(let j = 0; j < 3; ++j){
+                    let otd = document.createElement('td');
+                    let oipt = document.createElement('input');
+                    oipt.setAttribute("readonly",true);
+                    oipt.style.textAlign = "center";
+                    // let otxt = document.createTextNode(json[i][data[i]]);
+                    oipt.value = json[i][data[j]];
+                    otd.appendChild(oipt);
+                    otr.appendChild(otd);
+                }
+                let otd = addTd();
+                otr.appendChild(otd);
+                otable.insertBefore(otr, otr1);
+            }
+        }
+
+        // 逻辑代码：对json数组进行操作
+        let change = (type, dataArray) => {
+            if(type = "add"){
+                console.log("add");
+                let obj = {};
+                for(let i = 0; i < 3; ++i){
+                    obj[data[i]] = dataArray[i];
+                }
+            json.push(obj);
+            console.log(json);
+            }
+        }
+
+        // 业务代码：渲染表格信息
+        let draw = () => {
+
+        }
+
+        // 点击添加信息的事件
+        let add = () => {
+            let otr = document.querySelector("#addOtr");
+            let otd = otr.getElementsByTagName("input");
+            let dataArray = [];
+            for(let i = 0; i < otd.length - 1; ++i){
+                if(i > 0){
+                    dataArray[i] = +otd[i].value;
+                }else{
+                    dataArray[i] = otd[i].value;
+                }
+            }
+            // console.log(dataArray);
+                return dataArray;
+        }
+
+        // 业务代码：添加信息后输入区域按钮清空
+        let empty = (otr) => {
+            let ipts = document.querySelectorAll("#addOtr input");
+            console.log(ipts);
+            for(let i = 0; i < ipts.length - 1; ++i){
+                ipts[i].value = "";
+            }
+        }
+
+        // 点击删除按钮的事件:点击删除按钮后弹出confirm弹窗,点击确定删除信息，点击取消不删除信息
+        let emptyBut = (e, otable, otr, otr1) => {
+            // console.log(e.target.value);
+            if(e.target.value === "删除"){
+                let popUp = document.querySelector("#popUp");
+                // console.log(popUp);
+                if(popUp === null){
+                    if(deleteActive === true){
+                        // otable.removeChild(otr);
+                        let index = otr.getAttribute("data-id");
+                        json.splice(index, 1);
+                        // console.log(json);
+                        initArray(otable, otr1)
+                        // deleteActive = null;
+                    }
+                }else{
+                    setTimeout(() => {
+                        emptyBut(e, otable, otr, otr1)
+                    }, 100);
+                }
+
+            }
+        }
+
+        // 排序业务，改变json的顺序后再重新加载页面
+        let rank = (cla, type,) => {
+            json.sort(function(a, b){
+                if(type === "iconfont icon-top-s"){
+                    if(a[data[cla]] > b[data[cla]]){
+                        return 1;
+                    }else{
+                        return -1;
+                    }
+                }else{
+                    if(a[data[cla]] > b[data[cla]]){
+                        return -1;
+                    }else{
+                        return 1;
+                    }
+                }
+            })
+        }
+
+        // 点击修改按钮
+        let emptyBut2 = (e, otable, otr, otr1) =>{
+            let popUp = document.querySelector("#popUp");
+                // console.log(json[0][])
+                byVal(otr);
+                // console.log(popUp);
+                if(popUp === null){
+                    console.log(dataArray1);
+                    if(deleteActive === true){
+                        // otable.removeChild(otr);
+                        let index = otr.getAttribute("data-id");
+                        for (let i = 0; i < 3; ++i){
+                            json[index][data[i]] = dataArray1[i];
+                        }
+                        // console.log(json);
+                        initArray(otable, otr1)
+                        // deleteActive = null;
+                    }
+                }else{
+                    setTimeout(() => {
+                        emptyBut2(e, otable, otr, otr1)
+                    }, 100);
+                }
+        }
+        // 给修改弹出框传值
+        let byVal = (otr) => {
+            let oipt = document.querySelectorAll("#popUp input[type='text']");
+            let index =  otr.getAttribute("data-id");
+            // console.log(oipt);
+            if(oipt.length === 0){
+                return null;
+            }else if(oipt[0].value === "" && oipt[1].value === "" && oipt[2].value === ""){
+                    for (let i = 0; i < oipt.length; ++i){
+                        oipt[i].value = json[index][data[i]];
+                    }
+
+            }
+        }
+
+
+        initInformation();
+    </script>
+</body>
+</html>

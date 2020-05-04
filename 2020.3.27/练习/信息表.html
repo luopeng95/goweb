@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .container {
+            width: 1100px;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+        
+        ul li {
+            float: left;
+            width: 200px;
+            height: 100px;
+            border: 1px solid #000;
+            text-align: center;
+            line-height: 100px;
+        }
+        
+        li>input {
+            width: 100%;
+            height: 100%;
+            outline: none;
+            text-align: center;
+            font-size: 30px;
+            /* border: none; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <ul>
+            <li>姓名</li>
+            <li>年龄</li>
+            <li>薪资</li>
+            <li>性别</li>
+            <li>操作</li>
+        </ul>
+
+        <div id="app"></div>
+        <ul>
+            <li><input type="text" name="username" id="addusername" value=""></li>
+            <li><input type="text" name="age" id="addage"></li>
+            <li><input type="text" name="salary" id="addsalary"></li>
+            <li><input type="text" name="gender" id="addgender"></li>
+            <li><input type="button" value="新增内容" id="add"></li>
+        </ul>
+
+
+
+    </div>
+
+
+    <script src="https://libs.baidu.com/jquery/2.1.3/jquery.min.js"></script>
+    <script>
+        // debugger;
+
+        // 创建初始化数据数组
+        let userInfoArr = [{
+            username: "张三",
+            age: 11,
+            salary: 4999,
+            gender: "famale"
+        }, {
+            username: "李四",
+            age: 20,
+            salary: 5000,
+            gender: "male"
+
+        }, ]
+        let addUserName = $("#addusername").val();
+        console.log(addUserName);
+        let addAge = $("#addage").val();
+        let addSalary = $("#addsalary").val();
+        let addGender = $("#addgender").val();
+        // 创建存储新增数据对象
+        let oPerson = {
+                username: addUserName,
+                age: addAge,
+                salary: addAge,
+                gender: addGender
+            }
+            // 创建数组存储添加的数据数组
+
+        let newPersonArr = [{}];
+
+
+
+        // 获取需要添加的内容
+
+
+        // 将数组里的初始值打印在文本框内
+        function getRenderHTML(userInfoArr) {
+            let html = "";
+            // 初始化页面
+            userInfoArr.forEach((userInfo, index) => {
+                html += `<ul>`;
+                html += `<li><input type="text" name="username" id="username" value="${userInfo.username}""></li>`
+                html += ` <li><input type="text" name="age" id="age" value="${userInfo.age}"></li>`
+                html += ` <li><input type="text" name="salary" id="salary" value="${userInfo.salary}""></li>`
+                html += `<li><input type="text" name="gender" id="gender" value = "${userInfo.gender}""></li>`
+                html += `<li style="width: 100px;"><input type="button" value="删除" id="delete"></li>`
+                html += `<li style="width: 100px;"><input type="button" value="修改" id="revise"></li>`
+                html += `</ul>`
+                    // 增加按钮
+            });
+            return html;
+            // let render = getRen
+            // console.log(readHtml(11));
+        }
+        // 调用初始化函数
+        let renderHTML = addRenderHTML(userInfoArr);
+        $("#app").html(renderHTML);
+
+        // 增加的内容
+        function addRenderHTML(newPerson) {
+            let html = "";
+            // newPersonArr.forEach((newPerson) => {
+                html += `<ul>`;
+                html += `<li><input type="text" name="username" id="username" value="${newPerson.username}""></li>`
+                html += ` <li><input type="text" name="age" id="age" value="${newPerson.age}"></li>`
+                html += ` <li><input type="text" name="salary" id="salary" value="${newPerson.salary}""></li>`
+                html += `<li><input type="text" name="gender" id="gender" value = "${newPerson.gender}""></li>`
+                html += `<li style="width: 100px;"><input type="button" value="删除" id="delete"></li>`
+                html += `<li style="width: 100px;"><input type="button" value="修改" id="revise"></li>`
+                html += `</ul>`
+            // })
+            return html
+        };
+
+        // 新增信心按钮
+        $("#add").click(function() {
+
+            // console.log(addUserName);
+            console.log(oPerson);
+            // console.log("111");
+            addAge = $("#addage").val();
+            addSalary = $("#addsalary").val();
+            addGender = $("#addgender").val();
+            addUserName = $("#addusername").val();
+
+            console.log(`这是${addAge}`);
+
+            userInfoArr = []
+            userInfoArr.username = addUserName
+            userInfoArr.age = addAge
+            userInfoArr.salary = addSalary
+            userInfoArr.gender = addGender
+            console.log(userInfoArr);
+            
+            let rederPerson = addRenderHTML(userInfoArr);
+            console.log(rederPerson);
+            $("#app").append(rederPerson);
+
+            // console.log(newPersonArr);
+            // 将文本框内容添加到数组中
+            // userInfoArr.unshift(newpersonArr);
+            // $("#addage").val() = ""
+            document.getElementById("addage").value = "";
+        });
+
+        // let add = $("#app").html;
+
+
+
+        // console.log(aAarry);
+    </script>
+
+</body>
+
+</html>
