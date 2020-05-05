@@ -32,14 +32,13 @@
         }
         #dd1>li{
             background-color: blueviolet;
-            width: 32px;
+            /* width: 32px; */
+            flex: 1 1 0;
             height: 100%;
             transform-style: preserve-3d;
-            /* perspective: 1500px; */
             position: relative;
             transition: all .5s;
-            overflow: hidden;
-            /* transform: rotateX(-90deg); */
+            
         }
         #dd1>li>div{
             transform-style: preserve-3d;
@@ -77,25 +76,43 @@
             background-color: deeppink;
             transform: rotateX(-90deg) translateZ(180px);
         }
+        #tab{
+            width: 100px;
+            height: 30px;
+            text-align: center;
+            display: flex;
+            margin: 0 auto;
+        }
+        #tab>li{
+            flex: 1 1 0;
+        }
+        .checked{
+            background-color: aqua;
+        }
     </style>
 </head>
 <body>
     <div id="container">
         <div id="sideBanner">
             <ul id="dd1">
-                <li>
+                <!-- <li>
                     <div></div>
                     <div></div>
                     <div></div>
                     <div></div>
                     <div></div>
                     <div></div>
-                </li>
+                </li> -->
             </ul>
             <!-- <img src="../h5c39/demo/3d幻灯片/1.jpg" alt=""> -->
             <!-- <div id="dd2"></div> -->
         </div>
-        <div id="but">点击</div>
+                        <ul id="tab">
+                            <li class="checked">1</li>
+                            <li>2</li>
+                            <li>3</li>
+                            <li>4</li>
+                        </ul>
     </div>
     <script src="../../jquery-3.4.1.min.js"></script>
     <script>
@@ -104,13 +121,26 @@
         const width = 32;
         const count = maxWidth/width;
         $(function(){
-            $("#dd1>li").css("transform","rotateX(-90deg)")
+            $("#dd1").html(createLi());
+            $("#tab>li").on("click",function(){
+                $(this).addClass("checked").siblings().removeClass("checked");
+                let index = $(this).index();
+                $("#dd1>li").css("transform",`rotateX(-${index * 90}deg)`);
+            })
         })
         function createLi(){
             let str = "";
             for(let i = 0; i < count; ++i){
-                str += ``
+                str += `<li style="transition:all .4s ${i/10}s">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </li>`
             }
+            return str;
         }
     </script>
 </body>
