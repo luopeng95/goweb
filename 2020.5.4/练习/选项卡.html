@@ -14,39 +14,68 @@
         }
         #sideBanner{
             /* background-color: aqua; */
-            width: 600px;
-            height: 300px;
-            margin: 150px auto 0;
+            width: 800px;
+            height: 360px;
+            margin: 150px auto;
             position: relative;
-        }
-        #sideBanner:hover{
-            transform-style: preserve-3d;
-            transition: all 12s;
-            transform-origin: bottom;
-            transform: rotateX(-90deg);
         }
         #dd1{
             /* background-color: aquamarine; */
-            width: 600px;
-            height: 300px;
+            width: 800px;
+            height: 360px;
             position: absolute;
             transform-style: preserve-3d;
-            /* perspective: 100px; */
+            top: 0;
+            left: 0px;
             display: flex;
-            background-size: 100% 100%;
-            background-repeat: no-repeat;
-            transform: rotateX(-90deg);
+            transition: all .5s;
         }
         #dd1>li{
-            background-image: url(../h5c39/demo/3d幻灯片/1.jpg);
-            flex: 1 1 0;
-            transform-origin: center center;
+            background-color: blueviolet;
+            width: 32px;
+            height: 100%;
             transform-style: preserve-3d;
+            /* perspective: 1500px; */
+            position: relative;
+            transition: all .5s;
+            overflow: hidden;
+            /* transform: rotateX(-90deg); */
         }
-        /* #dd2当做上边 */
-        #dd2{
+        #dd1>li>div{
+            transform-style: preserve-3d;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0px;
+            left: 0px;
+            opacity: .5;
+            transition: all .5s;
+        }
+        #dd1>li>div:nth-child(1){
             background-color: brown;
-            transform-origin: top;
+            transform: translateZ(180px);
+        }
+        #dd1>li>div:nth-child(2){
+            background-color: yellow;
+            transform: translateZ(-180px)
+        }
+        #dd1>li>div:nth-child(3){
+            width: 360px;
+            background-color: chartreuse;
+            transform: rotateY(90deg) translateZ(-180px);
+        }
+        #dd1>li>div:nth-child(4){
+            width: 360px;
+            background-color: cyan;
+            transform: rotateY(90deg) translateZ(-148px);
+        }
+        #dd1>li>div:nth-child(5){
+            background-color: darkolivegreen;
+            transform: rotateX(90deg) translateZ(180px);
+        }
+        #dd1>li>div:nth-child(6){
+            background-color: deeppink;
+            transform: rotateX(-90deg) translateZ(180px);
         }
     </style>
 </head>
@@ -54,38 +83,33 @@
     <div id="container">
         <div id="sideBanner">
             <ul id="dd1">
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
+                <li>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </li>
             </ul>
             <!-- <img src="../h5c39/demo/3d幻灯片/1.jpg" alt=""> -->
             <!-- <div id="dd2"></div> -->
         </div>
         <div id="but">点击</div>
     </div>
-
+    <script src="../../jquery-3.4.1.min.js"></script>
     <script>
-        let oBut = document.getElementById("but");
-        let oLis = document.getElementsByTagName("li");
-        oBut.addEventListener("click",()=>{
-            change();
+        const maxWidth = 800;
+        const height = 360;
+        const width = 32;
+        const count = maxWidth/width;
+        $(function(){
+            $("#dd1>li").css("transform","rotateX(-90deg)")
         })
-        for(let i = 0; i < oLis.length; ++i){
-                oLis[i].style.backgroundPosition = `${i*20}px 0`
-            }
-        let change = ()=>{
-            for(let i = 0; i < oLis.length; ++i){
-                // console.log(oLis[i]);
-                // oLis[i].style.transformOrigin = `cente`;
-                oLis[i].style.transform = `rotateX(90deg)`;
-                oLis[i].style.transition = `all 2s ${i+0.2}s`;
+        function createLi(){
+            let str = "";
+            for(let i = 0; i < count; ++i){
+                str += ``
             }
         }
     </script>
