@@ -31,7 +31,7 @@
       }
       //让老师的原型 也变成学生的原型
       // Teacher.prototype = Person.prototype
-      Teacher.prototype = new Person;
+      Teacher.prototype = new Person();
       Teacher.prototype.eat = function () {
         return "老师在吃"
       }
@@ -40,8 +40,10 @@
       // t1 -> Teacher.prototype -> Person.prototype -> Object.prototype -> null
       //就近原则 如果t1本地有 否则查找 Teacher.prototype ...
       let t1 = new Teacher("老胡", 30, 10);
+      let p1 = new Person('ren',10)
       console.log(t1)
       console.log(t1.eat()) //老胡在吃
+      console.log(p1.eat());
     </script>
   </body>
 
