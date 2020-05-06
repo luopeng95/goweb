@@ -72,20 +72,33 @@
         <script src="js/jquery.min.js"></script>
         <script type="text/javascript">
             $("document").ready(function(){
-                $("li").on("mouseover",function(e){
+                // $("li").on("mouseover",function(e){
                     
+                //     $(this).stop().animate({
+                //         width:224
+                //     });
+                //     $(this).find(".small").stop().fadeOut().siblings().stop().fadeIn(200);
+                    
+                    
+                // })
+                // $("li").on("mouseout",function(e){
+                //     $(this).stop().animate({
+                //         width:69
+                //     });
+                //     $(this).find(".big").stop().fadeOut().siblings().stop().fadeIn();
+                // })
+
+                $("li").hover(function(){
+                    console.log(1);
                     $(this).stop().animate({
                         width:224
                     });
-                    $(this).find(".small").stop().fadeOut().siblings().stop().fadeIn(200);
-                    
-                    
-                })
-                $("li").on("mouseout",function(e){
+                    $(this).find(".small").stop().fadeOut().hide().siblings().stop().fadeIn(200);
+                },function(){
                     $(this).stop().animate({
                         width:69
                     });
-                    $(this).find(".big").stop().fadeOut().siblings().stop().fadeIn();
+                    $(this).find(".big").stop().fadeOut().hide().siblings().stop().fadeIn();
                 })
             }
             )
