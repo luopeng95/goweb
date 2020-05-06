@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      div {
+        width: 100px;
+        height: 100px;
+      }
+
+      .red {
+        background-color: red;
+      }
+
+      .blue {
+        color: blue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>按钮</div>
+
+    <script src="./lib/jquery.3.5.1.js"></script>
+    <script>
+      //点一个按钮 他变红 同时其他的都变白
+      //隐式迭代的存在 但凡是需要for循环的地方 我们都不需要
+      //链式编程
+      //给所有的按钮绑定一个点击事件 隐式迭代1
+      $("button").click(function () {
+        //如果有red类 就删除掉他 如果没有red类 就添加他
+        $(this).toggleClass("red")
+        // ClassList.add()
+        // ClassList.remove()
+        // ClassList.toggle()
+      })
+    </script>
+  </body>
+
+</html>

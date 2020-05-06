@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      div {
+        width: 50px;
+        height: 100px;
+        background-color: red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div></div>
+    <script src="./lib/jquery.3.5.1.js"></script>
+    <script>
+      //当你点击该div的时候 div的宽度变成原来的三倍 div的高度变成原来的两倍 背景颜色改成blue
+      $("div").click(function () {
+        // $(this).css({
+        //   width: 100,
+        //   height: 200,
+        //   backgroundColor: "blue",
+        //   transition: "all 2s"
+        // })
+        //css 如果只有一个参数 且是字符串类型 表示获取该元素或元素们的某个样式是什么 getter
+        //css 如果只有一个参数 且是对象类型 那么表示获取该元素或元素们的某些样式 
+        //css 如果有两个参数 那么就形成名值对 setter
+        console.log($(this).css("width"))
+        //如果是一个属性就是给的是字符串
+        //如果是多个属性就是给的对象
+        $(this).css({
+          width: $(this).width() * 3,
+          height: $(this).height() * 2,
+          backgroundColor: "blue",
+          transition: "all 2s"
+        })
+      })
+    </script>
+  </body>
+
+</html>

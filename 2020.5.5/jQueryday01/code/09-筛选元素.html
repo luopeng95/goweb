@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <ul>
+      <li></li>
+      <li></li>
+      <li id="li"></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <script>
+      let oLi = document.querySelector("#li");
+      // oLi.nextElementSibling
+      // oLi.previousElementSibling
+      let nextAllLi = nextAll(oLi)
+      console.log(nextAllLi)
+
+      let siblingsLi = siblings(oLi);
+      console.log(siblingsLi)
+
+      function nextAll(ele, arr = []) {
+        //判断他下面有没有兄弟节点
+        if (ele.nextElementSibling) {
+          arr.push(ele.nextElementSibling)
+          return nextAll(ele.nextElementSibling, arr)
+        } else {
+          return arr
+        }
+      }
+
+      function prevAll(ele, arr = []) {
+        //判断他下面有没有兄弟节点
+        if (ele.previousElementSibling) {
+          arr.push(ele.previousElementSibling)
+          return prevAll(ele.previousElementSibling, arr)
+        } else {
+          return arr
+        }
+      }
+
+      function siblings(ele, arr = []) {
+        return [...prevAll(ele), ...nextAll(ele)]
+      }
+    </script>
+  </body>
+
+</html>

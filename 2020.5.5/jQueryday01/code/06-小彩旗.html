@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <script src="./lib/jquery.3.5.1.js"></script>
+    <script>
+      //让所有的元素都变粉色
+      // let aLi = $("ul>li");
+      //隐式迭代
+      //让所有的每个li都变色;
+      // aLi.css("backgroundColor", "pink")
+
+      //链式调用
+      $("ul>li").css("backgroundColor", "pink").css("backgroundColor", "skyblue")
+
+      //修饰css样式?
+      // ele.style.backgroundColor = "red"
+      // ele.setAttribute("style", "background-color: red")
+      //拿到完整的css行内样式
+      // ele.cssText = "background-color: red;font-size: 20px;"
+    </script>
+  </body>
+
+</html>

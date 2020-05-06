@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+
+    <script src="./lib/jquery.3.5.1.js"></script>
+    <script>
+      //点一个按钮 他变红 同时其他的都变白
+      //隐式迭代的存在 但凡是需要for循环的地方 我们都不需要
+      //链式编程
+      $("button").click(function () {
+        //css行内样式
+        $(this).css("backgroundColor", "red").siblings().css("backgroundColor", "");
+      })
+    </script>
+  </body>
+
+</html>

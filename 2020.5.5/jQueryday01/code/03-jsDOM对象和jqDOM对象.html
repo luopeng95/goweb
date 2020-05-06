@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="./lib/jquery.3.5.1.js"></script>
+    <style>
+      div,
+      p {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="box"></div>
+    <p id="box2"></p>
+    <script>
+      //js选择元素 通过原生js获取的就是原生js DOM对象
+      let oBox = document.querySelector("#box")
+      //jq选择对象 通过jQ获取的就是jQ DOM对象
+      let oBox2 = $(`#box2`)
+      //这两个对象不能互相混用
+      console.log(oBox)
+      console.log(oBox2)
+      //js只能用js的隐藏方式
+      oBox.style.display = "none"
+      //jq只能用jq的隐藏方式
+      oBox2.hide(3000, function () {
+        alert("我隐藏内容了哦")
+      })
+      // oBox2.style.display = "none"
+    </script>
+  </body>
+</html>

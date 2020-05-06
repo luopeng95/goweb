@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      div {
+        width: 200px;
+        height: 200px;
+        background-color: skyblue;
+      }
+
+      .red {
+        /* display: block; */
+        background-color: pink;
+      }
+
+      .yellow {
+        background-color: yellow;
+        /* display: none; */
+      }
+    </style>
+  </head>
+
+  <body>
+    <input type="button" value="red">
+    <input type="button" value="yellow">
+    <input type="button" value="切换">
+    <div></div>
+
+    <script src="./lib/jquery.3.5.1.js"></script>
+    <script>
+      $("input").eq(0).click(function () {
+        $("div").addClass("red").removeClass("yellow")
+      })
+      $("input").eq(1).click(function () {
+        $("div").addClass("yellow").removeClass("red")
+      })
+      $("input").eq(2).click(function () {
+        $("div").toggleClass("red").toggleClass("yellow")
+      })
+    </script>
+  </body>
+
+</html>

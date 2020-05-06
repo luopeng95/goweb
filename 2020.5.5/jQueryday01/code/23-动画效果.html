@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      div {
+        width: 200px;
+        height: 100px;
+        background-color: skyblue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <input type="button" value="下拉滑动">
+    <input type="button" value="上拉滑动">
+    <input type="button" value="切换滑动">
+    <div></div>
+
+    <script src="./lib/jquery.3.5.1.js"></script>
+    <script>
+      $("input").eq(0).click(function () {
+        //下拉展示一个界面
+        $("div").slideDown();
+      });
+      $("input").eq(1).click(function () {
+        //上拉隐藏一个界面
+        $("div").slideUp();
+      });
+      $("input").eq(2).click(function () {
+        //切换上拉下拉的一个状态
+        //stop 停止动画动作效果 但是注意需要在toggle之前使用
+        $("div").stop().slideToggle();
+      });
+    </script>
+  </body>
+
+</html>

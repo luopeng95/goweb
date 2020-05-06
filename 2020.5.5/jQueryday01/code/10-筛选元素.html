@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div>
+      <ul>
+        <li></li>
+        <li></li>
+        <li>
+          <p>我是li中的p</p>
+        </li>
+      </ul>
+      <p>我是div中的p</p>
+    </div>
+    <script src="./lib/jquery.3.5.1.js"></script>
+    <script>
+      // $("div>p").css("backgroundColor", "pink");
+      //子节点
+      // $("div").children("p").css("backgroundColor", "pink")
+      //相当于后代选择器 选中所有的p后代
+      // $("div").find("p").css("backgroundColor", "pink")
+      // let $p = $("ul>li>p");
+      // $p.parent().css("backgroundColor", "pink");
+      $("ul>li>p").parent().css("backgroundColor", "pink")
+    </script>
+  </body>
+
+</html>
