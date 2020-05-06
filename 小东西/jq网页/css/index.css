@@ -1,0 +1,10 @@
+html {
+  font-size: 75px;
+}
+/* lp-nav start */
+#lp-nav {
+  background-color: #79ac2f;
+  width: 100%;
+  height: 0.666667rem /* 50/75 */;
+}
+/* lp-nav end */
