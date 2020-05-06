@@ -32,6 +32,7 @@
         //将要执行的函数 准备委托给对象来执行 因为在对象中 执行一个函数 默认是指向该对象的,这样在执行的时候 this的指向就指向为 那个对象了
         // console.log(fnName) //存储一个this指向
         thisArg.fnName = this //window.fnName = show
+        console.log(arguments.length);
         //当args.length === 0
         let result;
         if (arguments.length <= 1) {
@@ -54,11 +55,11 @@
         }
         return result
       }
-      console.log(show._call())
+      // console.log(show._call())
       console.log(show._call(obj))
       console.log(show._call(obj, 1, 2))
       console.log(show._call(obj, 1, "李四"))
-      console.log(show._call(obj, "张三", "李四"))
+      // console.log(show._call(obj, "张三", "李四"))
     </script>
   </body>
 
