@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      #box1 {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+      }
+
+      #box2 {
+        width: 100px;
+        height: 100px;
+        background-color: skyblue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <script src="./lib/jquery.3.5.1.js"></script>
+    <script>
+      //js
+      let box1 = document.querySelector("#box1");
+      //jq
+      let box2 = $("#box2");
+      console.log(box1, box2);
+      //因为jqDOM的本质是一个类数组 所以我们直接通过下标来进行访问
+      let jsbox2 = $("#box2")[0]; //变成了一个jsDOM对象
+      console.log(jsbox2)
+      jsbox2.style.backgroundColor = "green";
+
+      //第二种形式 也可以通过jQuery内置的一个get方法来拿到;
+      $("#box2").get(0).style.backgroundColor = "black"
+
+      //chatAt()
+      //[]
+
+      let jsbox1 = document.querySelector("#box1");
+      let jqbox1 = $(jsbox1)
+
+      // 传入的参数是function
+      // 句柄
+      // 就意味着会调用 $(document).ready(function() {}) selector: function() {} document.DOMContentLoaded
+
+      // String 表示的是选择器 选择器 标签选择器/id/class/属性/...+ ~ > 后代
+
+      // Element js的elment直接转换成jQuery Element 在js的外部套了一层皮
+    </script>
+  </body>
+
+</html>

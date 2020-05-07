@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      button {
+        padding: 4px;
+      }
+
+      .clicked {
+        background-color: red;
+      }
+
+      .content div {
+        width: 200px;
+        height: 200px;
+        border: 1px solid black;
+        display: none;
+      }
+
+      .content .active {
+        display: block;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="tab">
+      <button class="clicked">0</button>
+      <button>1</button>
+      <button>2</button>
+    </div>
+    <div id="content" class="content">
+      <div class="active">0000</div>
+      <div>1111</div>
+      <div>2222</div>
+    </div>
+
+    <script src="./lib/jquery.3.5.1.js"></script>
+    <script>
+      $("#tab button").click(function () {
+        //这个按钮在这一堆兄弟元素中排行第几
+        $(".content div").eq($(this).index()).addClass("active").siblings().removeClass("active")
+        // $(`.content div:eq(${$(this).index()})`).addClass("active").siblings().removeClass("active")
+      })
+    </script>
+  </body>
+
+</html>

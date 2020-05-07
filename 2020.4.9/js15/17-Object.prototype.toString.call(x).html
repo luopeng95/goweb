@@ -26,7 +26,7 @@
       let obj = {}
       let arr = [1, 2, 3]
       let fun = function () {}
-
+      let a = Object.prototype.toString;
       console.log(Object.prototype.toString.call(str)) //"[object String]"
       console.log(Object.prototype.toString.call(num)) //"[object Number]"
       console.log(Object.prototype.toString.call(boo)) //"[object Boolean]"
@@ -35,7 +35,7 @@
       console.log(Object.prototype.toString.call(obj)) //"[object Object]"
       console.log(Object.prototype.toString.call(arr)) //"[object Array]"
       console.log(Object.prototype.toString.call(fun)) //"[object Function]"
-      // console.log(nul.toString()) 没有Null 构造器
+      console.log({}.toString());
       // console.log(und.toString()) 没有Undefiend 构造器
     </script>
   </body>

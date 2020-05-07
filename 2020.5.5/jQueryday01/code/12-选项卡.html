@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      button {
+        padding: 4px;
+      }
+
+      .clicked {
+        background-color: red;
+      }
+
+      .content div {
+        width: 200px;
+        height: 200px;
+        border: 1px solid black;
+        display: none;
+      }
+
+      .content .active {
+        display: block;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="tab">
+      <button class="clicked">0</button>
+      <button>1</button>
+      <button>2</button>
+    </div>
+    <div id="content" class="content">
+      <div class="active">0000</div>
+      <div>1111</div>
+      <div>2222</div>
+    </div>
+    <script src="./lib/jquery.3.5.1.js"></script>
+    <script>
+      //1.选择元素 & 事件绑定
+      $("#tab button").click(function () {
+        //jQDOM对象 让DOM元素添加某个类名 addClass(className)
+        //jQDOM对象 让DOM元素失去某个类名 removeClass(className)
+        //居然还可以这样链式调用!!!
+        $(this).addClass("clicked").siblings().removeClass("clicked");
+
+        //2. 第一种做法 可以通过 dom之间的关系做 但是距离太远了 所以不太方便也不太推荐
+        //3. 第二种做法 因为选项卡的关联属性是 iNow 也就是那个index 所以我可以理解为 点击了第几个button 对应的第几个div就变色 所以有一个方法叫index()
+        let index = $(this).index() //点击第一个该内容的返回值就是0 点击第二个该内容的返回值就是1 点击第三个该内容的返回值就是3
+
+        $(".content div").eq(index).addClass("active").siblings().removeClass("active")
+        //$("div:eq(2)") === $("div").eq(2) 两者完全等价
+        //hasClass(class)
+        //next([expr])
+        //prev([expr])
+      })
+    </script>
+  </body>
+
+</html>
