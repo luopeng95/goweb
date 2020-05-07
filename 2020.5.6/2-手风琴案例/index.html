@@ -93,12 +93,13 @@
                     $(this).stop().animate({
                         width:224
                     });
-                    $(this).find(".small").stop().fadeOut().hide().siblings().stop().fadeIn(200);
+                    $(this).find(".small").stop().fadeOut().siblings().stop().fadeIn();
                 },function(){
+                    console.log(2);
                     $(this).stop().animate({
                         width:69
                     });
-                    $(this).find(".big").stop().fadeOut().hide().siblings().stop().fadeIn();
+                    $(this).find(".big").stop().fadeOut().siblings().stop().fadeIn();
                 })
             }
             )
