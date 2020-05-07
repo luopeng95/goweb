@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="div1" index="123" data-index="456" data-name="张三" data-today="true"></div>
+    <script src="./lib/jquery.3.5.1.js"></script>
+    <script>
+      //JS
+      let oDiv = document.getElementById("div1");
+      console.log(oDiv.getAttribute("index"))
+      console.log(oDiv.getAttribute("data-index"))
+      console.log(oDiv.getAttribute("data-name"))
+
+      //可以拿到 data-的属性 如果用的是 dataset 那么属性名是不需要再带data-
+      console.log(oDiv.dataset.index)
+      console.log(oDiv.dataset.name)
+
+      //data() dataset
+
+      //jQ
+      console.log($("div").data("index"))
+      console.log($("div").data("name"))
+      console.log($("div").data("today"))
+    </script>
+  </body>
+
+</html>

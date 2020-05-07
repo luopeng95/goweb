@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div>
+      我是div
+      <span>我是span</span>
+    </div>
+    <input type="password" id="input1" value="123">
+    <input type="radio" name="gender" value="male">
+    <input type="radio" name="gender" value="female" checked>
+    <select id="sel" multiple size="4">
+      <option value="广东">1</option>
+      <option value="广西">2</option>
+      <option value="湖南" selected>3</option>
+      <option value="湖北" selected>4</option>
+    </select>
+    <script src="./lib/jquery.3.5.1.js"></script>
+    <script>
+      //1.text 可以修改标签中的文本内容 相当于 innerText
+      //可以做getter setter
+      console.log($("div span").text())
+      $("div span").text("哈哈哈")
+      $("div span").text("<h1>好</h1>")
+
+      //2.html 可以修改或查看标签中的节点内容 相当于 innerHTML
+      console.log($("div").html())
+      $("div").html("<h1>付珍是真的帅</h1>")
+
+      //3.val 可以拿到表单元素框中的内容 相当于 value
+      console.log($("#input1").val())
+      console.log($("[name=gender]:checked").val())
+      console.log($("#sel option:selected").val(function (index, attr) {
+        console.log(index) //0, 1
+        console.log(attr) //湖南 湖北
+      }))
+    </script>
+  </body>
+
+</html>

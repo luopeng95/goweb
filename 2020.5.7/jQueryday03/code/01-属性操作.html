@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <a href="http://www.baidu.com" title="百度">去百度</a>
+    <script src="./lib/jquery.3.5.1.js"></script>
+    <script>
+      console.log($("a").prop("href"))
+      console.log($("a").prop("title"))
+
+      //修改属性
+      $("a").prop("href", "http://www.sohu.com")
+      $("a").prop("title", "去搜狐")
+    </script>
+  </body>
+
+</html>

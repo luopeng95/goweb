@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      div {
+        background-color: pink;
+      }
+
+      span {
+        background-color: skyblue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <span>我是原生的span</span>
+    </div>
+    <script src="./lib/jquery.3.5.1.js"></script>
+    <script>
+      //初始化节点
+      // document.createElement/createTextNode.....
+      // let $p = $("<p>张三</p>");
+      // $("div").append($p)
+
+      //append 内部的最后添加一个元素 String|Elment(js对象)|jQuery
+      //parent.appendChild(newElement)
+      // $("div").append("我是后面添加的文本")
+      // $("div").append("<p>我是后面添加的文本</p>")
+      // let oBox = document.createElement("div");
+      // oBox.innerHTML = "哈哈"
+      // $("div").append(oBox)
+      // let oBox = document.createElement("div");
+      // oBox.innerHTML = "嘻嘻"
+      // let $oBox = $(oBox);
+      // $("div").append($oBox)
+
+      //appendTo
+      // let $p = $("<p>张三</p>");
+      // $p.appendTo($("div"))
+
+      //prepend 内部的最前部 添加一个元素
+      //parent.insertBefore(newElement, referenceElement)
+      // $("div").prepend("我是前面添加的文本")
+      // $("div").prepend("<p>我是前面添加的文本</p>")
+      // let oBox = document.createElement("div");
+      // oBox.innerHTML = "哈哈"
+      // $("div").prepend(oBox)
+      // let oBox = document.createElement("div");
+      // oBox.innerHTML = "嘻嘻"
+      // let $oBox = $(oBox);
+      // $("div").prepend($oBox)
+    </script>
+  </body>
+
+</html>

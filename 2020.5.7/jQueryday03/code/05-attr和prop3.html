@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <form action="">
+      <input type="text" value="123" id="txt" aaa="bbb">
+      <input type="checkbox" id="che">
+    </form>
+    <script src="./lib/jquery.3.5.1.js"></script>
+    <script>
+      //自定义属性 prop是拿不到的 换言之 固有属性 prop&attr都能拿到
+      //但是自定义属性 只有attr可以拿到
+      console.log($("input:text").prop("aaa"))
+      console.log($("input:text").attr("aaa"))
+    </script>
+  </body>
+
+</html>

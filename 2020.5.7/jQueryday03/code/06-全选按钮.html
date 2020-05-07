@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <input type="checkbox" class="select_all"> 全选
+    <div>
+      <input type="checkbox" name="" id="">
+      <input type="checkbox" name="" id="">
+      <input type="checkbox" name="" id="">
+      <input type="checkbox" name="" id="">
+      <input type="checkbox" name="" id="">
+    </div>
+    <input type="checkbox" class="select_all"> 全选
+    <script src="./lib/jquery.3.5.1.js"></script>
+    <script>
+      //change 可以监听表单元素
+      //click 也是可以的
+      $(".select_all").click(function () {
+        console.log($(this).prop("checked"))
+        //选中两部分的元素 交集选择器
+        $("div input:checkbox, .select_all").prop("checked", $(this).prop("checked"))
+      })
+      //某个选择框 没有被选中的时候 应该让全选框也选不中
+      //所有的选择框都选中了 也应该让全选框 取消
+
+      // $("div input:checkbox") 也是一样的
+      $("input:checkbox").not(".select_all").change(function () {
+        console.log($("div input:checked"))
+        console.log($("input:checkbox:checked").not(".select_all"))
+        //如果选中的元素 等于 5个 表示全选了 所以让全选按钮选中 否则不选中
+        if ($("div input:checked").length === $("div input").length) {
+          $(".select_all").prop("checked", true)
+        } else {
+          $(".select_all").prop("checked", false)
+        }
+      })
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>手风琴案例</title>
+
+        <style type="text/css">
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            img {
+                display: block;
+            }
+
+            ul {
+                list-style: none;
+            }
+
+            .king {
+                width: 852px;
+                margin: 100px auto;
+                background: url(images/bg.png) no-repeat;
+                overflow: hidden;
+                padding: 10px;
+            }
+
+            .king ul {
+                overflow: hidden;
+            }
+
+            .king li {
+                position: relative;
+                float: left;
+                width: 69px;
+                height: 69px;
+                margin-right: 10px;
+            }
+
+            .king li.current {
+                width: 224px;
+            }
+
+            .big {
+                width: 224px;
+                display: none;
+            }
+
+            .small {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 69px;
+                height: 69px;
+                border-radius: 5px;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <script src="js/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                //初始化 让第一个大图片 显示
+                //初始化 让第一个小图片 隐藏
+                $(".king ul li:first .small").hide()
+                $(".king ul li:first .big").show()
+                // $(".king ul li").mouseover(function () {
+                //     //为当前的li添加一个类名 active类
+                //     // $(this).addClass("current").siblings().removeClass("current");
+                //     //当前鼠标进入的li 宽度立马变成224px同时找到这个li的small图片 让small图片淡出 同时又找到这个small图片的兄弟图片(大图片)淡入
+                //     $(this).stop().animate({
+                //         width: 224
+                //     }, 400).find(".small").stop().fadeOut().siblings().stop().fadeIn();
+                //     //这个li的其他的li的宽度修正为69且找到他们的大图片让大图片淡出 且找到他的兄弟图片(其他的小图片) 淡出
+                //     //为六个动画提供一个stop函数 如果动画被打断 立马执行新的动画
+                //     $(this).siblings().stop().animate({
+                //         width: 69
+                //     }, 400).find(".big").stop().fadeOut().siblings().stop().fadeIn();
+                // })
+                $(".king ul li").hover(function () {
+                    //为当前的li添加一个类名 active类
+                    // $(this).addClass("current").siblings().removeClass("current");
+                    //当前鼠标进入的li 宽度立马变成224px同时找到这个li的small图片 让small图片淡出 同时又找到这个small图片的兄弟图片(大图片)淡入
+                    $(this).stop().animate({
+                        width: 224
+                    }, 400).find(".small").stop().fadeOut().siblings().stop().fadeIn();
+                    //这个li的其他的li的宽度修正为69且找到他们的大图片让大图片淡出 且找到他的兄弟图片(其他的小图片) 淡出
+                    //为六个动画提供一个stop函数 如果动画被打断 立马执行新的动画
+                    $(this).siblings().stop().animate({
+                        width: 69
+                    }, 400).find(".big").stop().fadeOut().siblings().stop().fadeIn();
+                })
+            })
+        </script>
+        <div class="king">
+            <ul>
+                <li class="current">
+                    <a href="javascript:;">
+                        <img src="images/m1.jpg" alt="" class="small">
+                        <img src="images/m.png" alt="" class="big">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="images/l1.jpg" alt="" class="small">
+                        <img src="images/l.png" alt="" class="big">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="images/c1.jpg" alt="" class="small">
+                        <img src="images/c.png" alt="" class="big">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="images/w1.jpg" alt="" class="small">
+                        <img src="images/w.png" alt="" class="big">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="images/z1.jpg" alt="" class="small">
+                        <img src="images/z.png" alt="" class="big">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="images/h1.jpg" alt="" class="small">
+                        <img src="images/h.png" alt="" class="big">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="images/t1.jpg" alt="" class="small">
+                        <img src="images/t.png" alt="" class="big">
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+
+
+
+    </body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <form action="">
+      <input type="text" value="123" id="txt">
+      <input type="checkbox" id="che">
+    </form>
+    <script src="./lib/jquery.3.5.1.js"></script>
+    <script>
+      console.log($("input:text").prop("readonly")) //false
+      console.log($("input:checkbox").prop("checked")) //false
+
+      //js的表现行为和html标签属性 有一定的区别
+      //只要不涉及到true/false 建议你一切都是attr属性
+      document.querySelector("#txt").setAttribute("readonly", "readonly");
+      document.querySelector("#che").setAttribute("checked", "true");
+
+      console.log($("input:text").attr("readonly")) //readonly
+      console.log($("input:checkbox").attr("checked")) //checked
+    </script>
+  </body>
+
+</html>

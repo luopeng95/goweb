@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      div {
+        background-color: pink;
+      }
+
+      span {
+        background-color: skyblue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <span>div兄弟</span>
+    </div>
+    <script src="./lib/jquery.3.5.1.js"></script>
+    <script>
+      //after 外部添加 在他的后面 添加一个兄弟元素
+      let $p = $("<p>我是一个p元素</p>");
+      $("div").after($p)
+      // $p.insertAfter($("div"))
+
+
+      //before 外部添加 在他的前面 添加一个兄弟元素
+      // $("div").before("<p style='background-color: yellow'>我是前面的p</p>")
+      // $("<p style='background-color: yellow'>前面的p</p>").insertBefore("div")
+    </script>
+  </body>
+
+</html>

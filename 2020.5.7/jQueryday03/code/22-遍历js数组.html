@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <script src="./lib/jquery.3.5.1.js"></script>
+    <script>
+      let colorBox = ["pink", "yellow", "green"]
+      //$("div") jQuery构造函数初始化的实例对象 实例对象 能够使用 jQuery.prototype===jQuery.fn原型方法
+      console.log($("div").each)
+      //如果你单独在jQuery构造器中 静态函数
+      console.log($.each)
+      //遍历数组
+      $.each(colorBox, function (key, value) {
+        console.log(key) //0,1,2
+        console.log(value) //p,y,g
+      })
+
+      let jsDiv = document.querySelectorAll("div");
+      $.each(jsDiv, function (key, value) {
+        console.log(key)
+        console.log(value)
+      })
+
+      let obj = {
+        "name": "付珍",
+        "age": 18,
+        "gender": "male"
+      }
+      $.each(obj, function (key, value) {
+        console.log(key)
+        console.log(value)
+      })
+      // $.each(function (index, ele) {})
+    </script>
+  </body>
+
+</html>

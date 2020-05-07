@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <script src="./lib/jquery.3.5.1.js"></script>
+    <script>
+      let colorBox = ["pink", "yellow", "green"]
+      let aDiv = document.querySelectorAll("div")
+      aDiv.each(function (index, ele) {
+        // 第一个参数 就是index 就是被选中的标签的第几个 从0开始
+        // 第二个参数 就是ele 表示被选中的那个元素
+        console.log(index)
+        console.log(ele)
+        //js的解决方法 一般jq的回调函数 总是一个一个的出现 一个一个出现的总是jsDOM对象
+        // ele.style.backgroundColor = colorBox[index]
+        // ele.innerText = ele.innerText * 100
+
+        //先强制转换成jq对象 然后再用jQ的方法处理
+        $ele = $(ele); //jsDOM强转jQDOM对象
+        $ele.css("backgroundColor", colorBox[index])
+        $ele.text($ele.text() * 100)
+      })
+    </script>
+  </body>
+
+</html>

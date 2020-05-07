@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <button id="btn">全选</button>
+    <div>
+      <input type="checkbox" name="" id="">
+      <input type="checkbox" name="" id="">
+      <input type="checkbox" name="" id="">
+      <input type="checkbox" name="" id="">
+      <input type="checkbox" name="" id="">
+      <input type="checkbox" name="" id="">
+    </div>
+    <script src="./lib/jquery.3.5.1.js"></script>
+    <script>
+      $("#btn").click(function () {
+        // console.log($(this).prop("checked"))
+        //选中两部分的元素 交集选择器
+        $("div input:checkbox").prop("checked", function (index, attr) {
+          //提供一个返回值 表示最新的这个元素的属性值
+          if (index % 2 === 0) {
+            return !attr
+          }
+        })
+      })
+    </script>
+  </body>
+
+</html>

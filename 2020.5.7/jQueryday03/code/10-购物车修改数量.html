@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <button class="decrement">-</button>
+    <input class="count" type="text" value="1">
+    <button class="increment">+</button>
+    <script src="./lib/jquery.3.5.1.js"></script>
+    <script>
+      //1. 点击按钮 修改数量
+      $(".decrement").click(function () {
+        $(".count").val(+$(".count").val() - 1)
+      })
+      $(".increment").click(function () {
+        let count = $(".count").val();
+        count = +count + 1;
+        $(".count").val(count)
+      })
+      //2. 输入数量 修改数量
+    </script>
+  </body>
+
+</html>

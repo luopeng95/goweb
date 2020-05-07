@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      ul {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+      }
+    </style>
+  </head>
+
+  <body>
+    <ul>
+      <li class="list">1</li>
+      <li>2</li>
+      <li class="list">3</li>
+    </ul>
+    <ul class="list">
+      <li>a</li>
+      <li>b</li>
+      <li>c</li>
+    </ul>
+    <script src="./lib/jquery.3.5.1.js"></script>
+    <script>
+      //会删掉本元素
+      //删除整个ul
+      // outerHTML = ""
+      // $("ul").remove();
+      //删除ul中类名叫list的对象
+      // $("ul .list").remove();
+      //删除的是ul中带list类名的对象
+      // $("ul").remove(".list")
+
+      //清除某个选择器中的所有子元素 不会删掉本元素
+      //innerHTML = ""
+      // $("ul").empty(); //完全等价于 html("")
+      $("ul").html("")
+    </script>
+  </body>
+
+</html>
