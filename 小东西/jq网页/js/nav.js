@@ -18,6 +18,7 @@ class LpNav {
     }
     init() {
         this.createEle();
+        this.createLogin();
         this.addEle();
         this.addEvent();
     }
@@ -25,17 +26,17 @@ class LpNav {
     createEle() {
         let height = this.navParent.clientHeight;
         let str = `<ul id='lp-nav-container' style="background-color:${this.bg};">`;
-        let length = this.haveLogin === "true" ? this.navData.length - 1 : this.navData.length;
-        for (let i = 0; i < length; ++i) {
-            str += `<li class="lp-nav-lis" style="line-height:${height}px;" lp-nav-id=${this.navData[i]["id"]}>${this.navData[i]["title"]}<ul id=lp-nav-lis-ul class="lp-nav-lis-ul nav-lis-ul-dis"  style="top:${height}px;" lp-nav-ul-id=${this.navData[i]["id"]}>`;
+        this.length = this.haveLogin === "true" ? this.navData.length - 1 : this.navData.length;
+        for (let i = 0; i < this.length; ++i) {
+            str += `<li class="lp-nav-lis" style="line-height:${height}px;color:${this.color};" lp-nav-id=${this.navData[i]["id"]}>${this.navData[i]["title"]}<ul class="lp-nav-lis-ul nav-lis-ul-dis"  style="top:${height}px;" lp-nav-ul-id=${this.navData[i]["id"]}>`;
             // 这个循环生成二级菜单的li项
             for (let j = 0; j < this.navData[i]["context"].length; ++j) {
-                str += `<li id=lp><a href=${this.navData[i]["context"][j]["url"]}>${this.navData[i]["context"][j]["name"]}</a></li>`;
+                str += `<li><a href=${this.navData[i]["context"][j]["url"]} style='color:${this.bg};'>${this.navData[i]["context"][j]["name"]}</a></li>`;
             }
             str += `</ul></li>`;
         }
         if (this.haveLogin === "true") {
-            str += `<li id=lp-navlogin class="lp-nav-lis" style="line-height:${height}px;" lp-nav-id=${length}>${this.navData[length]["title"]}<li>`
+            str += `<li id=lp-navlogin class="lp-nav-lis" style="line-height:${height}px;color:${this.color}" lp-nav-id=${this.length}>${this.navData[this.length]["title"]}<li>`
         }
         str += '</ul>'
         this.navParent.innerHTML = str;
@@ -43,45 +44,61 @@ class LpNav {
 
     // 登录nav的创建
     createLogin() {
-
+        let str = `<div class=lp-mask></div><div class=lp-login><li>账号：<input type="text"></li><li>密码：<input type="password"></li><li><input type="button" value="确认"><input type="button" value="取消"></li></div>`;
+        document.body.innerHTML += str;
     }
 
     addEvent() {
-        // 给ulNav做事件委托，让鼠标移动进去之后显示隐藏的子菜单
-        this.navContainer.addEventListener("mouseover", (e) => {
+        // 不用事件委托，太麻烦了，容易出错
+        // 给LI绑定事件
+        for (let i = 0; i < this.length; ++i) {
+            this.navLi[i].addEventListener("mouseover", (e) => {
+                let index = e.target.getAttribute("lp-nav-id");
+                this.navLiUl[+index].classList.remove("nav-lis-ul-dis");
+            })
 
-            // 拿到index之后让它下面的ul展示--使用类名控制
-            if (e.target.className === "lp-nav-lis") {
-                if (e.target.id !== "lp-navlogin") {
-                    let index = e.target.getAttribute("lp-nav-id");
-                    this.navLiUl[+index].classList.remove("nav-lis-ul-dis");
-                }
-            } else if (e.target.id === "lp") {
-                console.log(e.target.parentNode);
-                e.target.parentNode.classList.remove("nav-lis-ul-dis")
+            this.navLi[i].addEventListener("mouseout", (e) => {
+                let index = e.target.getAttribute("lp-nav-id");
+                this.navLiUl[+index].classList.add("nav-lis-ul-dis");
+            })
+        }
+
+        // 给ul绑定事件
+        for (let i = 0; i < this.navLiUl.length; ++i) {
+            this.navLiUl[i].addEventListener("mouseover", (e) => {
+                this.navLiUl[i].classList.remove("nav-lis-ul-dis");
+                e.stopPropagation();
+            })
+
+            this.navLiUl[i].addEventListener("mouseout", (e) => {
+                this.navLiUl[i].classList.add("nav-lis-ul-dis");
+            })
+        }
+        // 登录框事件
+        this.login.addEventListener("click", (e)=>{
+            if(e.target.value === "确认"){
+                console.log("点击了确认");
+                this.mask.style.display = "none";
+                this.login.style.display = "none";
+            }else if(e.target.value === "取消"){
+                console.log("点击了取消");
+                this.mask.style.display = "none";
+                this.login.style.display = "none";
             }
-
-
         })
-        // 鼠标移出之后隐藏元素
-        this.navContainer.addEventListener("mouseout", (e) => {
-            if (e.target.className === "lp-nav-lis") {
-                console.log(1);
-                if (e.target.id !== "lp-navlogin") {
-                    let index = e.target.getAttribute("lp-nav-id");
-                    this.navLiUl[+index].classList.add("nav-lis-ul-dis");
-                }
-            }else if(e.target.id === "lp") {
-                console.log(e.target.parentNode);
-                e.target.parentNode.classList.add("nav-lis-ul-dis")
-            }
-
+        // 点击登录
+        this.navLogin.addEventListener("click",()=>{
+            this.mask.style.display = "block";
+            this.login.style.display = "block";
         })
     }
 
     addEle() {
         this.navContainer = document.getElementById("lp-nav-container");
+        this.navLi = document.getElementsByClassName("lp-nav-lis");
         this.navLiUl = document.getElementsByClassName("lp-nav-lis-ul");
-
+        this.mask = document.getElementsByClassName("lp-mask")[0];
+        this.login = document.getElementsByClassName("lp-login")[0];
+        this.navLogin = document.getElementById("lp-navlogin");
     }
 }
