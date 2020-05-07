@@ -18,11 +18,13 @@
     <div></div>
     <script src="../../jquery-3.4.1.min.js"></script>
     <script>
-        $("div").click({index:1,val:2},aaa);
-        function aaa(event){
-            console.log(event.data.index);
-        }
-        console.log([1,23].indexOf(1));
+        let reg = /^[1-9]\d{4,10}$/g;
+        let  str = "12345";
+        console.log(reg.test(str));
+        str = "123567";
+        console.log(reg.test(str));
+        console.log(reg.test(str));
+
     </script>
 </body>
 </html>

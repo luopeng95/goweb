@@ -1,10 +1,11 @@
-let lpNav = document.getElementById("lp-nav");
+(function(){
+    let lpNav = document.getElementById("lp-nav");
 
 
 
 
 let init = ()=>{
-
+    getJson("../js/nav.json",createNav);
 }
 
 let getJson = (file, callback)=>{
@@ -25,3 +26,8 @@ let getJson = (file, callback)=>{
 let createNav = (json)=>{
     new LpNav(lpNav,json,"true");
 }
+
+
+
+init();
+}())
