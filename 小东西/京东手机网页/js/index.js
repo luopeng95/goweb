@@ -1,4 +1,5 @@
-let download = document.querySelector("#download");
+!function(){
+    let download = document.querySelector("#download");
 let close = document.querySelector("#download img");
 let search = document.querySelector(".lp-search-d1");
 let searchBox = document.querySelector(".search-index-box");
@@ -273,3 +274,4 @@ let createDiv = ()=>{
 }
 let load = createDiv();
 init();
+}()
