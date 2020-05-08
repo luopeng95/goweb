@@ -19,19 +19,41 @@
     position: absolute;
     display: flex;
     top: 90%;
-    left: 35%;
+    left: 45%;
 }
 
 #lp-banner-ul2>li {
     background-color: black;
     list-style: none;
-    width: 10px;
-    height: 5px;
-    border-radius: 20%;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
     margin-left: 10px;
 }
 
 #lp-banner-ul2>.selectLi {
     background-color: white;
     transform: scale(1.5,1.5);
+}
+
+#lp-banner-left,#lp-banner-right{
+    /* background-color: chartreuse; */
+    width: 48px;
+    height: 48px;
+    position: absolute;
+    top: calc(50% - 25px);
+    border-radius: 50%;
+    /* opacity: .5; */
+}
+#lp-banner-left{
+    left: 30px;
+    background-image: url(../sources/右箭头（圆形）.png);
+}
+#lp-banner-right{
+    background-image: url(../sources/右箭头-圆.png);
+    right: 30px;
+}
+#lp-banner-left:hover,#lp-banner-right:hover{
+    background-color: white;
+    opacity: .8;
 }

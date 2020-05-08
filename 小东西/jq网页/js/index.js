@@ -1,12 +1,12 @@
 (function () {
-    let lpNav = document.getElementById("lp-nav");
-    let lpBanner = document.getElementById("lp-banner");
+    const lpNav = "lp-nav";
+    const lpBanner = "lp-banner";
 
 
 
     let init = () => {
-        getJson("../js/banner.json", createBanner);
         getJson("../js/nav.json", createNav);
+        getJson("../js/banner.json", createBanner);
     }
 
     let getJson = (file, callback) => {

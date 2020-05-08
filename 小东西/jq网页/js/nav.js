@@ -7,7 +7,7 @@
  */
 class LpNav {
     constructor(navParent, navData, haveLogin, bg = "#79ac2f", color = "white") {
-        this.navParent = navParent;
+        this.navParent = document.getElementById(navParent);
         this.navData = navData;
         this.haveLogin = haveLogin;
         this.bg = bg;
@@ -38,7 +38,8 @@ class LpNav {
         if (this.haveLogin === "true") {
             str += `<li id=lp-navlogin class="lp-nav-lis" style="line-height:${height}px;color:${this.color}" lp-nav-id=${this.length}>${this.navData[this.length]["title"]}<li>`
         }
-        str += '</ul>'
+        str += '</ul>';
+        // this.navParent = document.getElementById(this.navParent);
         this.navParent.innerHTML = str;
     }
 

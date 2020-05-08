@@ -29,7 +29,7 @@ let container = document.getElementById("container");
 let init = ()=>{
     changDown();
     addEvent();
-    getJson("../js/轮播图.json",createBanner);
+       
     getJson("../js/京东nav分页.json", createNav);
     getJson("../js/jdkill.json", createKill);
     createShow();

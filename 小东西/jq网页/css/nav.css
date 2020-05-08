@@ -30,6 +30,8 @@
     left: -1px;
     transition: all .5s;
     overflow: hidden;
+    z-index: 100;
+    background-color: burlywood;
 }
 .lp-nav-lis-ul>li{
     width: 100%;
