@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let ary1 = [{"id":1,"parentID":0},{"id":2,"parentID":0},{"id":3,"parentID":1},{"id":4,"parentID":2},{"id":5,"parentID":3},{"id":6,"parentID":4},{"id":7,"parentID":0},{"id":8,"parentID":6},]
+
+        function conver(ary){
+            let stree = [];
+            for(let i = 0; i < ary.length; ++i){
+                console.log(ary[i]);
+                if(ary[i]["parentID"] === 0){
+                    stree.push(ary[i]);
+                    stree[stree.length - 1]["childrens"] = [];
+                }else{
+                    fn(ary[i],stree);
+                }
+            }
+            function fn(obj,ary2){
+                for(let i = 0; i < ary2.length; ++i){
+                    if(ary2[i]["id"] === obj["parentID"]){
+                    ary2[i]["childrens"].push(obj);
+                    ary2[i]["childrens"][ary2[i]["childrens"].length - 1]["childrens"] = [];
+                    return;
+                }else{
+                    fn(obj,ary2[i]["childrens"]);
+                }
+                }
+            }
+            return stree;
+        }
+        console.log(conver(ary1));
+    </script>
+</body>
+</html>
