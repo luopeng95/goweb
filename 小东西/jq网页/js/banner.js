@@ -81,7 +81,7 @@ class SideBanner {
     addEven() {
         // 小圆点点击事件
         this.cicreParent.addEventListener("click", (e) => {
-            console.log("小圆点点击事件");
+            // console.log("小圆点点击事件");
             let num = +e.target.getAttribute("data-class");
             let abs = Math.abs(num - this.iNow);
             this.clearTimer1();
@@ -99,7 +99,7 @@ class SideBanner {
         // 定义窗口改变事件
         window.addEventListener("resize", () => {
             this.oWidth = document.body.scrollWidth;
-            console.log(document.body.scrollWidth);
+            // console.log(document.body.scrollWidth);
             this.changeImgLi();
             this.clearTimer1();
             this.clearTimer2();
@@ -110,18 +110,18 @@ class SideBanner {
         // 浏览器丢失焦点事件
         window.addEventListener("visibilitychange", () => {
             if (document["hidden"]) {
-                console.log("丢失焦点")
+                // console.log("丢失焦点")
                 this.clearTimer2();
             } else {
-                console.log("获得焦点")
+                // console.log("获得焦点")
                 this.setInter();
             }
         })
 
         // 鼠标移入事件
-        console.log(this.parent);
+        // console.log(this.parent);
         this.parent.addEventListener("mouseover", () => {
-            console.log("鼠标移入事件");
+            // console.log("鼠标移入事件");
             this.clearTimer2();
             this.cicreParent.style.opacity = 1;
             this.leftArrow.style.opacity = .5;
@@ -129,7 +129,7 @@ class SideBanner {
         })
         // 鼠标移出事件
         this.parent.addEventListener("mouseout", () => {
-            console.log("鼠标移出事件");
+            // console.log("鼠标移出事件");
             this.setInter();
             this.cicreParent.style.opacity = 0;
             this.leftArrow.style.opacity = 0;
@@ -161,7 +161,7 @@ class SideBanner {
     }
     // 设置外定时器
     setInter() {
-        console.log("外定时器开始工作");
+        // console.log("外定时器开始工作");
         this.timer2 = setInterval(() => {
             this.changeMargin("left");
         }, 3000)
@@ -224,7 +224,7 @@ class SideBanner {
     cicreBg() {
         for (let i = 0; i < this.cicreLis.length; ++i) {
             if (i === this.iNow) {
-                console.log("小圆点");
+                // console.log("小圆点");
                 this.cicreLis[i].classList.add(this.cicreClassName);
             } else {
                 this.cicreLis[i].classList.remove(this.cicreClassName);

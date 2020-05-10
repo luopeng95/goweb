@@ -1,12 +1,14 @@
 (function () {
     const lpNav = "lp-nav";
     const lpBanner = "lp-banner";
-
-
+    const lpMenu = "lp-menu";
+    const lpAccordtion = "lp-accordtion";
 
     let init = () => {
         getJson("../js/nav.json", createNav);
         getJson("../js/banner.json", createBanner);
+        getJson("../js/menu.json",createMenu);
+        getJson("../js/accordtion.json",createAccordtion);
     }
 
     let getJson = (file, callback) => {
@@ -35,5 +37,16 @@
         let side =  new SideBanner(lpBanner, 5, json);
         return side;
     }
+
+    // 生成选项卡
+    let createMenu = (json)=>{
+        let menu = new LpMenu(lpMenu, json);
+    }
+
+    // 生成手风琴
+    let createAccordtion = (json)=>{
+        let accordtion = new LpAccordtion(lpAccordtion, json);
+    }
+
     init();
 }())
