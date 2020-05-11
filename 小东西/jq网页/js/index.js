@@ -9,6 +9,7 @@
         getJson("../js/banner.json", createBanner);
         getJson("../js/menu.json",createMenu);
         getJson("../js/accordtion.json",createAccordtion);
+        createSup();
     }
 
     let getJson = (file, callback) => {
@@ -48,5 +49,9 @@
         let accordtion = new LpAccordtion(lpAccordtion, json);
     }
 
+    // 生成惊喜小球
+    let createSup = () => {
+        let suprise = new LpSuprise()
+    }
     init();
 }())

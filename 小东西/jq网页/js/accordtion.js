@@ -35,13 +35,13 @@ class LpAccordtion{
 
     addEle(){
         this.accord.addEventListener("mouseover",(e)=>{
-            if(e.target.nodeName === "LI"){
+            // console.log(e.target.className);
+            if(e.target.className === "lp-accordtion-li"){
                 // console.log(e.target.nodeName);
                 for(let i = 0; i < this.div.length; ++i){
                     this.div[i].classList.remove("lp-accordtion-select");
                 }
                 e.target.nextSibling.classList.add("lp-accordtion-select");
-
             }
         })
     }
