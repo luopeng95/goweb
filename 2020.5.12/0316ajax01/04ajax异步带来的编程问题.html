@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id='app'></div>
+	</body>
+	<script type="text/javascript">
+		
+		let oDiv = document.getElementById("app");
+		let msg = '';
+		
+		let xhr = new XMLHttpRequest();
+		xhr.open('GET','data.txt',true);
+		xhr.send();
+		
+		//因为ajax是异步的,所以我们需要一个事件来监听这个异步操作.
+		//如果设置ajax是同步,没必要监听.
+		//工作里面一般都不会设同步.
+		
+		xhr.onreadystatechange = function(){
+			//如果请求完成了.
+			if(xhr.readyState == 4){
+				//如果是成功.
+				//status 200 就是成功.
+				if(xhr.status == 200){
+					//responseText -> 服务器的响应结果.(小姐姐的电话)
+					msg = xhr.responseText;
+					//根据请求到的数据渲染视图.
+					oDiv.innerText = msg;
+				}else{
+					alert('老子是你一辈子得不到的数据.')
+				}
+			}
+		}
+		
+	</script>
+</html>

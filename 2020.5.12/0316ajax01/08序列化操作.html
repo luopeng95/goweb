@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		let oYm = {
+			username:'杨幂',
+			age:33
+		}
+		
+//		通过以上对象得到序列化字符串:'username=杨幂&age=33'		
+//		['username=杨幂','age=33'].join('&');		
+		
+		function getStr(data){			
+			let arr = [];			
+			for(let key in data){
+				arr.push(key + '=' + data[key])
+			}			
+			return arr.join('&')
+		}
+		
+		let xhr = new XMLHttpRequest();				
+		xhr.open('POST','js/1.post.php');		
+		xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');		
+		xhr.send(getStr(oYm));		
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState == 4){
+				if(xhr.status == 200){
+					console.log(xhr.responseText)
+				}
+			}
+		}
+		
+		
+	</script>
+</html>

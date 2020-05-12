@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="ul1">
+
+    </ul>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        let oul = document.getElementById("ul1");
+
+        let getJson = (file, callback) => {
+            let ajax = new XMLHttpRequest();
+            ajax.overrideMimeType("application/json");
+            ajax.open("GET", file, true);
+            ajax.onreadystatechange = function () {
+                // console.log(ajax.readyState);
+                if (ajax.readyState === 4 && ajax.status == "200") {
+                    console.log(ajax.responseText);
+                    callback(JSON.parse(ajax.responseText));
+                }
+            }
+            ajax.send();
+        }
+
+        let createLi = (json) => {
+            for (let i = 0; i < json.length; ++i) {
+                oul.innerHTML += `<li>${json[i]["title"]}${json[i]["date"]}</li>`
+            }
+        }
+
+        getJson("./getNews.php", createLi);
+
+        // let instance = axios.create({
+        //     url: 'http://www.lp9590.cn/getNews.php',
+        //     method:"get",
+        //     withCredentials:false
+        // });
+
+        // axios('http://127.0.0.1:50020/getNews.php', {
+        //     method: 'GET',
+        //     mode: 'no-cors',
+        //     headers: {
+        //         'Access-Control-Allow-Origin': '*',
+        //         'Content-Type': 'application/json',
+        //     },
+        //     withCredentials: true,
+        //     credentials: 'same-origin',
+        // }).then(response => {
+        //         response = JSON.parse(response);
+        //     for (let i = 0; i < response.length; ++i) {
+        //         oul.innerHTML += `${response[i]["title"]}${response[i]["date"]}`
+        //     }
+        // })
+
+
+    </script>
+</body>
+
+</html>

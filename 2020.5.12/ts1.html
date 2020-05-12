@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app" :style="{width:w,height:h,backgroundColor:bg}" :class="{'lp-nav':ln,'lp-ban':lb}"></div>
+
+    <script src="../../Vue的提前学习/vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                w:"100px",
+                h:"100px",
+                bg:"red",
+                ln:true,
+                lb:true,
+            }
+        })
+        
+    </script>
+</body>
+
+</html>

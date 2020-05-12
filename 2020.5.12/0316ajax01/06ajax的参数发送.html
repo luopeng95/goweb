@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		// 	ajax请求数据的过程中,很多时候都需要发送数据给服务器.
+		//		这个发送的数据我们就叫请求的'参数'
+		//		例如,登录时需要发送账号密码给服务器,账号密码是参数.
+		//		有分页的页面,点击不同的分页,显示不同的数据,需要发送页码给服务器,这个页码也就是参数.
+		
+		//	GET和POST都可以发送参数.(不要问为什么)
+		//		服务器需要根据前端的请求参数返回不同的响应结果,必须有逻辑,这些逻辑必须有相应的后端语言来书写.
+		//		java,php,node.js(运行在服务端的js),.net,Python.
+		//		
+		
+		//	GET发送参数
+		//		参数需要拼接在url后面,并且用?链接. url + ? + 参数
+		//		参数的写法：参数名=参数值。多个参数用&链接。参数1 & 参数2 & ......
+		//		参数的这个写法叫序列化.序列化字符串,数据序列化.....
+		
+		//	参数的类型
+		//		参数的值只能是字符串.如果是别的数据类型,需要先转换成字符串再传递
+		//		如果传递一个对象,需要JSON.stringify来转换成字符串
+		
+		//	如何知道数据有没有发送成功.
+		
+		let flag = false;
+		let arr = [1,2,3];
+		let obj = {name:888};
+		
+		let xhr = new XMLHttpRequest();
+				
+//		xhr.open('GET','js/1.get.php?username=杨幂&age=33');
+//		xhr.open('GET','js/1.get.php?username='+flag+'&age=33');
+//		xhr.open('GET','js/1.get.php?username='+arr+'&age=33');
+		xhr.open('GET','js/1.get.php?username='+JSON.stringify(obj)+'&age=33');
+		
+		xhr.send();
+		
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState == 4){
+				if(xhr.status == 200){
+					console.log(xhr.responseText)
+				}
+			}
+		}
+		
+				
+	</script>
+</html>

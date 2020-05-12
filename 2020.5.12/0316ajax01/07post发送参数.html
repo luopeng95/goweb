@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+				
+		let xhr = new XMLHttpRequest();
+				
+		xhr.open('POST','js/1.post.php');
+		
+		//设置请求头,把Content-Type设置为FormData格式.
+		//一定是在open和send中间设置请求头.
+		xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+		
+		//post发送数据需要写在send内.
+		xhr.send('username=杨幂&age=33');
+		
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState == 4){
+				if(xhr.status == 200){
+					console.log(xhr.responseText)
+				}
+			}
+		}
+		
+				
+	</script>
+</html>

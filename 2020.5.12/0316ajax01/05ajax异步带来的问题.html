@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id='app'></div>
+	</body>
+	<script type="text/javascript">
+		
+		let oDiv = document.getElementById("app");
+		let msg = '';
+		let num = 10;
+		
+		//请求的过程是异步的,因此请求数据(getData)之后的所有操作都发生在数据请求成功之前.
+		getData('GET','data.txt');
+		
+		//这里还是10,因为请求还没有完成,num还没有变成20
+		console.log(num);//10
+		//如果在getData之后渲染页面,会拿不到请求的数据.因为这时候数据还没有请求成功.
+		oDiv.innerText = msg;
+		
+		function getData(method,url){
+			let xhr = new XMLHttpRequest();
+			xhr.open(method,url,true);
+			xhr.send();
+			xhr.onreadystatechange = function(){
+				//如果请求完成了.
+				if(xhr.readyState == 4){
+					//如果是成功.
+					//status 200 就是成功.
+					if(xhr.status == 200){
+						num = 20;
+						//responseText -> 服务器的响应结果.(小姐姐的电话)
+						msg = xhr.responseText;
+						
+					}else{
+						alert('老子是你一辈子得不到的数据.')
+					}
+				}
+			}
+		}
+		
+	</script>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<span></span>
+			<span></span>
+		</div>
+	</body>
+	<script type="text/javascript">
+		
+		let aSpan = document.querySelectorAll('span');
+		
+		//如何知道请求数据成功了？如何知道请求到的是什么数据？
+		//	打印xhr.responseText,如果有数据,就是成功了
+		
+		//	服务器返回的数据一定是字符串,如果需要当成对象来处理，需要JSON.parse();
+		//	服务器返回的是'对象字符串','数组字符串'都应该使用JSON.parse()来转换成响应的数据类型才能使用.
+		
+		let xhr = new XMLHttpRequest();
+				
+		xhr.open('GET','js/getList.php');
+		xhr.send();
+		
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState == 4){
+				if(xhr.status == 200){
+					
+					console.log(xhr.responseText);
+					console.log(typeof xhr.responseText);//string
+					
+					//转换成真正的对象
+					let data = JSON.parse(xhr.responseText);
+					
+					aSpan[0].innerText = data.username;
+					aSpan[1].innerText = data.age;
+					
+				}
+			}
+		}
+		
+		
+	</script>
+</html>

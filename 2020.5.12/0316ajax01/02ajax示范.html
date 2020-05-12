@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id='app'>'hello AJAX'</div>
+	</body>
+	<script type="text/javascript">
+		
+		let oDiv = document.getElementById("app");
+		let msg = '';
+		
+		//ajax请求数据赋值给msg,然后渲染到页面上.
+		//这里当前的02ajax示范.html文件是客户端
+		//data.txt就是服务端
+		//02ajax示范.html 请求 data.txt
+		
+		//理解ajax请求数据的过程,可以这样理解,客户端和服务器交互可以看成两个人在对话.
+		
+		//ajax请求需要使用的一个工具,这个工具实际就是一个js对象.
+		
+		//某个小哥哥(客户端)去搭讪小姐姐(服务端)
+		//	1:小哥哥过去跟小姐姐说:我想要你的电话号码
+		//	2:等待小姐姐回复.
+		//	3:根据小姐姐的回复做一些事情.
+		//		a:失败的时候,做什么
+		//		b:成功的时候,约起来
+		
+		let xhr = new XMLHttpRequest();
+		
+		// open的参数:
+		//	第一个参数是请求方式
+		//		GET -> '问服务器要数据'
+		//		POST -> '给服务器数据'
+		//	第二个参数:
+		//		服务器地址.
+		//	第三个参数:
+		//		本次请求是否采用异步请求.(默认是true)
+		
+		//确定搭讪目标(确定请求方式和服务器地址)
+		xhr.open('GET','data.txt',true);
+		//把想法说出来(发送请求正文)
+		xhr.send();
+		
+		//	属性readyState表示通信的过程,值是0-4
+		//		0:还没有open
+		//		1:open()方法已经调用
+		//		2:send()方法已经被调用
+		//		3:等待响应,响应体下载中，可能已经下载部分数据了
+		//		4:请求完成
+		
+		//	status -> http状态码.(响应的各种情况)(小姐姐不同反应)
+		//	值是3为数字,开头的数字是1-5.
+		//		1xx -> 请求还需要进一步执行.
+		//		2xx -> 成功了.(你情我愿)
+		//		3xx -> 重定向.(你找错人了,url不对)
+		//			303,301
+		//		4xx -> 客户端错误.(客户端错误,小哥哥提了一个满足不了的需求.例如100位的电话号码.)
+		//			404,403,401
+		//		5xx -> 服务端错误.
+						
+		//onreadystatechange -> 每次readyState的值变化时都会触发
+		xhr.onreadystatechange = function(){
+			//如果请求完成了.
+			if(xhr.readyState == 4){
+				//如果是成功.
+				//status 200 就是成功.
+				if(xhr.status == 200){
+					//responseText -> 服务器的响应结果.(小姐姐的电话)
+					msg = xhr.responseText;
+					//根据请求到的数据渲染视图.
+					oDiv.innerText = msg;
+				}else{
+					alert('老子是你一辈子得不到的数据.')
+				}
+			}
+		}
+		
+	</script>
+</html>

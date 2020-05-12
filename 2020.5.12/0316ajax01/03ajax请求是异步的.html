@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id='app'>'hello AJAX'</div>
+	</body>
+	<script type="text/javascript">
+		
+		let oDiv = document.getElementById("app");
+		let msg = '';
+		
+		//ajax请求时是异步的，什么意思？
+		//	ajax在调用send之后,后台就会进入等待服务器响应的阶段.
+		//	这个等待的过程是异步的。
+		
+		//	这个等待是异步的，就意味着，send后面的代码在服务器没有相应前也能运行。send触发后，status不是4
+		//	如果这个等待是同步的，就意味着，send后面的代码在服务器没有相应前不能运行。send触发后，status就是4
+		
+		//  ajax请求为什么默认是异步的。
+		//		2005年之前的数据交互是同步的.
+		//		如果数据交互是同步的，则在数据没有请求成功之前，页面是假死的。(卡住,动不了,一片白)
+		//		只有异步请求,在请求没有成功之前,页面都是可用的.
+		
+		let xhr = new XMLHttpRequest();
+		xhr.open('GET','data.txt',true);
+		xhr.send();
+		//如果是异步,这里是1,如果是同步,这里是4
+		console.log('readyState',xhr.readyState);
+		xhr.onreadystatechange = function(){
+			//如果请求完成了.
+			if(xhr.readyState == 4){
+				//如果是成功.
+				//status 200 就是成功.
+				if(xhr.status == 200){
+					//responseText -> 服务器的响应结果.(小姐姐的电话)
+					msg = xhr.responseText;
+					//根据请求到的数据渲染视图.
+					oDiv.innerText = msg;
+				}else{
+					alert('老子是你一辈子得不到的数据.')
+				}
+			}
+		}
+		
+	</script>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		
+		<ul>
+			
+		</ul>
+		<ul class='box'>
+			
+		</ul>
+		
+	</body>
+	<script type="text/javascript">
+		
+//		ajax -> 请求数据
+//		网页的标签内容，工作中，不可能一开始就写在标签里。(写死了不行)
+//		工作中需要把网页的标签内容存入一个数据内(json对象或者数组),然后根据这个数据渲染出网页标签.
+//		那这个数据如何获得?需要网页通过访问服务器获取.
+//		网页如何通过访问服务器获取渲染页面的数据? -> 使用ajax.
+
+//		网页访问服务器获取数据,服务器也有可能需要通过网页获取数据.(网页问服务器要数据,服务器问网页要数据)
+//		这个过程就叫'交互'.(客户端和服务端的交互).
+//		我们的网页就叫客户端.服务器就是服务端.
+//		网页上所有显示的内容都是通过服务器发送过来的.
+//		服务器其实就是另一台你看不见的电脑.
+
+//		ajax学什么?怎么学?
+//		1:ajax的基本概念.
+//			请求方式,发送的参数,监听进程,状态码,响应结果
+//		2:ajax的封装工具的使用.
+//			jq的ajax,axios
+//		3:跨域怎么解决
+
+//		扩展(计算机网络):
+//		1:fetch请求
+//		2:token
+//		3:协议知识
+//		4:网络安全
+
+		let arr = [];
+		
+		render('ul',arr);
+		render('.box',arr);
+		
+		//根据数据渲染网页标签.
+		function render(selector,arr){
+			let oUl = document.querySelector(selector);		
+			for(let i=0;i<arr.length;i++){
+				console.log(i);
+				oUl.innerHTML += `<li>${arr[i]}</li>`
+			}
+		}
+		
+		
+
+	</script>
+</html>
