@@ -62,15 +62,6 @@ class Car{
 
     moveCar(){
         let xCount = 0;
-        let yCount = 0; 
-        // if(this.joinC.level === 0){
-            
-        // }else if(this.joinC.level === 1){
-        //     this.car.style.top = "60px";
-        // }else{
-        //     this.car.style.top = "110px";
-        // }
-        // console.log(this.car.offsetLeft);
         let time = setInterval(() => {
             if(xCount < 10){
                 this.car.style.left = this.car.offsetLeft + (this.joinC.num * 20 + 20)/10 + "px";
