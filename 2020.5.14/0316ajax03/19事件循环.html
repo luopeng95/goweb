@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+//		console.log(1);
+//		console.log(2);
+		
+//		setTimeout(function(){
+//			console.log(1)
+//		},0)
+//		
+//		console.log(2)
+
+//		异步和同步，异步落后于同步。
+//			异步还分为两种类别，一种叫宏任务，一种叫微任务，为任务要先于宏任务。
+//			promise是微任务，其他都是宏任务。
+//			事件循环：
+//				1:先执行完所有的同步
+//				2:执行微任务.
+//				3:执行宏任务.
+//			如果宏任务产生了微任务,则转而执行微任务
+
+		setTimeout(function(){
+			//宏任务
+			console.log(1)
+		},0)
+		
+		//同步
+		console.log(2);
+		
+		new Promise(function(resolve,reject){
+			resolve()
+		}).then(function(){
+			//微任务
+			console.log(3);
+		})
+		
+	</script>
+</html>

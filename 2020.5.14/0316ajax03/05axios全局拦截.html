@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script src="js/axios.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		
+		//全局的请求拦截(对所有的请求都生效)
+		axios.interceptors.request.use(function (config) {
+			//就是ajax请求的配置config.可以获取各种选项.
+			//console.log('config',config);
+			console.log('url',config.url);
+			
+	    	// 在发送请求之前做些什么
+	    	// 如果不return config,本次请求会被中断.
+	    	return config;
+	  	}, function (error) {
+	    	// 对请求错误做些什么
+	    	return Promise.reject(error);
+	  	});
+	
+		//全局的响应拦截器(对所有的响应都生效)
+		axios.interceptors.response.use(function (response) {
+	    	// 对响应数据做点什么
+	    	// 如果不return response,则then内拿不到结果.
+	    	return response;
+	 	}, function (error) {
+	    	// 对响应错误做点什么
+	    	return Promise.reject(error);
+	  	});
+		
+		//请求1
+		axios({
+			method:'get',
+			url:'js/1.get.php',
+			params:{username:8888,age:77777}
+		}).then(function(res){
+			console.log(res.data)
+		})
+		
+		//请求2
+		axios({
+			method:'get',
+			url:'js/getList.php',
+			params:{username:8888,age:77777}
+		}).then(function(res){
+			console.log(res.data)
+		})
+		
+	</script>
+</html>

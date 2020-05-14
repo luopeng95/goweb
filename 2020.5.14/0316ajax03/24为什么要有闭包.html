@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		let x = 10;
+		let y = 20;
+		
+//		如果把作用域想象成一个对象,那么这个闭包变量就是这个对象的私有属性.
+//		那如何访问这个对象的这个属性呢？ -> 通过调用子函数来访问。
+		
+//		function Person(){
+//			this.name = '哈哈哈'
+//		}
+//		
+//		let obj = new Person();			
+//		console.log(obj.name);
+
+		function person(){
+			var name = '哈哈哈';
+			return function(){
+				return name
+			}
+		}		
+		console.log(person()());
+		
+	</script>
+</html>

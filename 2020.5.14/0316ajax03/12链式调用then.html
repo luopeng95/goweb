@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+
+//		回调地狱
+//		setTimeout(function(){
+//			console.log(500);
+//			setTimeout(function(){
+//				console.log(1000);
+//				setTimeout(function(){
+//					console.log(1500);					
+//				},1500)
+//			},1000)
+//		},500)
+
+//		第三个异步
+		let p3 = new Promise(function(resolve,reject){
+			setTimeout(function(){
+				resolve();
+			},1500)
+		})
+
+//		第二个异步
+		let p2 = new Promise(function(resolve,reject){
+			setTimeout(function(){
+				resolve();
+			},1000)
+		})
+
+//		第一个异步。
+		let p1 = new Promise(function(resolve,reject){
+			setTimeout(function(){
+				resolve();
+			},500)
+		}).then(function(){
+			console.log(1500);
+			return p2
+		}).then(function(){
+			console.log(2500);
+			return p3
+		}).then(function(){
+			console.log(3000);
+		})
+	
+		
+
+		
+	</script>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+//		Promise -> 解决异步编程的方案。或者说为了封装异步操作。
+//		async和await可以完美解决以下问题。
+
+//		异步编程的第一个问题：
+//			因为异步是落后于同步的，因此会导致某些代码可读性变差。
+//			let x = 10;		
+//			setTimeout(function(){
+//				x = 20;
+//			},0);
+//			console.log(x);//10
+
+//		异步编程的第二个问题
+//			传统的异步编程都是通过回调函数来监听异步完成.这些传统的方式会带来一种叫'回调地狱的问题'
+//			什么是回调地狱？ 10个定时器嵌套。
+			
+//			setTimeout(function(){
+//				setTimeout(function(){
+//					setTimeout(function(){
+//						setTimeout(function(){
+//							setTimeout(function(){
+//								console.log(1000)
+//							},1000)
+//						},1000)
+//					},1000)
+//				},1000)
+//			},1000)
+
+//			应该像同步代码一样,异步操作按顺序只写。
+//				定时器1;
+//				定时器2;
+//				定时器3;
+			
+//			setTimeout(function(){x = 20},0);
+//			xhr.onreadystatechange = function(){}
+//			oImg.onload = function(){}
+
+//		异步编程的第三个问题:
+//			传统的异步编程监听异步完成,有时候是是回调函数,有时候是事件,事件名还不一样,不统一
+
+		let x = 10;
+		new Promise(function(resolve,reject){
+			setTimeout(function(){
+				resolve();
+			},0)
+		}).then(function(){
+			x = 20;
+		})
+		console.log(x);
+		
+	</script>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+//		Promise是一个类.
+//		它的参数是一个回调函数.
+//		这个回调函数的参数是两个,分别表示异步成功的回调和异步失败的回调。
+
+//		实例方法then的参数也是一个回调函数，这个回调函数就是Promise的回调函数的第一个参数
+//		实例方法then的参数也是一个回调函数，这个回调函数就是Promise的回调函数的第二个参数
+
+		let p1 = new Promise(function(success,error){
+			if(Math.random()*10>5){
+				success('随机数大于5');
+			}else{
+				error('随机数不大于5')
+			}			
+		});
+		
+		p1.then(function(val){
+			console.log(val)
+		})
+		
+		p1.catch(function(err){
+			console.log(err)
+		})
+		
+	</script>
+</html>

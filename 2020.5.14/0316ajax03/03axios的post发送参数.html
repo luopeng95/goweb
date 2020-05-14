@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script src="js/axios.js"></script>
+	<script src="js/jquery-1.11.1.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		
+//		工作中,大概率请求数据是使用axios来进行的,它的写法和jq的ajax很像.
+
+//		axios的post传递参数,这个参数在浏览器环境下,不能直接填写json对象
+//		axios.post('js/1.post.php',{
+//			username:'幂幂',
+//			age:33
+//		}).then(function(res){
+//			console.log(res.data)
+//		})
+
+//		axios的post发送参数,可以填写序列化字符串作为参数.
+//		如何把json对象转换成json对象?可以自己封装.
+//		在Vue内需要下载一个Qs插件来进行json对象到序列化字符串的转换.
+
+//		axios.post('js/1.post.php','username=幂幂&age=33').then(function(res){
+//			console.log(res.data);
+//		})
+		
+//		并发请求 -> 同时开始多个请求,当所有的请求你都完成后触发then的回调		
+
+//		请求1
+		function getUserAccount() {
+		  return axios.get('js/1.get.php');
+		}
+
+//		请求2
+		function getUserPermissions() {
+		  return axios.get('js/getList.php');
+		}
+
+//		同时开启请求1和请求2,两个请求都完成时触发统一的回调.
+		axios.all([getUserAccount(), getUserPermissions()])
+	  	.then(axios.spread(function (acct, perms) {
+	  		//两个请求现在都执行完成
+	  		
+	  		//第一个请求的返回结果.
+	  		console.log(acct);
+	  		//第二个请求的返回结果.
+	  		console.log(perms);
+	 	}));
+		
+	</script>
+</html>

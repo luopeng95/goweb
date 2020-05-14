@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		//Promise的回调函数是同步的。
+		//then的回调函数是微任务
+		//定时器的回调函数是宏任务
+		
+		setTimeout(function(){
+			console.log(1);
+			new Promise(function(resolve,reject){
+				resolve()
+			}).then(function(){
+				//微任务
+				console.log(2);
+			})
+		},0)
+		
+		//同步
+		console.log(3);
+		
+		new Promise(function(resolve,reject){
+			resolve();
+			setTimeout(function(){
+				console.log(4);
+			},0)
+			console.log(5)
+		}).then(function(){
+			//微任务
+			console.log(6);
+			setTimeout(function(){
+				console.log(7);
+			},0)
+		})
+				
+	</script>
+</html>

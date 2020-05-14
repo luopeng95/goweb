@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id='app'>
+			<input type="text" id='text' />
+			<input type="button" id='btn' value='登录' />
+			<input type="button" id='out' value='退出' />
+		</div>
+		<ul id='content'></ul>
+	</body>
+	<script src="js/axios.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		
+		let oBtn = document.getElementById("btn");
+		let oText = document.getElementById("text");
+		let oUl = document.getElementById("content");
+		let oDel = document.getElementById("out");
+		
+		let token = localStorage.getItem('token');
+		
+		//如果登录成功过,直接显示数据。
+		if(token){
+			render(JSON.parse(localStorage.getItem('userData')));
+		}
+		
+		//退出逻辑
+		oDel.onclick = function(){
+			localStorage.removeItem('token');
+			//刷新页面
+			location.reload();
+		}
+		
+		//登录获取数据的逻辑
+		oBtn.onclick = function(){
+			axios({
+				method:'get',
+				url:'https://api.github.com/user/repos',
+				headers:{'Authorization':'token '+oText.value}
+			}).then(function(res){
+				//登录成功之后把token存入本地存储.
+				localStorage.setItem('token',oText.value);
+				localStorage.setItem('userData',JSON.stringify(res.data));
+				console.log(res.data);
+				
+				//根据请求的数据渲染ul
+				render(res.data)
+			})			
+		}
+		
+		function render(arr){
+			arr.forEach(function(item,i){
+				oUl.innerHTML += '<li>'+item.name+'</li>'
+			})
+		}
+		
+//		axios({
+//			method:'get',
+//			url:'https://api.github.com/user/repos',
+//			headers:{'Authorization':'token 74bc9fef3d1a8606f8ee1e3343aec5f931df14db'}
+//		}).then(function(res){
+//			console.log(res.data)
+//		})
+		
+	</script>
+</html>

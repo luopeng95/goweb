@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		
+	</body>
+	<script type="text/javascript">
+		
+		1:form表单请求数据
+			是同步请求,默认会发生页面的跳转.
+			url写在action,请求方式写在methods内.
+			参数写在input内,name是参数名,value是参数值.
+			如果有多个参数,需要使用hidden的input.
+			点击submit按钮发起请求.
+			
+		2:jq的ajax
+			封装的ajax工具,都会有全写和简写
+				$.ajax({选项1,选项2,选项3}) -> 全写
+				$.get(url,data,success,type) -> 简写
+				$.post(url,data).then(success)
+				
+				配置,config,settings -> {选项1,选项2,选项3}
+				config内的属性 -> 选项,参数,配置项		
+		3:跨域
+			源 -> origin
+				1:协议
+				2:域名(ip)
+				3:端口				
+			同源
+				源相同的url
+			
+			同源策略:
+				同源页面可以共享数据,请求数据.不同源页面不能共享数据和请求数据.(为了安全)
+				
+			跨域:
+				为了获取不同源页面的数据.
+				
+			如何解决跨域:
+				1:代理.
+				2:cors.header('Access-Control-Allow-Origin:特定的源')
+				3:jsonp(过时).
+					原理:通过src属性可以跨域访问文件的原理.
+					步骤:
+						a:前端需要封装一个使用跨域数据的渲染函数
+						b:把这个渲染函数的名字传递给后端.参数名叫callback
+					细节:
+						jsonp只能支持GET请求.
+		
+	</script>
+</html>

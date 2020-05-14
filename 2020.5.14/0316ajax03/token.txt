@@ -1,0 +1,16 @@
+请求：
+		
+	url：https://api.github.com/user/repos
+	
+	请求方式：GET
+	
+	参数：无
+
+响应：
+
+	类型：数组（每个元素表示一个项目）
+	
+	项目属性：
+		name ->  项目名
+
+	token的发送:在headers内设置Authorization:token 'token字符串'

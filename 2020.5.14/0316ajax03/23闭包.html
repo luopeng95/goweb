@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body onload='init()'>
+		<ul>
+			<li>1111</li>
+			<li>2222</li>
+			<li>3333</li>
+			<li>4444</li>
+			<li>5555</li>
+		</ul>
+	</body>
+	<script type="text/javascript">
+		
+		function init(){
+			let aLi = document.getElementsByTagName('li');
+			for(var i=0;i<aLi.length;i++){
+				aLi[i].onclick = function(){
+					console.log(i)
+				}
+			}
+		}
+		
+	</script>
+</html>

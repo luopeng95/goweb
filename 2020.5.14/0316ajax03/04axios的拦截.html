@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script src="js/jquery-1.11.1.js" charset="utf-8"></script>
+	<script src="js/axios.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		
+//		axios的拦截
+//			1:请求拦截. -> 请求发起之前做一些事情.
+//			2:响应拦截. -> 拿到数据之前做一些事情.
+		
+//		请求发起前,应该进行表单验证的判断,如果表单验证不合格,不能进行请求
+		
+//		let xhr = new XMLHttpRequest();
+
+//		通过xhr.readyState的值进行验证判断。
+//		xhr.onreadystatechange = function(){
+//			if(xhr.readyState == 1){
+//				//判断表单验证的问题
+//				xhr.send();
+//			}
+//		}
+		
+		axios({
+			url:'js/1.post.php',
+			method:'post',
+			data:'username=mimi&age=34',
+			
+			//局部的请求拦截
+			transformRequest: [function (data) {
+			   // 对 data 进行任意转换处理
+			   console.log(data);
+			   //如果数据没问题,就return 发送.
+			   //如果数据有问题,可以不return发送.
+			   return data;
+			}],
+			
+			//局部的响应拦截。
+			transformResponse: [function (data) {
+			    // 对 data 进行任意转换处理
+				console.log('响应拦截',data);
+				
+				//如果不return data，在then内是接收不到服务器响应结果的。
+			    return data;
+			}],
+						 
+			 
+		}).then(function(res){
+			console.log(res)
+		})
+		
+		
+	</script>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+
+//		1:确定是不是闭包题
+//		2:父函数调用了多少次.如果是1次,那答案都是一样的,如果多次,答案就是不一样的
+
+		function fn(){
+			let arr = [];		
+			for(var i=0;i<5;i++){
+				arr.push(function(){
+					console.log(i)
+				})
+			}
+			return arr
+		}
+		
+		let arr = fn();
+		
+		//循环调用这个数组内的所有函数。
+		for(let i=0;i<arr.length;i++){
+			arr[i]();//5 5 5 5 5
+		}
+
+//		---------------------------------------------------------------
+		
+//		let arr = [];
+//		
+//		for(var i=0;i<5;i++){
+//			fn(i);
+//		}
+//		
+//		for(var i=0;i<arr.length;i++){
+//			arr[i]();//0,1,2,3,4
+//		}
+//		
+//		function fn(i){
+//			arr.push(function(){
+//				console.log(i)
+//			})
+//		}
+		
+	</script>
+</html>

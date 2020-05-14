@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script src="js/axios.js"></script>
+	<script src="js/jquery-1.11.1.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		
+//		工作中,大概率请求数据是使用axios来进行的,它的写法和jq的ajax很像.
+		
+//		$.ajax({
+//			type:'get',
+//			url:'js/1.get.php',
+//			success:function(res){
+//				console.log(res)
+//			}
+//		})
+
+//		axios请求数据成功的回调需要写在then内。
+//		then的回调函数的形参就是axios的响应结构。
+//		catch就是请求失败的回调.
+//		axios的响应结构的data属性才是服务器返回的结果。
+
+//		axios({
+//			method:'get',
+//			url:'js/1.get.php'
+//		}).then(function(res){
+//			console.log(res.data)
+//		}).catch(function (error) {
+//		    console.log(error);
+//		})
+
+//		get请求的简写。
+//		axios.get('js/1.get.php').then(function(res){
+//			console.log(res.data)
+//		})
+
+//		第二个参数是get发送参数的写法.
+		axios.get('js/1.get.php',{params:{
+			username:'幂幂',
+			age:33
+		}}).then(function(res){
+			console.log(res.data)
+		})
+		
+	</script>
+</html>

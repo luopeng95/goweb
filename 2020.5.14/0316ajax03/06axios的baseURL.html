@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script src="js/axios.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		
+		//设置所有请求的baseURL
+		axios.defaults.baseURL = 'http://192.168.1.10:8080/0316ajax01/'
+		//设置content-type默认是表单格式。
+		axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
+		
+		axios({
+			method:'get',
+			url:'getNews.php',
+			params:{username:8888,age:77777}
+		}).then(function(res){
+			console.log(res.data)
+		})
+		
+		axios({
+			method:'get',
+			url:'getList.php',
+			params:{username:8888,age:77777}
+		}).then(function(res){
+			console.log(res.data)
+		})
+//		
+		axios({
+			method:'get',
+			url:'1.get.php',
+			params:{username:8888,age:77777}
+		}).then(function(res){
+			console.log(res.data)
+		})
+		
+	</script>
+</html>

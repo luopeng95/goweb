@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		//then默认返回当前的promise实例.
+		//也可以通过在then中显示的return 来指定返回某个Promise对象.
+		
+//		new Promise(function(success,error){
+//			success('随机数大于5');		
+//		}).then(function(val){
+//			console.log(val);
+//			return new Promise(function(success,error){
+//				success('随机数大于6');		
+//			})
+//		}).then(function(val){
+//			console.log(val)
+//		})
+		
+		//同一个Promise实例可以连续调用多个then。
+		//只有第一个then可以访问resolve的实参。		
+		new Promise(function(success,error){
+			success('随机数大于5');		
+		}).then(function(val){
+			console.log(val);
+		}).then(function(){
+			console.log(5555);
+		}).then(function(){
+			console.log(6666);
+		})
+
+		
+	</script>
+</html>

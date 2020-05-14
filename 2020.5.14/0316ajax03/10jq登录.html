@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			#login{
+				position: absolute;
+				width: 500px;
+				height: 200px;
+				border:1px solid #000;
+				box-shadow:0 0 10px #000;
+				left:50%;
+				top:50%;
+				margin-left:-250px;
+				margin-top:-100px;
+				box-sizing: border-box;
+				display: none;
+			}
+			[type='text']{
+				width:450px;
+				height:30px;
+			}
+			[type='button']{
+				width:150px;
+				height:30px;
+				background: limegreen;
+				border:none;
+				outline-style:none;
+				cursor:pointer
+			}
+			[type='button']:hover{
+				color:#fff;
+				background: lightgreen;
+			}
+			.item{
+				padding-top:20px;
+			}
+			li{
+				list-style: none;
+			}
+			.containar{
+				padding:20px;
+			}
+			.title>li{
+				text-align: center;
+				background: #f5f5f5;
+				border:1px solid #eeeeee;
+				line-height: 50px;
+				cursor: pointer;
+				margin:0 auto;
+			}
+			.title>li:hover{
+				background: #fafafa;
+			}
+			.childrenList>li{
+				line-height: 30px;
+			}
+			.childrenList{
+				padding-left:20px;
+				display: none;
+			}
+			#content{
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id='login' class='containar'>
+			<h3>请登录</h3>
+			<div class='formData'>
+				<div class='item'>
+					<input type='text' class='token' placeholder="token" value='' />
+				</div>
+				<div class='item'>
+					<input type='button' value='登录' />
+					<input type='button' value='关闭' />
+				</div>				
+			</div>			
+		</div>
+		<div id='content'>
+			<div class='containar'>
+				<h3><span></span>:您的项目</h3>
+				<div class='item'>
+					<input type="button" value="刷新" />
+					<input type="button" value="退出" />
+				</div>
+			</div>
+			<ul class='title containar'></ul>
+		</div>
+	</body>
+	<script src="js/jquery-1.11.1.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/axios.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+				
+		$(function(){
+			
+			//获取本地存储内的token。
+			let token = localStorage.getItem('token');
+			
+			//判断是否登录过。
+			isLogin(token);
+			
+			//axios全局配置			
+			axiosInit();
+			
+			//登录逻辑
+			$('[value="登录"]').on('click',function(){
+				
+				//获取文本框输入的token
+				token = $('.token').val();
+				
+				//请求个人账号数据
+				getUserInfo('users/DamnAmazing');
+				
+				//根据token请求个人项目数据
+				getData('user/repos').then(function(){
+					//把token存到本地存储。用于判断是否已经登录了
+					localStorage.setItem('token',token);
+					//隐藏登录窗
+					$('#login').hide();
+					//显示信息页
+					$('#content').show();
+				});
+			})
+									
+			//刷新逻辑
+			$('[value="刷新"]').on('click',function(){
+				//清空页面的列表数据.
+				$('.title').html('');
+				//根据token请求个人项目数据
+				getData('user/repos');
+				//请求个人数据.
+				getUserInfo('users/DamnAmazing');
+			})
+			
+			//退出逻辑
+			$('[value="退出"]').on('click',function(){
+				//删除本地存储的token
+				localStorage.removeItem('token');
+				//删除本地的页面缓存数据.
+				localStorage.removeItem('pageData');				
+				//刷新页面.
+				location.reload();
+			})
+			
+			//列表的ui滑入滑出交互.这里使用了jq的委托.只委托给.title的子元素li.
+			$('.title').on('click','>li',function(){
+				$(this).next().slideToggle().siblings('ul').slideUp();
+			})
+			
+			//请求项目数据封装.
+			//本例子有两个地方请求.登录时和刷新时.
+			//两次数据请求都需要存数据到本地存储和showData渲染视图.因此做了封装.或者放到全局响应拦截里.
+			function getData(url){
+				return axios.get(url).then((res)=>{					
+					//把页面数据存到本地存储。
+					localStorage.setItem('pageData',JSON.stringify(res.data));
+					//根据请求到的数据渲染信息页
+					console.log(res.data);
+					showData(res.data);
+				})
+			}
+			
+			//请求个人数据
+			function getUserInfo(url){
+				return axios.get(url).then((res)=>{					
+					$('#content').find('h3').find('span').text(res.data.login)
+				})
+			}
+			
+			//判断是否已经登录过
+			//如果已经登录过,则直接从本地存储获取数据.
+			//如果没有登录过,直接显示登录页.
+			function isLogin(token){				
+				//如果登录过。
+				if(token){
+					//从本地存储获取数据，而不是重新请求。
+					let data = JSON.parse(localStorage.getItem('pageData'));
+					console.log(data);
+					//渲染数据
+					showData(data);
+					//显示页面。
+					$('#content').show();
+				}else{
+					//没登录过就显示登录窗。
+					$('#login').show();
+				}
+			}
+			
+			//axios全局配置.
+			function axiosInit(){
+				
+				//全局的baseURL;
+				axios.defaults.baseURL = 'https://api.github.com/';
+			
+				//全局ajax拦截。封装相同的请求逻辑。
+				axios.interceptors.request.use(function (config) {
+					//如果本地存储有token,默认放入headers,这样每次请求时就不需要单独配置headers了
+				    if(token){
+						config.headers['Authorization'] ='token '+token;
+					}
+				    
+				    //必须记得return config,否则请求会被终止
+				    return config;
+			 	}, function (error){		  			  		
+				    // 对请求错误做些什么
+				    return Promise.reject(error);
+				});
+				
+				//响应拦截器。
+				axios.interceptors.response.use(function (response) {
+					//全局响应,统一做数据渲染.不过不推荐写在这里,因为渲染页面是同步的,会卡数据请求流程很久.
+					//showData(response.data);
+					
+			    	// 对响应数据做点什么
+			    	// 必须记得return 服务器响应的结果,否则then内拿不到res
+			    	return response;
+			    	
+				}, function (error) {
+					alert('出错了，token填对了么')
+				    // 对响应错误做点什么
+				    return Promise.reject(error);
+				});
+			}
+			
+			//渲染数据到页面
+			function showData(data){
+				//根据请求到的数据(这里是数组),数据条数表示项目个数.
+				//根据数据的长度插入相应个数的li.
+				console.log(data)
+				data.forEach(function(item,i){					
+					//创建li
+					let oLi = $(`<li>${item.name}</li>`);
+					//插入li
+					$('.title').append(oLi);
+					
+					//创建ul
+					let oUl = $(`<ul class='childrenList'></ul>`);
+					
+					//根据每个项目的数据,在oUl内再插入若干li
+					let arr = Object.entries(item);				
+					arr.forEach(function([key,val],j){
+						let oLi = $(`<li>${key} : ${val}</li>`);
+						oUl.append(oLi);
+					})
+					
+					//插入ul
+					$('.title').append(oUl);
+				})
+			}
+		})
+				
+	</script>
+</html>

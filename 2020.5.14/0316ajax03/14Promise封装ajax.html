@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id='app'>'hello AJAX'</div>
+	</body>
+	<script type="text/javascript">
+		
+		let oDiv = document.getElementById("app");
+		let msg = '';
+		
+		new Promise(function(success,error){
+			let xhr = new XMLHttpRequest();
+			xhr.open('GET','data.txt',true);
+			xhr.send();
+			xhr.onreadystatechange = function(){
+				if(xhr.readyState == 4){
+					if(xhr.status == 200){
+						//请求成功做的事情
+						success(xhr.responseText);
+					}else{
+						//请求失败做的事情
+						error(xhr.status);
+					}
+				}
+			}
+		}).then(function(res){
+			msg = res;
+			oDiv.innerText = msg;
+		}).catch(function(err){
+			alert('我是得不到的男人'+err);
+		})
+		
+		
+		
+	</script>
+</html>
