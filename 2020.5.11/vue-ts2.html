@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="button" value="增加li" @click="createLi">
+        <ul>
+            <li v-for="k in arr" v-on:click="deleteLi">
+                {{k}}
+            </li>
+        </ul>    
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                i:0,
+                arr:[]
+            },
+            methods: {
+                createLi(){
+                    this.arr.push(this.i++);
+                },
+                deleteLi(){
+                    this.arr.pop();
+                    --this.i;
+                },
+                
+            },
+        })
+    </script>
+</body>
+</html>

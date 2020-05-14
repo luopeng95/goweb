@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app" v-bind:class='{"box":b,"active":a}' @click="show(10,20)">
+        {{ message }}
+        {{ show }}
+        <div v-if="a>10">vvv</div>
+        <div v-else-if="flag2">iii</div>
+        <div v-else>ffff</div>
+        <div v-if="flag1">eeee</div>
+        <ul>
+            <li v-for="(d,key,i) in arr" v-if="i>1">
+                {{d}}{{key}}{{i}}
+            </li>
+        </ul>
+    </div>
+
+    <script src="../vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                message:("vue.js"),
+                str:"active aaa",
+                str1:"aaa",
+                a:1,
+                b:false,
+                flag1:false,
+                flag2:true,
+                arr:{name:"lp",age:25,sex:"nan"}
+            },
+            methods: {
+                show(a,b){
+                    alert(a+b);
+                }
+            },
+        })
+        let a = {message} = vm.$data;
+        console.log(a);
+        console.log({message});
+    </script>
+</body>
+</html>
