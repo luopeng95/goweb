@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		let x = 10;
+
+//		x = await 20 ->是先计算 await 20的值,再赋值给x,因此x的赋值发生在await之后,变成了异步.
+//		因此x的赋值落后于全局打印.因此全局打印10.
+
+		async function fn(){
+//			x = await 20;
+			let y = await 20;
+			x = y;
+			console.log('await',x);//20
+		}
+		fn();		
+		console.log('全局',x);//10
+
+//		-------------------------------------------------------------------
+//		这里await后面是一个同步的赋值,因此是x先变20,全局才打印,因此打印20
+//		await后面的打印变成了异步操作,因此落后于全局打印.
+
+		async function fn(){
+			await (x = 20);
+			console.log('await',x);//20
+		}
+		
+		fn();		
+		console.log('全局',x);//20
+		
+	</script>
+</html>

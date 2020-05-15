@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		//解构赋值 -> 更简单的赋值的写法.
+		// 1:用解构赋值声明新的变量并且赋值.
+		// 2:用解构赋值给已经存在的变量进行赋值.
+		
+		//例如交换两个变量的值.
+		// let x = 10;
+		// let y = 20;		
+		// [x,y] = [y,x];
+		
+		// let {abc} = 100;
+		
+		// 解构赋值 -> 按模式匹配.
+		// 1:数组解构 -> 按照位置来进行赋值. x被100赋值,y被200赋值
+			
+		//	let [x,y] = [100,200];
+		//	let [x,y] = [100,{name:200}];
+		//	let [x,y] = [100,[200]];
+			
+		// 2:对象解构赋值 -> 按照键名匹配赋值.
+			
+		//	let {y,x} = {x:10,y:20};
+		//	let {"y":y,"x":x} = {x:10,y:20};
+			
+		//	let {HashRouter,route} = {HashRouter:10,route:20};
+		//	let {HashRouter:x,route} = {HashRouter:10,route:20};
+			
+		//	console.log(x);//10
+		//	console.log(HashRouter);//报错。不存在这个变量
+		
+		//解构赋值怎么看得懂 -> 左边是什么,右边就是什么.
+		
+		//这时一个对象解构赋值,声明一个x 从100这个对象身上获取x属性的值.
+		//因为100的原型链上没有x这个属性,因此左边的x变量的值就是undefined.
+		//let {x} = 100;
+		
+		// 左边是数组,右边100不是数组,没办法进行解构赋值,因此这个写法就会报错.
+		// let [x] = 100;
+		
+		//	左边是数组,右边是字符串,可以当成数组处理.
+		//	这是一个数组解构赋值,按位置匹配,因此x的值是'1'
+		//  let [x] = '100';
+		
+		// 以下代码在干啥?
+		// let {prototype:{toString}} = Object;
+		
+		// let {prototype} = Object;
+		// let {toString} = prototype
+		
+		
+		
+	</script>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+//		async和await 是目前终极的异步编程解决方案.
+//		可以把异步操作写起来当同步操作书写。
+
+//		打印10，因为定时器是异步的。
+//		let x = 10;		
+//		setTimeout(function(){
+//			x += 20;
+//		},0)		
+//		console.log(x);
+
+//		打印10，因为Promise也是异步
+//		let x = 10;		
+//		new Promise(function(resolve,reject){
+//			setTimeout(function(){
+//				resolve();
+//			},0)
+//		}).then(function(){
+//			x += 20;
+//		})
+//		console.log(x);
+
+//		async 必须用在函数上。写在function前面。目的是告诉浏览器，函数内有可能有异步操作。
+//		await 必须用在async函数内。
+//		await后面应该接一个Promise对象，这样做了，则await后面的代码会自动等待这个Promise结束才触发。
+
+		async function fn(){
+			let x = 10;		
+			await new Promise(function(resolve,reject){
+				setTimeout(function(){
+					resolve();
+				},0)
+			}).then(function(){
+				x += 20
+			});
+			console.log(x);//30		
+		}
+		
+		fn();
+		
+		
+		
+	</script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		async function fn(){
+			await getData(500);
+			await getData(1500);
+			await getData(1000);
+		}
+		
+		fn();
+		
+//		getData(500).then(function(num){
+//			console.log(num);
+//			return getData(1500)
+//		}).then(function(num){
+//			console.log(num);
+//			return getData(2500)
+//		}).then(function(num){
+//			console.log(num);
+//		})
+//			
+		function getData(num){
+			return new Promise(function(resolve,reject){
+				setTimeout(function(){
+					resolve(num);
+				},num)
+			}).then(function(res){
+				console.log(res)
+			})
+		}
+		
+	</script>
+</html>

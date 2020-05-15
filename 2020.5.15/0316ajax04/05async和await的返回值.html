@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+//		async function fn(){
+//			return 100;
+//		}
+
+//		以上的async函数实际上类似下面这个函数。
+//		function fn(){
+//			return new Promise(function(resolve,reject){
+//				resolve(100)
+//			})
+//		}
+		
+		// async函数默认返回一个promise对象。
+//		let num = fn();
+		
+		//async函数return的值需要通过then接收。
+//		fn().then(function(res){
+//			console.log(res)
+//		})
+
+//		---------------------------------------------------------------------
+//		await后面接promise才有意义。但实际上，await后面可以接任意表达式。 await 表达式
+//		await表达式返回表达式的值。
+//		如果await后面的表达式是一个Promise对象，则await表达式的返回值是promise内部resolve的实参。
+
+//		async function fn(){
+//			let x = await 400;
+//			console.log(x);//400
+//		}
+		
+		async function fn(){
+			let x = await new Promise(function(resolve,reject){
+				//promise状态切换成resolved，并且这个状态的结果是200.
+				resolve(200)
+			});
+			console.log(x);//200
+		}
+		
+		fn();
+		
+		
+	</script>
+</html>

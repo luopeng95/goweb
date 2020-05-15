@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+//		let arr = [{name:100,age:32},{name:200,age:34},{name:300,age:35}];
+		
+//		arr.forEach(function(item,i){
+//			console.log(item.name);
+//			console.log(item.age);
+//		})
+
+//		形参的解构赋值。写得更少,而且可以一眼看出实参的类型.
+//		arr.forEach(function({name,age},i){
+//			console.log(name);
+//			console.log(age);
+//		})
+
+		let obj = {name:'幂幂',age:33};
+
+//		把对象转换成数组的三个方法.
+//		Object.keys(obj);//数组内的元素是对象的键名
+//		Object.values(obj);//数组内的元素是对象的键值.
+//		Object.entries(obj);//二维数组,每个二维数组内的元素是键名和键值.
+		
+//		Object.entries(obj).forEach(function(item,i){
+//			console.log(item[0]);
+//			console.log(item[1]);
+//		});
+		
+//		Object.entries(obj).forEach(function([key,val],i){
+//			console.log(key);
+//			console.log(val);
+//		});
+
+//		
+		ajax({
+			url:'hahaha',
+			method:'get',
+			success:function(){},
+			data:{
+				arr:[1,2,3]
+			}
+		})
+		
+		function ajax({url,method,success,"data":{"arr":[x,y,z]}}){
+			console.log(url);
+			console.log(method);
+			console.log(x,y,z);
+		}
+		
+	</script>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type='text' />
+	</body>
+	<script type="text/javascript">
+		
+		//脚本注入攻击. -> XSS攻击.
+		//前端的脚本就是js.前端就是js的注入攻击.
+		//带恶意的js是如何注入你的网页攻击你的?
+		
+		//let str = `<script>for(;;){console.log(10)}<\/script>`;		
+		//document.body.innerHTML = str;
+		
+		//注入攻击
+		//document.write(str);
+		
+		//eval也不安全,使用eval是,必须保证参数字符串是安全的.
+		//let str = 'alert(100)';
+		//eval(str);
+		
+		//如何检测一个字符串内有没有可能存在危险的脚本？
+		//	用正则表达式找出script标签以及标签内的内容,然后全部删除.
+		
+	</script>
+</html>
