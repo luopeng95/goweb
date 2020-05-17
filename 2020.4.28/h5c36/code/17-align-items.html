@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      /* flex-direction: row(默认)|column|row-reverse|column-reverse; 
+        row: 从左到右来排列项目
+        column: 从上到下来排列项目
+        row-reverse: 从右到左来排列项目
+        column-reverse: 从下到上来排列项目
+
+        主轴的排布方案
+        justify-content: flex-start|flex-end|center|space-around|space-between
+        flex-start 开始的位置进行项目的排布
+        flex-end 在结束的位置进行项目的排布
+        center 在容器的中心进行项目的排布
+        space-around 平分整个容器的空间
+        space-between 左右两个项目 一定顶边 平分整个容器的空间
+
+        flex-wrap 项目是否在容器中换行
+        
+        侧轴的排布方案
+        align-items 项目在侧轴方向的显示形式
+      */
+
+      div {
+        /* 将div设置一个弹性盒子容器 那么这三个span 就被认为是项目(item) 项目自动会不支持float(浮动) clear(清浮动) vertical-align(垂直布局) 同时 长得像block一样 反而可以支持 宽度和高度 */
+        display: flex;
+        margin: auto;
+        width: 800px;
+        height: 400px;
+        background-color: skyblue;
+        /*在侧轴的头部 放置项目 */
+        /* align-items: flex-start; */
+        /* 在侧轴的尾部 放置项目 */
+        /* align-items: flex-end; */
+        /* 在侧轴的中部 放置项目 */
+        /* align-items: center;
+        justify-content: center; */
+        /* stretch 拉伸 对应的侧轴 不要给像素 来定死他 你有多大我就给多大 */
+        /* align-items: stretch; */
+      }
+
+      /* 项目 核心属性 flex 这个盒子他要拿几分 数字越大的话 他就越大 */
+      span {
+        /* 不要为主轴设置宽高 */
+        width: 200px;
+        height: 100px;
+      }
+
+      span:nth-child(1) {
+        background-color: pink;
+      }
+
+      span:nth-child(2) {
+        background-color: orange;
+      }
+
+      span:nth-child(3) {
+        background-color: yellowgreen;
+      }
+
+      span:nth-child(4) {
+        background-color: yellow;
+      }
+
+      span:nth-child(5) {
+        background-color: darkblue;
+      }
+
+      span:nth-child(6) {
+        background-color: springgreen;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <span>1</span>
+      <span>2</span>
+      <span>3</span>
+      <span>4</span>
+      <span>5</span>
+      <span>6</span>
+    </div>
+  </body>
+
+</html>

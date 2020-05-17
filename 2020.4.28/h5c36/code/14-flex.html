@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      /* flex-direction: row(默认)|column|row-reverse|column-reverse; 
+        row: 从左到右来排列项目
+        column: 从上到下来排列项目
+        row-reverse: 从右到左来排列项目
+        column-reverse: 从下到上来排列项目
+      */
+
+      div {
+        /* 将div设置一个弹性盒子容器 那么这三个span 就被认为是项目(item) 项目自动会不支持float(浮动) clear(清浮动) vertical-align(垂直布局) 同时 长得像block一样 反而可以支持 宽度和高度 */
+        display: flex;
+        margin: auto;
+        width: 400px;
+        height: 300px;
+        background-color: skyblue;
+
+      }
+
+      /* 项目 核心属性 flex 这个盒子他要拿几分 数字越大的话 他就越大 */
+      span {
+        flex: 1;
+        height: 100px;
+      }
+
+      span:nth-child(1) {
+        background-color: pink;
+      }
+
+      span:nth-child(2) {
+        background-color: orange;
+      }
+
+      span:nth-child(3) {
+        background-color: yellowgreen;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </body>
+
+</html>

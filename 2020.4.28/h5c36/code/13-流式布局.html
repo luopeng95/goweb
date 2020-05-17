@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        /* 最小的手机 开发像素是 320px*/
+        min-width: 320px;
+        /* 最大的手机 开发像素 不会超过 980px */
+        /* 一般情况下 如果不需要扩充到整个页面 那么一般选择540px */
+        max-width: 540px;
+        margin: auto;
+      }
+
+      .item {
+        width: 50%;
+        float: left;
+        height: 400px;
+      }
+
+      .container div:nth-child(1) {
+        background-color: pink;
+      }
+
+      .container div:nth-child(2) {
+        background-color: skyblue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="item"></div>
+      <div class="item"></div>
+    </div>
+  </body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      ul {
+        display: flex;
+        width: 600px;
+        height: 400px;
+        background-color: black;
+      }
+
+      /* 第一个值 确定的是 该项目应该在容器中 分配多大的内容 不能负值 */
+      /* 第二个值 */
+      /* 第三个值 初始值大小 像素 百分比 */
+      /* li {
+        height: 100px;
+        flex: 1 2 150px;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-image: url("./img/1.png");
+      } */
+      img {
+        height: 100px;
+        /* 默认是150像素 容器总共分一份给我 */
+        flex: 1 150px;
+        background-repeat: no-repeat;
+      }
+    </style>
+  </head>
+
+  <body>
+    <ul>
+      <!-- <li style="background-color: pink;">1</li>
+      <li style="background-color: purple;">2</li>
+      <li style="background-color: orange;">3</li>
+      <li style="background-color: yellowgreen;">4</li>
+      <li style="background-color: skyblue;">5</li>
+      <li style="background-color: gray;">6</li> -->
+      <li style="background-color: pink;">
+        <img src="./img/1.png" alt="">
+      </li>
+      <li style="background-color: purple;">
+        <img src="./img/1.png" alt="">
+      </li>
+      <li style="background-color: orange;">
+        <img src="./img/1.png" alt="">
+      </li>
+      <li style="background-color: yellowgreen;">
+        <img src="./img/1.png" alt="">
+      </li>
+      <li style="background-color: skyblue;">
+        <img src="./img/1.png" alt="">
+      </li>
+      <li style="background-color: gray;">
+        <img src="./img/1.png" alt="">
+      </li>
+      <!-- <img src="./img/1.png" alt="">
+      <img src="./img/1.png" alt="">
+      <img src="./img/1.png" alt="">
+      <img src="./img/1.png" alt="">
+      <img src="./img/1.png" alt="">
+      <img src="./img/1.png" alt=""> -->
+    </ul>
+  </body>
+
+</html>

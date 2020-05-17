@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scaleable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      div {
+        width: 160px;
+        height: 300px;
+        background-color: pink;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- 在电脑中 毫无疑问 px 就是一个绝对单位 1像素 就是一个屏幕的物理像素点 dpr=1.0
+    但是在IP高版本的手机 已经变成 2.0 3.0的dpr了 所以展示的内容总会缩小一倍
+    开发时的375px等于实际的750px 开发时候的375 = 实际的物理像素值 / dpr
+    window.devicePixelRatio 可以获取到 屏幕的dpr值
+
+    autoprefixer 自动添加兼容样式
+    在CSS 按下F1键 autoprefixer
+
+    px2rem 可以将px 直接转换成 rem 16px
+    1rem = 16px rem em 的区别
+
+    normalize.css 样式初始化文件
+    把浏览器 好的样式 保留了下来 同时清除掉一些不好的样式 他认为标签本身就有差别 标签的语义化
+    reset.css 样式重置初始化文件
+    把浏览器默认自带一样样式 野蛮的清除掉 众生平等 div span h1 h6
+    -->
+    <div>手机网页</div>
+
+  </body>
+
+</html>

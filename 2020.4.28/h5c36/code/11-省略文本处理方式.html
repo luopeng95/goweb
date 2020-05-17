@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      p {
+        width: 300px;
+        line-height: 20px;
+        border: 1px solid black;
+        /* 文字不换行 */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      p:hover {
+        width: 300px;
+        white-space: normal;
+        overflow: visible;
+      }
+    </style>
+  </head>
+
+  <body>
+    <p>
+      我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字
+    </p>
+  </body>
+
+</html>
