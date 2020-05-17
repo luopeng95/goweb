@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		async function fn(){
+			//res1是请求1的结果，res2是请求2的结果。。。。。
+			let res1 = await getData({method:'get',url:'data1.txt'});
+			let res2 = await getData({method:'get',url:'data1.txt?num'+res1});
+			let res3 = await getData({method:'get',url:'data1.txt?num'+res2});
+			console.log(res3);
+		}
+		
+//		getData({method:'get',url:'data1.txt'})
+//		.then(function(res){
+//			console.log('第一次请求成功')
+//			return getData({method:'get',url:'data2.txt?num'+res})
+//		})
+//		.then(function(res){
+//			console.log('第一次请求成功')
+//			return getData({method:'get',url:'data3.txt?num'+res})
+//		})
+//		.then(function(){
+//			console.log('第三次请求成功')
+//		})
+		
+		function getData(config){
+			let {method,url} = config;
+			return new Promise(function(resolve,reject){
+				let xhr = new XMLHttpRequest();
+				xhr.open(method,url,true);
+				xhr.send();
+				xhr.onreadystatechange = function(){
+					if(xhr.readyState == 4){
+						if(xhr.status == 200){
+							resolve(xhr.responseText);
+						}
+					}
+				}
+			})
+		}
+		
+	</script>
+</html>

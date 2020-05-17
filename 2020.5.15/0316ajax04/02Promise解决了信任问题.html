@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+//		传统的异步变成都是通过回调函数,事件触发异步监听.
+//		监听逻辑都需要开发人员根据自己的需求编写.(异步操作的监听,都是第三方提供的).
+//		第三方的这些逻辑,可能在某些逻辑冲突的情况下出问题.(例如:异步成功的回调多次触发).
+//		
+//		Promise封装的每个异步操作,都有3个状态.
+//			resolve(成功了);
+//			reject(失败了);
+//			pending(等待中);
+		
+//		每个Promise实例的状态,一旦改变了,就不会再更改.(then只触发一次)
+		
+//		new Promise(function(resolve,reject){
+//			if(){
+//				//把当前的Promise切换成resolve状态
+//				resolve();
+//			}else{
+//				//把当前的Promise切换成reject状态
+//				reject();
+//			}
+//		})
+		
+		let x = 10;
+		
+		new Promise(function(resolve,reject){
+			resolve(10);
+			reject(20);
+		}).then(function(res){
+			x += res;
+		}).catch(function(err){
+			x += err;
+		})
+		
+		setTimeout(function(){
+			console.log(x);
+		},0)
+		
+	</script>
+</html>

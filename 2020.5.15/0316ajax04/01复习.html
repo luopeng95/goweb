@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		
+	</body>
+	<script type="text/javascript">
+		
+		1:axios.请求成功的回调是通过then触发.因为axios封装了promise.
+			拦截:
+				全局请求拦截,全局响应拦截.
+			全局配置:
+				baseURL:一般都是origin
+				
+		2:Promise是Es6一个语法.异步编程的解决方案.
+			解决了回调地狱的问题.
+			解决了信任的问题.
+			
+			//then默认返回当前的Promise实例。
+			//也可以指定返回别的Promise实例。
+			
+			//Promise的回调函数是同步触发.
+			//then的回调是异步触发,是微任务.
+			new Promise(fn).then(function(){
+				return 别的promise
+			}).catch(function(){
+				
+			});
+			
+			//参数都是回调函数。
+			function fn(resolve,reject){}
+			
+			//一般Promise的生成都放到一个函数内。
+			function getData(){
+				return new Promise(fn).then(function(){
+					return 别的promise
+				}).catch(function(){
+					
+				});
+			}
+			
+	</script>
+</html>

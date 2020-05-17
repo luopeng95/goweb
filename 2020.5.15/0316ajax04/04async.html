@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+//		await只能让promise等待，不能让其他异操作等待。
+//		所有的异步操作都应该用Promise书写，因此await只认为Promise是异步。(为了标准,为了统一)
+
+//		如果await后面接定时器，定时器后面的打印不会等待定时器结束。因为定时器不是promise。
+//		async function fn(){
+//			let x = 10;
+//			await setTimeout(function(){
+//				x += 20;
+//			},0)
+//			console.log(x);
+//		}
+//		
+//		fn();
+
+//		如果await后面接promise，则promise后面的打印会等待定时器结束。
+		async function fn(){
+			let x = 10;
+			await new Promise(function(resolve,reject){
+				setTimeout(function(){
+					resolve()
+				},0)
+			}).then(function(){
+				x += 20;
+			})
+			console.log(10);
+		}
+		
+		fn();
+		
+	</script>
+</html>

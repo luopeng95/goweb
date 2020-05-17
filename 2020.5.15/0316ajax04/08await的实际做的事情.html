@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		
+		//await实际上会把await后面的代码变成异步。(微任务)
+		
+		let x = 10;
+		
+		async function fn(){
+			
+			setTimeout(function(){
+				console.log('timeout',x);//30
+			},0)
+			
+			await new Promise(function(resolve,reject){
+				resolve();
+			}).then(function(){
+				x += 20;
+				//console.log('await',x);//30
+			})
+			
+			console.log('await',x);//30			
+		}
+		
+		fn();
+		
+		console.log('全局',x);//10
+		
+	</script>
+</html>
