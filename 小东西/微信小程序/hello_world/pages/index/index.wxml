@@ -1,0 +1,39 @@
+<view class="lp-nav">
+    <view class="lp-nav-items">拉取要求</view>
+    <view class="lp-nav-items">问题</view>
+    <view class="lp-nav-items">市场</view>
+    <view class="lp-nav-items">探索</view>
+</view>
+<view>
+    <text>名字：</text><text>{{ name }}</text>
+</view>
+<view>
+    <text>英文名：</text><text>{{ englishName }}</text>
+</view>
+<view>
+    <text>呢称：</text><text>{{ nickName }}</text>
+</view>
+<view>
+    <text>国籍：</text><text>{{ nationNality }}</text>
+</view>
+<view>
+    <text>民族：</text><text>{{ nation }}</text>
+</view>
+<view>
+    <text>星座：</text><text>{{ constellation }}</text>
+</view>
+<view>
+    <text>身高：</text><text>{{ height }}</text>
+</view>
+
+<view class="lp-nav">
+    <view class="lp-nav-items" wx:for="{{obj1}}" wx:key="index">{{ index }}:{{ item.text }}</view>
+</view>
+  
+ <view >九九乘法表</view> 
+ <block wx:for="{{arr1}}" wx:for-item="i">
+     <view wx:for="{{arr1}}" wx:if="{{j <= i}}" wx:for-item="j">
+         {{j}} * {{i}} = {{j*i}}
+     </view>
+       
+ </block>

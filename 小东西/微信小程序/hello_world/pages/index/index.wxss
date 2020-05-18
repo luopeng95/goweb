@@ -1,0 +1,12 @@
+.lp-nav {
+  display: flex;
+  height: 100rpx;
+  background-color: black;
+  color: white;
+  justify-content: center;
+  align-items: center;
+}
+.lp-nav .lp-nav-items {
+  flex: 1 1 0;
+  text-align: center;
+}
