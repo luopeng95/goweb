@@ -1,0 +1,10 @@
+<swiper class="lp-swiper" indicator-dots="true" indicator-color="rgba(0,0,0,.3)" autoplay="{{true}}" 
+    current="0" interval="3000" duration="1000" circular="{{true}}" vertical="{{false}}" 
+previous-margin="false" display-multiple-items="1" skip-hidden-item-layout="false" >
+    <swiper-item class="lp-swiper-item" wx:for="{{images}}" wx:key="swiper">
+        <image class="lp-swiper-image" src="{{item}}" mode="scaleToFill" />
+          
+    </swiper-item>
+      
+</swiper>
+  

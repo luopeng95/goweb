@@ -1,0 +1,6 @@
+<view class="lp-search">
+    <view class="lp-search-input" bindtap="ttt">
+        {{content}}
+    </view>
+</view>
+  

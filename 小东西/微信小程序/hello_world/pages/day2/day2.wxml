@@ -1,0 +1,11 @@
+<!-- pages/day2/day2.wxml -->
+<view class="nav">
+    <view class="nav-left">
+        WEB前端讲csdsgsdv。。。
+    </view>
+    <view class="nav-right">
+        <text class="iconfont icon-21"></text>
+        <text class="iconfont icon-anjianfengexian"></text>
+        <text class="iconfont icon-sousuo"></text>
+    </view>
+</view>

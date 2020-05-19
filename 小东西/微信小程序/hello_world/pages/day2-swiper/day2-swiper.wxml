@@ -1,0 +1,15 @@
+<swiper class="" indicator-dots="true" indicator-color="rgba(0,0,0,.3)" autoplay="true" 
+    current="0" current-item-id="" interval="2000" duration="1000" circular="true" 
+previous-margin="false" next-margin="0px" display-multiple-items="1" skip-hidden-item-layout="false">
+    <swiper-item class="item1" item-id="">
+        
+    </swiper-item>
+    <swiper-item class="item2" item-id="">
+        
+    </swiper-item>
+    <swiper-item class="item3" item-id="">
+        
+    </swiper-item>
+      
+</swiper>
+  

@@ -1,5 +1,9 @@
 {
   "pages":[
+    "pages/index2/index2",
+    "components/searchinput/searchinput",
+    "pages/day2-swiper/day2-swiper",
+    "pages/day2/day2",
     "pages/index/index",
     "pages/logs/logs"
   ],

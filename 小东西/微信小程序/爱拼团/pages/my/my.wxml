@@ -1,0 +1,27 @@
+<view id="container">
+    <view id="login">
+        <!-- 未登录的时候显示按钮 -->
+        <block wx:if="{{!userInfo}}" >
+            <button open-type="getUserInfo" type="warn" bindgetuserinfo="getUserInfo">立即登录</button>
+        </block>
+        
+        <!-- 当用户已经授权拿到信息后的展示 -->
+        <block wx:else>
+            <view class="login-success">
+                <image class="" src="{{userInfo.avatarUrl}}"/>
+                <text class="" selectable="false" space="false" decode="false">
+                    {{userInfo.nickName}}
+                </text>
+            </view>
+
+            <view class="mask" style="background-image: url({{userInfo.avatarUrl}});">
+                
+            </view>
+              
+              
+        </block>
+          
+    </view>
+      
+</view>
+  

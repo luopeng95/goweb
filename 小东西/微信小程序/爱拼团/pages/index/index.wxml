@@ -1,0 +1,11 @@
+    <lp-search content="{{content}}" />
+    <lp-swiper images="{{images}}" />
+    <view class="lp-nav">
+        <image class="lp-nav-content" wx:for="{{navs}}" src="{{item}}" wx:key="nav" />
+    </view>
+    <view class="lp-title">时尚服装</view>
+    <view class="shoping">
+        <image class="" wx:for="{{shoping}}" src="{{item}}" wx:key="shoping"/>
+          
+    </view>
+      

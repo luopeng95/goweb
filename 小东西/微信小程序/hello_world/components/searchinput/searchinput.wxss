@@ -1,0 +1,17 @@
+.lp-search {
+  height: 100rpx;
+  background-color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lp-search .lp-search-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  color: gray;
+  width: 90%;
+  height: 80rpx;
+  border-radius: 5px;
+}

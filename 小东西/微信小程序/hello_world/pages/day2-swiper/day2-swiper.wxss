@@ -1,0 +1,10 @@
+/* pages/day2-swiper/day2-swiper.wxss */
+.item1{
+    background-color: aqua;
+}
+.item2{
+    background-color: aquamarine;
+}
+.item3{
+    background-color: cadetblue;
+}
