@@ -1,0 +1,19 @@
+<view class="logout" bindtap="handleClick">
+    <view class="logout-click">
+        退出登录
+    </view>
+      
+</view>
+<view class="mask" wx:if="{{dis}}">
+    <navigator class="mask-sure" target="self" url="../../pages/my/my"  open-type="reLaunch" bindtap="handleSure">
+        确认
+    </navigator>
+    <view class="mask-cancel" bindtap="handleCancle">
+        取消
+    </view>
+</view>
+
+<view class="mask2" wx:if="{{dis}}">
+    
+</view>
+  

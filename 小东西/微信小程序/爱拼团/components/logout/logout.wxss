@@ -1,0 +1,50 @@
+.logout {
+  width: 100%;
+  height: 150rpx;
+  text-align: center;
+  color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logout .logout-click {
+  border: 1px solid black;
+  width: 100px;
+  height: 100rpx;
+  text-align: center;
+  line-height: 100rpx;
+}
+.mask {
+  width: 100%;
+  height: 250rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 0%;
+  z-index: 1000;
+  text-align: center;
+}
+.mask .mask-sure {
+  width: 50px;
+  height: 100rpx;
+  background-color: red;
+  line-height: 100rpx;
+}
+.mask .mask-cancel {
+  width: 50px;
+  height: 100rpx;
+  background-color: white;
+  line-height: 100rpx;
+}
+.mask2 {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: gray;
+  opacity: 0.5;
+  z-index: 200;
+}

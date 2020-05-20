@@ -6,6 +6,7 @@ Page({
    */
   data: {
     userInfo:"",
+    uu:"userInfo",
   },
   getUserInfo:function(e){
     // 拿到用户信息赋值并保存
@@ -13,6 +14,14 @@ Page({
     console.log(obj);
     this.setData({userInfo:obj});
     wx.setStorageSync("userInfo", obj);
+    // wx.switchTab({
+    //   url: '/pages/index/index',
+    //   success:function(){
+    //     console.log("跳转成功");
+    //   }
+    // });
+    // this.onShow();
+      
   },
   /**
    * 生命周期函数--监听页面加载
