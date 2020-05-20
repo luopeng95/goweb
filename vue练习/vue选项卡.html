@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue选项卡</title>
+    <style>
+        *{
+            padding: 0%;
+            margin: 0%;
+        }
+        .swiper{
+            width: 200px;
+            height: 300px;
+
+        }
+
+        /* .swiper>input{
+            width: 30px;
+            height: 30px;
+        } */
+        .content{
+            border: 1px solid black;
+            width: 100%;
+            height: 170px;
+            display: none;
+            text-align: center;
+            line-height: 170px;
+        }
+        .active{
+            background-color: red;
+        }
+        .aaa{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="swiper">
+            <input type="button" :value="e" v-for="e,i in arr1" :class="{active:i===index}" @click="fn(i)">
+            <div :class="{aaa:i===index,content:true}" v-for="e,i in arr1">
+                {{e}}
+            </div>
+        </div>
+    </div>
+
+    <script src="../vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el:".swiper",
+            data:{
+                arr1:["111","222","333"],
+                index:0,
+            },
+            methods: {
+                fn(i){
+                    this.index = i;
+                }
+            },
+        })
+    </script>
+</body>
+</html>

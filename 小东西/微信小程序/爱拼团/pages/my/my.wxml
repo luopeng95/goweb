@@ -23,5 +23,43 @@
           
     </view>
       
+    <view id="function">
+        <view class="fn-item">
+            <view class="iconfont icon-icon-test"></view>
+            <view class="ttt">
+                待收款
+            </view>
+              
+        </view>
+        <view class="fn-item">
+            <view class="iconfont icon-daishouhuo"></view>
+            <view class="ttt">
+                待收货
+            </view>
+              
+        </view>
+        <view class="fn-item">
+            <view class="iconfont icon-tuikuan"></view>
+            <view class="ttt">
+                退款/退货
+            </view>
+              
+        </view>
+        <view class="fn-item">
+            <view class="iconfont icon-quanbudingdan"></view>
+            <view class="ttt">
+                全部订单
+            </view>
+              
+        </view>
+          
+    </view>
+    
+    <view class="lp-look">
+        <view><text class="iconfont icon-lianxikefu"></text><text >联系客服</text> <text class="pos">400-618-4000</text></view>
+        <view><text class="iconfont icon-yijianfankui"></text><text >意见反馈</text></view>
+        <view><text class="iconfont icon-ziyuan"></text><text >当前版本</text><text class="pos">V4.1.1</text></view>
+    </view>
+      
 </view>
   

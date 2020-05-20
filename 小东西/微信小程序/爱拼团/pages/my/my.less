@@ -1,5 +1,6 @@
+@import "./iconfont.wxss";
 #container{
-    background-color: lightsalmon;
+    // background-color: lightsalmon;
     width: 100%;
 
     #login{
@@ -32,6 +33,57 @@
             background-repeat: no-repeat;
             background-size: 100% 100%;
             filter: blur(10px);
+        }
+    }
+
+    #function{
+        width: 100%;
+        height: 128rpx;
+        display: flex;
+
+        .fn-item{
+            padding-top: 10px;
+            flex: 1 1 0;
+            text-align: center;
+
+            .iconfont{
+                font-size: 25px;
+                height: 23px;
+            }
+            
+            .ttt{
+                margin-top: 5px;
+                font-size: 14px;
+            }
+        }
+
+    }
+
+    .lp-look{
+        width: 100%;
+        height: 126px;
+
+        display: flex;
+        flex-direction: column;
+
+        view{
+            flex: 1 1 0;
+            padding: 0 5px;
+            line-height: 42px;
+            border-bottom: 1px solid black;
+            position: relative;
+
+            .iconfont{
+                font-size: 50rpx;
+                margin-right: 10px;
+            }
+
+            .pos{
+                position: absolute;
+                right: 5px;
+                font-weight: initial;
+                color: gray;
+            }
         }
     }
 }
