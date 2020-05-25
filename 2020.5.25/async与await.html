@@ -16,21 +16,44 @@
         }
 
         async function asyncPrint(value, ms) {
-            await new Promise((resolve) => {
-                setTimeout(resolve, ms);
-            });
-            // await timeout(ms);
-            // await new Promise((resolve,reject)=>{
-            //     setTimeout(()=>{
-            //         resolve(999)
-            //     },0)
+            // let a =  await new Promise((resolve) => {
+            //     setTimeout(resolve, ms);
             // });
-            // console.log(value);
-            // console.log(b);
+            // await timeout(ms);
+            // await new Promise((resolve, reject) => {
+            //     setTimeout(() => {
+            //         console.log(1);
+            //         resolve(999);
+            //     }, 3000)
+            // });
+            // await new Promise((resolve, reject) => {
+            //     setTimeout(() => {
+            //         console.log(2);
+            //         resolve(999);
+            //     }, 3000)
+            // });
+            await 100;
+            console.log(value);
+            // console.log(a);
             return "试一下";
         }
 
-        console.log(asyncPrint('hello world', 5000));;
+        let resault = asyncPrint('hello world', 3000);
+        console.log(22222);
+        // setTimeout(()=>{
+        //     console.log(resault);
+        // },5000)
+        console.log(resault);
+
+        let a = new Promise((resolve,reject) => {
+            setTimeout(() => {
+                reject(123)
+            }, 1500);
+            setTimeout(() => {
+                resolve(123)
+            }, 2000);
+        });
+        console.log(a);
     </script>
 </body>
 
