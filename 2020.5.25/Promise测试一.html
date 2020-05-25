@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 写法、参数、返回值
+        new Promise(function(resolve,reject){resolve({"a":1,"b":2})}).then(function(data){
+            console.log("参数是对象",data);
+        });
+
+        // 参数为Promise实例
+        new Promise(function(resolve,reject){
+            resolve(
+                new Promise(function(resolve,reject){
+                    // resolve("内Promise状态是成功的")
+                    reject("内Promise状态是失败的")
+                })
+            )
+        }).then(function(res){
+            console.log("参数是Promise实例",res);
+        },function(msg){
+            console.log("参数是Promise实例",msg);
+        })
+    
+        // then的返回值
+        let p1 = new Promise(function(resolve,reject){
+            resolve("Promise成功");
+        }).then(function(res){
+            // console.log(res);
+            return "then的返回值是字符串"
+        })
+        console.log(p1);
+
+        // finally的返回值
+        let p2 = new Promise(function(resolve,reject){
+            reject("Promise成功");
+        }).catch((msg)=>{
+            throw "这是catch里面抛出的错误"
+        }).finally(function(){
+            console.log("执行了finally");
+        })
+        console.log(p2);
+    
+        // Promise.all()的返回值
+        let p3 = new Promise(function(resolve,reject){
+            resolve("我是成功的P3")
+        })
+        let p4 = new Promise(function(resolve,reject){
+            reject("我是失败的P4")
+        }).catch(function(msg){console.log(msg);})
+        // let pall = Promise.all([p3,p4])
+        // .catch((msg)=>{
+        //     console.log(msg);
+        // })
+
+        // let prace = Promise.race([p3,p4])
+
+        let allset = Promise.allSettled([p3,p4]).then(function(res){console.log(res);})
+        console.log(allset);
+
+        // Promise.reject()
+        let pj = Promise.resolve();
+        console.log(pj);
+
+    </script>
+</body>
+</html>
