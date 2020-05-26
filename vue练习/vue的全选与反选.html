@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" @click="show($event)">
+        <div v-for="(e,n,i) in flag" v-cloak><input type="radio" :checked="e" :myclass="n" class="alone">{{title[i]}}
+        </div>
+        <div><input type="radio" value="全选" :checked="selectAll">全选</div>
+    </div>
+</body>
+
+<script src="../vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: "#app",
+        data: {
+            flag: {
+                c1: false,
+                c2: false,
+                c3: false,
+                c4: false,
+            },
+            title: ["蓝莓", "榴莲", "山竹", "樱桃"],
+        },
+        methods: {
+            show(e) {
+                // console.log(e);
+                // console.log(e.target.attributes.mypro.value);
+                // console.log(e.target.getAttribute("myPro"));
+                if (e.target.className === "alone") {
+                    // console.log(1);
+                    let name = e.target.getAttribute("myclass")
+                    // console.log(name);
+                    this.flag[name] = !this.flag[name]
+                    // console.log(this.flag[name]);
+                    // console.log(this.selectAll);
+                }else{
+                    this.selectAll = !this.selectAll
+                    // console.log(222);
+                }
+            }
+        },
+        computed: {
+            selectAll: {
+                get() {
+                    // let flag = true;
+                    for (let n in this.flag) {
+                        if (this.flag[n] === false) {
+                            // flag = false;
+                            return false;
+                            break;
+                        }
+                    }
+                    return true;
+                },
+                set(flag) {
+                    // console.log(flag);
+                    if (flag === true) {
+                        for (let n in this.flag) {
+                            this.flag[n] = true;
+                            // console.log(this.flag[n]);
+                        }
+                    }else{
+                        for (let n in this.flag) {
+                            this.flag[n] = false;
+                        }
+                    }
+                }
+            }
+        },
+    })
+</script>
+
+</html>
