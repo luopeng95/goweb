@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script src="../vue.js"></script>
+    <script>
+        const myinput = {
+            data: function () { return {} },
+            props: ["value","zdy"],
+            template: `<input type="text" :value="value"  @click="myclick" v-on="list">`,
+            methods: {
+                myclick(){
+                    // this.zdy = "子组件 改变zdy看是否同步到父组件上"
+                    this.$emit('update:zdy', "子组件 改变zdy看是否同步到父组件上")
+                    console.log(this.zdy);
+                }
+            },
+            computed: {
+                list: {
+                    get: function () {
+                        let vm = this;
+                        console.log(this.$listeners);
+                        return Object.assign({}, this.$listeners, {
+                            input: function () {
+                                console.log(this);
+                                vm.$emit('input', event.target.value)
+                            }
+                        })
+                    }
+                }
+            },
+        }
+
+        const app = {
+            data: function () {
+                return {
+                    mymodel: "model",
+                    test:"这是测试消息",
+                    zdy:"父组件 zdy的sync",
+                }
+            },
+            template: `
+            <div id="app">
+                <myinput v-on:focus="onFocus" v-model="mymodel" v-bind:zdy.sync="zdy" />
+                <div>{{test}}</div>
+                <div>{{zdy}}</div>
+            </div>
+            `,
+            components: { myinput },
+            methods: {
+                onFocus(e) {
+                    console.log(e);
+                    this.ziding(10);
+                    console.log(this);
+                    this.test = "改变的是父组件中的值";
+                },
+                ziding(e){
+                    console.log(e);
+                }
+            },
+        }
+        let vm = new Vue({
+            el: "#app",
+            template: `<app />`,
+            components: { app },
+        })
+    </script>
+</body>
+
+</html>

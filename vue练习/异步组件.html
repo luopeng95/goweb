@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script src="../vue.js"></script>
+    <script>
+        Vue.component('async-example', function (resolve, reject) {
+            setTimeout(function () {
+                // 向 `resolve` 回调传递组件定义
+                resolve({
+                    template: '<div>{{msg}}</div>',
+                    data() {
+                        return {
+                            msg:"这是一秒钟之后加载的异步组件",
+                        }
+                    },
+                })
+            }, 1000)
+        })
+
+        const app = {
+            template:`
+                <div id="app">
+                    <async-example />
+                </div>
+            `,
+        }
+
+        let vm = new Vue({
+            el:"#app",
+            template:`<app />`,
+            components:{app}
+        })
+    </script>
+</body>
+
+</html>
