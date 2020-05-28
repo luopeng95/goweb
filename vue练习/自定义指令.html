@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-bbind:id="msg">
+        {{Math.random()}}
+    </div>
+
+    <script src="../vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                msg:"plmokn",
+            },
+            directives:{
+                "bbind":{
+                    bind(el,binding,vnode){
+                        el.setAttribute(binding.arg,binding.value)
+                        console.log(vnode);
+                    },
+                    update(el,binding) {
+                        // 把虚拟节点上的改变渲染到视图上。
+                        console.log(binding.value);
+                        el.setAttribute(binding.arg,binding.value)
+                    },
+                },
+            },
+        })
+    </script>
+</body>
+</html>

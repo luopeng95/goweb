@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app"></div>
+
+    <script src="../vue.js"></script>
+    <script>
+        let mi = {
+            created() {
+                this.hello();
+            },
+            methods: {
+                hello() {
+                    console.log("这个是mixin的hello")
+                },
+            },
+            // template:`<div id="app">这是混入对象的div<div>098</div></div>`,
+        }
+        let app = {
+            template: `
+                <div id="app">
+                    混入对象
+                </div>
+            `,
+            mixins: [mi],
+            created() {
+                this.hello();
+                console.log("app组件gouz");
+            },
+            methods: {
+                // hello(){
+                //     console.log("这是组件的hello")
+                // }
+            },
+        }
+
+        let vm = new Vue({
+            el: "#app",
+            template: `<app />`,
+            components: { app },
+        })
+    </script>
+</body>
+
+</html>
