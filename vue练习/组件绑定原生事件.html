@@ -14,13 +14,17 @@
     <script>
         const myinput = {
             data: function () { return {} },
-            props: ["value","zdy"],
+            props: ["value","zdy","str","arr","obj"],
             template: `<input type="text" :value="value"  @click="myclick" v-on="list">`,
             methods: {
                 myclick(){
                     // this.zdy = "子组件 改变zdy看是否同步到父组件上"
+                    console.log(this.$el);
                     this.$emit('update:zdy', "子组件 改变zdy看是否同步到父组件上")
                     console.log(this.zdy);
+                    this.arr[0] = "pl";
+                    this.obj['name'] = "qw";
+                    this.str = 1;
                 }
             },
             computed: {
@@ -45,13 +49,19 @@
                     mymodel: "model",
                     test:"这是测试消息",
                     zdy:"父组件 zdy的sync",
+                    arr:[1,2,3],
+                    obj:{name:"lp"},
+                    str:true,
                 }
             },
             template: `
             <div id="app">
-                <myinput v-on:focus="onFocus" v-model="mymodel" v-bind:zdy.sync="zdy" />
+                <myinput v-on:focus="onFocus" v-model="mymodel" v-bind:zdy.sync="zdy" :arr="arr" :str="str" :obj="obj"/>
                 <div>{{test}}</div>
                 <div>{{zdy}}</div>
+                <div>{{arr}}</div>
+                <div>{{obj}}</div>
+                <div>{{str}}</div>
             </div>
             `,
             components: { myinput },
