@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script src="../vue.js"></script>
+    <script>
+        let bus = new Vue();
+        const myinput = {
+            data: function () { return {} },
+            template: `<input type="text"  @click="myclick">`,
+            methods: {
+                myclick(){
+                    // this.zdy = "子组件 改变zdy看是否同步到父组件上"
+                    bus.$emit('myevent', "子组件bus触发事件")
+                }
+            },
+            computed: {
+                
+            },
+        }
+
+        const app = {
+            data: function () {
+                return {
+                }
+            },
+            template: `
+            <div id="app">
+                <myinput  />
+            </div>
+            `,
+            components: { myinput },
+            methods: {
+                
+            },
+            created() {
+                bus.$on("myevent",(msg)=>{
+                    console.log(arguments.length);
+                    console.log(msg);
+                    console.log("bus的监听事件");
+                })
+            },
+        }
+        let vm = new Vue({
+            el: "#app",
+            template: `<app />`,
+            components: { app },
+        })
+    </script>
+</body>
+
+</html>
