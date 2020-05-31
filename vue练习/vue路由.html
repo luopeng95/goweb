@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <router-link :to="{name:'home',params:'pikaqiu'}">首页</router-link>
+        <router-link to="/news">新闻</router-link>
+        <router-link to="/sport">运动</router-link>
+        <button @click="toSport" type="button">去运动</button>
+        <router-view name="Sport"></router-view>
+        <router-view ></router-view>
+        <!-- <router-view name="home"></router-view> -->
+    </div>
+
+    <script src="../vue.js"></script>
+    <script src="../vue-router.js"></script>
+    <script>
+        const Home = {
+            template:`
+                <div>
+                    Home
+                    <router-link to="/home/pikaqiu">皮卡丘</router-link>
+                    <router-view ></router-view>
+                </div>`,
+            name:"home",
+        }
+        const Sport = {
+            template:`<div>Sport</div>`,
+            name:"Sport",
+        }
+        const News = {
+            template:`<div>News</div>`,
+            name:"news",
+        }
+        const Pikaqiu = {
+            template:`<div>Pikaqiu</div>`,
+            name:"Pikaqiu",
+        }
+
+        let router = new VueRouter({
+           routes:[
+               {
+                   path:'/home',
+                   component:Home,
+                   children:[{
+                       path:"/home/pikaqiu",
+                       component:Pikaqiu,
+                       name:"pikaqiu"
+                   }],
+                   name:"home"
+               },{
+                   path:"/sport",
+                   components:{Sport},
+                   name:"sport"
+               },{
+                   path:"/:id",
+                   component:News
+               },
+               {
+                   path:"/",
+                   redirect:"/home"
+               }
+           ] ,
+        })
+
+        let vm = new Vue({
+            el:"#app",
+            router,
+            methods: {
+                toSport(){
+                    this.$router.push({name:'pikaqiu'})
+                }
+            },
+        })
+    </script>
+</body>
+</html>

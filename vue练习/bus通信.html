@@ -11,14 +11,36 @@
     <div id="app"></div>
 
     <script src="../vue.js"></script>
+    <script src="../vuex.js"></script>
     <script>
+        let store = new Vuex.Store({
+            state:{
+                msg:"this is vuex",
+            },
+            mutations:{
+                fn(){
+                    state.msg = Math.random();
+                },
+            },
+            actions:{
+                change(){
+                    setTimeout(()=>{
+                        store.dispatch("fn","参数")
+                    },1000)
+                }
+            },
+        })
+
         let bus = new Vue();
         const myinput = {
-            data: function () { return {} },
+            data: function () { return {
+                name:"lp"
+            } },
             template: `<input type="text"  @click="myclick">`,
             methods: {
                 myclick(){
                     // this.zdy = "子组件 改变zdy看是否同步到父组件上"
+                    console.log(this);
                     bus.$emit('myevent', "子组件bus触发事件")
                 }
             },
@@ -34,6 +56,7 @@
             },
             template: `
             <div id="app">
+                {{$store.state.msg}}
                 <myinput  />
             </div>
             `,
@@ -53,6 +76,7 @@
             el: "#app",
             template: `<app />`,
             components: { app },
+            store,
         })
     </script>
 </body>

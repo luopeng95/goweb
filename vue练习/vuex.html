@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <Box1 />
+    </div>
+    <script src="../vue.js"></script>
+    <script src="../vuex.js"></script>
+    <script>
+        let store = new Vuex.Store({
+            state:{
+                vx:"刚开始的vx数据"
+            },
+            mutations:{
+                change(state,par){
+                    if(par){
+                        state.vx = par;
+                    }else{
+                        state.vx = Math.random();
+                    }
+                }
+            },
+            actions:{
+                sync(par,bb){
+                    console.log(bb);
+                    setTimeout(()=>{
+                        par.commit("change",bb)
+                    },1000)
+                }
+            },
+            getters:{
+                gt(state){
+                    return state.vx + "this is getters";
+                }
+            }
+        })
+
+        const Box1 = {
+            template:`
+                <div>
+                    <input type="button" value="更新vuex的值" @click="boxClick"/>
+                    {{vx}}
+                    <div>{{gt}}</div>
+                </div>
+            `,
+            computed: {
+                vx(){
+                    return this.$store.state.vx;
+                },
+                gt(){
+                    return this.$store.getters.gt;
+                }
+            },
+            methods: {
+                boxClick(){
+                    this.$store.commit("change");
+                    this.syncClick();
+                },
+                syncClick(){
+                    this.$store.dispatch("sync","这是异步的更改");
+                }
+            },
+        }
+
+        let vm = new Vue({
+            el:"#app",
+            components:{Box1},
+            store,
+        })
+    </script>
+</body>
+</html>
