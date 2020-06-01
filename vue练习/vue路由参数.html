@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <router-link :to="{name:'home',params:{id:'home',aa:1}}">首页</router-link>
+        <router-link :to="{name:'home',params:{id:'news',aa:1}}">新闻</router-link>
+        <router-link :to="{name:'home',params:{id:'sport',aa:1}}">运动</router-link>
+        <router-view :da="da"></router-view>
+        <!-- <router-view name="home"></router-view> -->
+    </div>
+
+    <script src="../vue.js"></script>
+    <script src="../vue-router.js"></script>
+    <script>
+        const Home = {
+            template: `
+                <div>
+                    {{$route.params.id}}
+                    {{aa}}
+                </div>`,
+            props: ["da", "aa"],
+            watch: {
+                $route: {
+                    // immediate: true,
+                    handler(to, from) {
+                        console.log(to);
+                        console.log(from);
+                        console.log(this.$route.params.id);
+                    }
+                }
+            },
+        }
+
+        let router = new VueRouter({
+            routes: [
+                {
+                    path: '/:id',
+                    component: Home,
+                    name: "home",
+                    props: true,
+                },
+                {
+                    path: "/",
+                    redirect: "/home"
+                }
+            ],
+        })
+
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                da: {
+                    home: { title: "首页" },
+                    news: { title: "新闻" },
+                    sport: { title: "运动" },
+                },
+            },
+            router,
+        })
+
+        router.beforeEach((to, from, next) => {
+            // ...
+        })
+        router.beforResolve((to, from, next) => {
+
+        })
+        router.afterEach((to, from) => {
+            // ...
+        })
+        const router = new VueRouter({
+            routes: [
+                {
+                    path: '/foo',
+                    component: Foo,
+                    beforeEnter: (to, from, next) => {
+                        // ...
+                    }
+                }
+            ]
+        })
+        const Foo = {
+            template: `...`,
+            beforeRouteEnter(to, from, next) {
+                // 在渲染该组件的对应路由被 confirm 前调用
+                // 不！能！获取组件实例 `this`
+                // 因为当守卫执行前，组件实例还没被创建
+            },
+            beforeRouteUpdate(to, from, next) {
+                // 在当前路由改变，但是该组件被复用时调用
+                // 举例来说，对于一个带有动态参数的路径 /foo/:id，在 /foo/1 和 /foo/2 之间跳转的时候，
+                // 由于会渲染同样的 Foo 组件，因此组件实例会被复用。而这个钩子就会在这个情况下被调用。
+                // 可以访问组件实例 `this`
+            },
+            beforeRouteLeave(to, from, next) {
+                // 导航离开该组件的对应路由时调用
+                // 可以访问组件实例 `this`
+            }
+        }
+        
+    </script>
+</body>
+
+</html>
