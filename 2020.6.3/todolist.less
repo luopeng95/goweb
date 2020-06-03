@@ -1,0 +1,182 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    background-color: #f5f5f5;
+}
+#container{
+    width: 100%;
+
+    #title{
+        width: 100%;
+        height: 200px;
+        text-align: center;
+        font-size: 80px;
+        color: #e9d7d7;
+        font-weight: 100;
+        line-height: 200px;
+    }
+
+    #app{
+        width: 550px;
+        margin: 0 auto;
+        background-color: white;
+        
+        #to-input{
+            width: 550px;
+            height: 80px;
+            // text-align: center;
+            display: flex;
+            margin: 0 auto;
+            border-top: 1px solid #f6f6f6;
+            border-bottom: 1px solid #f6f6f6;
+            padding: 5px 0px;
+            position: relative;
+    
+            >input{
+                // background-color: aquamarine;
+                width: 500px;
+                height: 70px;
+                font-size: 30px;
+                outline: none;
+                border: none;
+            }
+    
+            >.selall{
+                // background-color: brown;
+                width: 50px;
+                height: 80px;
+                line-height: 80px;
+                text-align: center;
+                color: gray;
+                font-size: 24px;
+            }
+            >.think{
+                background-color: yellowgreen;
+                width: 100%;
+                // height: 100px;
+                position: absolute;
+                top: 80px;
+                left: 0px;
+                z-index: 1000;
+
+                >li{
+                    list-style: none;
+                    width: 100%;
+                    height: 30px;
+                    font-size: 16px;
+                    line-height: 30px;
+                    padding-left: 20px;
+                    border-bottom: 1px solid gray;
+                }
+            }
+        }
+        
+        .display{
+            // background-color: cadetblue;
+            display: none;
+            position: relative;
+            width: 100%;
+            height: 60px;
+            // display: flex;
+            align-items: center;
+            border-bottom: 1px solid #f6f6f6;
+
+            >.dis-radio{
+                // background-color: chartreuse;
+                width: 50px;
+                text-align: center;
+                height: 100%;
+                line-height: 60px;
+
+                >input{
+                    transform: scale(2);
+                    outline: none;
+                    opacity: .5;
+                    outline: none;
+                    border-radius: 50%;
+                }
+            }
+
+            >.dis-content{
+                width: 1 1 0;
+                font-size: 24px;
+            }
+
+            >.lp-dis-del{
+                width: 20px;
+                height: 20px;
+                text-align: center;
+                line-height: 20px;
+                font-size: 18px;
+                color: gray;
+                position: absolute;
+                right: 0;
+                top: calc(50%-10px);
+                display: none;
+            }
+
+            >.lp-dis-del:hover{
+                color: red;
+            }
+        }
+        .look{
+            display: flex;
+        }
+        .display:hover{
+            background-color: greenyellow;
+            >.lp-dis-del{
+                display: block;
+            }
+        }
+
+        .lp-function{
+            width: 100%;
+            height: 40px;
+            display: flex;
+
+            >div{
+                flex: 1 1 0;
+                line-height: 40px;
+
+                >.delCompleted{
+                    text-align: right;
+                    font-size: 12px;
+                    color: #bcb8b8;
+                }
+                >.delCompleted:hover{
+                    text-decoration: underline;
+                }
+            }
+            >.lp-fu-num{
+                font-size: 14px;
+                padding-left: 15px;
+            }
+            >.lp-fn-but{
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                >button{
+                    font-size: 12px;
+                    width: 30px;
+                    height: 20px;
+                    border: none;
+                    background-color: white;
+                    
+
+                    >a{
+                        text-decoration: none;
+                        color: #b8b8b8;
+                    }
+                }
+                >.selbut{
+                    border: 1px solid #eed4d5;
+                }
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            {{msg}}
+        </div>
+        <div>
+            132124
+        </div>
+    </div>
+    <script src="../vue.js"></script>
+    <script src="../axios.js"></script>
+    <script>
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                msg: "一开始的数据",
+            }
+        })
+        // setTimeout(()=>{
+        //     // console.log(111);
+        //     // console.log(vm.$data);
+        //     // vm.$destroy();
+        //     vm.$data.msg = "kjfjjb"
+        // },5000)
+   // `responseType` 表示服务器响应的数据类型，可以是 'arraybuffer', 'blob', 'document', 'json', 'text', 'stream'
+
+        axios({ url: "test.json", method: "post",data:{name:"lp",sex:{pl:"lp"}}})
+    </script>
+</body>
+
+</html>
