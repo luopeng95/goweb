@@ -36,7 +36,7 @@
             <div class="content">
                 <div class="display" v-for="v,i in lists" v-bind:class="condition | hid(v)">
                     <div class="dis-radio"><input type="radio" :checked="!v['active']" @click="changeIpt($event,i)"></div>
-                    <div class="dis-content">{{v['content']}}</div>
+                    <div class="dis-content" :class="{del:!v['active']}">{{v['content']}}</div>
                     <div class="lp-dis-del" @click="delIpt($event,i)">x</div>
                 </div>
             </div>
@@ -79,8 +79,8 @@
                     },
                     update:function(el,binding){
                         // console.log(this);
+                        console.log();
                         if(el.value){
-                            // console.log(el);
                             el.focus();
                         }
                     }
@@ -112,7 +112,6 @@
                     return count;
                 },
                 completed(){
-                    // console.log(this.lists,this.length);
                     return this.lists.length - this.length;
                 },
                 thinkWord(){

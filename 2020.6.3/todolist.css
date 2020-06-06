@@ -89,6 +89,10 @@ html {
   width: 1 1 0;
   font-size: 24px;
 }
+#container #app .display > .del {
+  color: gray;
+  text-decoration-line: line-through;
+}
 #container #app .display > .lp-dis-del {
   width: 20px;
   height: 20px;

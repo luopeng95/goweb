@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./todolist.css">
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <!-- 标题区 不放在视图里面 -->
+        <div id="title">
+            代办事项
+        </div>
+        <!-- 视图区 -->
+        <div id="app"></div>
+    </div>
+    <script src="../vue.js"></script>
+    <script src="./components/app.js"></script>
+    <script>
+        let vm = new Vue({
+            el: "#app",
+            template:`<App></App>`,
+            components:{App},
+        })
+
+        
+    </script>
+</body>
+
+</html>
