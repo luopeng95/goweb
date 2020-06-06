@@ -1,4 +1,6 @@
 let fs = require("fs");
+let url = require("url");
+
 
 fs.readFile("./test.txt","utf-8",function(err,data){
     if(err){

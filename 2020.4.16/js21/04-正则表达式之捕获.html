@@ -11,7 +11,7 @@
   <body>
     <script>
       let str = "abc ABC abc"
-      let reg = /(a)b(c)/gi
+      let reg = /(a)b(c)/g
       let reg2 = /z/
 
       //g: global 全局的
@@ -24,7 +24,7 @@
       // console.log(reg.exec(str).index) //我捕获到了一个元素 他的下标是xxx
       // console.log(reg.exec(str).input) //我的原始字符串
       // console.log(reg2.exec(str))
-      console.log(reg.exec(str)) //0
+      console.log(reg.exec(str).groups) //0
       console.log(reg.exec(str)) //4
       console.log(reg.exec(str)) //8
       console.log(reg.exec(str)) //null
