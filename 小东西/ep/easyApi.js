@@ -1,6 +1,7 @@
 let express = require("express");
 let url = require("url");
 let qs = require("querystring");
+let router = require("./router")
 // 实例化一个express
 let app = express();
 
@@ -22,6 +23,9 @@ app.get("/user/login",(req,res)=>{
         res.send({code:200,msg:"登陆成功",name:"else"})
     }
 })
+
+// 路由api
+app.use("/test",router);
 
 // 跨域
 app.all("*",function(req,res,next){
