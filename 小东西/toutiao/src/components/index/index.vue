@@ -31,7 +31,7 @@
             <div>
                 登录后可以保存您的浏览喜好、评论、收藏，并与APP同步，更可以发布微头条
             </div>
-            <div>
+            <div @click="toSign">
                 登录
             </div>
           </div>
@@ -58,7 +58,12 @@ export default {
       },
       set() {}
     }
-  }
+  },
+  methods: {
+    toSign(){
+      this.$router.push({name:"login",params:{type:"login",typetitle:"账密登录"}});
+    }
+  },
 };
 </script>
 
@@ -167,6 +172,7 @@ export default {
     border-radius: 6px;
     color: white;
     font-size: 16px;
+    cursor: pointer;
 }
 /* 右边结束 */
 /* 内容区结束 */
