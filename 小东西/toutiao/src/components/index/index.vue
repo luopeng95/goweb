@@ -14,7 +14,9 @@
       <!-- 左边导航结束 -->
 
       <!-- 中间内容开始 -->
-      <div class="lp-content-mid">2</div>
+      <div class="lp-content-mid">
+        <Ipt></Ipt>
+      </div>
       <!-- 中间内容结束 -->
 
       <!-- 右边内容开始 -->
@@ -25,7 +27,19 @@
         </div>
         <div class="lp-logInfo">
           <div v-if="isLogin" class="lp-logInfo-login">
-            已登录
+            <div class="lp-logInfo-login-logout"><span @click="logout">退出登录</span></div>
+            <div class="lp-logInfo-login-avator"><img :src="avator"></div>
+            <div class="lp-logInfo-login-nickname">{{nickname}}</div>
+            <div class="lp-logInfo-login-count">
+              <div>
+                <span class="count">{{tt_count}}</span>
+                <span class="title">头条数</span>
+              </div>
+              <div>
+                <span class="count">{{article_count}}</span>
+                <span class="title">文章数</span>
+              </div>
+            </div>
           </div>
           <div v-else class="lp-logInfo-logout">
             <div>
@@ -45,11 +59,13 @@
 
 <script>
 import navs from "@/components/navs/nav";
+import Ipt from "@/components/contents/input.vue";
 
 export default {
   name: "App",
   components: {
-    navs
+    navs,
+    Ipt,
   },
   computed: {
     isLogin: {
@@ -57,12 +73,50 @@ export default {
         return this.$store.state.islogin;
       },
       set() {}
-    }
+    },
+    avator:{
+      get() {
+        return this.$store.state.avator;
+      },
+      set() {}
+    },
+    nickname:{
+      get() {
+        return this.$store.state.nickname;
+      },
+      set() {}
+    },
+    tt_count:{
+      get() {
+        return this.$store.state.tt_count;
+      },
+      set() {}
+    },
+    article_count:{
+      get() {
+        return this.$store.state.article_count;
+      },
+      set() {}
+    },
   },
   methods: {
     toSign(){
       this.$router.push({name:"login",params:{type:"login",typetitle:"账密登录"}});
-    }
+    },
+    logout(){
+      // 退出登录，删除本地缓存里面的数据并修改vuex里面的islogin
+      // 删除vuex里面的相关数据
+      let wdata = JSON.parse(localStorage.getItem("userInfo"));
+      this.$store.commit('changIsLogin',false);
+      this.$store.commit('delAtr',wdata);
+      localStorage.setItem("userInfo","");
+      console.log(this.$store.state);
+      // console.log(this.isLogin);
+    },
+    test(){
+      this.$store.commit('addAtr',{nickname:"test"});
+      console.log(this.$store.state);
+    },
   },
 };
 </script>
@@ -97,23 +151,23 @@ export default {
 
 /* 内容区开始 */
 #lp-content {
-  background-color: darkseagreen;
+  /* background-color: darkseagreen; */
   width: 100%;
-  margin: 0 auto;
+  margin: 20px auto;
   display: flex;
   max-width: 1200px;
 }
 
 /* 中间区域开始 */
 .lp-content-mid {
-  background-color: darkturquoise;
+  /* background-color: darkturquoise; */
   flex: 1 1 0;
 }
 /* 中间区域结束 */
 
 /* 右边开始 */
 .lp-content-right {
-  background-color: hotpink;
+  /* background-color: hotpink; */
   flex: 0 0 300px;
 }
 
@@ -173,6 +227,55 @@ export default {
     color: white;
     font-size: 16px;
     cursor: pointer;
+}
+.lp-logInfo-login-logout{
+  height: 26px;
+  text-align: right;
+  color: #b9b9b9;
+  line-height: 26px;
+}
+.lp-logInfo-login-logout>span:hover{
+  color: #5099d9;
+  cursor: pointer;
+}
+.lp-logInfo-login-avator{
+ text-align: center;
+}
+.lp-logInfo-login-avator>img{
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+ 
+}
+.lp-logInfo-login-nickname{
+  height: 26px;
+  text-align: center;
+  font-size: 16px;
+  color: #222222;
+  line-height: 26px;
+  font-family: 'avenir';
+  font-weight: 100;
+}
+.lp-logInfo-login-count{
+  height: 50px;
+  display: flex;
+}
+.lp-logInfo-login-count>div{
+  flex: 1 1 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.lp-logInfo-login-count>div>span{
+  flex: 1 1 0;
+}
+.count{
+  font-size: 20px;
+
+}
+.title{
+  font-size: 14px;
 }
 /* 右边结束 */
 /* 内容区结束 */
