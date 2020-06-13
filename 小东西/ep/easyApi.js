@@ -2,6 +2,7 @@ let express = require("express");
 let url = require("url");
 let qs = require("querystring");
 let router = require("./router")
+let bodyParser = require("body-parser");
 // 实例化一个express
 let app = express();
 
@@ -24,6 +25,8 @@ app.get("/user/login",(req,res)=>{
     }
 })
 
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({extended:false}));
 // 路由api
 app.use("/test",router);
 
