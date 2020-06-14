@@ -11,7 +11,6 @@
             </div>
         </div>
         <div class="lp-content-mid-news-Img" v-else>
-            <!-- {{v}} -->
             <img :src="v.img">
             <div>
                 <span>{{v.title}}</span>
