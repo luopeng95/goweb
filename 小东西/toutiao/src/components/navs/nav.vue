@@ -2,7 +2,7 @@
 <template>
   <div class='lp-toutiao-nav'>
       <h4>泽林头条</h4>
-      <li v-for="v,i in lists" :class="{active:i === active}" @click="cliNav($event,i)">
+      <li v-for="v,i in lists" :class="{active:i === active}" @click="cliNav($event,i)" :key="i">
           {{v}}
       </li>
   </div>
@@ -52,7 +52,7 @@ export default {
         margin-left: 100px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        /* justify-content: center; */
         align-items: center;
     }
     h4{
@@ -62,6 +62,7 @@ export default {
         margin-bottom: 20px;
     }
     li {
+        margin: 10px 0;
         font-size: 14px;
         height: 30px;
         line-height: 30px;

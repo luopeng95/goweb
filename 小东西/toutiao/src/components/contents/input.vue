@@ -1,13 +1,36 @@
 <!--  -->
 <template>
-  <div class='lp-content-mid-input'>
-      <div class="lp-content-mid-input-tab">
-          <div :class="{active:active==='tt'}">发微头条</div>
-          <div :class="{active:active==='arcticle'}">写文章</div>
+  <div class="lp-content-mid-input">
+    <div class="lp-content-mid-input-tab">
+      <div :class="{active:active==='tt'}" @click="function(){active='tt'}">发微头条</div>
+      <div :class="{active:active==='arcticle'}"  @click="function(){active='arcticle'}">写文章</div>
+    </div>
+    <div class="lp-content-mid-input-tt" v-if="active==='tt'">
+      <div class="lp-content-mid-input-tt-text">
+        <textarea autocomplete="off" placeholder="有啥新鲜事呀" maxlength="2000" v-model="text"></textarea>
+        <div class="lp-content-mid-input-tt-num">{{text.length}}/2000</div>
       </div>
-      <div class="lp-content-mid-input-tt">
-          <textarea autocomplete="off" placeholder="有啥新鲜事呀" maxlength="2000"></textarea>
+      <div class="lp-content-mid-input-tt-fun">
+          <span @click="function(){disImg = !disImg}">图片</span>
+          <span>发布</span>
+          <div class="lp-content-mid-input-tt-fun-img" v-show="disImg">
+              <div>
+                  <input type="file" @change="uploadimg" multiple>
+                  +
+              </div>
+              <div v-for="v,i in imglists">
+                <img :src="v">
+              </div>
+          </div>
       </div>
+    </div>
+    <div v-else class="lp-content-mid-input-arcticle">
+        <input type="text" maxlength="30">
+        <vue-editor v-model="editor" class="rich-editor"></vue-editor>
+        <div class="lp-release">
+            <div>发布</div>
+        </div>
+    </div>
   </div>
 </template>
 
@@ -15,13 +38,18 @@
 //这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 //例如：import 《组件名称》 from '《组件路径》';
 
+import { VueEditor } from "vue2-editor";
 export default {
   //import引入的组件需要注入到对象中才能使用
-  components: {},
+  components: {VueEditor},
   data() {
     //这里存放数据
     return {
-        active:"tt",
+      active: "tt",
+      text:"",
+      imglists:[],
+      disImg:false,
+      editor:"",
     };
   },
   //监听属性 类似于data概念
@@ -29,7 +57,17 @@ export default {
   //监控data中的数据变化
   watch: {},
   //方法集合
-  methods: {},
+  methods: {
+      uploadimg(e){
+          Array.from(e.target.files).forEach((e)=>{
+            let params = new FormData();
+            params.append("file", e);
+            this.$axios.post("/aliossUpload", params).then(res => {
+            this.imglists.push(res.data.url);
+        });
+          })
+      }
+  },
   //生命周期 - 创建完成（可以访问当前this实例）
   created() {},
   //生命周期 - 挂载完成（可以访问DOM元素）
@@ -44,43 +82,155 @@ export default {
 };
 </script>
 <style  scoped lang="less">
-    .lp-content-mid-input{
-        background-color: white;
-        width: 390px;
-        // height: 220px;
-        border: 1px solid #e4e4ed;
+*{
+    box-sizing: border-box;
+}
+.lp-content-mid-input {
+  background-color: white;
+  width: 80%;
+  // height: 220px;
+  border: 1px solid #e4e4ed;
 
-        .lp-content-mid-input-tab{
-            display: flex;
-            height: 40px;
-            line-height: 40px;
-            border-bottom: 1px solid #e4e7ed;
+  .lp-content-mid-input-tab {
+    display: flex;
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #e4e7ed;
+
+    > div {
+      margin-left: 30px;
+      font-size: 16px;
+      color: #5599fc;
+      cursor: pointer;
+    }
+
+    .active {
+      border-bottom: 2px solid #e73645;
+    }
+  }
+
+  .lp-content-mid-input-tt {
+    width: 100%;
+
+    position: relative;
+    // background-color: turquoise;
+    textarea {
+      min-height: 152px;
+      width: 100%;
+      background-color: #f4f5f6;
+      border: none;
+      box-sizing: border-box;
+      padding: 12px 15px;
+    }
+
+    .lp-content-mid-input-tt-text{
+        position: relative;
+    }
+    .lp-content-mid-input-tt-num {
+      position: absolute;
+      bottom: 4px;
+      right: 20px;
+      font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
+      color: #757575;
+    }
+
+    .lp-content-mid-input-tt-fun{
+        position: relative;
+        width: 100%;
+        height: 50px;
+        line-height: 50px;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 15px;
+        box-sizing: border-box;
+        font-size: 14px;
+        align-items: center;
+
+        >span:nth-child(2){
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            background-color: #ea4245;
+            text-align: center;
+            color: white;
+            border-radius: 4px;
+        }
+
+        .lp-content-mid-input-tt-fun-img{
+            position: absolute;
+            top: 50px;
+            left: 0px;
+            display: grid;
+            width: 310px;
+            grid-template-columns: repeat(3,33.3%);
+            border: 1px solid gray;
+            grid-gap: 2px;
+            padding: 2px;
+            box-sizing: border-box;
+            padding-right: 5px;
+
 
             >div{
-                margin-left: 30px;
-                font-size: 16px;
-                color: #5599fc;
-                cursor: pointer;
-            }
-
-            .active{
-                border-bottom: 2px solid #e73645;
-            }
-
-        }
-
-        .lp-content-mid-input-tt{
-            width: 100%;
-            height: 121px;
-            // background-color: turquoise;
-            >textarea{
-                width: 100%;
-                height: 100%;
-                background-color: #f4f5f6;
-                border:none;
+                height: 100px;
+                font-size: 50px;
+                text-align: center;
+                line-height: 100px;
+                position: relative;
+                border: 1px dashed gray;
                 box-sizing: border-box;
-                padding: 10px 15px 5px;
+
+                >input{
+                    position: absolute;
+                    top: 0;
+                    left: 0px;
+                    opacity: 0;
+                    width: 100px;
+                    height: 100px;
+                    cursor: pointer;
+                }
+
+                >img{
+                    width: 100%;
+                    height: 100%;
+                }
             }
+
         }
     }
+  }
+
+  .lp-content-mid-input-arcticle{
+      background-color: #f4f5f6;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+
+      >input{
+        height: 40px;
+        font: 16px;
+        margin: 10px 0;
+      }
+
+      .rich-editor{
+          background-color: white;
+
+      }
+
+      >.lp-release{
+          height: 40px;
+          line-height: 40px;
+          display: flex;
+          justify-content: flex-end;
+        
+          >div{
+              height: 100%;
+              width: 100px;
+              background-color: #f48c8c;
+              text-align: center;
+              border-radius: 6px;
+          }
+      }
+  }
+}
 </style>

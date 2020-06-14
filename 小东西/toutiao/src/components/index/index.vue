@@ -16,7 +16,13 @@
       <!-- 中间内容开始 -->
       <div class="lp-content-mid">
         <Ipt></Ipt>
+        <div class="lp-content-mid-refresh">
+          点击刷新
+        </div>
+        <news></news>
       </div>
+
+
       <!-- 中间内容结束 -->
 
       <!-- 右边内容开始 -->
@@ -60,12 +66,14 @@
 <script>
 import navs from "@/components/navs/nav";
 import Ipt from "@/components/contents/input.vue";
+import News from "@/components/contents/news.vue";
 
 export default {
   name: "App",
   components: {
     navs,
     Ipt,
+    News,
   },
   computed: {
     isLogin: {
@@ -162,6 +170,20 @@ export default {
 .lp-content-mid {
   /* background-color: darkturquoise; */
   flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lp-content-mid-refresh{
+  width: 80%;
+  height: 30px;
+  margin-top: 10px;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 4px;
+  border: 1px solid #3192d5;
+  color: #3192d5;
 }
 /* 中间区域结束 */
 
