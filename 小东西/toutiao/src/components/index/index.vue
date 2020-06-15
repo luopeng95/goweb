@@ -34,7 +34,7 @@
         <div class="lp-logInfo">
           <div v-if="isLogin" class="lp-logInfo-login">
             <div class="lp-logInfo-login-logout"><span @click="logout">退出登录</span></div>
-            <div class="lp-logInfo-login-avator"><img :src="avator"></div>
+            <div class="lp-logInfo-login-avator"><img :src="avator" @click="toUserCenter"></div>
             <div class="lp-logInfo-login-nickname">{{nickname}}</div>
             <div class="lp-logInfo-login-count">
               <div>
@@ -130,6 +130,9 @@ export default {
         this.$store.commit('changeNews',{news:msg.data.articles});
         console.log("访问文章接口");
     });
+    },
+    toUserCenter(){
+      this.$router.push({name:"UserCenter"});
     },
   },
   created() {
@@ -279,6 +282,7 @@ export default {
  text-align: center;
 }
 .lp-logInfo-login-avator>img{
+  cursor: pointer;
   width: 56px;
   height: 56px;
   border-radius: 50%;

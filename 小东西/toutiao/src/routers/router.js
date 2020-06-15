@@ -3,6 +3,7 @@ import Vue from "vue";
 import index from "@/components/index/index";
 import login from "@/components/login/login";
 import NewsListDetail from "@/components/newsListDetail/newsListDetail.vue"
+import UserCenter from "@/components/usercenter/UserCenter.vue";
 
 Vue.use(vueRouter);
 
@@ -27,6 +28,11 @@ export default new vueRouter({
         path:"/newsListDetail",
         component:NewsListDetail,
         name:"newsListDetail",
+        props:true,
+    },{
+        path:"/userCenter",
+        component:UserCenter,
+        name:"UserCenter",
         props:true,
     }]
 })
