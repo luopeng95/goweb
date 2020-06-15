@@ -1,7 +1,7 @@
 <!--  -->
 <template>
   <div class="lp-content-mid-news">
-    <div v-for="v in news">
+    <div v-for="v in news" @click="toNewsDetail($event,v)">
         <div class="lp-content-mid-news-noImg" v-if="!v.img">
             <span>{{v.title}}</span>
             <div>
@@ -48,20 +48,17 @@ export default {
   //监控data中的数据变化
   watch: {},
   //方法集合
-  methods: {},
+  methods: {
+    toNewsDetail(e,v){
+      // console.log(v.nid);
+      this.$router.push({name:"newsListDetail",query:{nid:v.nid},params:{nid:v.nid}})
+    }
+  },
   filters:{
   },
   //生命周期 - 创建完成（可以访问当前this实例）
   created() {
-    // 访问接口，获取数据
-    let params = new FormData();
-    // console.log(this.$store.getters.lastId);
-    params.append("lastid", this.$store.getters.lastId);
-    this.$axios.post("/getArticles",params).then((msg)=>{
-        this.$store.commit('addAtr',{news:msg.data.articles});
-        // console.log(this.$store.state);
-        // console.log(this.$store.getters);
-    });
+    
   },
   //生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {},
@@ -79,7 +76,9 @@ export default {
   width: 80%;
   margin-top: 20px;
 //   background-color: tomato;
-
+  >div{
+    cursor: pointer;
+  }
   .lp-content-mid-news-noImg{
       width: 100%;
       height: 78px;
@@ -109,6 +108,10 @@ export default {
               height: 18px;
               border-radius: 50%;
             //   vertical-align: super;
+          }
+
+          >span{
+            margin: 0 5px;
           }
       }
   }

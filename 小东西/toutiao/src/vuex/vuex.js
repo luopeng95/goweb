@@ -25,7 +25,11 @@ export default new Vuex.Store({
             for(let k of Object.keys(atr)){
                 Vue.delete(state,k);
             }
-        }
+        },
+        changeNews(state,arr){
+            console.log(arr);
+            state.news = arr.news.concat(state.news);
+        },
     },
     actions:{
 

@@ -10,7 +10,6 @@
       src="//s3.pstatp.com/toutiao/resource/ntoutiao_web/static/image/logo_271e845.png"
       class="lp-login-title"
     >
-
     <!-- 内容区 -->
     <div class="lp-login-content">
       <div class="lp-login-content-title">{{typetitle}}</div>
@@ -170,7 +169,8 @@ export default {
     }
   },
   //生命周期 - 创建完成（可以访问当前this实例）
-  created() {},
+  created() {
+  },
   //生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {},
   beforeCreate() {}, //生命周期 - 创建之前

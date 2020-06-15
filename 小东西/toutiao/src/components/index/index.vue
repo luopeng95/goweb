@@ -15,8 +15,8 @@
 
       <!-- 中间内容开始 -->
       <div class="lp-content-mid">
-        <Ipt></Ipt>
-        <div class="lp-content-mid-refresh">
+        <Ipt @tologin="toSign" @getNews="getNews"></Ipt>
+        <div class="lp-content-mid-refresh" @click="getNews">
           点击刷新
         </div>
         <news></news>
@@ -121,10 +121,25 @@ export default {
       console.log(this.$store.state);
       // console.log(this.isLogin);
     },
-    test(){
-      this.$store.commit('addAtr',{nickname:"test"});
-      console.log(this.$store.state);
+    getNews(){
+      let params = new FormData();
+      console.log(this);
+      // console.log(this.$store.getters.lastId);
+      params.append("lastid", this.$store.getters.lastId);
+      this.$axios.post("/getArticles",params).then((msg)=>{
+        this.$store.commit('changeNews',{news:msg.data.articles});
+        console.log("访问文章接口");
+    });
     },
+  },
+  created() {
+    // 页面创建的时候要把vuex里面的数据初始化
+    let params = new FormData()
+    params.append("lastid", 0);
+      this.$axios.post("/getArticles",params).then((msg)=>{
+        this.$store.commit('addAtr',{news:msg.data.articles});
+        console.log("访问文章接口");
+    });
   },
 };
 </script>
