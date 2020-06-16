@@ -30,6 +30,27 @@ export default new Vuex.Store({
             console.log(arr);
             state.news = arr.news.concat(state.news);
         },
+        changeNum(state,change){
+            if(change.type === "add"){
+                let num = +state[change.atr] + 1;
+                state[change.atr] = num;
+                // 修改本地存储里面的数据
+                let data = localStorage.getItem("userInfo");
+                data = JSON.parse(data);
+                data[change.atr] = num;
+                data = JSON.stringify(data);
+                localStorage.setItem("userInfo",data);
+              }else if(change.type === "del"){
+                let num = +state[change.atr] - 1;
+                state[change.atr] = num;
+                // 修改本地存储里面的数据
+                let data = localStorage.getItem("userInfo");
+                data = JSON.parse(data);
+                data[change.atr] = num;
+                data = JSON.stringify(data);
+                localStorage.setItem("userInfo",data);
+              }
+        },
     },
     actions:{
 

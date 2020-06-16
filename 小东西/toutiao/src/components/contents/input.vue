@@ -131,6 +131,7 @@ export default {
           this.imglists = [];
           this.disImg = false;
           this.$emit("getNews");
+          this.$store.commit("changeNum",{type:"add",atr:'tt_count'})
         })
       }
     },
@@ -155,6 +156,7 @@ export default {
           this.arcTitle = "";
           this.editor = "";
           this.article_first_img = "";
+          this.$store.commit("changeNum",{type:"add",atr:'article_count'})
         });
       }
     },

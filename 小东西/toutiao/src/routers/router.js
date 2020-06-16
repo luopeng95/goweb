@@ -4,6 +4,7 @@ import index from "@/components/index/index";
 import login from "@/components/login/login";
 import NewsListDetail from "@/components/newsListDetail/newsListDetail.vue"
 import UserCenter from "@/components/usercenter/UserCenter.vue";
+import UserData from "@/components/userData/UserData.vue";
 
 Vue.use(vueRouter);
 
@@ -34,5 +35,10 @@ export default new vueRouter({
         component:UserCenter,
         name:"UserCenter",
         props:true,
+    },{
+        path:"/userData",
+        component:UserData,
+        name:"UserData",
+        props:true
     }]
 })
