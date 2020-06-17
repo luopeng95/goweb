@@ -1,0 +1,46 @@
+#container * {
+  box-sizing: border-box;
+}
+#container > .lp-mtoutiao-nav {
+  background-color: #cf3541;
+  display: flex;
+  height: 1.066667rem /* 80/75 */ /* 40/75 */;
+  line-height: 1.066667rem /* 80/75 */ /* 40/75 */;
+  padding: 0 0.533333rem /* 40/75 */ /* 20/75 */;
+  justify-content: space-between;
+  font-size: 14px;
+  color: white;
+}
+#container > .lp-mtoutiao-lists {
+  width: 10rem;
+  height: 1.066667rem /* 80/75 */;
+  display: flex;
+  border-bottom: 1px solid gray;
+}
+#container > .lp-mtoutiao-lists > .lp-mtoutiao-lists-left {
+  background-color: #f4f5f6;
+  width: 9rem;
+}
+#container > .lp-mtoutiao-lists > .lp-mtoutiao-lists-left > .lp-mtoutiao-lists-left-content {
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+#container > .lp-mtoutiao-lists > .lp-mtoutiao-lists-left > .lp-mtoutiao-lists-left-content > a {
+  flex: 0 0 2.666667rem;
+  height: 100%;
+  line-height: 1.066667rem /* 80/75 */;
+  color: black;
+  text-align: center;
+}
+#container > .lp-mtoutiao-lists > .lp-mtoutiao-lists-left > .lp-mtoutiao-lists-left-content::-webkit-scrollbar {
+  display: none;
+}
+#container > .lp-mtoutiao-lists > .lp-mtoutiao-lists-right {
+  background-color: #f4f5f6;
+  width: 1rem;
+  text-align: center;
+  line-height: 1.066667rem /* 80/75 */;
+  border-left: 1px solid gray;
+  color: #f1626b;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" user-scalable='no' maximum-scale='1.0' minimum-scale='1.0'>
+    <title>移动端头条</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <base target="_blank">
+</head>
+<body>
+    <div id="container">
+        <div class="lp-mtoutiao-nav"></div>
+        <div class="lp-mtoutiao-lists">
+            <div class="lp-mtoutiao-lists-left">
+                <div class="lp-mtoutiao-lists-left-content">
+                </div>
+            </div>
+            <div class="lp-mtoutiao-lists-right">+</div>
+        </div>
+    </div>
+    <script src="../lib/flexible.js"></script>
+    <script src="../../../zepto.js"></script>
+    <script>
+        (function(){
+            let lists = [{text:"邮件",type:"sapn"},{text:"今日头条",type:"sapn"},{text:"搜索",type:"sapn"},]
+            let types = [{text:"推荐",type:"a",url:"#"},{text:"推荐",type:"a",url:"#"},{text:"推荐",type:"a",url:"#"},{text:"推荐",type:"a",url:"#"},{text:"推荐",type:"a",url:"#"},{text:"推荐",type:"a",url:"#"},{text:"推荐",type:"a",url:"#"},{text:"推荐",type:"a",url:"#"},{text:"推荐",type:"a",url:"#"},{text:"推荐",type:"a",url:"#"},]
+            $().ready(()=>{
+                let str = addNav(lists);
+                $(".lp-mtoutiao-nav").html(str);
+                let type = addNav(types);
+                $(".lp-mtoutiao-lists-left-content").html(type);
+            })
+
+
+            // 把nav的三个标题变成字符串，传入对象
+            function addNav(arr){
+                let str = "";
+                arr.map((e)=>{
+                    if(e.url){
+                        str += `<${e.type} url=${e.url}>${e.text}</${e.type}>`
+                    }else{
+                        str += `<${e.type}>${e.text}</${e.type}>`
+                    }
+                })
+                return str;
+            }
+        })()
+    </script>
+</body>
+</html>
