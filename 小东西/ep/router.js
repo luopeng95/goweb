@@ -18,9 +18,6 @@ router.get("/add",(req,res)=>{
 })
 router.post("/img",(req,res)=>{
     console.log(req.body);
-    res.header("Access-Control-Allow-Origin","*");
-    //允许的header类型
-    // res.header("Access-Control-Allow-Headers","application/json");
     res.send("请求已经收到");
 })
 

@@ -7,8 +7,26 @@
 </head>
 <body>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="../../zepto.js"></script>
     <script>
-        axios.get("http://127.0.0.1:60025/user/login").then((msg)=>{
+        // let params = JSON.stringify({"tt":"1"});
+        // console.log(axios);
+        
+        let params = new FormData();
+        params.append("type","1232141");
+        // axios({
+        //     method:"post",
+        //     url:"http://localhost:60030/test/img",
+        //     data:params,
+        //     headers:{"Content-Type":"multipart/form-fata"},
+        //     // params:params
+        // }).then((msg)=>{
+        //     console.log(msg);
+        // })
+        // $.post("http://localhost:60030/test/img",{type:"123123"},(res)=>{
+        //     console.log(res);
+        // })
+        axios.post("http://localhost:60030/test/img",{type:"poi"}).then((msg)=>{
             console.log(msg);
         })
     </script>
