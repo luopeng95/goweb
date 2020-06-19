@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function getNum(str){
+            // let reg = /^[.\d]+.{0}\d$/g;
+            let reg = /(\d+[.\d]\d+)|(\d+)/
+            let result = str.match(reg);
+            if(result){
+                console.log(+result[0]);
+            }
+            // console.log(result);
+        }
+
+        let str = 'rqwrg900001.9.5d5g4df';
+        getNum(str);
+    </script>
+</body>
+</html>

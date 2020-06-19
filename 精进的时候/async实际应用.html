@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="../axios.js"></script>
+    <script src="../zepto.js"></script>
+    <script>
+        async function aa() {
+            await new Promise(function (resolve, reject) {
+                $.get("http://localhost:50024/test", (msg) => {
+                    console.log(msg);
+                    resolve()
+                })
+            })
+
+            await new Promise(function (resolve, reject) {
+                $.get("http://localhost:50024/test2", (msg) => {
+                    console.log(msg);
+                    resolve()
+                })
+            })
+
+            let aaa =  await new Promise(function (resolve, reject) {
+                let b =  axios.get("http://localhost:50024/test3").then((msg) => {
+                    console.log(msg.data);
+                    resolve(msg);
+                })
+                console.log(b);
+            })
+
+            console.log(aaa);
+
+
+        }
+        aa();
+    </script>
+</body>
+
+</html>
