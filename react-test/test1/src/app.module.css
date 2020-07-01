@@ -1,0 +1,6 @@
+.ipt {
+  background-color: aqua;
+}
+.ipt > input {
+  height: 20px;
+}

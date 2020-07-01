@@ -22,13 +22,27 @@
       //1. 调用add([1, 2, 3])
       //7. 又执行add([1, 2, 3, 4, 5])
       //13. 再执行add([1, 2, 3, 4, 5, 6, 7])
+      // let add = (...outerArgs) => {
+      //   let inner = (...innerArgs) => add(...outerArgs, ...innerArgs)
+      //   inner.toString = () => outerArgs.reduce((acc, cur) => acc + cur)
+      //   return inner
+      // }
+
       let add = (...outerArgs) => {
         let inner = (...innerArgs) => add(...outerArgs, ...innerArgs)
-        inner.toString = () => outerArgs.reduce((acc, cur) => acc + cur)
+        inner.toString = () => {
+          let count = 0;
+          outerArgs.forEach(e=>{
+            count += e;
+          })
+          return count;
+        }
         return inner
       }
+
       let m = add(1, 2, 3)(4, 5)(6, 7);
-      console.log(m );
+      let n = m +560;
+      console.log(n);
     </script>
   </body>
 
