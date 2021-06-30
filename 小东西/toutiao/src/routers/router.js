@@ -9,6 +9,7 @@ import UserData from "@/components/userData/UserData.vue";
 Vue.use(vueRouter);
 
 export default new vueRouter({
+    mode:'history',
     routes: [{
         path:'/index',
         component:index,
